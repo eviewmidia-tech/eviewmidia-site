@@ -737,51 +737,176 @@
     .form-header {
       position: relative;
       z-index: 2;
-      padding: 22px 36px 18px;
+      padding: 0;
       border-bottom: 1px solid rgba(255,215,0,0.08);
-      background:
-        linear-gradient(180deg, rgba(255,100,0,0.07) 0%, transparent 100%);
       overflow: hidden;
     }
 
-    /* Linha de destaque no topo do card */
+    /* Linha dourada no topo */
     .form-header::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, transparent 0%, #FF8C00 30%, #FFD700 50%, #FF8C00 70%, transparent 100%);
     }
 
-    .form-badge-premium {
-      background: rgba(255,180,0,0.12);
-      border: 1px solid rgba(255,180,0,0.35);
-      color: #FFB800;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 9px;
+    /* Topo do header — atividade + vagas */
+    .form-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .form-activity {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: #999;
+      font-weight: 500;
+    }
+
+    #activityText {
+      transition: opacity 0.3s ease;
+    }
+
+    .activity-dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      border-radius: 50%;
+      background: #5CDB5C;
+      box-shadow: 0 0 8px rgba(92,219,92,0.7);
+      animation: livePulse 1.8s ease-in-out infinite;
+    }
+
+    .form-vagas {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.12em;
-      margin-bottom: 8px;
-      display: inline-block;
-      text-transform: uppercase;
+      color: #FF8C00;
+      background: rgba(255,140,0,0.08);
+      border: 1px solid rgba(255,140,0,0.2);
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
     }
 
-    .form-title-premium {
-      font-size: 19px;
+    /* Corpo do header */
+    .form-body-header {
+      padding: 18px 28px 16px;
+    }
+
+    .form-headline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
       font-weight: 800;
-      color: #FFFFFF;
-      margin-bottom: 5px;
-      letter-spacing: -0.3px;
-      line-height: 1.25;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
     }
 
-    .form-subtitle-premium {
+    .form-headline span {
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .form-sub {
       font-size: 12px;
       color: #666;
-      line-height: 1.5;
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    /* Trust badges */
+    .form-trust {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #888;
+      font-weight: 500;
+    }
+
+    .trust-item svg {
+      width: 13px;
+      height: 13px;
+      stroke: #FFD700;
+      flex-shrink: 0;
+    }
+
+    /* Barra de progresso */
+    .form-progress-bar {
+      display: flex;
+      align-items: center;
+      padding: 10px 28px;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      background: rgba(0,0,0,0.2);
+    }
+
+    .fp-step {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex: 1;
+      font-size: 10px;
+      font-weight: 600;
+      color: #444;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .fp-step.active { color: #FFD700; }
+    .fp-step.done   { color: #5CDB5C; }
+
+    .fp-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .fp-step.active .fp-num {
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+      border-color: transparent;
+      color: #080808;
+    }
+
+    .fp-step.done .fp-num {
+      background: #5CDB5C;
+      border-color: transparent;
+      color: #080808;
+    }
+
+    .fp-divider {
+      flex: 0 0 24px;
+      height: 1px;
+      background: #222;
+      margin: 0 4px;
     }
 
     .form-premium {
@@ -2664,13 +2789,56 @@
    <div class="hero-right">
     <div class="form-card-premium">
      <div class="form-header">
-      <div class="form-live-indicator">
-       <span class="live-dot"></span>
-       Especialistas disponíveis agora
+
+      <!-- Topo: atividade + vagas -->
+      <div class="form-topbar">
+       <div class="form-activity">
+        <span class="activity-dot"></span>
+        <span id="activityText">3 empresas solicitaram hoje</span>
+       </div>
+       <div class="form-vagas">
+        ⚡ Resposta em ate 24h
+       </div>
       </div>
-      <div class="form-badge-premium">DIAGNÓSTICO GRATUITO</div>
-      <h3 class="form-title-premium">Análise estratégica personalizada</h3>
-      <p class="form-subtitle-premium">Preencha os dados e nosso time irá te chamar em até 24h</p>
+
+      <!-- Headline e trust -->
+      <div class="form-body-header">
+       <h3 class="form-headline">Descubra o que esta <span>travando o crescimento</span> da sua empresa</h3>
+       <p class="form-sub">Preencha em menos de 2 minutos e nosso time entra em contato com uma analise personalizada do seu negocio.</p>
+       <div class="form-trust">
+        <span class="trust-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+         100% Gratuito
+        </span>
+        <span class="trust-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+         Sem compromisso
+        </span>
+        <span class="trust-item">
+         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+         Dados protegidos
+        </span>
+       </div>
+      </div>
+
+      <!-- Barra de progresso -->
+      <div class="form-progress-bar" id="formProgressBar">
+       <div class="fp-step active" id="fpStep1">
+        <div class="fp-num">1</div>
+        <span>Sobre voce</span>
+       </div>
+       <div class="fp-divider"></div>
+       <div class="fp-step" id="fpStep2">
+        <div class="fp-num">2</div>
+        <span>Seu negocio</span>
+       </div>
+       <div class="fp-divider"></div>
+       <div class="fp-step" id="fpStep3">
+        <div class="fp-num">3</div>
+        <span>Finalizar</span>
+       </div>
+      </div>
+
      </div>
      <form onsubmit="handleFormSubmit(event)" class="form-premium">
       <div class="form-steps-premium">
@@ -3576,6 +3744,7 @@
       }
       document.querySelectorAll('.form-step-premium').forEach(s => s.classList.remove('active'));
       document.querySelector(`[data-step="${step}"]`).classList.add('active');
+      updateFormProgress(step);
       document.querySelector('.form-card-premium').scrollIntoView({ behavior: 'smooth', block: 'start' });
       lucide.createIcons();
     }
@@ -3592,6 +3761,39 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
+
+    // Barra de progresso do formulário
+    function updateFormProgress(step) {
+      for (let i = 1; i <= 3; i++) {
+        const el = document.getElementById('fpStep' + i);
+        if (!el) continue;
+        el.classList.remove('active', 'done');
+        if (i < step)  el.classList.add('done');
+        if (i === step) el.classList.add('active');
+        el.querySelector('.fp-num').textContent = i < step ? '✓' : i;
+      }
+    }
+
+    // Atividade social proof — rotaciona mensagens
+    const activities = [
+      '3 empresas solicitaram hoje',
+      'Ricardo de Campinas solicitou ha 18 min',
+      'Ana de Ribeirao Preto solicitou ha 34 min',
+      '5 analises enviadas esta semana',
+      'Empresa de Sao Paulo solicitou ha 52 min',
+    ];
+    let actIdx = 0;
+    const actEl = document.getElementById('activityText');
+    if (actEl) {
+      setInterval(() => {
+        actIdx = (actIdx + 1) % activities.length;
+        actEl.style.opacity = '0';
+        setTimeout(() => {
+          actEl.textContent = activities[actIdx];
+          actEl.style.opacity = '1';
+        }, 300);
+      }, 5000);
+    }
   </script>
  </body>
 </html>
