@@ -304,15 +304,29 @@
       left: 0;
       right: 0;
       height: 80px;
-      background: rgba(8, 8, 8, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 140, 0, 0.15);
+      background: transparent;
+      backdrop-filter: blur(0px) saturate(100%);
+      -webkit-backdrop-filter: blur(0px) saturate(100%);
+      border-bottom: 1px solid transparent;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 80px;
-      animation: fadeIn 0.3s ease forwards;
+      transition: background 0.35s ease,
+                  backdrop-filter 0.35s ease,
+                  border-color 0.35s ease,
+                  box-shadow 0.35s ease;
+      will-change: backdrop-filter;
+      transform: translateZ(0);
+    }
+
+    nav.navbar.scrolled {
+      background: rgba(4, 4, 4, 0.70);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 200, 0, 0.09);
+      box-shadow: 0 1px 48px rgba(0, 0, 0, 0.45);
     }
 
     .navbar-logo {
@@ -2420,6 +2434,7 @@
 
       /* ===== NAVBAR ===== */
       nav.navbar { padding: 0 16px; height: 60px; }
+      nav.navbar.scrolled { background: rgba(4,4,4,0.80); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%); }
       .navbar ul { display: none; }
       .navbar-logo img { height: 16px !important; }
 
@@ -3416,9 +3431,16 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
-    document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    // Usa requestIdleCallback se disponível para não bloquear o thread principal
+    const scheduleObserve = typeof requestIdleCallback !== 'undefined'
+      ? (fn) => requestIdleCallback(fn, { timeout: 300 })
+      : (fn) => setTimeout(fn, 0);
+
+    scheduleObserve(() => {
+      document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+    });
 
     // Count-up Animation — requestAnimationFrame para 60fps perfeito
     function animateCount(el, target, duration) {
@@ -3567,6 +3589,12 @@
       button.classList.add('selected');
       document.getElementById(fieldId).value = button.dataset.value;
     }
+
+    // Navbar glass on scroll — passive para não bloquear scroll
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
   </script>
  </body>
 </html>
