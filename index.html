@@ -210,16 +210,7 @@
     }
 
     /* Elementos Gráficos */
-    .diagonal-line {
-      position: absolute;
-      width: 300px;
-      height: 2px;
-      background: #FFD700;
-      top: 200px;
-      right: 100px;
-      opacity: 0;
-      animation: drawLine 1.5s ease-out forwards;
-    }
+    .diagonal-line { display: none; }
 
     @keyframes drawLine {
       from {
@@ -362,10 +353,12 @@
       align-items: center;
       justify-content: center;
       background:
-        radial-gradient(ellipse 80% 65% at 10% -10%, rgba(255,90,0,0.20) 0%, transparent 58%),
-        radial-gradient(ellipse 60% 55% at 92% 100%, rgba(255,200,0,0.13) 0%, transparent 58%),
-        radial-gradient(ellipse 45% 40% at 55% 42%, rgba(210,20,0,0.07) 0%, transparent 65%),
-        #020202;
+        radial-gradient(ellipse 95% 70% at 0% -5%,  rgba(255,70,0,0.32)  0%, transparent 52%),
+        radial-gradient(ellipse 60% 50% at 100% 110%, rgba(255,185,0,0.22) 0%, transparent 52%),
+        radial-gradient(ellipse 55% 45% at 48% 44%,  rgba(160,8,0,0.10)   0%, transparent 60%),
+        radial-gradient(ellipse 100% 20% at 50% 0%,  rgba(255,100,0,0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 80% 15%,  rgba(255,210,0,0.07) 0%, transparent 60%),
+        #010101;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
@@ -378,9 +371,11 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 215, 0, 0.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 215, 0, 0.028) 1px, transparent 1px);
-      background-size: 80px 80px;
+        linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
       pointer-events: none;
       z-index: 1;
     }
@@ -719,23 +714,24 @@
     .form-card-premium {
       padding: 0;
       position: relative;
-      border: 1px solid rgba(255, 215, 0, 0.18);
-      background-clip: padding-box;
       overflow: hidden;
-      border-radius: 22px;
-      background: rgba(10, 10, 10, 0.96);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      animation: slideForm 0.6s ease 0.4s backwards;
+      border-radius: 24px;
+      background: linear-gradient(160deg, rgba(22,14,8,0.98) 0%, rgba(8,8,8,0.99) 100%);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      animation: slideForm 0.7s cubic-bezier(0.16,1,0.3,1) 0.3s backwards;
       box-shadow:
-        0 0 0 1px rgba(255, 215, 0, 0.07),
-        0 40px 80px rgba(0, 0, 0, 0.65),
-        0 0 120px rgba(255, 110, 0, 0.07);
+        0 0 0 1px rgba(255,180,0,0.15),
+        0 0 0 4px rgba(255,100,0,0.04),
+        0 32px 80px rgba(0,0,0,0.7),
+        0 0 60px rgba(255,90,0,0.08),
+        inset 0 1px 0 rgba(255,215,0,0.12);
       max-width: 900px;
       width: 100%;
       margin: 0 auto;
     }
 
+    /* Borda girante premium */
     .form-card-premium::before {
       content: '';
       position: absolute;
@@ -745,30 +741,32 @@
       height: 200%;
       background: conic-gradient(
         from 0deg,
-        #FFD700 0deg,
-        #FF6B00 45deg,
+        transparent 0deg,
+        #FF8C00 60deg,
         #FFD700 90deg,
+        #FF6B00 120deg,
         transparent 180deg,
-        #FFD700 270deg,
-        #FF6B00 315deg,
-        #FFD700 360deg
+        transparent 240deg,
+        #FFD700 300deg,
+        #FF8C00 330deg,
+        transparent 360deg
       );
-      animation: rotateLight 5s linear infinite;
+      animation: rotateLight 6s linear infinite;
       pointer-events: none;
-      border-radius: 22px;
-      opacity: 0.6;
+      opacity: 0.5;
+      z-index: 0;
     }
 
+    /* Fundo interno */
     .form-card-premium::after {
       content: '';
       position: absolute;
-      top: 1px;
-      left: 1px;
-      right: 1px;
-      bottom: 1px;
-      background: rgba(10, 10, 10, 0.97);
-      pointer-events: auto;
-      border-radius: 21px;
+      top: 1.5px;
+      left: 1.5px;
+      right: 1.5px;
+      bottom: 1.5px;
+      background: linear-gradient(160deg, rgba(20,12,6,0.99) 0%, rgba(6,6,6,0.99) 100%);
+      border-radius: 23px;
       z-index: 1;
     }
 
@@ -791,34 +789,50 @@
     .form-header {
       position: relative;
       z-index: 2;
-      padding: 40px 40px 32px;
-      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.04) 0%, rgba(255, 110, 0, 0.02) 60%, transparent 100%);
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid rgba(255,215,0,0.08);
+      background:
+        linear-gradient(180deg, rgba(255,100,0,0.07) 0%, transparent 100%);
+      overflow: hidden;
+    }
+
+    /* Linha de destaque no topo do card */
+    .form-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, #FF8C00 30%, #FFD700 50%, #FF8C00 70%, transparent 100%);
     }
 
     .form-badge-premium {
-      background: linear-gradient(135deg, #FFD700 0%, #FF6B00 100%);
-      color: #080808;
-      padding: 6px 12px;
-      border-radius: 4px;
+      background: rgba(255,180,0,0.12);
+      border: 1px solid rgba(255,180,0,0.35);
+      color: #FFB800;
+      padding: 5px 14px;
+      border-radius: 20px;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 12px;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
       display: inline-block;
       text-transform: uppercase;
     }
 
     .form-title-premium {
-      font-size: 22px;
-      font-weight: 700;
+      font-size: 23px;
+      font-weight: 800;
       color: #FFFFFF;
       margin-bottom: 8px;
+      letter-spacing: -0.3px;
+      line-height: 1.25;
     }
 
     .form-subtitle-premium {
-      font-size: 14px;
-      color: #A0A0A0;
+      font-size: 13px;
+      color: #777;
       line-height: 1.6;
     }
 
