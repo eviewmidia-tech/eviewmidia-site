@@ -199,14 +199,15 @@
     /* Animações Scroll Reveal */
     .scroll-reveal {
       opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.4s ease,
-                  transform 0.4s ease;
+      transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      will-change: transform, opacity;
     }
 
     .scroll-reveal.active {
       opacity: 1;
       transform: translateY(0);
+      will-change: auto;
     }
 
     /* Elementos Gráficos */
@@ -380,54 +381,7 @@
       z-index: 1;
     }
 
-    /* ====== AURORA ORBS (GPU-accelerated) ====== */
-    .aurora-orb {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      will-change: transform;
-      contain: layout style paint;
-    }
-    .orb-1 {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle at center, rgba(255,100,0,0.16) 0%, transparent 65%);
-      filter: blur(50px);
-      top: -280px;
-      left: -180px;
-      animation: orbDrift1 22s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle at center, rgba(255,210,0,0.11) 0%, transparent 65%);
-      filter: blur(60px);
-      bottom: -160px;
-      right: -60px;
-      animation: orbDrift2 28s ease-in-out infinite alternate;
-    }
-    .orb-3 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle at center, rgba(200,20,0,0.07) 0%, transparent 70%);
-      filter: blur(50px);
-      top: 45%;
-      left: 40%;
-      animation: orbDrift3 18s ease-in-out infinite alternate;
-    }
-    @keyframes orbDrift1 {
-      0%   { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(60px, 45px, 0) scale(1.08); }
-    }
-    @keyframes orbDrift2 {
-      0%   { transform: translate3d(0, 0, 0) scale(1); }
-      100% { transform: translate3d(-45px, -60px, 0) scale(1.06); }
-    }
-    @keyframes orbDrift3 {
-      0%   { transform: translate3d(0, -50%, 0); }
-      100% { transform: translate3d(-35px, calc(-50% + 30px), 0); }
-    }
+    /* aurora orbs removidos — fundo em radial-gradient no .hero não tem custo de repaint */
 
     /* ====== HERO STATS ====== */
     .hero-stats {
@@ -649,21 +603,7 @@
       }
     }
 
-    /* Gold Banner Premium */
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap');
-
-    @keyframes goldShimmer {
-      0%   { background-position: -200% center; }
-      100% { background-position: 200% center; }
-    }
-    @keyframes bannerFloat {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-3px); }
-    }
-    @keyframes megaphoneFloat {
-      0%, 100% { transform: rotate(-5deg); }
-      50%       { transform: rotate(5deg); }
-    }
+    /* (animações do gold banner removidas - elemento não existe mais) */
     .form-gold-banner {
       display: inline-flex;
       align-items: center;
@@ -731,30 +671,27 @@
       margin: 0 auto;
     }
 
-    /* Borda girante premium */
+    /* Borda com pulso de opacidade — GPU-only, zero repaint */
     .form-card-premium::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      inset: 0;
+      border-radius: 24px;
       background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        #FF8C00 60deg,
-        #FFD700 90deg,
-        #FF6B00 120deg,
-        transparent 180deg,
-        transparent 240deg,
-        #FFD700 300deg,
-        #FF8C00 330deg,
-        transparent 360deg
+        from 45deg,
+        #FF8C00, #FFD700, #FF6B00,
+        transparent 40%, transparent 60%,
+        #FF8C00 80%, #FFD700
       );
-      animation: rotateLight 6s linear infinite;
+      animation: borderPulse 4s ease-in-out infinite alternate;
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.35;
       z-index: 0;
+      will-change: opacity;
+    }
+    @keyframes borderPulse {
+      0%   { opacity: 0.2; }
+      100% { opacity: 0.55; }
     }
 
     /* Fundo interno */
@@ -770,10 +707,7 @@
       z-index: 1;
     }
 
-    @keyframes rotateLight {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    /* rotateLight removido — substituído por borderPulse */
 
     @keyframes slideForm {
       from {
@@ -2672,11 +2606,6 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-   <!-- Aurora background orbs -->
-   <div class="aurora-orb orb-1"></div>
-   <div class="aurora-orb orb-2"></div>
-   <div class="aurora-orb orb-3"></div>
-
    <div class="hero-left">
     <div class="hero-label scroll-reveal">
      <span class="dot-pulse"></span> ASSESSORIA ESTRATÉGICA DE MARKETING
@@ -3491,26 +3420,34 @@
 
     document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-    // Count-up Animation
+    // Count-up Animation — requestAnimationFrame para 60fps perfeito
+    function animateCount(el, target, duration) {
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+          el.dataset.counted = 'true';
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
     const countUpObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.dataset.counted) {
           const target = parseInt(entry.target.dataset.target);
-          let current = 0;
-          const increment = target / 20;
-          const interval = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              entry.target.textContent = target;
-              clearInterval(interval);
-              entry.target.dataset.counted = 'true';
-            } else {
-              entry.target.textContent = Math.floor(current);
-            }
-          }, 100);
+          entry.target.dataset.counted = 'pending';
+          animateCount(entry.target, target, 1400);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.4 });
 
     document.querySelectorAll('[data-target]').forEach(el => countUpObserver.observe(el));
 
