@@ -370,13 +370,146 @@
     .hero::before {
       content: '';
       position: absolute;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-image:
-        radial-gradient(circle, rgba(255, 140, 0, 0.08) 1.5px, transparent 1.5px);
-      background-size: 20px 20px;
+        linear-gradient(rgba(255, 215, 0, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.028) 1px, transparent 1px);
+      background-size: 80px 80px;
       pointer-events: none;
       z-index: 1;
+    }
+
+    /* ====== AURORA ORBS ====== */
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 {
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle at center, rgba(255,110,0,0.13) 0%, transparent 65%);
+      filter: blur(70px);
+      top: -420px;
+      left: -280px;
+      animation: orbDrift1 20s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle at center, rgba(255,215,0,0.09) 0%, transparent 65%);
+      filter: blur(90px);
+      bottom: -220px;
+      right: -80px;
+      animation: orbDrift2 25s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle at center, rgba(220,40,0,0.07) 0%, transparent 70%);
+      filter: blur(70px);
+      top: 50%;
+      left: 38%;
+      transform: translateY(-50%);
+      animation: orbDrift3 16s ease-in-out infinite alternate;
+    }
+    @keyframes orbDrift1 {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(80px, 60px) scale(1.12); }
+    }
+    @keyframes orbDrift2 {
+      0%   { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-60px, -80px) scale(1.08); }
+    }
+    @keyframes orbDrift3 {
+      0%   { transform: translateY(-50%) translate(0, 0); }
+      100% { transform: translateY(-50%) translate(-50px, 40px); }
+    }
+
+    /* ====== HERO STATS ====== */
+    .hero-stats {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,215,0,0.12);
+      border-radius: 14px;
+      padding: 22px 0;
+      animation: fadeIn 0.6s ease 1.2s forwards;
+      opacity: 0;
+    }
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      padding: 0 16px;
+    }
+    .hero-stat-value {
+      display: flex;
+      align-items: baseline;
+      gap: 1px;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+    .hero-stat-number {
+      font-size: 34px;
+      font-weight: 800;
+      color: #FFD700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.02em;
+    }
+    .hero-stat-plus {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FF8C00;
+    }
+    .hero-stat-prefix {
+      font-size: 17px;
+      font-weight: 700;
+      color: #FFD700;
+      margin-right: 2px;
+    }
+    .hero-stat-label {
+      font-size: 10px;
+      color: #777;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .hero-stat-divider {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255,215,0,0.25), transparent);
+      flex-shrink: 0;
+    }
+
+    /* ====== FORM LIVE INDICATOR ====== */
+    .form-live-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: #5CDB5C;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      min-width: 7px;
+      border-radius: 50%;
+      background: #5CDB5C;
+      animation: livePulse 1.8s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(92,219,92,0.7);
+    }
+    @keyframes livePulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.5); opacity: 0.65; }
     }
 
     .hero-left {
@@ -579,13 +712,18 @@
     .form-card-premium {
       padding: 0;
       position: relative;
-      border: 2px solid rgba(255, 215, 0, 0.2);
+      border: 1px solid rgba(255, 215, 0, 0.18);
       background-clip: padding-box;
       overflow: hidden;
-      border-radius: 8px;
-      background: #0F0F0F;
+      border-radius: 22px;
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       animation: slideForm 0.6s ease 0.4s backwards;
-      box-shadow: 0 0 60px rgba(255, 215, 0, 0.08);
+      box-shadow:
+        0 0 0 1px rgba(255, 215, 0, 0.07),
+        0 40px 80px rgba(0, 0, 0, 0.65),
+        0 0 120px rgba(255, 110, 0, 0.07);
       max-width: 900px;
       width: 100%;
       margin: 0 auto;
@@ -608,21 +746,22 @@
         #FF6B00 315deg,
         #FFD700 360deg
       );
-      animation: rotateLight 4s linear infinite;
+      animation: rotateLight 5s linear infinite;
       pointer-events: none;
-      border-radius: 8px;
+      border-radius: 22px;
+      opacity: 0.6;
     }
 
     .form-card-premium::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #0F0F0F;
+      top: 1px;
+      left: 1px;
+      right: 1px;
+      bottom: 1px;
+      background: rgba(10, 10, 10, 0.97);
       pointer-events: auto;
-      border-radius: 6px;
+      border-radius: 21px;
       z-index: 1;
     }
 
@@ -645,9 +784,9 @@
     .form-header {
       position: relative;
       z-index: 2;
-      padding: 48px 40px 36px;
+      padding: 40px 40px 32px;
       border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, transparent 100%);
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.04) 0%, rgba(255, 110, 0, 0.02) 60%, transparent 100%);
     }
 
     .form-badge-premium {
@@ -2381,33 +2520,18 @@
       h1.hero-main { font-size: 26px; margin-bottom: 12px; }
       h2 { font-size: 22px; }
 
-      /* Strategic flow — 3 na mesma linha */
-      .strategic-flow {
-        flex-wrap: nowrap;
-        gap: 4px;
-        margin: 12px 0;
+      /* Hero stats — compacto no mobile */
+      .hero-stats {
         opacity: 1 !important;
         animation: none !important;
-        justify-content: space-between;
-        width: 100%;
+        margin-bottom: 20px;
+        padding: 14px 0;
+        border-radius: 10px;
       }
-      .flow-item {
-        min-width: unset;
-        width: 0;
-        flex: 1 1 0;
-        padding: 6px 4px;
-        font-size: 9px;
-        letter-spacing: 0.02em;
-        text-align: center;
-      }
-      .flow-arrow { display: none; }
-
-      /* Badge "Recomendado" — menor no mobile */
-      .hero-left > div[style] {
-        margin-bottom: 12px !important;
-        font-size: 10px !important;
-        padding: 8px 10px !important;
-      }
+      .hero-stat-number { font-size: 22px; }
+      .hero-stat-plus { font-size: 15px; }
+      .hero-stat-label { font-size: 9px; }
+      .hero-stat-divider { height: 28px; }
 
       .hero-buttons { display: none !important; }
 
@@ -2417,10 +2541,8 @@
       .vertical-line { height: 80px !important; }
 
       /* ===== FORMULÁRIO ===== */
-      .form-gold-banner { padding: 6px 16px; gap: 8px; }
-      .form-gold-text { font-size: 0.82rem; letter-spacing: 0.1em; }
-      .form-gold-megaphone { width: 15px; height: 15px; }
-      .form-card-premium { width: 100%; max-width: 100%; }
+      .form-card-premium { width: 100%; max-width: 100%; border-radius: 16px; }
+      .form-card-premium::after { border-radius: 15px; }
       .form-header { padding: 20px 16px 16px; }
       .form-premium { padding: 16px; }
       .form-group-premium { margin-bottom: 18px; }
@@ -2529,6 +2651,11 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+   <!-- Aurora background orbs -->
+   <div class="aurora-orb orb-1"></div>
+   <div class="aurora-orb orb-2"></div>
+   <div class="aurora-orb orb-3"></div>
+
    <div class="hero-left">
     <div class="hero-label scroll-reveal">
      <span class="dot-pulse"></span> ASSESSORIA ESTRATÉGICA DE MARKETING
@@ -2539,58 +2666,46 @@
     <p class="hero-subheadline scroll-reveal">
      Da estratégia ao tráfego pago, estruturamos sua presença digital para atrair clientes e gerar oportunidades todos os dias.
     </p>
-    <div class="strategic-flow scroll-reveal">
-     <div class="flow-item">Ser encontrado</div>
-     <div class="flow-arrow"></div>
-     <div class="flow-item">Ser entendido</div>
-     <div class="flow-arrow"></div>
-     <div class="flow-item">Ser escolhido</div>
+
+    <!-- Stats de credibilidade -->
+    <div class="hero-stats scroll-reveal">
+     <div class="hero-stat">
+      <div class="hero-stat-value">
+       <span class="hero-stat-number" data-target="50">0</span><span class="hero-stat-plus">+</span>
+      </div>
+      <span class="hero-stat-label">Clientes ativos</span>
+     </div>
+     <div class="hero-stat-divider"></div>
+     <div class="hero-stat">
+      <div class="hero-stat-value">
+       <span class="hero-stat-number" data-target="5">0</span><span class="hero-stat-plus">+</span>
+      </div>
+      <span class="hero-stat-label">Anos no mercado</span>
+     </div>
+     <div class="hero-stat-divider"></div>
+     <div class="hero-stat">
+      <div class="hero-stat-value">
+       <span class="hero-stat-number" data-target="100">0</span><span class="hero-stat-plus">+</span>
+      </div>
+      <span class="hero-stat-label">Projetos entregues</span>
+     </div>
     </div>
-    <div style="display: inline-block; background: rgba(255, 215, 0, 0.15); border: 1px solid rgba(255, 215, 0, 0.4); border-radius: 4px; padding: 12px 16px; font-size: 12px; color: #FFD700; font-family: 'Montserrat', sans-serif; font-weight: 600; margin-bottom: 60px; animation: fadeIn 0.6s ease 1s forwards, glow 2s ease-in-out 1.5s infinite; opacity: 0;" class="scroll-reveal">
-     Recomendado para empresas que faturam acima de R$100k/mês
-    </div>
+
     <div class="hero-buttons scroll-reveal" style="width: 100%;">
      <button class="btn btn-primary" onclick="document.querySelector('.process').scrollIntoView({behavior: 'smooth'})" style="width: 100%;">Ver como trabalhamos</button>
     </div>
    </div>
+
    <div class="hero-right">
-    <div class="form-gold-banner">
-      <span class="form-gold-megaphone">
-        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Corpo do megafone -->
-          <path d="M3 10.5C3 9.67 3.67 9 4.5 9H7v10H4.5A1.5 1.5 0 0 1 3 17.5v-7z" fill="#1a0800" opacity="0.9"/>
-          <!-- Corneta cônica -->
-          <path d="M7 8L22 3v22L7 20V8z" fill="#1a0800"/>
-          <!-- Boca da corneta — anel elegante -->
-          <ellipse cx="22" cy="14" rx="1.2" ry="5.5" fill="#1a0800" opacity="0.6"/>
-          <!-- Cabo embaixo -->
-          <rect x="4" y="19" width="3" height="5" rx="1.5" fill="#1a0800" opacity="0.7"/>
-          <!-- Ondas de som (3 arcos) -->
-          <path d="M24 9.5 Q27 14 24 18.5" stroke="#1a0800" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8"/>
-          <path d="M25.5 7 Q30 14 25.5 21" stroke="#1a0800" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
-        </svg>
-      </span>
-      <span class="form-gold-text">Preencha agora!</span>
-      <span class="form-gold-megaphone">
-        <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M3 10.5C3 9.67 3.67 9 4.5 9H7v10H4.5A1.5 1.5 0 0 1 3 17.5v-7z" fill="#1a0800" opacity="0.9"/>
-          <path d="M7 8L22 3v22L7 20V8z" fill="#1a0800"/>
-          <ellipse cx="22" cy="14" rx="1.2" ry="5.5" fill="#1a0800" opacity="0.6"/>
-          <rect x="4" y="19" width="3" height="5" rx="1.5" fill="#1a0800" opacity="0.7"/>
-          <path d="M24 9.5 Q27 14 24 18.5" stroke="#1a0800" stroke-width="1.4" stroke-linecap="round" fill="none" opacity="0.8"/>
-          <path d="M25.5 7 Q30 14 25.5 21" stroke="#1a0800" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.4"/>
-        </svg>
-      </span>
-    </div>
     <div class="form-card-premium">
      <div class="form-header">
-      <div class="form-top-element">
-       <i data-lucide="zap"></i>
-       <span class="form-top-text">Responda e fale com um especialista</span>
+      <div class="form-live-indicator">
+       <span class="live-dot"></span>
+       Especialistas disponíveis agora
       </div>
       <div class="form-badge-premium">DIAGNÓSTICO GRATUITO</div>
       <h3 class="form-title-premium">Análise estratégica personalizada</h3>
-      <p class="form-subtitle-premium">Preencha os dados e nosso time comercial irá te chamar em até 24hrs</p>
+      <p class="form-subtitle-premium">Preencha os dados e nosso time irá te chamar em até 24h</p>
      </div>
      <form onsubmit="handleFormSubmit(event)" class="form-premium">
       <div class="form-steps-premium">
