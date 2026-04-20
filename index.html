@@ -60,6 +60,8 @@
     html, body {
       height: 100%;
       width: 100%;
+      overflow-x: hidden;
+      max-width: 100vw;
     }
 
     body {
@@ -359,7 +361,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #080808;
+      background:
+        radial-gradient(ellipse 80% 65% at 10% -10%, rgba(255,90,0,0.20) 0%, transparent 58%),
+        radial-gradient(ellipse 60% 55% at 92% 100%, rgba(255,200,0,0.13) 0%, transparent 58%),
+        radial-gradient(ellipse 45% 40% at 55% 42%, rgba(210,20,0,0.07) 0%, transparent 65%),
+        #020202;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
@@ -379,52 +385,53 @@
       z-index: 1;
     }
 
-    /* ====== AURORA ORBS ====== */
+    /* ====== AURORA ORBS (GPU-accelerated) ====== */
     .aurora-orb {
       position: absolute;
       border-radius: 50%;
       pointer-events: none;
       z-index: 0;
+      will-change: transform;
+      contain: layout style paint;
     }
     .orb-1 {
-      width: 900px;
-      height: 900px;
-      background: radial-gradient(circle at center, rgba(255,110,0,0.13) 0%, transparent 65%);
-      filter: blur(70px);
-      top: -420px;
-      left: -280px;
-      animation: orbDrift1 20s ease-in-out infinite alternate;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle at center, rgba(255,100,0,0.16) 0%, transparent 65%);
+      filter: blur(50px);
+      top: -280px;
+      left: -180px;
+      animation: orbDrift1 22s ease-in-out infinite alternate;
     }
     .orb-2 {
-      width: 650px;
-      height: 650px;
-      background: radial-gradient(circle at center, rgba(255,215,0,0.09) 0%, transparent 65%);
-      filter: blur(90px);
-      bottom: -220px;
-      right: -80px;
-      animation: orbDrift2 25s ease-in-out infinite alternate;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle at center, rgba(255,210,0,0.11) 0%, transparent 65%);
+      filter: blur(60px);
+      bottom: -160px;
+      right: -60px;
+      animation: orbDrift2 28s ease-in-out infinite alternate;
     }
     .orb-3 {
-      width: 450px;
-      height: 450px;
-      background: radial-gradient(circle at center, rgba(220,40,0,0.07) 0%, transparent 70%);
-      filter: blur(70px);
-      top: 50%;
-      left: 38%;
-      transform: translateY(-50%);
-      animation: orbDrift3 16s ease-in-out infinite alternate;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle at center, rgba(200,20,0,0.07) 0%, transparent 70%);
+      filter: blur(50px);
+      top: 45%;
+      left: 40%;
+      animation: orbDrift3 18s ease-in-out infinite alternate;
     }
     @keyframes orbDrift1 {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(80px, 60px) scale(1.12); }
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(60px, 45px, 0) scale(1.08); }
     }
     @keyframes orbDrift2 {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-60px, -80px) scale(1.08); }
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-45px, -60px, 0) scale(1.06); }
     }
     @keyframes orbDrift3 {
-      0%   { transform: translateY(-50%) translate(0, 0); }
-      100% { transform: translateY(-50%) translate(-50px, 40px); }
+      0%   { transform: translate3d(0, -50%, 0); }
+      100% { transform: translate3d(-35px, calc(-50% + 30px), 0); }
     }
 
     /* ====== HERO STATS ====== */
@@ -2469,7 +2476,6 @@
       .navbar-logo img { height: 16px !important; }
 
       /* ===== HERO — FIX PRINCIPAL ===== */
-      /* O hero tinha justify-content:center + overflow:hidden causando hero-left acima da tela */
       .hero {
         flex-direction: column;
         justify-content: flex-start;
@@ -2479,9 +2485,10 @@
         padding: 16px 0 0;
         gap: 0;
         margin-top: 60px;
-        overflow: visible;
+        overflow: hidden;
       }
       .hero::before { display: none; }
+      .aurora-orb { display: none; }
 
       .hero-left {
         padding: 24px 16px 8px;
@@ -2920,7 +2927,7 @@
       <i data-lucide="compass" class="service-icon"></i>
       <h3 class="service-title" style="color:#FFD700;">Assessoria Estratégica</h3>
       <div class="service-line"></div>
-      <p class="service-desc">Diagnóstico de mercado, plano 90 dias, posicionamento e mapa de canais. <strong style="color:#FFD700;">Tudo começa aqui.</strong></p>
+      <p class="service-desc">Diagnóstico de mercado, plano de acao baseado em tempo inicial, posicionamento e mapa de canais. <strong style="color:#FFD700;">Tudo começa aqui.</strong></p>
      </div>
      <div class="service-card scroll-reveal">
       <div class="service-badge">Pode fazer parte da sua assessoria</div>
@@ -2975,6 +2982,74 @@
      <p>Coletamos os dados da sua empresa, entendemos o seu momento e marcamos uma reunião para apresentar uma proposta personalizada com as frentes que realmente fazem sentido para o seu negócio.</p>
     </div>
    </div>
+  </section>
+
+  <!-- ============ ENTREGAS ============ -->
+  <section style="background:#060606; padding:80px 0; border-top:1px solid rgba(255,215,0,0.08);">
+   <div class="container">
+    <div class="label-section scroll-reveal" style="justify-content:center; margin-bottom:16px;"><span class="dot-pulse"></span> O QUE VOCE RECEBE</div>
+    <h2 class="scroll-reveal" style="text-align:center; font-size:32px; margin-bottom:12px;">Clareza total sobre <span style="color:#FFD700;">cada entrega.</span></h2>
+    <p class="scroll-reveal" style="text-align:center; color:#888; font-size:16px; max-width:580px; margin:0 auto 56px;">Quando voce contrata a Eview, sabe exatamente o que vai receber. Sem surpresas, sem generalismos.</p>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;" class="entregas-grid scroll-reveal">
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="compass" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Plano estrategico</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Documento com posicionamento, canais prioritarios, tom de voz e metas definidas para o seu negocio.</p>
+     </div>
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="calendar" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Calendario editorial mensal</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Planejamento completo de conteudo com datas, formatos, temas e objetivos de cada publicacao.</p>
+     </div>
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="camera" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Producao de conteudo</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Fotos, reels, stories e videos produzidos com equipamento profissional proprio. Sem terceirizar.</p>
+     </div>
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="trending-up" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Gestao de trafego pago</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Campanhas no Google e Meta com gestao de verba, testes e relatorios mensais de performance.</p>
+     </div>
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Relatorio mensal de resultados</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Dashboard claro com alcance, engajamento, leads gerados e evolucao das campanhas pagas.</p>
+     </div>
+
+     <div style="background:rgba(255,215,0,0.04); border:1px solid rgba(255,215,0,0.14); border-radius:16px; padding:28px 24px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#FFD700,#FF6B00);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+       <i data-lucide="message-circle" style="width:20px;height:20px;color:#080808;"></i>
+      </div>
+      <h4 style="font-size:15px;font-weight:700;color:#FFF;margin-bottom:10px;">Reunioes de alinhamento</h4>
+      <p style="font-size:13px;color:#888;line-height:1.7;">Reunioes periodicas com o time para revisar estrategia, apresentar resultados e planejar os proximos passos.</p>
+     </div>
+
+    </div>
+   </div>
+   <style>
+    @media(max-width:768px){
+     .entregas-grid { grid-template-columns: 1fr !important; }
+    }
+    @media(max-width:1024px) and (min-width:769px){
+     .entregas-grid { grid-template-columns: repeat(2,1fr) !important; }
+    }
+   </style>
   </section>
 
   <!-- ============ SEGMENTOS ============ -->
@@ -3119,7 +3194,7 @@
       <div class="pt-card" data-num="04">
        <div class="pt-card-label">Etapa 04</div>
        <h3 class="pt-card-title">Acompanhamento e Evolução</h3>
-       <p class="pt-card-desc">Monitoramos resultados, ajustamos estratégias e mantemos reuniões periódicas. O trabalho não para — ele evolui a cada ciclo, sempre mais afinado com o seu negócio.</p>
+       <p class="pt-card-desc">Monitoramos resultados, ajustamos estratégias e mantemos reuniões periódicas. O trabalho não para, ele evolui a cada ciclo, sempre mais afinado com o seu negócio.</p>
        <div class="pt-card-pills">
         <span class="pt-pill">Monitoramento de resultados</span>
         <span class="pt-pill">Análise de campanhas</span>
@@ -3138,14 +3213,16 @@
    <div class="differencial-deco"></div>
    <div class="container">
     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSO DIFERENCIAL</div>
-    <h2 class="scroll-reveal">Mais que uma agência. Um parceiro estratégico que pensa no seu <span>negócio.</span></h2>
-    <p class="scroll-reveal">A maioria das agências vende execução. A Eview vende estratégia. Enquanto outros entregam posts e campanhas, nós entregamos posicionamento, autoridade e crescimento real.</p>
+    <h2 class="scroll-reveal">Voce nao contrata uma agência. Voce contrata um <span>time de especialistas.</span></h2>
+    <p class="scroll-reveal">Na Eview, voce tem acesso a um time completo: estrategistas, gestores de trafego, produtores de conteudo, designers e videomakers. Tudo com a proximidade de quem conhece o seu negocio de verdade.</p>
     <div class="differencial-points scroll-reveal">
-     <div class="diff-point"><i data-lucide="check"></i> <span>Estratégia antes da execução</span></div>
-     <div class="diff-point"><i data-lucide="check"></i> <span>Atendimento consultivo e próximo</span></div>
-     <div class="diff-point"><i data-lucide="check"></i> <span>Resultados mensuráveis e transparentes</span></div>
+     <div class="diff-point"><i data-lucide="users"></i> <span>Time dedicado ao seu negocio, nao um atendente generico</span></div>
+     <div class="diff-point"><i data-lucide="heart"></i> <span>Proximidade real: voce fala diretamente com quem executa</span></div>
+     <div class="diff-point"><i data-lucide="camera"></i> <span>Conteudo audiovisual profissional produzido pela propria equipe</span></div>
+     <div class="diff-point"><i data-lucide="trending-up"></i> <span>Estrategia antes de qualquer execucao, sem achismo</span></div>
+     <div class="diff-point"><i data-lucide="bar-chart-2"></i> <span>Resultados mensuraveis e transparentes todo mes</span></div>
     </div>
-    <button class="btn btn-primary scroll-reveal" onclick="document.querySelector('.cta-final').scrollIntoView({behavior: 'smooth'})">Conheça nossos planos →</button>
+    <button class="btn btn-primary scroll-reveal" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior: 'smooth'})">Quero um time assim</button>
    </div>
   </section>
 
@@ -3238,7 +3315,7 @@
 
    <div class="logos-label">
     <div class="label-section scroll-reveal" style="justify-content: center;">
-     <span class="dot-pulse"></span> EMPRESAS QUE JÁ TRABALHAMOS
+     <span class="dot-pulse"></span> EMPRESAS ATENDIDAS
     </div>
    </div>
 
@@ -3326,12 +3403,12 @@
     <h2 class="scroll-reveal">marketing <span>estratégico.</span></h2>
     <p class="scroll-reveal">Se você chegou até aqui, é porque reconhece que seu marketing pode ser mais estratégico. Solicite seu orçamento personalizado agora mesmo.</p>
     <div class="cta-buttons scroll-reveal">
-     <button class="btn btn-primary" onclick="window.open('https://wa.me/5519992318335', '_blank')">Conversar no WhatsApp</button>
+     <button class="btn btn-primary" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior:'smooth'})">Solicitar diagnostico gratuito</button>
     </div>
     <div class="cta-social-proof scroll-reveal">
-     <div class="proof-item"><i data-lucide="check"></i> <span>Proximidade</span></div>
-     <div class="proof-item"><i data-lucide="check"></i> <span>Resultado comprovado</span></div>
-     <div class="proof-item"><i data-lucide="check"></i> <span>Atendimento personalizado</span></div>
+     <div class="proof-item"><i data-lucide="check"></i> <span>Time de especialistas dedicado</span></div>
+     <div class="proof-item"><i data-lucide="check"></i> <span>Conteudo profissional proprio</span></div>
+     <div class="proof-item"><i data-lucide="check"></i> <span>Proximidade e atendimento real</span></div>
     </div>
    </div>
   </section>
