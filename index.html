@@ -3542,8 +3542,6 @@
         data_envio: new Date().toISOString()
       };
       const form = e.target;
-      const formCard = form.closest('.form-card-premium');
-      const successMessage = formCard.querySelector('.form-success-premium');
       form.style.opacity = '0.5';
       form.style.pointerEvents = 'none';
       try {
@@ -3554,13 +3552,12 @@
           body: JSON.stringify(formData)
         });
       } catch (err) {
-        console.error('Erro ao enviar para Google Sheets:', err);
+        console.error('Erro ao enviar:', err);
       }
+      // Redireciona para pagina de confirmacao de conversao
       setTimeout(() => {
-        form.style.display = 'none';
-        successMessage.classList.add('active');
-        lucide.createIcons();
-      }, 1200);
+        window.location.href = '/enviado';
+      }, 800);
     }
 
     function nextStep(step) {

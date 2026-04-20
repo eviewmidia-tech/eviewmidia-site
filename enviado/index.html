@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recebemos seu contato — Eview Midia</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4PZ94KB8Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-E4PZ94KB8Y');
+    // Evento de conversao para Google Analytics
+    gtag('event', 'conversion', { event_category: 'lead', event_label: 'formulario_enviado' });
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '661169217049454');
+  fbq('track', 'PageView');
+  fbq('track', 'Lead');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=661169217049454&ev=Lead&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: #020202;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Fundo com gradiente igual ao hero */
+    body {
+      background:
+        radial-gradient(ellipse 95% 70% at 0% -5%,  rgba(255,70,0,0.28)  0%, transparent 52%),
+        radial-gradient(ellipse 60% 50% at 100% 110%, rgba(255,185,0,0.18) 0%, transparent 52%),
+        radial-gradient(ellipse 100% 20% at 50% 0%,  rgba(255,100,0,0.08) 0%, transparent 55%),
+        #010101;
+    }
+
+    /* Grid sutil */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Icone de check animado */
+    .check-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,180,0,0.15), rgba(255,90,0,0.10));
+      border: 1.5px solid rgba(255,200,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      animation: popIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+      box-shadow: 0 0 40px rgba(255,140,0,0.12);
+    }
+
+    .check-wrap svg {
+      width: 36px;
+      height: 36px;
+      stroke: #FFD700;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: drawCheck 0.5s ease 0.4s forwards;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #FF8C00;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.5s forwards;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.15;
+      color: #fff;
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.65s forwards;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p {
+      font-size: clamp(14px, 2vw, 17px);
+      color: #777;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.8s forwards;
+    }
+
+    .timeline {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 0.95s forwards;
+    }
+
+    .tl-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tl-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .tl-dot.done {
+      background: linear-gradient(135deg, #FFD700, #FF8C00);
+    }
+
+    .tl-dot.pending {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #555;
+      font-size: 11px;
+    }
+
+    .tl-label {
+      font-size: 11px;
+      color: #555;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .tl-item.done .tl-label { color: #FFD700; }
+
+    .tl-line {
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      align-self: center;
+      margin-bottom: 22px;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+      color: #080808;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      opacity: 0;
+      animation: fadeUp 0.5s ease 1.1s forwards;
+    }
+
+    .btn-back:hover {
+      opacity: 0.88;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Logo no topo */
+    .logo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 48px;
+      z-index: 10;
+    }
+
+    @media (max-width: 600px) {
+      .timeline { gap: 12px; }
+      .tl-line  { width: 20px; }
+      html, body { overflow: auto; }
+      .page { padding-top: 100px; justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-bar">
+    <a href="/"><img src="/logo.png" alt="Eview Midia" style="height:22px; width:auto;"></a>
+  </div>
+
+  <div class="page">
+
+    <div class="check-wrap">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <div class="label">Formulario recebido</div>
+
+    <h1>Seus dados chegaram<br>com <span>sucesso!</span></h1>
+
+    <p>Nossa equipe ja recebeu suas informacoes e vai entrar em contato com voce em ate 24 horas.</p>
+
+    <div class="timeline">
+      <div class="tl-item done">
+        <div class="tl-dot done">✓</div>
+        <span class="tl-label">Recebido</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-dot pending">2</div>
+        <span class="tl-label">Em analise</span>
+      </div>
+      <div class="tl-line"></div>
+      <div class="tl-item">
+        <div class="tl-dot pending">📞</div>
+        <span class="tl-label">Contato em 24h</span>
+      </div>
+    </div>
+
+    <a href="/" class="btn-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Voltar ao site
+    </a>
+
+  </div>
+
+</body>
+</html>
