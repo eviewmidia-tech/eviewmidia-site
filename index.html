@@ -368,13 +368,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background:
-        radial-gradient(ellipse 55% 90% at -6% 48%, rgba(255,55,0,0.46) 0%, transparent 50%),
-        radial-gradient(ellipse 48% 60% at 108% 98%, rgba(255,155,0,0.30) 0%, transparent 50%),
-        radial-gradient(ellipse 80% 40% at 48% 105%, rgba(200,40,0,0.18) 0%, transparent 52%),
-        radial-gradient(ellipse 85% 28% at 50% -2%, rgba(255,85,0,0.14) 0%, transparent 50%),
-        radial-gradient(ellipse 35% 35% at 72% 18%, rgba(255,200,0,0.09) 0%, transparent 55%),
-        #000000;
+      background: #020202;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
@@ -382,34 +376,21 @@
       gap: 60px;
     }
 
-    /* Grid sutil */
+    /* Noise texture sutil — profissional como Stripe/Linear */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
-      background-size: 55px 55px;
-      mask-image: radial-gradient(ellipse 85% 85% at 30% 50%, black 30%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 30% 50%, black 30%, transparent 100%);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 300px 300px;
       pointer-events: none;
       z-index: 1;
+      opacity: 0.4;
     }
 
-    /* Raio de luz horizontal */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 46%;
-      left: 0;
-      width: 48%;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(255,140,0,0.45) 0%, rgba(255,210,0,0.18) 65%, transparent 100%);
-      pointer-events: none;
-      z-index: 2;
-      transform: rotate(-1deg);
-    }
+    /* Sem linha horizontal no hero */
+    .hero::after { display: none; }
 
     /* aurora orbs removidos — fundo em radial-gradient no .hero não tem custo de repaint */
 
@@ -983,6 +964,33 @@
       position: relative;
       z-index: 2;
       padding: 24px 36px 28px;
+    }
+
+    /* Grid 2 colunas dentro do form */
+    .form-row-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row-2col { grid-template-columns: 1fr; }
+    }
+
+    /* Select estilo igual ao input */
+    select.input-premium {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select.input-premium option {
+      background: #111;
+      color: #fff;
     }
 
     .form-steps-premium {
@@ -2820,22 +2828,22 @@
   <section class="hero">
    <div class="hero-left">
     <div class="hero-label scroll-reveal">
-     <span class="dot-pulse"></span> AGÊNCIA DE MARKETING DIGITAL
+     <span class="dot-pulse"></span> ASSESSORIA DE MARKETING · NEGÓCIOS LOCAIS E REGIONAIS
     </div>
 
     <h1 class="hero-main scroll-reveal">
-     Pare de aparecer.<br>Comece a ser <span class="highlight">escolhido.</span>
+     Sua empresa vira<br>referência <span class="highlight">na sua região.</span>
     </h1>
 
     <p class="hero-subheadline scroll-reveal">
-     Unimos estratégia, tráfego pago e produção profissional para transformar sua empresa em referência no mercado.
+     Assessoria estratégica de marketing para negócios locais e empresas regionais que querem crescer com consistência, posicionamento e resultado real.
     </p>
 
     <!-- Pills de resultado -->
     <div class="hero-pill-row scroll-reveal">
-     <span class="hero-pill"><span class="hero-pill-icon">📈</span> ROI médio de <strong>+280%</strong></span>
-     <span class="hero-pill"><span class="hero-pill-icon">🎯</span> <strong>50+</strong> marcas aceleradas</span>
-     <span class="hero-pill"><span class="hero-pill-icon">⚡</span> Conteúdo <strong>próprio</strong></span>
+     <span class="hero-pill"><span class="hero-pill-icon">📍</span> Especialistas em <strong>mercado local</strong></span>
+     <span class="hero-pill"><span class="hero-pill-icon">🎯</span> <strong>50+</strong> empresas atendidas</span>
+     <span class="hero-pill"><span class="hero-pill-icon">⚡</span> Produção <strong>própria</strong></span>
     </div>
 
     <!-- Stats de credibilidade -->
@@ -2884,8 +2892,8 @@
 
       <!-- Headline e trust -->
       <div class="form-body-header">
-       <h3 class="form-headline">Descubra o que esta <span>travando o crescimento</span> da sua empresa</h3>
-       <p class="form-sub">Preencha em menos de 2 minutos e nosso time entra em contato com uma analise personalizada do seu negocio.</p>
+       <h3 class="form-headline">Solicite uma <span>análise gratuita</span> para o seu negócio</h3>
+       <p class="form-sub">Preencha em menos de 1 minuto. Nosso time entra em contato em até 24 horas com um diagnóstico personalizado.</p>
        <div class="form-trust">
         <span class="trust-item">
          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -2902,124 +2910,70 @@
        </div>
       </div>
 
-      <!-- Barra de progresso -->
-      <div class="form-progress-bar" id="formProgressBar">
-       <div class="fp-step active" id="fpStep1">
-        <div class="fp-num">1</div>
-        <span>Sobre voce</span>
+     </div>
+     <form onsubmit="handleFormSubmit(event)" class="form-premium">
+      <!-- Formulário único — 5 perguntas essenciais -->
+      <div class="form-row-2col">
+       <div class="form-group-premium">
+        <label for="nome" class="label-premium">Nome completo <span class="required">*</span></label>
+        <input type="text" id="nome" name="nome" placeholder="Seu nome" class="input-premium" required autocomplete="name">
+        <div class="input-focus-line"></div>
        </div>
-       <div class="fp-divider"></div>
-       <div class="fp-step" id="fpStep2">
-        <div class="fp-num">2</div>
-        <span>Seu negocio</span>
-       </div>
-       <div class="fp-divider"></div>
-       <div class="fp-step" id="fpStep3">
-        <div class="fp-num">3</div>
-        <span>Finalizar</span>
+       <div class="form-group-premium">
+        <label for="whatsapp" class="label-premium">WhatsApp <span class="required">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" class="input-premium" required autocomplete="tel">
+        <div class="input-focus-line"></div>
        </div>
       </div>
 
-     </div>
-     <form onsubmit="handleFormSubmit(event)" class="form-premium">
-      <div class="form-steps-premium">
-       <!-- Step 1 -->
-       <div class="form-step-premium active" data-step="1">
-        <div class="step-header">
-         <span class="step-number">01</span>
-         <span class="step-title">Quem é você?</span>
-        </div>
-        <div class="form-group-premium">
-         <label for="nome" class="label-premium">Seu nome <span class="required">*</span></label>
-         <input type="text" id="nome" name="nome" placeholder="Seu nome completo" class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="form-group-premium">
-         <label for="empresa" class="label-premium">Sua empresa <span class="required">*</span></label>
-         <input type="text" id="empresa" name="empresa" placeholder="Seu negócio" class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="form-group-premium">
-         <label for="whatsapp" class="label-premium">WhatsApp <span class="required">*</span></label>
-         <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="form-group-premium">
-         <label for="email" class="label-premium">Seu e-mail <span class="required">*</span></label>
-         <input type="email" id="email" name="email" placeholder="seu@email.com" class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <button type="button" class="btn-next-step" onclick="nextStep(2)">
-         Próximo <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-        </button>
+      <div class="form-row-2col">
+       <div class="form-group-premium">
+        <label for="cidade" class="label-premium">Sua cidade <span class="required">*</span></label>
+        <input type="text" id="cidade" name="cidade" placeholder="Ex: Campinas, SP" class="input-premium" required autocomplete="address-level2">
+        <div class="input-focus-line"></div>
        </div>
-       <!-- Step 2 -->
-       <div class="form-step-premium" data-step="2">
-        <div class="step-header">
-         <span class="step-number">02</span>
-         <span class="step-title">Seu contexto</span>
-        </div>
-        <div class="form-group-premium">
-         <label class="label-premium">Tempo no mercado <span class="required">*</span></label>
-         <div class="button-grid-premium">
-          <button type="button" class="option-btn-premium" data-value="-1 ano" onclick="selectOption(this, 'tempo')"><span class="option-text">Menos de 1 ano</span></button>
-          <button type="button" class="option-btn-premium" data-value="1 a 3 anos" onclick="selectOption(this, 'tempo')"><span class="option-text">1 a 3 anos</span></button>
-          <button type="button" class="option-btn-premium" data-value="3 a 5 anos" onclick="selectOption(this, 'tempo')"><span class="option-text">3 a 5 anos</span></button>
-          <button type="button" class="option-btn-premium" data-value="+5 anos" onclick="selectOption(this, 'tempo')"><span class="option-text">Mais de 5 anos</span></button>
-         </div>
-         <input type="hidden" id="tempo" name="tempo" required>
-        </div>
-        <div class="form-group-premium">
-         <label class="label-premium">Faturamento mensal <span class="required">*</span></label>
-         <div class="button-grid-premium">
-          <button type="button" class="option-btn-premium" data-value="Até 30k" onclick="selectOption(this, 'faturamento')"><span class="option-text">Até R$ 30k</span></button>
-          <button type="button" class="option-btn-premium" data-value="30k a 80k" onclick="selectOption(this, 'faturamento')"><span class="option-text">R$ 30k - 80k</span></button>
-          <button type="button" class="option-btn-premium" data-value="80k a 200k" onclick="selectOption(this, 'faturamento')"><span class="option-text">R$ 80k - 200k</span></button>
-          <button type="button" class="option-btn-premium" data-value="200k a 500k" onclick="selectOption(this, 'faturamento')"><span class="option-text">R$ 200k - 500k</span></button>
-          <button type="button" class="option-btn-premium" data-value="+500k" onclick="selectOption(this, 'faturamento')"><span class="option-text">Acima de R$ 500k</span></button>
-         </div>
-         <input type="hidden" id="faturamento" name="faturamento" required>
-        </div>
-        <div class="step-controls">
-         <button type="button" class="btn-prev-step" onclick="nextStep(1)">
-          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Voltar
-         </button>
-         <button type="button" class="btn-next-step" onclick="nextStep(3)">
-          Próximo <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-         </button>
-        </div>
-       </div>
-       <!-- Step 3 -->
-       <div class="form-step-premium" data-step="3">
-        <div class="step-header">
-         <span class="step-number">03</span>
-         <span class="step-title">Últimos detalhes</span>
-        </div>
-        <div class="form-group-premium">
-         <label for="instagram" class="label-premium">Instagram da empresa <span class="required">*</span></label>
-         <input type="text" id="instagram" name="instagram" placeholder="@suaempresa" class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="form-group-premium">
-         <label for="segmento" class="label-premium">Segmento de atuação <span class="required">*</span></label>
-         <input type="text" id="segmento" name="segmento" placeholder="Ex: Agronegócio, Gastronomia..." class="input-premium" required>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="privacy-notice">
-         <i data-lucide="lock" style="width: 16px; height: 16px;"></i>
-         <span>Seus dados são 100% confidenciais e protegidos</span>
-        </div>
-        <div class="step-controls">
-         <button type="button" class="btn-prev-step" onclick="nextStep(2)">
-          <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Voltar
-         </button>
-         <button type="submit" class="btn-submit-premium">
-          <span>Enviar diagnóstico</span>
-          <i data-lucide="send" style="width: 16px; height: 16px;"></i>
-         </button>
-        </div>
+       <div class="form-group-premium">
+        <label for="segmento" class="label-premium">Segmento do negócio <span class="required">*</span></label>
+        <select id="segmento" name="segmento" class="input-premium" required>
+         <option value="" disabled selected>Selecione...</option>
+         <option value="Restaurante / Gastronomia">Restaurante / Gastronomia</option>
+         <option value="Comércio Local">Comércio Local</option>
+         <option value="Saúde e Bem-estar">Saúde e Bem-estar</option>
+         <option value="Academia / Fitness">Academia / Fitness</option>
+         <option value="Automotivo">Automotivo</option>
+         <option value="Agronegócio">Agronegócio</option>
+         <option value="Serviços Profissionais">Serviços Profissionais</option>
+         <option value="Logística / Transporte">Logística / Transporte</option>
+         <option value="Tecnologia">Tecnologia</option>
+         <option value="Outro">Outro</option>
+        </select>
+        <div class="input-focus-line"></div>
        </div>
       </div>
+
+      <div class="form-group-premium">
+       <label for="desafio" class="label-premium">Seu maior desafio hoje <span class="required">*</span></label>
+       <select id="desafio" name="desafio" class="input-premium" required>
+        <option value="" disabled selected>Selecione o que mais te desafia...</option>
+        <option value="Pouca visibilidade na minha cidade">Pouca visibilidade na minha cidade</option>
+        <option value="Quero atrair mais clientes na minha região">Quero atrair mais clientes na minha região</option>
+        <option value="Não tenho consistência nas redes sociais">Não tenho consistência nas redes sociais</option>
+        <option value="Preciso de uma estratégia de marketing clara">Preciso de uma estratégia de marketing clara</option>
+        <option value="Quero me tornar referência regional">Quero me tornar referência regional</option>
+        <option value="Não sei como mensurar meus resultados">Não sei como mensurar meus resultados</option>
+       </select>
+       <div class="input-focus-line"></div>
+      </div>
+
+      <div class="privacy-notice">
+       <i data-lucide="lock" style="width: 16px; height: 16px;"></i>
+       <span>Seus dados são 100% confidenciais e nunca serão compartilhados</span>
+      </div>
+
+      <button type="submit" class="btn-submit-premium" style="width:100%; margin-top:4px;">
+       <span>Solicitar análise gratuita</span>
+       <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+      </button>
      </form>
      <div class="form-success-premium">
       <div class="success-animation">
@@ -3076,22 +3030,22 @@
      <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSA FILOSOFIA</div>
      <div class="h2-line-wrapper">
       <div class="vertical-line scroll-reveal"></div>
-      <h2 class="scroll-reveal">Enquanto outros fazem marketing, a Eview constrói <span class="highlight">posicionamento.</span></h2>
+      <h2 class="scroll-reveal">Marketing que respeita a realidade do <span class="highlight">mercado local.</span></h2>
      </div>
-     <p class="positioning-highlight scroll-reveal">Estratégia padronizada não funciona para empresas que têm realidades únicas.</p>
-     <p class="positioning-text scroll-reveal">Ao longo de +5 anos identificamos o erro do marketing convencional: tratar negócios diferentes como iguais. A Eview existe para romper com isso.</p>
+     <p class="positioning-highlight scroll-reveal">Negócios locais têm dinâmicas únicas. Estratégia genérica não funciona aqui.</p>
+     <p class="positioning-text scroll-reveal">A Eview nasceu para atender empresas regionais com o mesmo nível de estratégia que grandes marcas têm acesso. Entendemos seu mercado, seu público e o território onde você compete.</p>
      <div class="pillars">
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Diagnóstico Profundo</div>
-       <div class="pillar-desc">Análise completa de seu negócio, mercado e oportunidades</div>
+       <div class="pillar-title">Conhecimento do Mercado Local</div>
+       <div class="pillar-desc">Analisamos concorrência regional, público e oportunidades da sua cidade</div>
       </div>
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Estratégia Sob Medida</div>
-       <div class="pillar-desc">Plano 100% personalizado baseado em seus objetivos reais</div>
+       <div class="pillar-title">Estratégia Territorial</div>
+       <div class="pillar-desc">Plano focado no seu território, com canais e mensagens certas para quem está perto</div>
       </div>
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Resultados Mensuráveis</div>
-       <div class="pillar-desc">Métricas de negócio, não de vaidade</div>
+       <div class="pillar-title">Crescimento Mensurável</div>
+       <div class="pillar-desc">Métricas reais de negócio: novos clientes, faturamento e autoridade regional</div>
       </div>
      </div>
     </div>
@@ -3102,6 +3056,153 @@
     </div>
    </div>
   </section>
+
+  <!-- ============ MÉTODO EVIEW ============ -->
+  <section class="metodo-eview">
+   <div class="container">
+    <div class="label-section scroll-reveal" style="justify-content:center;"><span class="dot-pulse"></span> MÉTODO EVIEW</div>
+    <h2 class="scroll-reveal" style="text-align:center; font-size:clamp(28px,4vw,42px); margin-bottom:16px; color:#fff;">Uma metodologia criada para <span style="background:linear-gradient(135deg,#FFD700,#FF8C00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">negócios locais.</span></h2>
+    <p class="scroll-reveal" style="text-align:center; color:#666; font-size:16px; max-width:580px; margin:0 auto 72px; line-height:1.75;">Não aplicamos fórmulas genéricas. Cada etapa do nosso método é pensada para empresas que querem crescer no mercado regional com consistência.</p>
+
+    <div class="metodo-grid">
+
+     <div class="metodo-step scroll-reveal">
+      <div class="metodo-num">01</div>
+      <div class="metodo-icon-wrap">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <h3 class="metodo-title">Diagnóstico Regional</h3>
+      <p class="metodo-desc">Mapeamos o mercado local, analisamos concorrência regional e identificamos as oportunidades reais do seu negócio na sua cidade.</p>
+     </div>
+
+     <div class="metodo-connector scroll-reveal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+     </div>
+
+     <div class="metodo-step scroll-reveal">
+      <div class="metodo-num">02</div>
+      <div class="metodo-icon-wrap">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      </div>
+      <h3 class="metodo-title">Estratégia Personalizada</h3>
+      <p class="metodo-desc">Construímos um plano de ação focado no seu território: posicionamento claro, canais certos e metas realistas para o seu negócio.</p>
+     </div>
+
+     <div class="metodo-connector scroll-reveal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+     </div>
+
+     <div class="metodo-step scroll-reveal">
+      <div class="metodo-num">03</div>
+      <div class="metodo-icon-wrap">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/></svg>
+      </div>
+      <h3 class="metodo-title">Presença Consolidada</h3>
+      <p class="metodo-desc">Conteúdo profissional, produção própria e campanhas pagas direcionadas exatamente para o seu público na sua região.</p>
+     </div>
+
+     <div class="metodo-connector scroll-reveal">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
+     </div>
+
+     <div class="metodo-step scroll-reveal">
+      <div class="metodo-num">04</div>
+      <div class="metodo-icon-wrap">
+       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h3 class="metodo-title">Autoridade Regional</h3>
+      <p class="metodo-desc">Acompanhamento contínuo para consolidar sua marca como referência na cidade e expandir para novas regiões com base em dados reais.</p>
+     </div>
+
+    </div>
+   </div>
+  </section>
+  <style>
+   .metodo-eview {
+     padding: 120px 0;
+     background: #050401;
+     position: relative;
+     overflow: hidden;
+   }
+   .metodo-eview::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background-image:
+       linear-gradient(rgba(255,215,0,0.025) 1px, transparent 1px),
+       linear-gradient(90deg, rgba(255,215,0,0.025) 1px, transparent 1px);
+     background-size: 48px 48px;
+     pointer-events: none;
+   }
+   .metodo-eview .container { position: relative; z-index: 2; }
+   .metodo-grid {
+     display: grid;
+     grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
+     align-items: start;
+     gap: 0;
+   }
+   .metodo-connector {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     padding-top: 44px;
+   }
+   .metodo-step {
+     background: rgba(255,255,255,0.025);
+     border: 1px solid rgba(255,215,0,0.1);
+     border-radius: 16px;
+     padding: 32px 28px;
+     position: relative;
+     transition: border-color 0.3s, transform 0.3s;
+   }
+   .metodo-step:hover {
+     border-color: rgba(255,215,0,0.35);
+     transform: translateY(-4px);
+   }
+   .metodo-num {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 11px;
+     font-weight: 700;
+     letter-spacing: 0.15em;
+     color: #FF8C00;
+     margin-bottom: 16px;
+   }
+   .metodo-icon-wrap {
+     width: 48px;
+     height: 48px;
+     background: rgba(255,215,0,0.06);
+     border: 1px solid rgba(255,215,0,0.18);
+     border-radius: 12px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-bottom: 18px;
+   }
+   .metodo-title {
+     font-family: 'Montserrat', sans-serif;
+     font-size: 16px;
+     font-weight: 700;
+     color: #fff;
+     margin-bottom: 12px;
+     line-height: 1.3;
+   }
+   .metodo-desc {
+     font-size: 13px;
+     color: #777;
+     line-height: 1.7;
+   }
+   @media (max-width: 1024px) {
+     .metodo-grid {
+       grid-template-columns: 1fr 1fr;
+       gap: 20px;
+     }
+     .metodo-connector { display: none; }
+   }
+   @media (max-width: 600px) {
+     .metodo-eview { padding: 64px 0; }
+     .metodo-grid { grid-template-columns: 1fr; gap: 16px; }
+   }
+  </style>
 
   <!-- ============ GALERIA EQUIPE ============ -->
   <section class="team-gallery">
@@ -3626,7 +3727,7 @@
     <div class="footer-grid">
      <div class="footer-col">
       <h4>EVIEW MÍDIA</h4>
-      <p>Assessoria estratégica de marketing digital. Desde 2025 transformando negócios em referência.</p>
+      <p>Assessoria de marketing para negócios locais e empresas regionais. Estratégia, conteúdo e tráfego com resultado real.</p>
       <div class="footer-socials">
        <a href="https://www.instagram.com/eviewmidia/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i></a>
        <a href="https://wa.me/5519992318335" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i></a>
@@ -3773,26 +3874,21 @@
 
     async function handleFormSubmit(e) {
       e.preventDefault();
-      const tempo = document.getElementById('tempo').value;
-      const faturamento = document.getElementById('faturamento').value;
-      if (!tempo || !faturamento) {
-        alert('Por favor, selecione Tempo no Mercado e Faturamento Mensal');
-        return;
-      }
       const formData = {
-        nome: document.getElementById('nome').value,
-        empresa: document.getElementById('empresa').value,
+        nome:     document.getElementById('nome').value,
         whatsapp: document.getElementById('whatsapp').value,
-        email: document.getElementById('email').value,
-        instagram: document.getElementById('instagram').value,
+        cidade:   document.getElementById('cidade').value,
         segmento: document.getElementById('segmento').value,
-        tempo,
-        faturamento,
+        desafio:  document.getElementById('desafio').value,
         data_envio: new Date().toISOString()
       };
-      const form = e.target;
-      form.style.opacity = '0.5';
-      form.style.pointerEvents = 'none';
+      // Feedback visual no botão
+      const btn = e.target.querySelector('.btn-submit-premium');
+      if (btn) {
+        btn.querySelector('span').textContent = 'Enviando...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+      }
       try {
         await fetch(SHEETS_URL, {
           method: 'POST',
@@ -3803,38 +3899,8 @@
       } catch (err) {
         console.error('Erro ao enviar:', err);
       }
-      // Redireciona para pagina de confirmacao de conversao
-      setTimeout(() => {
-        window.location.href = '/enviado';
-      }, 800);
-    }
-
-    function nextStep(step) {
-      // Validar campos obrigatórios do step atual antes de avançar
-      const currentStep = document.querySelector('.form-step-premium.active');
-      if (step > parseInt(currentStep.dataset.step)) {
-        const requiredInputs = currentStep.querySelectorAll('input[required], select[required], textarea[required]');
-        for (const input of requiredInputs) {
-          if (!input.value.trim()) {
-            input.focus();
-            input.style.borderColor = '#ff4444';
-            setTimeout(() => input.style.borderColor = '', 2000);
-            return;
-          }
-        }
-      }
-      document.querySelectorAll('.form-step-premium').forEach(s => s.classList.remove('active'));
-      document.querySelector(`[data-step="${step}"]`).classList.add('active');
-      updateFormProgress(step);
-      document.querySelector('.form-card-premium').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      lucide.createIcons();
-    }
-
-    function selectOption(button, fieldId) {
-      const group = button.closest('.button-grid-premium');
-      group.querySelectorAll('.option-btn-premium').forEach(btn => btn.classList.remove('selected'));
-      button.classList.add('selected');
-      document.getElementById(fieldId).value = button.dataset.value;
+      // Redireciona para página de confirmação de conversão
+      setTimeout(() => { window.location.href = '/enviado'; }, 700);
     }
 
     // Navbar glass on scroll — passive para não bloquear scroll
@@ -3842,18 +3908,6 @@
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
-
-    // Barra de progresso do formulário
-    function updateFormProgress(step) {
-      for (let i = 1; i <= 3; i++) {
-        const el = document.getElementById('fpStep' + i);
-        if (!el) continue;
-        el.classList.remove('active', 'done');
-        if (i < step)  el.classList.add('done');
-        if (i === step) el.classList.add('active');
-        el.querySelector('.fp-num').textContent = i < step ? '✓' : i;
-      }
-    }
 
     // Atividade social proof — rotaciona mensagens
     const activities = [
