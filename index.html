@@ -290,10 +290,9 @@
       transform: scale(1.02);
     }
 
-    /* Glass Morphism */
+    /* Glass Morphism — sem backdrop-filter (cria GPU layers extras desnecessários) */
     .glass {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 140, 0, 0.2);
       border-radius: 8px;
     }
@@ -501,17 +500,10 @@
     }
 
     .hero h1 .highlight {
-      background: linear-gradient(90deg, #FFD700 0%, #FF8C00 30%, #FFD700 60%, #FF6B00 100%);
-      background-size: 250% auto;
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      animation: textShimmer 5s linear infinite;
-    }
-
-    @keyframes textShimmer {
-      0%   { background-position: 0% center; }
-      100% { background-position: -250% center; }
     }
 
     /* Pill flutuante de resultado */
@@ -529,14 +521,13 @@
       align-items: center;
       gap: 7px;
       padding: 7px 14px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,215,0,0.18);
       border-radius: 100px;
       font-size: 12px;
       font-weight: 600;
       color: #ccc;
       white-space: nowrap;
-      backdrop-filter: blur(6px);
     }
 
     .hero-pill-icon {
@@ -627,12 +618,6 @@
     .hero-buttons button {
       padding: 16px 32px;
       font-size: 14px;
-      animation: btnGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes btnGlow {
-      0%   { box-shadow: 0 0 20px rgba(255,140,0,0.25); }
-      100% { box-shadow: 0 0 40px rgba(255,180,0,0.45), 0 0 80px rgba(255,100,0,0.15); }
     }
     }
 
@@ -1808,9 +1793,7 @@
 
     .segment-cta {
       grid-column: span 4;
-      background: linear-gradient(120deg, #FF8C00 0%, #FFD700 40%, #FFF0A0 65%, #FFD700 80%, #FF8C00 100%);
-      background-size: 200% auto;
-      animation: segmentShimmer 4s ease-in-out infinite;
+      background: linear-gradient(120deg, #FF8C00 0%, #FFD700 50%, #FF8C00 100%);
       color: #080808;
       border-left: none;
       padding: 44px 48px;
@@ -1833,12 +1816,6 @@
       pointer-events: none;
     }
 
-    @keyframes segmentShimmer {
-      0%   { background-position: 0% center; }
-      50%  { background-position: 100% center; }
-      100% { background-position: 0% center; }
-    }
-
     .segment-cta:hover {
       box-shadow: 0 12px 48px rgba(255, 180, 0, 0.55), 0 4px 12px rgba(0,0,0,0.25);
       transform: translateY(-2px);
@@ -1849,25 +1826,23 @@
     .segment-cta i { width: 28px; height: 28px; color: #1a0800; flex-shrink: 0; transform: rotate(-45deg); position: relative; z-index: 1; }
 
     /* ============ PROCESSO ============ */
+    /* GPU-only: apenas opacity e transform — sem box-shadow em animações */
     @keyframes linePulse {
-      0%   { box-shadow: 0 0 6px rgba(255,215,0,0.4); }
-      50%  { box-shadow: 0 0 20px rgba(255,215,0,0.9), 0 0 40px rgba(255,140,0,0.4); }
-      100% { box-shadow: 0 0 6px rgba(255,215,0,0.4); }
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1; }
     }
     @keyframes dotPop {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(255,215,0,0.15); }
-      50%       { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(255,215,0,0.08), 0 0 24px rgba(255,215,0,0.5); }
+      0%, 100% { transform: scale(1);    opacity: 0.85; }
+      50%       { transform: scale(1.1); opacity: 1; }
     }
-    @keyframes cardGlow {
-      0%, 100% { box-shadow: 0 4px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,215,0,0.12); }
-      50%       { box-shadow: 0 8px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,215,0,0.35), 0 0 32px rgba(255,215,0,0.07); }
-    }
+    /* cardGlow removido — box-shadow estático no .pt-card */
 
     .process {
       padding: 130px 0;
       position: relative;
       background: #070500;
       overflow: hidden;
+      contain: layout;
     }
 
     /* ambient glow blobs */
@@ -1954,8 +1929,8 @@
       padding: 36px 40px;
       position: relative;
       overflow: hidden;
-      transition: border-color 0.4s, transform 0.3s;
-      animation: cardGlow 4s ease-in-out infinite;
+      transition: border-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.45);
     }
     .pt-card:hover {
       border-color: rgba(255,215,0,0.45);
@@ -2057,6 +2032,7 @@
       justify-content: center;
       animation: dotPop 3s ease-in-out infinite;
       flex-shrink: 0;
+      will-change: transform, opacity;
     }
 
     .pt-icon-ring svg {
@@ -2203,8 +2179,7 @@
     }
 
     .testimonial-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
+      background: rgba(18, 14, 4, 0.98);
       border: 1px solid rgba(255, 215, 0, 0.2);
       border-radius: 8px;
       padding: 32px;
@@ -2912,7 +2887,7 @@
 
      </div>
      <form onsubmit="handleFormSubmit(event)" class="form-premium">
-      <!-- Formulário único — 5 perguntas essenciais -->
+      <!-- Formulário único — 7 campos essenciais -->
       <div class="form-row-2col">
        <div class="form-group-premium">
         <label for="nome" class="label-premium">Nome completo <span class="required">*</span></label>
@@ -2920,18 +2895,26 @@
         <div class="input-focus-line"></div>
        </div>
        <div class="form-group-premium">
-        <label for="whatsapp" class="label-premium">WhatsApp <span class="required">*</span></label>
-        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" class="input-premium" required autocomplete="tel">
+        <label for="empresa" class="label-premium">Nome da empresa <span class="required">*</span></label>
+        <input type="text" id="empresa" name="empresa" placeholder="Seu negócio" class="input-premium" required autocomplete="organization">
         <div class="input-focus-line"></div>
        </div>
       </div>
 
       <div class="form-row-2col">
        <div class="form-group-premium">
-        <label for="cidade" class="label-premium">Sua cidade <span class="required">*</span></label>
+        <label for="whatsapp" class="label-premium">WhatsApp <span class="required">*</span></label>
+        <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" class="input-premium" required autocomplete="tel">
+        <div class="input-focus-line"></div>
+       </div>
+       <div class="form-group-premium">
+        <label for="cidade" class="label-premium">Cidade <span class="required">*</span></label>
         <input type="text" id="cidade" name="cidade" placeholder="Ex: Campinas, SP" class="input-premium" required autocomplete="address-level2">
         <div class="input-focus-line"></div>
        </div>
+      </div>
+
+      <div class="form-row-2col">
        <div class="form-group-premium">
         <label for="segmento" class="label-premium">Segmento do negócio <span class="required">*</span></label>
         <select id="segmento" name="segmento" class="input-premium" required>
@@ -2946,6 +2929,18 @@
          <option value="Logística / Transporte">Logística / Transporte</option>
          <option value="Tecnologia">Tecnologia</option>
          <option value="Outro">Outro</option>
+        </select>
+        <div class="input-focus-line"></div>
+       </div>
+       <div class="form-group-premium">
+        <label for="faturamento" class="label-premium">Faturamento mensal <span class="required">*</span></label>
+        <select id="faturamento" name="faturamento" class="input-premium" required>
+         <option value="" disabled selected>Selecione...</option>
+         <option value="Até R$ 30k">Até R$ 30k</option>
+         <option value="R$ 30k – R$ 80k">R$ 30k – R$ 80k</option>
+         <option value="R$ 80k – R$ 200k">R$ 80k – R$ 200k</option>
+         <option value="R$ 200k – R$ 500k">R$ 200k – R$ 500k</option>
+         <option value="Acima de R$ 500k">Acima de R$ 500k</option>
         </select>
         <div class="input-focus-line"></div>
        </div>
@@ -3207,16 +3202,16 @@
   <!-- ============ GALERIA EQUIPE ============ -->
   <section class="team-gallery">
    <div class="team-gallery-strip">
-    <div class="tg-item"><img src="equipe/foto1.jpg" alt="Equipe Eview em captação"></div>
-    <div class="tg-item"><img src="equipe/foto2.jpg" alt="Time Eview Mídia"></div>
-    <div class="tg-item"><img src="equipe/foto3.jpg" alt="Planejamento estratégico"></div>
-    <div class="tg-item"><img src="equipe/foto4.jpg" alt="Captação de vídeo"></div>
-    <div class="tg-item"><img src="equipe/foto5.jpg" alt="Equipe Eview em evento"></div>
-    <div class="tg-item"><img src="equipe/foto6.jpg" alt="Equipe Eview em evento"></div>
-    <div class="tg-item"><img src="equipe/foto7.jpg" alt="Planejamento Eview Mídia"></div>
-    <div class="tg-item"><img src="equipe/foto8.jpg" alt="Equipe Eview Mídia"></div>
-    <div class="tg-item"><img src="equipe/foto9.jpg" alt="Equipe Eview em captação externa"></div>
-    <div class="tg-item"><img src="equipe/foto10.jpg" alt="Equipe Eview Mídia"></div>
+    <div class="tg-item"><img src="equipe/foto1.jpg" alt="Equipe Eview em captação" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto2.jpg" alt="Time Eview Mídia" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto3.jpg" alt="Planejamento estratégico" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto4.jpg" alt="Captação de vídeo" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto5.jpg" alt="Equipe Eview em evento" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto6.jpg" alt="Equipe Eview em evento" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto7.jpg" alt="Planejamento Eview Mídia" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto8.jpg" alt="Equipe Eview Mídia" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto9.jpg" alt="Equipe Eview em captação externa" loading="lazy" decoding="async"></div>
+    <div class="tg-item"><img src="equipe/foto10.jpg" alt="Equipe Eview Mídia" loading="lazy" decoding="async"></div>
    </div>
   </section>
 
@@ -3583,6 +3578,8 @@
       align-items: center;
       width: max-content;
       animation: logoScroll 30s linear infinite;
+      will-change: transform;
+      transform: translateZ(0);
     }
 
     .logos-track:hover {
@@ -3629,39 +3626,39 @@
 
    <div class="logos-track-wrapper">
     <div class="logos-track" id="logosTrack">
-     <div class="logo-item"><img src="clientes/american-led.png" alt="American LED"></div>
-     <div class="logo-item"><img src="clientes/rota340.png" alt="Posto Rota 340"></div>
-     <div class="logo-item"><img src="clientes/arena.png" alt="Arena Fitness"></div>
-     <div class="logo-item"><img src="clientes/cb-imports.png" alt="CB Imports"></div>
-     <div class="logo-item"><img src="clientes/cristallo.png" alt="Empório Cristallo"></div>
-     <div class="logo-item"><img src="clientes/don-hamburgo.png" alt="Don Hamburgo"></div>
-     <div class="logo-item"><img src="clientes/jomassi.png" alt="Jomassi Motors"></div>
-     <div class="logo-item"><img src="clientes/tulipas.png" alt="Tulipa's Lounge"></div>
-     <div class="logo-item"><img src="clientes/lekker.png" alt="Lekker Confeitaria"></div>
-     <div class="logo-item"><img src="clientes/rincao.png" alt="Rincão Churrascaria"></div>
-     <div class="logo-item"><img src="clientes/haras.png" alt="Haras Abrahão"></div>
-     <div class="logo-item"><img src="clientes/quickeasy.png" alt="QuickEasy"></div>
-     <div class="logo-item"><img src="clientes/cgc.png" alt="CGC"></div>
-     <div class="logo-item"><img src="clientes/ecosolucao.png" alt="Grupo EcoSolução"></div>
-     <div class="logo-item"><img src="clientes/lg.png" alt="Algi"></div>
-     <div class="logo-item"><img src="clientes/agrosolucao.png" alt="AgroSolução"></div>
+     <div class="logo-item"><img src="clientes/american-led.png" alt="American LED" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/rota340.png" alt="Posto Rota 340" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/arena.png" alt="Arena Fitness" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cb-imports.png" alt="CB Imports" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cristallo.png" alt="Empório Cristallo" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/don-hamburgo.png" alt="Don Hamburgo" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/jomassi.png" alt="Jomassi Motors" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/tulipas.png" alt="Tulipa's Lounge" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/lekker.png" alt="Lekker Confeitaria" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/rincao.png" alt="Rincão Churrascaria" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/haras.png" alt="Haras Abrahão" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/quickeasy.png" alt="QuickEasy" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cgc.png" alt="CGC" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/ecosolucao.png" alt="Grupo EcoSolução" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/lg.png" alt="Algi" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/agrosolucao.png" alt="AgroSolução" loading="lazy" decoding="async"></div>
      <!-- duplicados para loop contínuo -->
-     <div class="logo-item"><img src="clientes/american-led.png" alt="American LED"></div>
-     <div class="logo-item"><img src="clientes/rota340.png" alt="Posto Rota 340"></div>
-     <div class="logo-item"><img src="clientes/arena.png" alt="Arena Fitness"></div>
-     <div class="logo-item"><img src="clientes/cb-imports.png" alt="CB Imports"></div>
-     <div class="logo-item"><img src="clientes/cristallo.png" alt="Empório Cristallo"></div>
-     <div class="logo-item"><img src="clientes/don-hamburgo.png" alt="Don Hamburgo"></div>
-     <div class="logo-item"><img src="clientes/jomassi.png" alt="Jomassi Motors"></div>
-     <div class="logo-item"><img src="clientes/tulipas.png" alt="Tulipa's Lounge"></div>
-     <div class="logo-item"><img src="clientes/lekker.png" alt="Lekker Confeitaria"></div>
-     <div class="logo-item"><img src="clientes/rincao.png" alt="Rincão Churrascaria"></div>
-     <div class="logo-item"><img src="clientes/haras.png" alt="Haras Abrahão"></div>
-     <div class="logo-item"><img src="clientes/quickeasy.png" alt="QuickEasy"></div>
-     <div class="logo-item"><img src="clientes/cgc.png" alt="CGC"></div>
-     <div class="logo-item"><img src="clientes/ecosolucao.png" alt="Grupo EcoSolução"></div>
-     <div class="logo-item"><img src="clientes/lg.png" alt="Algi"></div>
-     <div class="logo-item"><img src="clientes/agrosolucao.png" alt="AgroSolução"></div>
+     <div class="logo-item"><img src="clientes/american-led.png" alt="American LED" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/rota340.png" alt="Posto Rota 340" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/arena.png" alt="Arena Fitness" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cb-imports.png" alt="CB Imports" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cristallo.png" alt="Empório Cristallo" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/don-hamburgo.png" alt="Don Hamburgo" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/jomassi.png" alt="Jomassi Motors" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/tulipas.png" alt="Tulipa's Lounge" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/lekker.png" alt="Lekker Confeitaria" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/rincao.png" alt="Rincão Churrascaria" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/haras.png" alt="Haras Abrahão" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/quickeasy.png" alt="QuickEasy" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/cgc.png" alt="CGC" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/ecosolucao.png" alt="Grupo EcoSolução" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/lg.png" alt="Algi" loading="lazy" decoding="async"></div>
+     <div class="logo-item"><img src="clientes/agrosolucao.png" alt="AgroSolução" loading="lazy" decoding="async"></div>
     </div>
    </div>
   </section>
@@ -3875,12 +3872,14 @@
     async function handleFormSubmit(e) {
       e.preventDefault();
       const formData = {
-        nome:     document.getElementById('nome').value,
-        whatsapp: document.getElementById('whatsapp').value,
-        cidade:   document.getElementById('cidade').value,
-        segmento: document.getElementById('segmento').value,
-        desafio:  document.getElementById('desafio').value,
-        data_envio: new Date().toISOString()
+        nome:        document.getElementById('nome').value,
+        empresa:     document.getElementById('empresa').value,
+        whatsapp:    document.getElementById('whatsapp').value,
+        cidade:      document.getElementById('cidade').value,
+        segmento:    document.getElementById('segmento').value,
+        faturamento: document.getElementById('faturamento').value,
+        desafio:     document.getElementById('desafio').value,
+        data_envio:  new Date().toISOString()
       };
       // Feedback visual no botão
       const btn = e.target.querySelector('.btn-submit-premium');
