@@ -104,11 +104,12 @@
     }
 
     h1.hero-main {
-      font-size: 48px;
-      line-height: 1.15;
-      margin-bottom: 60px;
-      font-weight: 800;
-      max-width: 620px;
+      font-size: 64px;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      font-weight: 900;
+      max-width: 640px;
+      letter-spacing: -0.03em;
     }
 
     h2 {
@@ -363,17 +364,17 @@
     /* ============ HERO SECTION ============ */
     .hero {
       height: 100%;
-      min-height: 800px;
+      min-height: 820px;
       display: flex;
       align-items: center;
       justify-content: center;
       background:
-        radial-gradient(ellipse 95% 70% at 0% -5%,  rgba(255,70,0,0.32)  0%, transparent 52%),
-        radial-gradient(ellipse 60% 50% at 100% 110%, rgba(255,185,0,0.22) 0%, transparent 52%),
-        radial-gradient(ellipse 55% 45% at 48% 44%,  rgba(160,8,0,0.10)   0%, transparent 60%),
-        radial-gradient(ellipse 100% 20% at 50% 0%,  rgba(255,100,0,0.10) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 30% at 80% 15%,  rgba(255,210,0,0.07) 0%, transparent 60%),
-        #010101;
+        radial-gradient(ellipse 55% 90% at -6% 48%, rgba(255,55,0,0.46) 0%, transparent 50%),
+        radial-gradient(ellipse 48% 60% at 108% 98%, rgba(255,155,0,0.30) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 40% at 48% 105%, rgba(200,40,0,0.18) 0%, transparent 52%),
+        radial-gradient(ellipse 85% 28% at 50% -2%, rgba(255,85,0,0.14) 0%, transparent 50%),
+        radial-gradient(ellipse 35% 35% at 72% 18%, rgba(255,200,0,0.09) 0%, transparent 55%),
+        #000000;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
@@ -381,18 +382,33 @@
       gap: 60px;
     }
 
+    /* Grid sutil */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,215,0,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,215,0,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+        linear-gradient(rgba(255,215,0,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,215,0,0.05) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: radial-gradient(ellipse 85% 85% at 30% 50%, black 30%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 85% 85% at 30% 50%, black 30%, transparent 100%);
       pointer-events: none;
       z-index: 1;
+    }
+
+    /* Raio de luz horizontal */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 46%;
+      left: 0;
+      width: 48%;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,140,0,0.45) 0%, rgba(255,210,0,0.18) 65%, transparent 100%);
+      pointer-events: none;
+      z-index: 2;
+      transform: rotate(-1deg);
     }
 
     /* aurora orbs removidos — fundo em radial-gradient no .hero não tem custo de repaint */
@@ -504,10 +520,50 @@
     }
 
     .hero h1 .highlight {
-      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
+      background: linear-gradient(90deg, #FFD700 0%, #FF8C00 30%, #FFD700 60%, #FF6B00 100%);
+      background-size: 250% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      animation: textShimmer 5s linear infinite;
+    }
+
+    @keyframes textShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: -250% center; }
+    }
+
+    /* Pill flutuante de resultado */
+    .hero-pill-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      animation: fadeIn 0.6s ease 1.4s both;
+      opacity: 0;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,215,0,0.18);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #ccc;
+      white-space: nowrap;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-pill-icon {
+      font-size: 13px;
+    }
+
+    .hero-pill strong {
+      color: #FFD700;
     }
 
     .form-top-element {
@@ -536,14 +592,21 @@
     }
 
     .hero-label {
-      margin-bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
       opacity: 0;
-      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeIn 0.3s ease 0.2s forwards;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      background: rgba(255,140,0,0.08);
+      border: 1px solid rgba(255,140,0,0.28);
+      padding: 7px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #FF9D40;
+      animation: fadeIn 0.5s ease 0.1s forwards;
+      width: fit-content;
     }
 
     .hero h1 {
@@ -583,6 +646,13 @@
     .hero-buttons button {
       padding: 16px 32px;
       font-size: 14px;
+      animation: btnGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes btnGlow {
+      0%   { box-shadow: 0 0 20px rgba(255,140,0,0.25); }
+      100% { box-shadow: 0 0 40px rgba(255,180,0,0.45), 0 0 80px rgba(255,100,0,0.15); }
+    }
     }
 
     @keyframes mouseScroll {
@@ -2612,7 +2682,9 @@
       }
 
       h1 { font-size: 28px; line-height: 1.25; }
-      h1.hero-main { font-size: 26px; margin-bottom: 12px; }
+      h1.hero-main { font-size: 34px; line-height: 1.1; margin-bottom: 14px; letter-spacing: -0.02em; }
+      .hero-pill-row { gap: 8px; margin-bottom: 18px; }
+      .hero-pill { font-size: 11px; padding: 5px 11px; }
       h2 { font-size: 22px; }
 
       /* Hero stats — compacto no mobile */
@@ -2748,14 +2820,23 @@
   <section class="hero">
    <div class="hero-left">
     <div class="hero-label scroll-reveal">
-     <span class="dot-pulse"></span> ASSESSORIA ESTRATÉGICA DE MARKETING
+     <span class="dot-pulse"></span> AGÊNCIA DE MARKETING DIGITAL
     </div>
+
     <h1 class="hero-main scroll-reveal">
-     Estratégias pensadas para <span class="highlight">a realidade do seu negócio.</span>
+     Pare de aparecer.<br>Comece a ser <span class="highlight">escolhido.</span>
     </h1>
+
     <p class="hero-subheadline scroll-reveal">
-     Da estratégia ao tráfego pago, estruturamos sua presença digital para atrair clientes e gerar oportunidades todos os dias.
+     Unimos estratégia, tráfego pago e produção profissional para transformar sua empresa em referência no mercado.
     </p>
+
+    <!-- Pills de resultado -->
+    <div class="hero-pill-row scroll-reveal">
+     <span class="hero-pill"><span class="hero-pill-icon">📈</span> ROI médio de <strong>+280%</strong></span>
+     <span class="hero-pill"><span class="hero-pill-icon">🎯</span> <strong>50+</strong> marcas aceleradas</span>
+     <span class="hero-pill"><span class="hero-pill-icon">⚡</span> Conteúdo <strong>próprio</strong></span>
+    </div>
 
     <!-- Stats de credibilidade -->
     <div class="hero-stats scroll-reveal">
