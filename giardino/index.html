@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giardino Di Cosi — Holambra, SP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+
+  /* ━━━━━━━━━━━━━━━━━━━━ BASE ━━━━━━━━━━━━━━━━━━━━ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink:        #0d1a0f;
+    --forest:     #1a3324;
+    --verde:      #2d5a3d;
+    --lima:       #8dc63f;
+    --lima-lt:    #b5dd70;
+    --creme:      #f4f0e6;
+    --creme2:     #ebe5d5;
+    --areia:      #d9cdb8;
+    --branco:     #fafaf6;
+    --ouro:       #c8a96e;
+  }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    font-family: 'Jost', sans-serif; font-weight: 300;
+    background: var(--branco); color: var(--ink);
+    overflow-x: hidden; cursor: none;
+  }
+
+  /* ━━━ CURSOR ━━━ */
+  .cursor {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--lima); position: fixed; pointer-events: none;
+    z-index: 9999; transform: translate(-50%,-50%);
+    transition: transform .1s, width .3s, height .3s, background .3s;
+    mix-blend-mode: difference;
+  }
+  .cursor-ring {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: 1px solid rgba(141,198,63,.5);
+    position: fixed; pointer-events: none; z-index: 9998;
+    transform: translate(-50%,-50%);
+    transition: transform .18s ease, width .3s, height .3s;
+  }
+
+  /* ━━━ NAV ━━━ */
+  nav {
+    position: fixed; inset: 0 0 auto; z-index: 500;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 5vw;
+    transition: background .5s, backdrop-filter .5s;
+  }
+  nav.filled {
+    background: rgba(13,26,15,.92);
+    backdrop-filter: blur(14px);
+  }
+  .logo { text-decoration: none; display: flex; flex-direction: column; gap: .05rem; }
+  .logo-sup {
+    font-family: 'Jost', sans-serif; font-weight: 200;
+    font-size: .58rem; letter-spacing: .38em; text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+  }
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif; font-weight: 400; font-style: italic;
+    font-size: 1.65rem; line-height: 1; color: #fff;
+  }
+  .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+    color: rgba(255,255,255,.6); text-decoration: none; transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--lima); }
+  .nav-ig {
+    width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color .25s;
+  }
+  .nav-ig:hover { border-color: var(--lima); }
+  .nav-ig svg { width: 16px; height: 16px; fill: rgba(255,255,255,.6); }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━ */
+  .hero {
+    height: 100svh; min-height: 680px;
+    position: relative; display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .hero-photo {
+    position: relative; overflow: hidden;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.75) saturate(1.1);
+    transform: scale(1.04);
+    transition: transform 8s ease;
+  }
+  .hero-photo img.loaded { transform: scale(1); }
+  .hero-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--ink) 100%);
+  }
+  .hero-content {
+    background: var(--ink);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 5rem 5vw 5rem 3rem; position: relative; overflow: hidden;
+  }
+  /* grain texture */
+  .hero-content::before {
+    content: ''; position: absolute; inset: 0; opacity: .04; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+  .hero-loc {
+    display: flex; align-items: center; gap: .7rem;
+    font-size: .65rem; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--lima); margin-bottom: 2rem;
+  }
+  .hero-loc-line { flex: 1; height: 1px; background: rgba(141,198,63,.3); max-width: 40px; }
+  .hero-h1 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: 1.05; color: #fff;
+    margin-bottom: 1.8rem;
+  }
+  .hero-h1 em { font-style: italic; color: var(--lima); display: block; }
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1rem; color: rgba(255,255,255,.45);
+    border-left: 2px solid var(--lima); padding-left: 1rem;
+    line-height: 1.6; margin-bottom: 3rem; max-width: 320px;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: 'Jost', sans-serif; font-size: .68rem;
+    letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; padding: .9rem 1.8rem;
+    transition: all .3s; border: none; outline: none; cursor: none;
+  }
+  .btn-lima { background: var(--lima); color: var(--ink); font-weight: 500; }
+  .btn-lima:hover { background: var(--lima-lt); }
+  .btn-outline { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.25); }
+  .btn-outline:hover { border-color: #fff; }
+  .hero-nums {
+    position: absolute; right: 3rem; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 2rem;
+  }
+  .hero-num { text-align: right; }
+  .hero-num-val {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
+    font-weight: 300; color: var(--lima); line-height: 1;
+  }
+  .hero-num-lab {
+    font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(255,255,255,.3); margin-top: .2rem;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    color: rgba(255,255,255,.3); font-size: .58rem; letter-spacing: .22em; text-transform: uppercase;
+  }
+  .hero-scroll-ball {
+    width: 6px; height: 24px; border: 1px solid rgba(255,255,255,.2);
+    border-radius: 3px; display: flex; justify-content: center; padding-top: 4px;
+  }
+  .hero-scroll-ball::before {
+    content: ''; width: 2px; height: 6px; background: var(--lima);
+    border-radius: 1px; animation: scrollBall 1.6s ease-in-out infinite;
+  }
+  @keyframes scrollBall {
+    0%,100% { transform: translateY(0); opacity: 1; }
+    80% { transform: translateY(8px); opacity: 0; }
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ TAPE / FAIXA ━━━━━━━━━━━━━━━━━━━━ */
+  .tape {
+    background: var(--lima); overflow: hidden;
+    padding: .7rem 0; white-space: nowrap;
+  }
+  .tape-inner {
+    display: inline-flex; gap: 3rem; animation: tape 22s linear infinite;
+  }
+  .tape-item {
+    font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--ink); font-weight: 500;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .tape-dot { width: 4px; height: 4px; background: var(--ink); border-radius: 50%; opacity: .5; }
+  @keyframes tape { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ HISTÓRIA / SOBRE ━━━━━━━━━━━━━━━━━━━━ */
+  .historia {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 90vh;
+  }
+  .historia-visual {
+    position: relative; overflow: hidden; background: var(--ink);
+  }
+  .historia-visual img {
+    width: 100%; height: 100%; object-fit: cover; opacity: .85;
+    mix-blend-mode: luminosity;
+  }
+  .historia-visual-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,26,15,.7) 0%, transparent 60%);
+  }
+  .historia-visual-quote {
+    position: absolute; bottom: 3rem; left: 2.5rem; right: 2.5rem;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.2rem; color: rgba(255,255,255,.8); line-height: 1.6;
+    border-left: 2px solid var(--lima); padding-left: 1.2rem;
+  }
+  .historia-visual-tag {
+    position: absolute; top: 2.5rem; left: 2.5rem;
+    font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--lima); background: rgba(13,26,15,.7); padding: .4rem .8rem;
+    backdrop-filter: blur(8px);
+  }
+  .historia-content {
+    background: var(--creme); padding: 7rem 5vw 7rem 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .sec-eyebrow {
+    font-size: .65rem; letter-spacing: .32em; text-transform: uppercase;
+    color: var(--lima); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: .8rem;
+  }
+  .sec-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--lima); }
+  .sec-h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.15;
+    margin-bottom: 1.8rem; color: var(--ink);
+  }
+  .sec-h2 em { font-style: italic; color: var(--verde); }
+  .historia-text p {
+    font-size: .95rem; line-height: 2; color: #4a5a4a; margin-bottom: 1rem;
+  }
+  .historia-text strong { color: var(--forest); font-weight: 500; }
+  .historia-assinatura {
+    margin-top: 2.5rem; display: flex; align-items: center; gap: 1.2rem;
+  }
+  .historia-assinatura img {
+    width: 56px; height: 56px; border-radius: 50%; object-fit: cover;
+    border: 2px solid var(--areia);
+  }
+  .historia-assinatura-nome {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem;
+    font-style: italic; color: var(--forest);
+  }
+  .historia-assinatura-cargo {
+    font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: #999; margin-top: .15rem;
+  }
+  .historia-holambra {
+    margin-top: 2.5rem; padding: 1.4rem 1.6rem;
+    background: var(--forest); color: #fff;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .historia-holambra-ico { font-size: 1.5rem; flex-shrink: 0; }
+  .historia-holambra p { font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.7); }
+  .historia-holambra strong { color: var(--lima); }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ PLANTAS ━━━━━━━━━━━━━━━━━━━━ */
+  .plantas { background: var(--ink); padding: 8rem 5vw; }
+  .plantas-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+  .plantas-num {
+    font-family: 'Cormorant Garamond', serif; font-size: 8rem;
+    font-weight: 300; color: rgba(255,255,255,.04); line-height: 1;
+    user-select: none; flex-shrink: 0;
+  }
+  .plantas-header-text { flex: 1; padding-left: 2rem; }
+  .plantas-header-text .sec-eyebrow { color: var(--lima); }
+  .plantas-header-text .sec-h2 { color: #fff; margin-bottom: 0; }
+  .plantas-header-text .sec-h2 em { color: var(--lima); }
+  .plantas-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    grid-template-rows: 520px;
+    gap: 2px;
+  }
+  .planta-item {
+    position: relative; overflow: hidden;
+    background: #111;
+  }
+  .planta-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(.7) saturate(1.1);
+    transition: filter .6s ease, transform .6s ease;
+  }
+  .planta-item:hover img { filter: brightness(.5) saturate(1.3); transform: scale(1.04); }
+  .planta-item-info {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 1.8rem;
+    background: linear-gradient(to top, rgba(13,26,15,.85) 0%, transparent 55%);
+  }
+  .planta-item-tipo {
+    font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
+    color: var(--lima); margin-bottom: .4rem;
+  }
+  .planta-item-nome {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+    font-weight: 400; color: #fff; line-height: 1.1; margin-bottom: .3rem;
+  }
+  .planta-item:first-child .planta-item-nome { font-size: 2.2rem; }
+  .planta-item-cient {
+    font-family: 'Cormorant Garamond', serif; font-size: .85rem;
+    font-style: italic; color: rgba(255,255,255,.45);
+  }
+  .planta-item-desc {
+    font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.7);
+    margin-top: .8rem; max-width: 340px;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .planta-item:hover .planta-item-desc { opacity: 1; transform: translateY(0); }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ ESTUFA MARQUEE ━━━━━━━━━━━━━━━━━━━━ */
+  .estufa-marquee { overflow: hidden; background: var(--ink); padding-bottom: 0; }
+  .estufa-marquee-track {
+    display: flex; gap: 2px; animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+  .estufa-marquee-track:hover { animation-play-state: paused; }
+  .estufa-foto-item {
+    width: 320px; height: 420px; flex-shrink: 0; overflow: hidden;
+  }
+  .estufa-foto-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .5s ease;
+  }
+  .estufa-foto-item:hover img { transform: scale(1.06); }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ PROCESSO ━━━━━━━━━━━━━━━━━━━━ */
+  .processo { background: var(--creme); padding: 8rem 5vw; }
+  .processo-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+  .processo-steps { display: flex; flex-direction: column; gap: 0; }
+  .processo-step {
+    display: grid; grid-template-columns: 64px 1fr;
+    gap: 0 1.5rem; padding: 2rem 0;
+    border-top: 1px solid var(--areia);
+    transition: background .3s;
+  }
+  .processo-step:last-child { border-bottom: 1px solid var(--areia); }
+  .processo-step-n {
+    font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300;
+    color: var(--areia); line-height: 1; align-self: start;
+    transition: color .3s;
+  }
+  .processo-step:hover .processo-step-n { color: var(--lima); }
+  .processo-step-content {}
+  .processo-step-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400;
+    color: var(--ink); margin-bottom: .5rem; margin-top: .3rem;
+  }
+  .processo-step-text {
+    font-size: .85rem; line-height: 1.8; color: #5a6a5a;
+  }
+  .processo-foto {
+    position: sticky; top: 6rem; height: 600px; overflow: hidden;
+  }
+  .processo-foto img { width: 100%; height: 100%; object-fit: cover; }
+  .processo-foto-caption {
+    position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+    background: rgba(13,26,15,.85); backdrop-filter: blur(10px);
+    padding: 1rem 1.2rem; color: rgba(255,255,255,.8);
+    font-size: .78rem; line-height: 1.6;
+  }
+  .processo-foto-caption strong { color: var(--lima); display: block; font-weight: 500; margin-bottom: .2rem; }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ VEILING (EVENTO) ━━━━━━━━━━━━━━━━━━━━ */
+  .veiling { position: relative; overflow: hidden; }
+  .veiling-bg {
+    height: 100%; min-height: 620px;
+    background:
+      linear-gradient(135deg, rgba(13,26,15,.92) 0%, rgba(26,51,36,.85) 100%),
+      url('giardino-imgs/giardino-homem-samambaia-real.jpg') center/cover no-repeat;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    padding: 8rem 5vw;
+    gap: 5rem;
+  }
+  .veiling-left {}
+  .veiling-evento-badge {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: rgba(141,198,63,.12); border: 1px solid rgba(141,198,63,.3);
+    padding: .4rem 1rem; margin-bottom: 2rem;
+    font-size: .62rem; letter-spacing: .28em; text-transform: uppercase; color: var(--lima);
+  }
+  .veiling-evento-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lima); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(.8); } }
+  .veiling-h2 {
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    font-size: clamp(2.4rem, 4vw, 3.8rem); line-height: 1.1; color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  .veiling-h2 em { font-style: italic; color: var(--lima); }
+  .veiling-desc {
+    font-size: .92rem; line-height: 1.9; color: rgba(255,255,255,.6);
+    margin-bottom: 2.5rem; max-width: 440px;
+  }
+  .veiling-right {}
+  .veiling-cards { display: flex; flex-direction: column; gap: 1px; }
+  .veiling-card {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+    padding: 1.6rem 1.8rem; transition: background .3s;
+    display: flex; gap: 1.2rem; align-items: flex-start;
+  }
+  .veiling-card:hover { background: rgba(255,255,255,.08); }
+  .veiling-card-ico { font-size: 1.4rem; flex-shrink: 0; margin-top: .1rem; }
+  .veiling-card-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: #fff; margin-bottom: .35rem;
+  }
+  .veiling-card-text { font-size: .82rem; line-height: 1.7; color: rgba(255,255,255,.5); }
+  .veiling-destaque {
+    margin-top: 2.5rem; background: var(--lima);
+    padding: 1.4rem 1.8rem; color: var(--ink);
+  }
+  .veiling-destaque strong {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; display: block; margin-bottom: .2rem;
+  }
+  .veiling-destaque p { font-size: .8rem; opacity: .7; }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ DICAS RÁPIDAS ━━━━━━━━━━━━━━━━━━━━ */
+  .dicas { background: var(--branco); padding: 8rem 5vw; }
+  .dicas-header { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .dicas-header-right p { font-size: .9rem; line-height: 1.9; color: #5a6a5a; }
+  .dicas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--areia); }
+  .dica {
+    background: var(--branco); padding: 2.5rem 2rem;
+    transition: background .3s;
+  }
+  .dica:hover { background: var(--creme); }
+  .dica-n {
+    font-family: 'Cormorant Garamond', serif; font-size: 4rem;
+    font-weight: 300; color: var(--lima); opacity: .25;
+    line-height: 1; margin-bottom: 1.2rem;
+  }
+  .dica-ico { font-size: 1.4rem; margin-bottom: .8rem; }
+  .dica-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400;
+    color: var(--ink); margin-bottom: .5rem;
+  }
+  .dica-text { font-size: .83rem; line-height: 1.8; color: #5a6a5a; }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ INSTAGRAM WALL ━━━━━━━━━━━━━━━━━━━━ */
+  .insta { background: var(--creme2); }
+  .insta-header {
+    padding: 6rem 5vw 3rem;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+  .insta-header-sub { font-size: .9rem; color: #5a6a5a; line-height: 1.7; max-width: 340px; }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 240px 240px;
+  }
+  .insta-cell {
+    position: relative; overflow: hidden; background: #111;
+  }
+  .insta-cell.span2c { grid-column: span 2; }
+  .insta-cell.span2r { grid-row: span 2; }
+  .insta-cell img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform .5s ease, filter .5s ease;
+    filter: brightness(.9);
+  }
+  .insta-cell:hover img { transform: scale(1.06); filter: brightness(.6); }
+  .insta-cell-overlay {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;
+    padding: 1.2rem;
+    opacity: 0; transition: opacity .3s;
+  }
+  .insta-cell:hover .insta-cell-overlay { opacity: 1; }
+  .insta-cell-label {
+    font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
+    color: rgba(255,255,255,.7); background: rgba(13,26,15,.6); padding: .3rem .6rem;
+    backdrop-filter: blur(4px);
+  }
+  .insta-cta {
+    padding: 3rem 5vw;
+    display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    background: var(--creme2); flex-wrap: wrap;
+  }
+  .insta-cta-text {}
+  .insta-cta-handle {
+    font-family: 'Cormorant Garamond', serif; font-size: 2rem;
+    font-weight: 300; font-style: italic; color: var(--ink);
+  }
+  .insta-cta-sub { font-size: .8rem; color: #888; margin-top: .2rem; }
+  .btn-insta {
+    display: inline-flex; align-items: center; gap: .8rem;
+    background: var(--ink); color: #fff;
+    font-family: 'Jost', sans-serif; font-size: .7rem;
+    letter-spacing: .2em; text-transform: uppercase;
+    text-decoration: none; padding: 1rem 2rem; transition: background .3s; cursor: none;
+  }
+  .btn-insta:hover { background: var(--verde); }
+  .btn-insta svg { width: 18px; height: 18px; fill: #fff; }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━ */
+  footer { background: var(--ink); padding: 5rem 5vw 3rem; }
+  .footer-top {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 4rem; padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+  .footer-brand {}
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif; font-size: 2.5rem;
+    font-weight: 300; font-style: italic; color: #fff; line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .footer-brand-loc {
+    font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--lima); margin-bottom: 1.2rem;
+  }
+  .footer-brand-tagline {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: .95rem; color: rgba(255,255,255,.35); line-height: 1.7; max-width: 260px;
+  }
+  .footer-col-title {
+    font-size: .62rem; letter-spacing: .28em; text-transform: uppercase;
+    color: rgba(255,255,255,.3); margin-bottom: 1.4rem;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+  .footer-links a {
+    font-size: .85rem; color: rgba(255,255,255,.5); text-decoration: none; transition: color .25s;
+  }
+  .footer-links a:hover { color: var(--lima); }
+  .footer-contact-item { display: flex; flex-direction: column; gap: .15rem; margin-bottom: .9rem; }
+  .footer-contact-label { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+  .footer-contact-val { font-size: .88rem; color: rgba(255,255,255,.6); }
+  .footer-contact-val a { color: var(--lima); text-decoration: none; }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 2rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: .68rem; color: rgba(255,255,255,.2); }
+  .footer-ig {
+    display: flex; align-items: center; gap: .6rem; text-decoration: none;
+    font-size: .68rem; color: rgba(255,255,255,.3); letter-spacing: .12em;
+    text-transform: uppercase; transition: color .25s;
+  }
+  .footer-ig:hover { color: var(--lima); }
+  .footer-ig svg { width: 16px; height: 16px; fill: currentColor; }
+
+  /* ━━━━━━━━━━━━━━━━━━━━ RESPONSIVO ━━━━━━━━━━━━━━━━━━━━ */
+  @media (max-width: 1100px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { height: 50vh; }
+    .hero-photo::after { background: linear-gradient(to top, var(--ink) 0%, transparent 60%); }
+    .hero-content { padding: 2rem 5vw 4rem; }
+    .hero-nums { position: static; transform: none; flex-direction: row; justify-content: flex-start; gap: 2rem; margin-bottom: 2rem; }
+    .hero-num { text-align: left; }
+    .historia { grid-template-columns: 1fr; }
+    .historia-visual { height: 50vh; }
+    .plantas-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 300px; }
+    .veiling-bg { grid-template-columns: 1fr; }
+    .processo-inner { grid-template-columns: 1fr; }
+    .processo-foto { position: relative; top: auto; height: 340px; }
+    .dicas-header { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(3,1fr); grid-template-rows: 200px 200px 200px; }
+    .insta-cell.span2c, .insta-cell.span2r { grid-column: span 1; grid-row: span 1; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
+    .nav-links { display: none; }
+    .plantas-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+    .planta-item { height: 380px; }
+    .planta-item-desc { opacity: 1; transform: none; }
+    .dicas-grid { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .historia-holambra { flex-direction: column; }
+    .insta-cta { flex-direction: column; align-items: flex-start; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cur"></div>
+  <div class="cursor-ring" id="curR"></div>
+
+  <!-- ━━ NAV ━━ -->
+  <nav id="nav">
+    <a href="#" class="logo">
+      <span class="logo-sup">Giardino Di</span>
+      <span class="logo-name">Cosi</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#historia">Nossa história</a></li>
+        <li><a href="#plantas">Plantas</a></li>
+        <li><a href="#veiling">Veiling</a></li>
+        <li><a href="#dicas">Dicas</a></li>
+      </ul>
+      <a href="https://www.instagram.com/giardinodicosi/" target="_blank" class="nav-ig" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ━━ HERO ━━ -->
+  <section class="hero">
+    <div class="hero-photo">
+      <img id="heroImg" src="giardino-imgs/giardino-andreia-real.jpg" alt="Estufa Giardino Di Cosi" />
+    </div>
+    <div class="hero-content">
+      <div class="hero-nums">
+        <div class="hero-num">
+          <div class="hero-num-val" data-count="10">0</div>
+          <div class="hero-num-lab">mil seguidores</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-val" data-count="20">0</div>
+          <div class="hero-num-lab">variedades</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-val" data-count="293">0</div>
+          <div class="hero-num-lab">posts publicados</div>
+        </div>
+      </div>
+      <div class="hero-loc">
+        <div class="hero-loc-line"></div>
+        Holambra, SP — Capital das Flores
+      </div>
+      <h1 class="hero-h1">
+        Plante seu jardim,
+        <em>decore sua alma.</em>
+      </h1>
+      <p class="hero-tagline">
+        Antes de cada folha crescer...<br>existe uma história sendo plantada.
+      </p>
+      <div class="hero-ctas">
+        <a href="#plantas" class="btn btn-lima">Conheça as plantas</a>
+        <a href="#historia" class="btn btn-outline">Nossa história</a>
+      </div>
+      <div class="hero-scroll-hint" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%)">
+        <div class="hero-scroll-ball"></div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ TAPE ━━ -->
+  <div class="tape" aria-hidden="true">
+    <div class="tape-inner">
+      <!-- duplicado para loop infinito -->
+      <span class="tape-item">Jiboias Verdes<span class="tape-dot"></span></span>
+      <span class="tape-item">Jiboias Amarelas<span class="tape-dot"></span></span>
+      <span class="tape-item">Philodendrons<span class="tape-dot"></span></span>
+      <span class="tape-item">Samambaias<span class="tape-dot"></span></span>
+      <span class="tape-item">Plantas de Mesa<span class="tape-dot"></span></span>
+      <span class="tape-item">Holambra, SP<span class="tape-dot"></span></span>
+      <span class="tape-item">Cultivo Artesanal<span class="tape-dot"></span></span>
+      <span class="tape-item">Legado Familiar<span class="tape-dot"></span></span>
+      <span class="tape-item">Jiboias Verdes<span class="tape-dot"></span></span>
+      <span class="tape-item">Jiboias Amarelas<span class="tape-dot"></span></span>
+      <span class="tape-item">Philodendrons<span class="tape-dot"></span></span>
+      <span class="tape-item">Samambaias<span class="tape-dot"></span></span>
+      <span class="tape-item">Plantas de Mesa<span class="tape-dot"></span></span>
+      <span class="tape-item">Holambra, SP<span class="tape-dot"></span></span>
+      <span class="tape-item">Cultivo Artesanal<span class="tape-dot"></span></span>
+      <span class="tape-item">Legado Familiar<span class="tape-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ━━ HISTÓRIA ━━ -->
+  <section id="historia" class="historia">
+    <div class="historia-visual">
+      <img src="giardino-imgs/giardino-decio-real.jpg" alt="Décio e Andréia no jardim" />
+      <div class="historia-visual-overlay"></div>
+      <div class="historia-visual-tag">📍 Holambra, SP</div>
+      <p class="historia-visual-quote">
+        "Família, trabalho e amor pelo que se cultiva todos os dias."
+      </p>
+    </div>
+    <div class="historia-content">
+      <span class="sec-eyebrow">Nossa história</span>
+      <h2 class="sec-h2">Entre mudas,<br>histórias e <em>raízes</em></h2>
+      <div class="historia-text">
+        <p>O <strong>Giardino Di Cosi</strong> é uma história de família. Décio, o fundador, começou cultivando plantas com as mãos e a alma — e hoje vê sua filha <strong>Andréia</strong> seguir o mesmo caminho, com a mesma paixão e dedicação de sempre.</p>
+        <p>Situados em <strong>Holambra, SP</strong> — a capital brasileira das flores — somos especializados em plantas pendentes e verdes: jiboias, philodendrons e samambaias cultivadas com atenção a cada detalhe, do substrato à poda.</p>
+        <p>Para nós, uma planta não é um produto. É um ser vivo que carrega a história de quem a cuidou, regou e acompanhou crescer.</p>
+      </div>
+      <div class="historia-assinatura">
+        <img src="giardino-imgs/giardino-decio-real.jpg" alt="Décio" />
+        <div>
+          <div class="historia-assinatura-nome">Décio & Andréia</div>
+          <div class="historia-assinatura-cargo">Fundadores · Giardino Di Cosi</div>
+        </div>
+      </div>
+      <div class="historia-holambra">
+        <div class="historia-holambra-ico">🌸</div>
+        <p><strong>Holambra, SP</strong> — A cidade com maior produção de flores e plantas ornamentais do Brasil, fundada por colonos holandeses e reconhecida mundialmente pela excelência florícola.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ PLANTAS ━━ -->
+  <section id="plantas" class="plantas">
+    <div class="plantas-header">
+      <div class="plantas-num">04</div>
+      <div class="plantas-header-text">
+        <span class="sec-eyebrow">O que cultivamos</span>
+        <h2 class="sec-h2">Plantas que <em>transformam<br>qualquer espaço</em></h2>
+      </div>
+    </div>
+    <div class="plantas-grid">
+      <div class="planta-item">
+        <img src="giardino-imgs/giardino-jiboia2.jpg" alt="Jiboia Verde" />
+        <div class="planta-item-info">
+          <div class="planta-item-tipo">Pendente · Estrela</div>
+          <div class="planta-item-nome">Jiboia Verde</div>
+          <div class="planta-item-cient">Epipremnum aureum</div>
+          <p class="planta-item-desc">Clássica e resiliente. Folhas lustrosas e crescimento exuberante que se adapta a qualquer canto — da varanda ao escritório.</p>
+        </div>
+      </div>
+      <div class="planta-item">
+        <img src="giardino-imgs/giardino-jiboia-pendente.jpg" alt="Jiboia Amarela" />
+        <div class="planta-item-info">
+          <div class="planta-item-tipo">Pendente · Vibrante</div>
+          <div class="planta-item-nome">Jiboia Amarela</div>
+          <div class="planta-item-cient">Epipremnum 'Golden'</div>
+          <p class="planta-item-desc">A versão dourada que ilumina qualquer ambiente com seu verde-lima inconfundível.</p>
+        </div>
+      </div>
+      <div class="planta-item">
+        <img src="giardino-imgs/giardino-plantas-tags-real.jpg" alt="Philodendron" />
+        <div class="planta-item-info">
+          <div class="planta-item-tipo">Pendente · Elegante</div>
+          <div class="planta-item-nome">Philodendron</div>
+          <div class="planta-item-cient">Philodendron spp.</div>
+          <p class="planta-item-desc">Sofisticação e marcância. Diversas variedades, incluindo o Micans de folhas aveludadas.</p>
+        </div>
+      </div>
+      <div class="planta-item">
+        <img src="giardino-imgs/giardino-syngonium-real.jpg" alt="Samambaia" />
+        <div class="planta-item-info">
+          <div class="planta-item-tipo">Pendente · Clássica</div>
+          <div class="planta-item-nome">Samambaia</div>
+          <div class="planta-item-cient">Nephrolepis exaltata</div>
+          <p class="planta-item-desc">Símbolo de frescor. Folhagem densa e cascateante que transforma varandas em oásis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ MARQUEE ESTUFA ━━ -->
+  <div class="estufa-marquee">
+    <div class="estufa-marquee-track" id="marqueeTrack">
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-jiboia2.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-jiboia-pendente.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-chapeu-estufa-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-syngonium-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-plantas-tags-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-homem-samambaia-real.jpg" alt="" /></div>
+      <!-- dup para loop -->
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-jiboia2.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-jiboia-pendente.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-chapeu-estufa-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-syngonium-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-plantas-tags-real.jpg" alt="" /></div>
+      <div class="estufa-foto-item"><img src="giardino-imgs/giardino-homem-samambaia-real.jpg" alt="" /></div>
+    </div>
+  </div>
+
+  <!-- ━━ PROCESSO ━━ -->
+  <section class="processo">
+    <div class="processo-inner">
+      <div>
+        <span class="sec-eyebrow">Do solo à natureza</span>
+        <h2 class="sec-h2">Como cada planta<br>chega ao <em>seu destino</em></h2>
+        <div class="processo-steps">
+          <div class="processo-step">
+            <div class="processo-step-n">01</div>
+            <div class="processo-step-content">
+              <h3 class="processo-step-title">Seleção de mudas</h3>
+              <p class="processo-step-text">Escolhemos mudas saudáveis de espécies com alto potencial decorativo. Cada variedade é avaliada pela beleza, resistência e adaptação ao clima de Holambra.</p>
+            </div>
+          </div>
+          <div class="processo-step">
+            <div class="processo-step-n">02</div>
+            <div class="processo-step-content">
+              <h3 class="processo-step-title">Cultivo diário</h3>
+              <p class="processo-step-text">Irrigação, adubação e controle de luz todos os dias. Cada planta é acompanhada individualmente até atingir o ponto ideal de beleza e saúde.</p>
+            </div>
+          </div>
+          <div class="processo-step">
+            <div class="processo-step-n">03</div>
+            <div class="processo-step-content">
+              <h3 class="processo-step-title">Poda & formação</h3>
+              <p class="processo-step-text">A poda é uma arte. Conduzimos cada planta para que chegue ao mercado com forma impecável, volume equilibrado e aparência exuberante.</p>
+            </div>
+          </div>
+          <div class="processo-step">
+            <div class="processo-step-n">04</div>
+            <div class="processo-step-content">
+              <h3 class="processo-step-title">Saída pelo Veiling</h3>
+              <p class="processo-step-text">Nossas plantas chegam a lojas e viveiros de todo o Brasil através do Veiling Market de Holambra — garantindo rastreabilidade, qualidade e frescor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="processo-foto">
+        <img src="giardino-imgs/giardino-chapeu-estufa-real.jpg" alt="Processo de cultivo" />
+        <div class="processo-foto-caption">
+          <strong>Nossa estufa em Holambra</strong>
+          Cada planta que sai daqui foi cuidada desde a muda — regada, podada e tratada com amor.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ VEILING (EVENTO) ━━ -->
+  <section id="veiling" class="veiling">
+    <div class="veiling-bg">
+      <div class="veiling-left">
+        <div class="veiling-evento-badge">
+          <div class="veiling-evento-badge-dot"></div>
+          Evento exclusivo · 2x por ano
+        </div>
+        <h2 class="veiling-h2">O Veiling:<br>onde o campo<br>encontra o <em>mundo</em></h2>
+        <p class="veiling-desc">
+          Duas vezes ao ano, o Veiling Market de Holambra reúne os maiores produtores de plantas do Brasil em um evento único. É ali que nossas plantas deixam a estufa e chegam às mãos de lojistas, viveiristas e varejistas de todo o país.
+        </p>
+        <a href="https://www.instagram.com/giardinodicosi/" target="_blank" class="btn btn-lima">
+          Acompanhar no Instagram
+        </a>
+      </div>
+      <div class="veiling-right">
+        <div class="veiling-cards">
+          <div class="veiling-card">
+            <div class="veiling-card-ico">🌿</div>
+            <div>
+              <div class="veiling-card-title">O que é o Veiling Market?</div>
+              <p class="veiling-card-text">Um mercado cooperativo de flores e plantas de Holambra que funciona como leilão organizado — conectando produtores rurais a compradores de todo o Brasil com transparência e qualidade.</p>
+            </div>
+          </div>
+          <div class="veiling-card">
+            <div class="veiling-card-ico">🏪</div>
+            <div>
+              <div class="veiling-card-title">Para lojistas e viveiristas</div>
+              <p class="veiling-card-text">Durante o evento, compradores podem adquirir nossas plantas em lotes de alta qualidade. Acompanhe nossas redes para saber quando acontece a próxima edição.</p>
+            </div>
+          </div>
+          <div class="veiling-card">
+            <div class="veiling-card-ico">📅</div>
+            <div>
+              <div class="veiling-card-title">Quando acontece?</div>
+              <p class="veiling-card-text">O evento acontece 2 vezes por ano em Holambra, SP. Siga o Instagram <strong style="color:var(--lima)">@giardinodicosi</strong> para não perder os avisos e novidades de cada edição.</p>
+            </div>
+          </div>
+        </div>
+        <div class="veiling-destaque">
+          <strong>📍 Holambra, SP — Capital das Flores</strong>
+          <p>Cada edição do Veiling é uma celebração da produção artesanal brasileira</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ DICAS ━━ -->
+  <section id="dicas" class="dicas">
+    <div class="dicas-header">
+      <div>
+        <span class="sec-eyebrow">Dicas rápidas</span>
+        <h2 class="sec-h2">Cuide bem da sua<br><em>planta pendente</em></h2>
+      </div>
+      <div class="dicas-header-right">
+        <p>Compartilhamos semanalmente no Instagram dicas de cuidado para jiboias, philodendrons e samambaias. Aqui vão as essenciais para você começar com o pé direito.</p>
+      </div>
+    </div>
+    <div class="dicas-grid">
+      <div class="dica">
+        <div class="dica-n">01</div>
+        <div class="dica-ico">☀️</div>
+        <div class="dica-title">Luminosidade</div>
+        <p class="dica-text">Jiboias e philodendrons adoram luz indireta. Evite sol direto forte — prefira janelas claras, mas sem insolação direta nas folhas.</p>
+      </div>
+      <div class="dica">
+        <div class="dica-n">02</div>
+        <div class="dica-ico">💧</div>
+        <div class="dica-title">Rega consciente</div>
+        <p class="dica-text">Regue apenas quando o substrato estiver levemente seco. Excesso de água provoca raízes podres — o maior inimigo das pendentes.</p>
+      </div>
+      <div class="dica">
+        <div class="dica-n">03</div>
+        <div class="dica-ico">🌫️</div>
+        <div class="dica-title">Umidade para samambaias</div>
+        <p class="dica-text">Samambaias precisam de umidade. Borrifar as folhas nos dias secos ou usar pedrinhas com água no pratinho faz toda a diferença.</p>
+      </div>
+      <div class="dica">
+        <div class="dica-n">04</div>
+        <div class="dica-ico">🌱</div>
+        <div class="dica-title">Adubação na estação</div>
+        <p class="dica-text">Na primavera e verão, use adubo líquido NPK a cada 15-30 dias. Deixa as folhas vibrantes e estimula o crescimento acelerado.</p>
+      </div>
+      <div class="dica">
+        <div class="dica-n">05</div>
+        <div class="dica-ico">✂️</div>
+        <div class="dica-title">Poda que valoriza</div>
+        <p class="dica-text">Retire folhas amarelas com tesoura limpa. A poda estimula novos brotos e mantém a forma bonita e o volume equilibrado da planta.</p>
+      </div>
+      <div class="dica">
+        <div class="dica-n">06</div>
+        <div class="dica-ico">📲</div>
+        <div class="dica-title">Siga para aprender mais</div>
+        <p class="dica-text">Publicamos Dicas Rápidas toda semana no Instagram com tudo sobre jiboias, philodendrons e samambaias. Segue lá! <a href="https://www.instagram.com/giardinodicosi/" target="_blank" style="color:var(--lima);text-decoration:none">@giardinodicosi</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ━━ INSTAGRAM WALL ━━ -->
+  <section class="insta">
+    <div class="insta-header">
+      <div>
+        <span class="sec-eyebrow">Instagram</span>
+        <h2 class="sec-h2" style="margin-bottom:.5rem">@giardinodicosi</h2>
+        <p style="font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#888">10,3 mil seguidores · 293 posts</p>
+      </div>
+      <p class="insta-header-sub">O dia a dia da estufa, bastidores do cultivo, dicas rápidas e a história de uma família apaixonada por plantas.</p>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-cell span2r">
+        <img src="giardino-imgs/giardino-jiboia2.jpg" alt="Nossa estufa" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Nossa estufa</span></div>
+      </div>
+      <div class="insta-cell">
+        <img src="giardino-imgs/giardino-andreia-real.jpg" alt="Jibóia" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Jiboia verde</span></div>
+      </div>
+      <div class="insta-cell">
+        <img src="giardino-imgs/giardino-jiboia-pendente.jpg" alt="Jibóia amarela" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Jiboia amarela</span></div>
+      </div>
+      <div class="insta-cell">
+        <img src="giardino-imgs/giardino-syngonium-real.jpg" alt="Jardim" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Jardim</span></div>
+      </div>
+      <div class="insta-cell">
+        <img src="giardino-imgs/giardino-plantas-tags-real.jpg" alt="Philodendron" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Philodendron</span></div>
+      </div>
+      <div class="insta-cell span2c">
+        <img src="giardino-imgs/giardino-jiboia-pendente.jpg" alt="Pendentes" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Pendentes na estufa</span></div>
+      </div>
+      <div class="insta-cell">
+        <img src="giardino-imgs/giardino-syngonium-real.jpg" alt="Samambaia" />
+        <div class="insta-cell-overlay"><span class="insta-cell-label">Samambaia</span></div>
+      </div>
+    </div>
+    <div class="insta-cta">
+      <div class="insta-cta-text">
+        <div class="insta-cta-handle">@giardinodicosi</div>
+        <div class="insta-cta-sub">Acompanhe nossa jornada verde no Instagram</div>
+      </div>
+      <a href="https://www.instagram.com/giardinodicosi/" target="_blank" class="btn-insta">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Seguir no Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- ━━ FOOTER ━━ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-name">Cosi</div>
+        <div class="footer-brand-loc">🌿 Holambra, SP — Capital das Flores</div>
+        <p class="footer-brand-tagline">"Plante seu jardim, decore sua alma."</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navegação</div>
+        <ul class="footer-links">
+          <li><a href="#historia">Nossa história</a></li>
+          <li><a href="#plantas">Nossas plantas</a></li>
+          <li><a href="#veiling">Veiling Market</a></li>
+          <li><a href="#dicas">Dicas rápidas</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contato</div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Instagram</span>
+          <span class="footer-contact-val"><a href="https://www.instagram.com/giardinodicosi/" target="_blank">@giardinodicosi</a></span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Localização</span>
+          <span class="footer-contact-val">Holambra, SP</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-label">Distribuição</span>
+          <span class="footer-contact-val">Veiling Market · 2x por ano</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Giardino Di Cosi · Holambra, SP · Todos os direitos reservados</p>
+      <a href="https://www.instagram.com/giardinodicosi/" target="_blank" class="footer-ig">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        @giardinodicosi
+      </a>
+    </div>
+  </footer>
+
+  <script>
+  // ── Cursor
+  const cur = document.getElementById('cur'), curR = document.getElementById('curR');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  (function loop(){
+    rx+=(mx-rx)*.18; ry+=(my-ry)*.18;
+    cur.style.left=mx+'px'; cur.style.top=my+'px';
+    curR.style.left=rx+'px'; curR.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.planta-item,.insta-cell').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cur.style.width='20px'; cur.style.height='20px'; curR.style.width='60px'; curR.style.height='60px'; });
+    el.addEventListener('mouseleave',()=>{ cur.style.width='10px'; cur.style.height='10px'; curR.style.width='38px'; curR.style.height='38px'; });
+  });
+
+  // ── Nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=> nav.classList.toggle('filled', window.scrollY > 50), {passive:true});
+
+  // ── Hero image loaded
+  const heroImg = document.getElementById('heroImg');
+  heroImg.onload = () => heroImg.classList.add('loaded');
+  if (heroImg.complete) heroImg.classList.add('loaded');
+
+  // ── Count-up
+  const countEls = document.querySelectorAll('[data-count]');
+  const countIO = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target, target=+el.dataset.count;
+      let current=0;
+      const step = target/60;
+      const t = setInterval(()=>{
+        current=Math.min(current+step,target);
+        el.textContent = target>=100 ? Math.round(current) : Math.round(current)+'k+';
+        if(current>=target) clearInterval(t);
+      },16);
+      countIO.unobserve(el);
+    });
+  },{threshold:.3});
+  countEls.forEach(el=>countIO.observe(el));
+
+  // ── Reveal on scroll
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0) translateX(0)'; io.unobserve(e.target); }
+    });
+  },{threshold:.08});
+
+  document.querySelectorAll('.processo-step, .dica, .veiling-card, .insta-cell, .planta-item, .historia-assinatura, .historia-holambra').forEach((el,i)=>{
+    el.style.opacity='0';
+    el.style.transform='translateY(30px)';
+    el.style.transition=`opacity .7s ease ${i*.06}s, transform .7s ease ${i*.06}s`;
+    io.observe(el);
+  });
+  </script>
+</body>
+</html>
