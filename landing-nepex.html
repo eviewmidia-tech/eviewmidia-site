@@ -1,0 +1,1858 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepex Solar - Marketing Especializado em Energia Solar</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1367785311885571');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1367785311885571&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Bebas+Neue&family=Rajdhani:wght@700&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    html, body { height: 100%; width: 100%; }
+
+    :root {
+      /* ── Nepex Solar Brand Palette ── */
+      --gold:           #F5B400;
+      --gold-highlight: #FFD84D;
+      --gold-dark:      #C98A00;
+      --gold-gradient:  linear-gradient(135deg, #F5B400 0%, #FFD84D 50%, #FF9A00 100%);
+      --dark-bg:        #0A0A0A;
+      --dark-secondary: #121212;
+      --text-primary:   #E6E6E6;
+      --card-bg:        rgba(18,18,18,0.92);
+      --card-border:    rgba(245,180,0,0.09);
+      /* Aliases para compatibilidade */
+      --solar-gold:     #F5B400;
+      --accent-blue:    #FFD84D;
+      --accent-green:   #F5B400;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    /* Grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Typography ── */
+    .font-heading  { font-family: 'Sora', sans-serif; font-weight: 700; letter-spacing: -0.03em; }
+    .font-display  { font-family: 'Sora', sans-serif; font-weight: 800; letter-spacing: -0.04em; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-highlight) 60%, #FF9A00 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Solar glow ── */
+    .solar-highlight {
+      color: var(--solar-gold);
+      font-weight: 900;
+      display: inline-block;
+      animation: glow-text 2.5s ease-in-out infinite;
+    }
+    .solar-highlight-hero {
+      color: var(--solar-gold);
+      font-weight: 900;
+      display: inline-block;
+      animation: glow-text-hero 2.5s ease-in-out infinite;
+    }
+    @keyframes glow-text {
+      0%,100% { text-shadow: 0 0 10px rgba(245,180,0,0.7), 0 0 30px rgba(245,180,0,0.3); }
+      50%      { text-shadow: 0 0 20px rgba(245,180,0,1),   0 0 60px rgba(255,216,77,0.5); }
+    }
+    @keyframes glow-text-hero {
+      0%,100% { text-shadow: 0 0 20px rgba(245,180,0,1),   0 0 60px rgba(245,180,0,0.5);  filter: brightness(1.1); }
+      50%      { text-shadow: 0 0 40px rgba(255,216,77,1),  0 0 120px rgba(245,180,0,0.7); filter: brightness(1.3); }
+    }
+
+    /* ── Scroll progress ── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-highlight));
+      z-index: 9998;
+      box-shadow: 0 0 12px rgba(245,180,0,0.6);
+      transition: width 0.1s linear;
+    }
+
+    /* ── Layout ── */
+    .section-padding   { padding: 120px 0; }
+    .container-premium { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+    /* ── Section label ── */
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(245,180,0,0.08); border: 1px solid rgba(245,180,0,0.2);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 11px; font-weight: 600; color: var(--solar-gold);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .section-label span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--solar-gold);
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.6)} }
+
+    /* ── Header ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000; padding: 20px 0;
+      transition: all 0.4s ease;
+    }
+    header.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(245,180,0,0.1);
+      box-shadow: 0 1px 40px rgba(0,0,0,0.5);
+      padding: 14px 0;
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.45); font-size: 14px; font-weight: 500;
+      text-decoration: none; transition: color 0.3s ease;
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1px; background: var(--solar-gold);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active { color: rgba(255,255,255,0.9); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* ── Buttons ── */
+    @keyframes btn-glow-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(245,180,0,0.35), 0 0 40px rgba(245,180,0,0.15); }
+      50%       { box-shadow: 0 4px 32px rgba(245,180,0,0.65), 0 0 70px rgba(245,180,0,0.30), 0 0 0 2px rgba(255,216,77,0.2); }
+    }
+    @keyframes btn-shimmer {
+      0%   { transform: translateX(-120%) skewX(-20deg); }
+      100% { transform: translateX(320%)  skewX(-20deg); }
+    }
+    .btn-primary {
+      background: linear-gradient(110deg, #E6A800 0%, #FFD234 40%, #F5B400 60%, #FF9500 100%);
+      background-size: 200% 200%; background-position: 0% 50%;
+      color: #000; padding: 15px 30px; border-radius: 10px;
+      font-weight: 700; font-size: 14px; border: none; cursor: pointer;
+      transition: all 0.35s ease; position: relative; overflow: hidden;
+      font-family: 'Sora', sans-serif; letter-spacing: 0.02em;
+      display: inline-flex; align-items: center; gap: 8px;
+      animation: btn-glow-pulse 2.8s ease-in-out infinite;
+    }
+    /* Reflexo fixo no topo */
+    .btn-primary::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 48%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.0) 100%);
+      border-radius: 10px 10px 0 0;
+      pointer-events: none;
+    }
+    /* Sweep de luz passando */
+    .btn-primary::before {
+      content: ''; position: absolute;
+      top: -10%; left: 0; width: 45%; height: 120%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.38) 50%, transparent 100%);
+      animation: btn-shimmer 2.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      background-position: 100% 50%;
+      animation: none;
+      box-shadow: 0 8px 48px rgba(245,180,0,0.7), 0 0 80px rgba(245,180,0,0.35), 0 0 0 2px rgba(255,216,77,0.35);
+    }
+    .btn-ghost {
+      background: transparent; color: rgba(230,230,230,0.65);
+      padding: 14px 28px; border-radius: 10px; font-weight: 500; font-size: 14px;
+      border: 1px solid rgba(245,180,0,0.18); cursor: pointer;
+      transition: all 0.3s ease; font-family: 'Poppins', sans-serif;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-ghost:hover { border-color: rgba(245,180,0,0.45); color: var(--gold); background: rgba(245,180,0,0.05); box-shadow: 0 0 24px rgba(245,180,0,0.1); }
+    .btn-back {
+      background: transparent; color: rgba(230,230,230,0.45);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 11px 18px; cursor: pointer; font-family: 'Poppins', sans-serif;
+      font-size: 13px; display: inline-flex; align-items: center; gap: 7px;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover { color: var(--text-primary); border-color: rgba(245,180,0,0.25); }
+
+    /* ── Hero ── */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 100px; position: relative; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: orb-drift 22s ease-in-out infinite; }
+    .orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(245,180,0,0.14) 0%, transparent 70%); top: -200px; right: -100px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,138,0,0.07) 0%, transparent 70%); bottom: -100px; left: -100px; animation-delay: -11s; }
+    .orb-3 { width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,216,77,0.07) 0%, transparent 70%); top: 40%; left: 40%; animation-delay: -5s; }
+    @keyframes orb-drift { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(30px,-40px) scale(1.05)} 66%{transform:translate(-20px,20px) scale(0.97)} }
+    .grid-lines {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(245,180,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(245,180,0,0.04) 1px, transparent 1px);
+      background-size: 60px 60px; pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 32px;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,180,0,0.4), transparent);
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .card:hover { border-color: rgba(245,180,0,0.2); background: rgba(24,22,14,0.95); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(245,180,0,0.05); }
+    .card:hover::before { opacity: 1; }
+    .card-icon {
+      width: 48px; height: 48px;
+      background: rgba(245,180,0,0.08); border: 1px solid rgba(245,180,0,0.18);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; transition: all 0.3s ease;
+    }
+    .card:hover .card-icon { background: rgba(245,180,0,0.14); box-shadow: 0 0 20px rgba(245,180,0,0.2); }
+
+    /* ── Pain cards ── */
+    .pain-card {
+      background: rgba(255,107,107,0.04); border: 1px solid rgba(255,107,107,0.12);
+      border-radius: 12px; padding: 22px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: all 0.3s ease;
+    }
+    .pain-card:hover { border-color: rgba(255,107,107,0.24); background: rgba(255,107,107,0.07); }
+
+    /* ── Market stat cards ── */
+    .market-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 32px; text-align: center; position: relative; overflow: hidden;
+    }
+    .market-card::after {
+      content: ''; position: absolute; bottom: 0; left: 20%; right: 20%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245,180,0,0.45), transparent);
+    }
+    .market-number {
+      font-family: 'Sora', sans-serif; font-size: 2.6rem; font-weight: 800;
+      color: var(--solar-gold); line-height: 1; margin-bottom: 10px; letter-spacing: -0.03em;
+    }
+    .market-source { font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ── Método pillar cards ── */
+    .pillar-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 32px; position: relative; overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .pillar-card:hover { border-color: rgba(245,180,0,0.2); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(245,180,0,0.05); }
+    .pillar-number {
+      font-family: 'Sora', sans-serif; font-size: 3.5rem; font-weight: 800;
+      color: rgba(245,180,0,0.1); line-height: 1; margin-bottom: 16px; letter-spacing: -0.04em;
+    }
+
+    /* ── Specialist insight cards ── */
+    .insight-card {
+      background: linear-gradient(135deg, rgba(245,180,0,0.05) 0%, rgba(18,18,18,0.9) 100%);
+      border: 1px solid rgba(245,180,0,0.12);
+      border-radius: 12px; padding: 24px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: all 0.3s ease;
+    }
+    .insight-card:hover { border-color: rgba(245,180,0,0.28); background: rgba(245,180,0,0.07); box-shadow: 0 0 20px rgba(245,180,0,0.06); }
+    .insight-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: rgba(245,180,0,0.1); border: 1px solid rgba(245,180,0,0.22);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── Process steps ── */
+    .process-step {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 28px;
+      transition: all 0.4s ease; position: relative;
+    }
+    .process-step:hover { border-color: rgba(245,180,0,0.2); transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 24px rgba(245,180,0,0.05); }
+    .step-number {
+      width: 44px; height: 44px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-weight: 800; font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .step-gold { background: rgba(245,180,0,0.12); color: var(--gold); border: 1px solid rgba(245,180,0,0.25); }
+    .step-blue { background: rgba(255,216,77,0.08); color: var(--gold-highlight); border: 1px solid rgba(255,216,77,0.2); }
+
+    /* ── FAQ ── */
+    .faq-item { border: 1px solid var(--card-border); border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease; }
+    .faq-item.open { border-color: rgba(245,180,0,0.2); }
+    .faq-question {
+      width: 100%; background: var(--card-bg); border: none;
+      padding: 22px 26px; display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; text-align: left; color: var(--text-primary);
+      font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .faq-question:hover { background: rgba(245,180,0,0.03); }
+    .faq-icon {
+      width: 28px; height: 28px; border: 1px solid rgba(245,180,0,0.18);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: rgba(230,230,230,0.4);
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-icon { background: rgba(245,180,0,0.12); border-color: rgba(245,180,0,0.35); color: var(--gold); transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--card-bg); }
+    .faq-answer-inner { padding: 0 26px 22px; color: rgba(255,255,255,0.5); font-size: 14px; line-height: 1.8; }
+
+    /* ── Check items ── */
+    .check-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .check-item:last-child { border-bottom: none; }
+    .check-dot {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
+      background: rgba(245,180,0,0.1); border: 1px solid rgba(245,180,0,0.28);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── CTA box ── */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(245,180,0,0.07) 0%, rgba(18,18,18,0.95) 50%, rgba(201,138,0,0.04) 100%);
+      border: 1px solid rgba(245,180,0,0.12); border-radius: 24px; padding: 80px 60px;
+      position: relative; overflow: hidden; text-align: center;
+      box-shadow: 0 0 60px rgba(245,180,0,0.06), inset 0 1px 0 rgba(255,216,77,0.08);
+    }
+    .cta-box::before {
+      content: ''; position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,216,77,0.5), transparent);
+    }
+    .cta-box::after {
+      content: ''; position: absolute; bottom: 0; right: -60px;
+      width: 300px; height: 300px; pointer-events: none;
+      background: conic-gradient(from 200deg, transparent 60%, rgba(245,180,0,0.06) 70%, transparent 80%);
+      transform: rotate(-20deg);
+    }
+
+    /* ── Modal ── */
+    .modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.75); z-index: 2000;
+      align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .modal.active { display: flex; animation: fade-in 0.25s ease; }
+    @keyframes fade-in { from{opacity:0} to{opacity:1} }
+    .modal-content {
+      background: var(--dark-secondary); border: 1px solid rgba(245,180,0,0.1);
+      border-radius: 20px; padding: 44px; width: 90%; max-width: 480px;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(245,180,0,0.05); position: relative;
+      animation: slide-up 0.3s ease;
+    }
+    @keyframes slide-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .sdr-opt:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(245,180,0,0.3) !important; transform: translateY(-1px); }
+    .sdr-opt { transition: all .18s ease; }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 32px; height: 32px; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+      cursor: pointer; color: rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; transition: all 0.2s ease;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; margin-bottom: 7px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.05em; text-transform: uppercase; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 12px 14px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 14px; transition: all 0.2s ease;
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: rgba(245,180,0,0.5);
+      background: rgba(245,180,0,0.03); box-shadow: 0 0 0 3px rgba(245,180,0,0.08);
+    }
+    .form-group textarea { resize: none; min-height: 96px; }
+
+    /* ── Segment tags ── */
+    .segment-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; border-radius: 100px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
+      font-size: 13px; color: rgba(255,255,255,0.55); white-space: nowrap;
+      transition: all 0.3s ease;
+    }
+    .segment-tag:hover { border-color: rgba(245,180,0,0.35); color: var(--text-primary); background: rgba(245,180,0,0.06); box-shadow: 0 0 16px rgba(245,180,0,0.08); }
+    .segment-tag i { color: var(--solar-gold); }
+
+    /* ── Logo bar ── */
+    .logo-bar { border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 28px 0; overflow: hidden; }
+    .logo-track { display: flex; gap: 56px; animation: logo-scroll 30s linear infinite; width: max-content; }
+    .logo-item { font-family: 'Sora', sans-serif; font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; white-space: nowrap; display: flex; align-items: center; gap: 10px; }
+    .logo-item::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: rgba(245,180,0,0.4); display: block; }
+    @keyframes logo-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── Divider ── */
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent); }
+
+
+    /* ── Scroll reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── MCS Premium Redesign ─────────────────────────── */
+
+    /* Pipeline header bar */
+    .mcs-pipeline-bar {
+      display: flex; align-items: stretch;
+      border: 1px solid rgba(245,180,0,0.1);
+      border-radius: 12px; overflow: hidden;
+      margin-bottom: 72px;
+    }
+    @media (max-width: 768px) {
+      .mcs-pipeline-bar { display: none; }
+    }
+    .mcs-pipe-step {
+      flex: 1; padding: 16px 10px;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      text-align: center; position: relative;
+      border-right: 1px solid rgba(245,180,0,0.08);
+      background: rgba(255,255,255,0.015);
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .mcs-pipe-step:last-child { border-right: none; }
+    .mcs-pipe-step:hover { background: rgba(245,180,0,0.05); }
+    .mcs-pipe-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 9px; font-weight: 800;
+      color: rgba(245,180,0,0.45); letter-spacing: 0.14em;
+    }
+    .mcs-pipe-label {
+      font-size: 10px; font-weight: 700;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .mcs-pipe-line {
+      position: absolute; top: 50%; right: -1px;
+      width: 0; height: 0;
+      transform: translateY(-50%);
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid rgba(245,180,0,0.15);
+      z-index: 2;
+    }
+    .mcs-pipe-step:last-child .mcs-pipe-line { display: none; }
+    /* Top accent for funnel stages */
+    .mcs-pipe-step.mcs-top    { border-top: 2px solid rgba(245,180,0,0.65); }
+    .mcs-pipe-step.mcs-middle { border-top: 2px solid rgba(245,180,0,0.35); }
+    .mcs-pipe-step.mcs-bottom { border-top: 2px solid rgba(245,180,0,0.15); }
+
+    /* Step rows */
+    .mcs-steps-list {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .mcs-step-row {
+      display: grid;
+      grid-template-columns: 80px 64px 1fr auto;
+      align-items: center; gap: 24px;
+      padding: 28px 32px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-bottom: none;
+      position: relative;
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.01);
+    }
+    .mcs-step-row:first-child { border-radius: 12px 12px 0 0; }
+    .mcs-step-row:last-child  { border-radius: 0 0 12px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mcs-step-row::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 2px;
+      background: transparent;
+      transition: background 0.3s;
+    }
+    .mcs-step-row:hover {
+      background: rgba(245,180,0,0.03);
+      border-color: rgba(245,180,0,0.12);
+    }
+    .mcs-step-row:hover::before {
+      background: linear-gradient(180deg, rgba(245,180,0,0.6), rgba(245,180,0,0.1));
+    }
+    .mcs-row-num {
+      font-family: 'Sora', sans-serif;
+      font-size: 3.2rem; font-weight: 800;
+      color: rgba(245,180,0,0.07); line-height: 1;
+      letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .mcs-row-icon {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(245,180,0,0.22);
+      border-radius: 14px;
+      background: rgba(245,180,0,0.06);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .mcs-step-row:hover .mcs-row-icon {
+      background: rgba(245,180,0,0.12);
+      border-color: rgba(245,180,0,0.45);
+      box-shadow: 0 0 20px rgba(245,180,0,0.12);
+    }
+    .mcs-row-body { min-width: 0; }
+    .mcs-row-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 1.05rem; font-weight: 700;
+      color: rgba(255,255,255,0.92); margin-bottom: 5px;
+      letter-spacing: -0.01em;
+    }
+    .mcs-row-desc {
+      font-size: 13px; color: rgba(255,255,255,0.38);
+      line-height: 1.75; max-width: 560px;
+    }
+    .mcs-row-tag {
+      font-size: 9px; font-weight: 800;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 100px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .mcs-tag-top    { color: rgba(245,180,0,0.8);  background: rgba(245,180,0,0.07);  border: 1px solid rgba(245,180,0,0.18); }
+    .mcs-tag-mid    { color: rgba(245,180,0,0.55); background: rgba(245,180,0,0.04);  border: 1px solid rgba(245,180,0,0.12); }
+    .mcs-tag-bottom { color: rgba(245,180,0,0.35); background: rgba(245,180,0,0.02);  border: 1px solid rgba(245,180,0,0.08); }
+
+    /* Cycle badge at bottom */
+    .mcs-cycle-badge {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin-top: 28px; padding: 14px 24px;
+      border: 1px solid rgba(245,180,0,0.12);
+      border-radius: 100px; width: fit-content; margin-left: auto; margin-right: auto;
+      background: rgba(245,180,0,0.04);
+    }
+    .mcs-cycle-badge span {
+      font-size: 11px; font-weight: 600;
+      color: rgba(245,180,0,0.6); letter-spacing: 0.1em;
+    }
+
+    /* Mobile: simple numbered list */
+    @media (max-width: 768px) {
+      .mcs-step-row {
+        grid-template-columns: 48px 48px 1fr;
+        padding: 20px 18px; gap: 14px;
+      }
+      .mcs-row-tag { display: none; }
+      .mcs-row-num { font-size: 2rem; }
+      .mcs-row-icon { width: 44px; height: 44px; border-radius: 12px; }
+      .mcs-row-title { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 768px) {
+      .section-padding { padding: 64px 0; }
+      .cta-box { padding: 40px 20px; }
+      .modal-content { padding: 0; }
+      .market-number { font-size: 2rem; }
+      .container-premium { padding: 0 16px; }
+      /* Hero fixes */
+      .hero { padding-top: 140px; }
+      .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .hero-title { font-size: clamp(2rem, 8vw, 2.8rem) !important; }
+      .hero-right-panel { display: none !important; }
+      /* Nav */
+      .nav-links { display: none !important; }
+      /* Ticker */
+      .ticker-track { animation-duration: 20s; }
+      /* Modal body padding */
+      .modal-body { padding: 20px 18px 20px; }
+      /* Social proof visual - mobile */
+      .social-proof-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 480px) {
+      .section-padding { padding: 48px 0; }
+      .container-premium { padding: 0 12px; }
+    }
+
+    /* ── Multi-step form ─────────────────────────────── */
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      max-height: 92vh;
+      padding: 0;
+    }
+
+    /* Header bar */
+    .modal-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px 14px;
+      flex-shrink: 0;
+    }
+    .form-back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Poppins', sans-serif; font-size: 13px;
+      color: rgba(255,255,255,0.35); padding: 4px 0;
+      transition: color 0.2s ease;
+    }
+    .form-back-btn:hover { color: rgba(255,255,255,0.7); }
+    .form-back-btn[hidden] { visibility: hidden; pointer-events: none; }
+    .form-step-label {
+      font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,0.28);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    /* Progress bar */
+    .form-progress-track {
+      height: 2px; background: rgba(255,255,255,0.06);
+      flex-shrink: 0; overflow: hidden;
+    }
+    .form-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--solar-gold), var(--accent-blue));
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Scrollable body */
+    .modal-body {
+      overflow-y: auto; flex: 1;
+      padding: 28px 28px 24px;
+    }
+    .modal-body::-webkit-scrollbar { width: 3px; }
+    .modal-body::-webkit-scrollbar-thumb { background: rgba(245,180,0,0.15); border-radius: 10px; }
+
+    /* Question layout */
+    .q-eyebrow {
+      font-size: 11px; font-weight: 700;
+      color: rgba(245,180,0,0.55);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .q-title {
+      font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 1.2rem; line-height: 1.35; color: #fff;
+      margin-bottom: 6px;
+    }
+    .q-hint {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      margin-bottom: 20px; line-height: 1.6;
+    }
+    .q-options { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+
+    /* Option cards */
+    .q-opt {
+      display: flex; align-items: center; gap: 14px;
+      padding: 15px 18px;
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 12px; cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+      background: rgba(255,255,255,0.02);
+      user-select: none; -webkit-user-select: none;
+      font-size: 13.5px; color: rgba(255,255,255,0.6);
+      min-height: 52px;
+    }
+    .q-opt:hover {
+      border-color: rgba(245,180,0,0.3);
+      background: rgba(245,180,0,0.04);
+      color: rgba(255,255,255,0.9);
+      transform: translateX(3px);
+    }
+    .q-opt.sel {
+      border-color: var(--solar-gold);
+      background: rgba(245,180,0,0.09);
+      color: #fff;
+      transform: translateX(3px);
+    }
+    .q-radio {
+      width: 18px; height: 18px; flex-shrink: 0;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      border-radius: 50%;
+      transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .q-opt.sel .q-radio {
+      border-color: var(--solar-gold);
+      background: var(--solar-gold);
+    }
+    .q-radio-dot {
+      width: 7px; height: 7px; background: #000; border-radius: 50%;
+      opacity: 0; transform: scale(0);
+      transition: all 0.2s ease;
+    }
+    .q-opt.sel .q-radio-dot { opacity: 1; transform: scale(1); }
+
+    /* Square checkbox for multi */
+    .q-radio.sq { border-radius: 5px; }
+    .q-radio.sq .q-radio-dot { display: none; }
+    .q-opt.sel .q-radio.sq::after {
+      content: ''; display: block;
+      width: 10px; height: 7px;
+      border-left: 2px solid #000; border-bottom: 2px solid #000;
+      transform: rotate(-45deg) translate(1px,-1px);
+    }
+
+    /* Next button (multi-select) */
+    .q-next-btn {
+      display: none;
+      width: 100%; justify-content: center;
+      margin-top: 14px;
+    }
+    .q-next-btn.visible { display: flex; animation: fade-in 0.2s ease; }
+
+    /* Contact form fields */
+    .f-group { margin-bottom: 16px; }
+    .f-group label {
+      display: block; margin-bottom: 7px;
+      font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .f-group input, .f-group select {
+      width: 100%; padding: 12px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; color: #fff;
+      font-family: 'Poppins', sans-serif; font-size: 14px;
+      transition: all 0.2s ease;
+    }
+    .f-group input::placeholder { color: rgba(255,255,255,0.2); }
+    .f-group input:focus, .f-group select:focus {
+      outline: none;
+      border-color: rgba(245,180,0,0.45);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 0 0 3px rgba(245,180,0,0.07);
+    }
+    .f-group input.err { border-color: rgba(255,107,107,0.6); }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* Success */
+    .success-wrap {
+      text-align: center; padding: 16px 0 8px;
+      animation: fade-in 0.4s ease;
+    }
+    .success-icon {
+      width: 60px; height: 60px;
+      background: rgba(245,180,0,0.1); border: 1px solid rgba(245,180,0,0.3);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 18px; box-shadow: 0 0 30px rgba(245,180,0,0.15);
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ══ HEADER ══════════════════════════════════════════ -->
+<header id="header">
+  <div class="container-premium flex justify-between items-center">
+    <a href="#" style="text-decoration:none;display:flex;align-items:center;">
+      <img src="logo-nepex-transparent.png" alt="NEPEX" style="height:130px;width:auto;object-fit:contain;filter:brightness(1.1);">
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#para-quem"   class="nav-link">Para quem</a>
+      <a href="#metodo"      class="nav-link">Método</a>
+      <a href="#solucoes"    class="nav-link">Soluções</a>
+      <a href="#faq"         class="nav-link">FAQ</a>
+    </nav>
+    <button class="btn-primary" onclick="openModal('form-modal')">
+      Diagnóstico Gratuito
+    </button>
+  </div>
+</header>
+
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<section class="hero" id="hero" style="background-image: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.85) 40%, rgba(10,10,10,0.95) 100%), url('https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center 40%;">
+  <div class="grid-lines"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <div class="container-premium w-full">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <!-- Texto -->
+      <div>
+        <!-- Label -->
+        <div class="section-label reveal" style="margin-bottom:24px;">
+          <span></span> Feito para você, integrador solar
+        </div>
+
+        <!-- Headline com glow -->
+        <div class="reveal reveal-delay-1" style="position:relative;margin-bottom:18px;">
+          <div style="position:absolute;top:50%;left:-10%;width:70%;height:120%;background:radial-gradient(ellipse,rgba(245,180,0,0.12) 0%,transparent 70%);transform:translateY(-50%);pointer-events:none;"></div>
+          <h1 class="font-display" style="font-size:clamp(1.7rem,3.2vw,3.4rem);line-height:1.06;position:relative;">
+            Novos clientes<br>
+            <span class="solar-highlight-hero">todos os dias</span><br>
+            para a sua integradora.
+          </h1>
+        </div>
+
+        <!-- Subtítulo -->
+        <p class="reveal reveal-delay-2" style="font-size:clamp(0.95rem,1.4vw,1.08rem);color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:32px;max-width:460px;">
+          Um sistema de geração de demanda construído para o mercado fotovoltaico sem depender de indicação, sem improvisar o pipeline.
+        </p>
+
+        <!-- Tags segmentadas linguagem do integrador -->
+        <div class="reveal reveal-delay-3" style="margin-bottom:36px;">
+          <div style="font-size:10.5px;font-weight:700;color:rgba(255,255,255,0.22);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:12px;">
+            Para integradores que já instalam e querem escalar
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="segment-tag"><i data-lucide="zap" style="width:13px;height:13px;"></i>GD e Minigeração</span>
+            <span class="segment-tag"><i data-lucide="home" style="width:13px;height:13px;"></i>Residencial, C&amp;I e Industrial</span>
+            <span class="segment-tag"><i data-lucide="trending-up" style="width:13px;height:13px;"></i>Pipeline de vendas previsível</span>
+            <span class="segment-tag"><i data-lucide="sun" style="width:13px;height:13px;"></i>Projetos de 5 kWp a 1 MWp</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="reveal reveal-delay-4" style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+          <button class="btn-primary" onclick="openModal('form-modal')">
+            <span style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+              <span>Quero gerar leads qualificados</span>
+              <span style="font-size:10px;font-weight:600;opacity:0.7;letter-spacing:0.08em;text-transform:uppercase;">Aperte aqui</span>
+            </span>
+            <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+          </button>
+          <span style="font-size:12px;color:rgba(255,255,255,0.25);padding-left:4px;">Diagnóstico gratuito · Sem compromisso</span>
+        </div>
+      </div>
+
+      <!-- Card lado direito -->
+      <div class="hidden md:block reveal reveal-delay-2">
+        <div class="card" style="padding: 40px;">
+          <div style="font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px;">
+            O que nos diferencia
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <div class="card-icon" style="width:40px;height:40px;border-radius:10px;flex-shrink:0;margin:0;">
+                <i data-lucide="crosshair" style="width:18px;height:18px;color:var(--solar-gold);"></i>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Só atendemos integradores com operação ativa</div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;">Não trabalhamos com quem está começando do zero. Exigimos maturidade instalada para entregar resultado real.</div>
+              </div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <div class="card-icon" style="width:40px;height:40px;border-radius:10px;flex-shrink:0;margin:0;">
+                <i data-lucide="git-merge" style="width:18px;height:18px;color:var(--solar-gold);"></i>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Metodologia exclusiva para o setor solar</div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;">Um sistema de geração de demanda desenvolvido para o ciclo de venda fotovoltaico da atração ao fechamento.</div>
+              </div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.05);"></div>
+            <div style="display: flex; align-items: flex-start; gap: 14px;">
+              <div class="card-icon" style="width:40px;height:40px;border-radius:10px;flex-shrink:0;margin:0;">
+                <i data-lucide="bar-chart-2" style="width:18px;height:18px;color:var(--solar-gold);"></i>
+              </div>
+              <div>
+                <div style="font-weight:600;font-size:14px;margin-bottom:4px;">CPL e CAC sob controle</div>
+                <div style="font-size:13px;color:rgba(255,255,255,0.38);line-height:1.6;">Custo por lead e custo de aquisição monitorados. Você sabe exatamente quanto custa cada projeto fechado.</div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:28px;padding:14px;background:rgba(245,180,0,0.06);border:1px solid rgba(245,180,0,0.15);border-radius:10px;font-size:13px;color:rgba(255,255,255,0.55);display:flex;align-items:center;gap:10px;">
+            <i data-lucide="shield-check" style="width:15px;height:15px;color:var(--solar-gold);flex-shrink:0;"></i>
+            Diagnóstico gratuito · Sem compromisso
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ LOGO BAR ════════════════════════════════════════ -->
+<div class="logo-bar">
+  <div class="logo-track">
+    <div class="logo-item">INSTALAÇÃO RESIDENCIAL</div>
+    <div class="logo-item">INSTALAÇÃO COMERCIAL</div>
+    <div class="logo-item">INSTALAÇÃO INDUSTRIAL</div>
+    <div class="logo-item">INTEGRAÇÃO FOTOVOLTAICA</div>
+    <div class="logo-item">MANUTENÇÃO PREVENTIVA</div>
+    <div class="logo-item">DISTRIBUIÇÃO DE EQUIPAMENTOS</div>
+    <div class="logo-item">PROJETOS RURAIS</div>
+    <div class="logo-item">FINANCIAMENTO SOLAR</div>
+    <div class="logo-item">INSTALAÇÃO RESIDENCIAL</div>
+    <div class="logo-item">INSTALAÇÃO COMERCIAL</div>
+    <div class="logo-item">INSTALAÇÃO INDUSTRIAL</div>
+    <div class="logo-item">INTEGRAÇÃO FOTOVOLTAICA</div>
+    <div class="logo-item">MANUTENÇÃO PREVENTIVA</div>
+    <div class="logo-item">DISTRIBUIÇÃO DE EQUIPAMENTOS</div>
+    <div class="logo-item">PROJETOS RURAIS</div>
+    <div class="logo-item">FINANCIAMENTO SOLAR</div>
+  </div>
+</div>
+
+<!-- ══ O MERCADO ════════════════════════════════════════ -->
+<section class="section-padding" id="para-quem" style="background: linear-gradient(180deg, #080808 0%, rgba(8,8,8,0.95) 100%), url('https://images.unsplash.com/photo-1579613832125-5d34a13ffe2a?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center;">
+  <div class="container-premium">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="section-label reveal" style="margin-bottom:24px;">
+          <span></span> O momento do mercado
+        </div>
+        <h2 class="font-display reveal reveal-delay-1" style="font-size: clamp(1.9rem, 3.5vw, 2.9rem); line-height: 1.12; margin-bottom: 20px;">
+          O mercado solar cresce. Mas sua empresa está crescendo na <span class="solar-highlight">mesma velocidade</span>?
+        </h2>
+        <p class="reveal reveal-delay-2" style="font-size: 0.95rem; color: rgba(255,255,255,0.45); line-height: 1.85; margin-bottom: 32px;">
+          Empresas que já têm operação e time comercial enfrentam um gargalo diferente: <strong style="color:rgba(255,255,255,0.75);">não falta oportunidade no mercado, falta um sistema previsível de geração de demanda</strong> que sustente o crescimento sem depender do esforço manual dos sócios.
+        </p>
+        <p class="reveal reveal-delay-3" style="font-size: 0.95rem; color: rgba(255,255,255,0.45); line-height: 1.85;">
+          A pergunta não é se vale investir em marketing. É <em style="color:var(--solar-gold);font-style:normal;font-weight:600;">por que sua máquina de vendas ainda não está rodando sozinha.</em>
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 reveal reveal-delay-2">
+        <div class="market-card">
+          <div class="market-number">5º</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;">Maior mercado solar do mundo</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;">O Brasil já ultrapassou países como Alemanha e Espanha</div>
+          <div class="market-source">Fonte: ABSOLAR 2024</div>
+        </div>
+        <div class="market-card">
+          <div class="market-number">17%</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;">Da matriz elétrica nacional</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;">Energia solar já representa parcela significativa da geração</div>
+          <div class="market-source">Fonte: ANEEL 2024</div>
+        </div>
+        <div class="market-card" style="grid-column: span 2;">
+          <div class="market-number" style="font-size:2.2rem;">R$ 180bi+</div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:6px;">Em investimentos no setor até 2034</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.35);line-height:1.6;">Projeção do potencial de crescimento do mercado fotovoltaico brasileiro na próxima década</div>
+          <div class="market-source">Fonte: ABSOLAR / EPE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="section-divider"></div>
+
+<!-- ══ MÁQUINA DE CLIENTES SOLAR ══════════════════════ -->
+<section class="section-padding" id="metodo" style="background: linear-gradient(180deg, #060608 0%, #09101f 50%, #060608 100%); overflow: hidden; position: relative;">
+
+  <!-- Ambient light -->
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse at 50% 0%, rgba(245,180,0,0.05) 0%, transparent 60%);pointer-events:none;"></div>
+
+  <div class="container-premium" style="position:relative;z-index:1;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:56px;">
+      <div class="section-label reveal" style="justify-content:center;">
+        <span></span> Nosso método exclusivo
+      </div>
+      <h2 class="font-display reveal reveal-delay-1" style="font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;margin-bottom:16px;">
+        Máquina de <span class="solar-highlight">Clientes Solar</span>
+      </h2>
+      <p class="reveal reveal-delay-2" style="color:rgba(255,255,255,0.38);font-size:0.9rem;line-height:1.9;max-width:540px;margin:0 auto;letter-spacing:0.01em;">
+        Um sistema de geração de demanda em sete etapas criado exclusivamente para integradores de energia fotovoltaica que querem crescer com previsibilidade.
+      </p>
+
+      <!-- Integrator badge -->
+      <div class="reveal reveal-delay-3" style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(245,180,0,0.15);border-radius:100px;background:rgba(245,180,0,0.04);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(245,180,0,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;">Criado para integradores solares</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(245,180,0,0.15);border-radius:100px;background:rgba(245,180,0,0.04);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(245,180,0,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;">7 etapas do lead ao contrato</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(245,180,0,0.15);border-radius:100px;background:rgba(245,180,0,0.04);">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(245,180,0,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase;">Ciclo contínuo e escalável</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline overview bar (desktop only) -->
+    <div class="mcs-pipeline-bar reveal">
+      <div class="mcs-pipe-step mcs-top">
+        <div class="mcs-pipe-num">01</div>
+        <div class="mcs-pipe-label">Atração</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-top">
+        <div class="mcs-pipe-num">02</div>
+        <div class="mcs-pipe-label">Captura</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-top">
+        <div class="mcs-pipe-num">03</div>
+        <div class="mcs-pipe-label">Qualificação</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-middle">
+        <div class="mcs-pipe-num">04</div>
+        <div class="mcs-pipe-label">Diagnóstico</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-middle">
+        <div class="mcs-pipe-num">05</div>
+        <div class="mcs-pipe-label">Conversão</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-bottom">
+        <div class="mcs-pipe-num">06</div>
+        <div class="mcs-pipe-label">Prova Social</div>
+        <div class="mcs-pipe-line"></div>
+      </div>
+      <div class="mcs-pipe-step mcs-bottom">
+        <div class="mcs-pipe-num">07</div>
+        <div class="mcs-pipe-label">Reativação</div>
+      </div>
+    </div>
+
+    <!-- 7 Step Rows -->
+    <div class="mcs-steps-list">
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">01</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Atração</div>
+          <div class="mcs-row-desc">Campanhas de performance no Meta e Google segmentadas pelo perfil exato do decisor solar: residencial, C&I ou industrial, gerando demanda ativa onde o concorrente ainda não chegou.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-top">Topo de Funil</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">02</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 11.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.4 0.9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 8.37a16 16 0 006.72 6.72l1.74-1.74a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Captura</div>
+          <div class="mcs-row-desc">Landing pages otimizadas para conversão e fluxos de entrada via WhatsApp com resposta automatizada. Cada lead é registrado no CRM com dados de origem, perfil e intenção de compra.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-top">Topo de Funil</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">03</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Qualificação</div>
+          <div class="mcs-row-desc">Filtro de qualificação estruturado para separar oportunidades reais de curiosos. Critérios de BANT aplicados no primeiro contato: budget estimado, autoridade de decisão, necessidade validada e prazo de implantação.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-top">Topo de Funil</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">04</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Diagnóstico</div>
+          <div class="mcs-row-desc">Levantamento técnico da instalação, presencial ou remoto, com análise do consumo, enquadramento tarifário e dimensionamento do sistema. Proposta comercial estruturada com ROI, payback e comparativo de tarifa.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-mid">Meio de Funil</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">05</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Conversão</div>
+          <div class="mcs-row-desc">Cadência de follow-up estruturada com timing e argumentação definidos por perfil de cliente. Nutrição de leads com conteúdo técnico enquanto o ciclo de decisão avança, especialmente crítico no segmento solar, onde o prazo médio de fechamento ultrapassa 45 dias.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-bottom">Fundo de Funil</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">06</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Prova Social</div>
+          <div class="mcs-row-desc">Produção de cases documentados, depoimentos em vídeo e conteúdo de autoridade a partir de cada projeto concluído. O cliente satisfeito se torna ativo de marketing, reduzindo o CAC nos ciclos seguintes.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-bottom">Pós-Venda</div>
+      </div>
+
+      <div class="mcs-step-row reveal">
+        <div class="mcs-row-num">07</div>
+        <div class="mcs-row-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F5B400" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        </div>
+        <div class="mcs-row-body">
+          <div class="mcs-row-title">Reativação e Escala</div>
+          <div class="mcs-row-desc">Estratégias de remarketing para leads que não converteram na primeira janela, campanhas de indicação ativa para a base de clientes e expansão gradual de orçamento e cobertura geográfica conforme a operação se consolida.</div>
+        </div>
+        <div class="mcs-row-tag mcs-tag-bottom">Ciclo Contínuo</div>
+      </div>
+
+    </div><!-- /mcs-steps-list -->
+
+    <!-- Cycle note -->
+    <div class="mcs-cycle-badge reveal" style="margin-top:32px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,180,0,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+      <span>O ciclo se fecha na etapa 07 e reinicia na 01, gerando demanda contínua e previsível</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<div class="section-divider"></div>
+
+<!-- ══ DORES ════════════════════════════════════════════ -->
+<section class="section-padding" style="background: linear-gradient(180deg, #0A1020 0%, #080808 100%);">
+  <div class="container-premium">
+    <div class="max-w-2xl mx-auto text-center" style="margin-bottom: 60px;">
+      <div class="section-label reveal" style="justify-content:center; margin-bottom:20px;">
+        <span></span> O problema real
+      </div>
+      <h2 class="font-display reveal reveal-delay-1" style="font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.12; margin-bottom: 18px;">
+        Você vende. O problema é que <em style="font-style:normal;">escalar</em> depende de você
+      </h2>
+      <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.4); font-size: 0.95rem; line-height: 1.8;">
+        Empresas estruturadas não travam por falta de capacidade técnica. Travam porque a geração de demanda ainda é manual, imprevisível e dependente dos sócios.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="pain-card reveal reveal-delay-1">
+        <i data-lucide="alert-triangle" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Leads chegam, mas o time não dá conta</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">O volume aumentou, mas o processo de qualificação e follow-up ainda é feito na mão</div>
+        </div>
+      </div>
+      <div class="pain-card reveal reveal-delay-2">
+        <i data-lucide="x-circle" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">CAC alto sem saber por quê</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">Você investe em mídia mas não consegue rastrear qual canal gera os clientes que realmente fecham</div>
+        </div>
+      </div>
+      <div class="pain-card reveal reveal-delay-3">
+        <i data-lucide="trending-down" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Crescimento depende dos sócios</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">Quando você para de prospectar, o funil esvazia. A empresa ainda não tem demanda previsível sem você</div>
+        </div>
+      </div>
+      <div class="pain-card reveal reveal-delay-1">
+        <i data-lucide="users" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Agência que já contratou não entregou</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">Você já tentou tráfego pago com generalistas e gastou dinheiro sem resultado mensurável</div>
+        </div>
+      </div>
+      <div class="pain-card reveal reveal-delay-2">
+        <i data-lucide="eye-off" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Concorrente menor aparece mais</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">Empresas menores e com menos estrutura ganham visibilidade digital por terem marketing mais ativo</div>
+        </div>
+      </div>
+      <div class="pain-card reveal reveal-delay-3">
+        <i data-lucide="help-circle" style="width:20px;height:20px;color:#FF6B6B;flex-shrink:0;margin-top:2px;"></i>
+        <div>
+          <div style="font-weight:600;font-size:14px;margin-bottom:4px;">Marketing e vendas não conversam</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.38);">Leads chegam, mas o time comercial não está alinhado e a taxa de conversão continua baixa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUÇÕES ════════════════════════════════════════ -->
+<section class="section-padding" id="solucoes" style="background: #080808;">
+  <div class="container-premium">
+    <div class="max-w-2xl mx-auto text-center" style="margin-bottom: 60px;">
+      <div class="section-label reveal" style="justify-content:center;">
+        <span></span> Nossas soluções
+      </div>
+      <h2 class="font-display reveal reveal-delay-1" style="font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.12; margin-bottom: 16px;">
+        Estratégias para integradores que <span class="solar-highlight">já vendem</span> e querem dobrar
+      </h2>
+      <p class="reveal reveal-delay-2" style="color: rgba(255,255,255,0.4); font-size: 0.95rem; line-height: 1.8;">
+        Cada serviço foi construído para empresas com operação estruturada onde o problema não é capacidade técnica, é volume previsível de demanda qualificada.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon"><i data-lucide="mouse-pointer-click" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">Tráfego Pago</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Campanhas no Meta e Google com segmentação específica para o perfil de cliente que realmente converte no solar: residencial, comercial ou industrial.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon"><i data-lucide="map-pin" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">Domínio Regional</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Posicionamos sua empresa como a referência em energia solar na sua cidade ou região antes que o concorrente ocupe esse espaço.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon"><i data-lucide="share-2" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">Social Media</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Conteúdo que educa, gera confiança e constrói autoridade,falando a língua do cliente solar, respondendo as dúvidas antes mesmo da primeira ligação.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon"><i data-lucide="git-branch" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">Funil Comercial</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Da atração ao fechamento: estruturamos cada etapa do processo comercial para reduzir o ciclo de venda e aumentar a taxa de conversão dos seus leads.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon"><i data-lucide="layout" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">Sites e Landing Pages</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Páginas otimizadas para converter visitantes em leads qualificados, com linguagem, argumentos e calls-to-action calibrados para o comprador solar.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon"><i data-lucide="settings-2" style="width:20px;height:20px;color:var(--solar-gold);"></i></div>
+        <h3 class="font-heading" style="font-size:1.05rem;margin-bottom:10px;">CRM e Automação</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.75;">Follow-up automático, qualificação e agendamento para que nenhum lead esfrie,especialmente importante no solar, onde o ciclo de decisão é mais longo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SOCIAL PROOF VISUAL ══════════════════════════════ -->
+<section style="padding: 0; overflow: hidden; position: relative;">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; min-height: 320px;">
+    <!-- Image left -->
+    <div style="position:relative; overflow:hidden; min-height:320px;">
+      <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=960&q=80" alt="Instalação de painéis solares" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.75) saturate(0.8);">
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg, transparent 60%, #080808 100%);"></div>
+    </div>
+    <!-- Image right -->
+    <div style="position:relative; overflow:hidden; min-height:320px;">
+      <img src="https://images.unsplash.com/photo-1560472355-536de3962603?auto=format&fit=crop&w=960&q=80" alt="Sistema fotovoltaico instalado" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.75) saturate(0.8);">
+      <div style="position:absolute;inset:0;background:linear-gradient(270deg, transparent 60%, #080808 100%);"></div>
+    </div>
+  </div>
+  <!-- Overlay text centered -->
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;">
+    <div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;color:rgba(245,180,0,0.6);text-transform:uppercase;margin-bottom:14px;">Resultados que integradores enxergam</div>
+      <div style="font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2.4rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-0.03em;max-width:560px;">
+        Da campanha ao contrato <br><span style="color:#F5B400;">assinado.</span>
+      </div>
+    </div>
+  </div>
+  <!-- Bottom fade -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,#080808);"></div>
+  <!-- Top fade -->
+  <div style="position:absolute;top:0;left:0;right:0;height:80px;background:linear-gradient(#060608,transparent);"></div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ══ FAQ ═════════════════════════════════════════════ -->
+<section class="section-padding" id="faq" style="background: linear-gradient(180deg, #080808 0%, #0A1020 100%);">
+  <div class="container-premium">
+    <div class="max-w-2xl mx-auto text-center" style="margin-bottom: 60px;">
+      <div class="section-label reveal" style="justify-content:center;">
+        <span></span> Dúvidas frequentes
+      </div>
+      <h2 class="font-display reveal reveal-delay-1" style="font-size: clamp(1.9rem, 4vw, 2.9rem); line-height: 1.12;">
+        Perguntas que você <span class="solar-highlight">provavelmente tem</span>
+      </h2>
+    </div>
+
+    <div class="max-w-2xl mx-auto" style="display: flex; flex-direction: column; gap: 10px;">
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Vocês atendem qualquer tipo de empresa do setor solar?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não. A Nepex trabalha exclusivamente com integradores e instaladoras que já têm operação estruturada time comercial ativo, faturamento mensal acima de R$100k e ticket médio de projetos a partir de R$30k. Esse recorte nos permite entregar resultado real, não apenas leads. Se sua empresa está no início ou ainda não tem processo comercial definido, não somos a escolha certa para esse momento.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Quanto tempo leva para os primeiros resultados aparecerem?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Os primeiros leads qualificados costumam aparecer entre a 3ª e 5ª semana após o lançamento. Resultados consistentes e previsíveis se consolidam a partir do 2º mês. No mercado solar, o ciclo de fechamento também é mais longo,por isso estruturamos o funil para nutrir o lead até o momento da decisão.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Qual o investimento mínimo em mídia paga?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Trabalhamos com budgets a partir de R$3.000/mês em mídia paga. Esse valor permite campanhas eficientes no Meta e Google para uma ou duas cidades. O mais importante é a consistência: um orçamento menor mantido por mais tempo supera um orçamento alto descontinuado.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Preciso ter equipe de marketing interno?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não. Atuamos como seu departamento de marketing externo e especializado. Cuidamos de toda a estratégia, produção, gestão de campanhas e análise. Do seu lado, você precisa de alguém disponível para atender e converter os leads gerados,pode ser o próprio sócio ou um consultor comercial.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Como funciona o diagnóstico gratuito?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">É uma conversa direta onde entendemos o cenário da sua empresa: o que você já tem, o que está funcionando, o que falta e o que daria para fazer. Sem apresentação de vendas, sem compromisso. Se fizer sentido para os dois lados, apresentamos uma proposta personalizada.</div>
+        </div>
+      </div>
+      <div class="faq-item reveal reveal-delay-3">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Qual a duração mínima de contrato?
+          <div class="faq-icon"><i data-lucide="plus" style="width:14px;height:14px;"></i></div>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Trabalhamos com contratos de 6 meses,o tempo necessário para implementar, testar, otimizar e escalar uma estratégia de forma consistente. Marketing de resultado não é uma campanha pontual: é um sistema construído ao longo do tempo. Mas não acreditamos em fidelidade forçada,você fica porque os resultados aparecem.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ═══════════════════════════════════════ -->
+<section class="section-padding" style="background: #080808; position: relative;">
+    <div style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1920&q=80');background-size:cover;background-position:center;opacity:0.04;pointer-events:none;"></div>
+  <div class="container-premium">
+    <div class="cta-box reveal">
+      <div class="orb" style="width:600px;height:600px;background:radial-gradient(circle,rgba(245,180,0,0.07) 0%,transparent 70%);top:-250px;left:50%;transform:translateX(-50%);position:absolute;filter:blur(60px);"></div>
+      <div style="position:relative;z-index:1;">
+        <div class="section-label" style="justify-content:center;margin-bottom:24px;">
+          <span></span> Próximo passo
+        </div>
+        <h2 class="font-display" style="font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin-bottom: 20px; max-width: 680px; margin-left: auto; margin-right: auto;">
+          Sua empresa tem estrutura. Falta o sistema que gera demanda sem você
+        </h2>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.45); margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.85;">
+          Conversamos com você, entendemos o cenário atual da sua empresa e o que já está funcionando. A partir disso, identificamos o que daria para fazer e como. Sem pitch, sem compromisso.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button class="btn-primary" onclick="openModal('form-modal')" style="padding:16px 36px;font-size:15px;font-weight:700;">
+            Quero meu Diagnóstico Gratuito
+            <i data-lucide="arrow-right" style="width:17px;height:17px;"></i>
+          </button>
+        </div>
+        <div style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.25);">
+          <i data-lucide="shield-check" style="width:13px;height:13px;color:rgba(245,180,0,0.4);"></i>
+          Sem compromisso · 100% gratuito
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════ -->
+<footer style="background:#050505;border-top:1px solid rgba(255,255,255,0.04);padding:60px 0 32px;">
+  <div class="container-premium">
+    <div class="grid md:grid-cols-4 gap-12" style="margin-bottom:48px;">
+      <div style="grid-column: span 1;">
+        <div style="margin-bottom:12px;">
+          <img src="logo-nepex-transparent.png" alt="NEPEX" style="height:42px;width:auto;object-fit:contain;filter:brightness(1.1);">
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.28);line-height:1.7;">Marketing especializado para integradores solares que já vendem e querem escalar com previsibilidade.</p>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">Soluções</div>
+        <ul style="list-style:none;">
+          <li style="margin-bottom:10px;"><a href="#solucoes" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Tráfego Pago</a></li>
+          <li style="margin-bottom:10px;"><a href="#solucoes" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Social Media</a></li>
+          <li style="margin-bottom:10px;"><a href="#solucoes" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Funil Comercial</a></li>
+          <li><a href="#solucoes" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">CRM e Automação</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">Navegação</div>
+        <ul style="list-style:none;">
+          <li style="margin-bottom:10px;"><a href="#para-quem" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">O Mercado Solar</a></li>
+          <li style="margin-bottom:10px;"><a href="#metodo" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Método Nepex</a></li>
+          <li><a href="#faq" style="font-size:13px;color:rgba(255,255,255,0.38);text-decoration:none;" onmouseover="this.style.color='#F5B400'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:16px;">Contato</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.38);margin-bottom:10px;">📱 <span id="footer-whatsapp">(19) 99450-5799</span></div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.38);">📧 <span id="footer-email">Contato@nepexsolar.com.br</span></div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.05);padding-top:28px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;">
+      <p style="font-size:12px;color:rgba(255,255,255,0.18);">© 2025 Nepex Solar. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:20px;">
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.18);text-decoration:none;">Política de Privacidade</a>
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,0.18);text-decoration:none;">Termos de Serviço</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ MODAL ═══════════════════════════════════════════ -->
+<div id="form-modal" class="modal">
+  <div class="modal-content" style="max-width:540px;">
+    <div class="modal-header-bar">
+      <button class="form-back-btn" id="form-back-btn" onclick="formNav('back')">
+        <i data-lucide="arrow-left" style="width:15px;height:15px;"></i> Voltar
+      </button>
+      <span class="form-step-label" id="form-step-label"></span>
+      <button style="background:none;border:none;color:rgba(255,255,255,0.35);cursor:pointer;font-size:18px;line-height:1;padding:4px 8px;" onclick="closeModal('form-modal')">✕</button>
+    </div>
+    <div class="form-progress-track">
+      <div class="form-progress-fill" id="form-progress-fill" style="width:0%"></div>
+    </div>
+    <div class="modal-body" id="form-body">
+
+    </div><!-- /form-body -->
+  </div>
+</div>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════ -->
+<script>
+  /* ── SDKs ── */
+  let currentRecordCount = 0;
+  const dataHandler = { onDataChanged(data) { currentRecordCount = data.length; } };
+  const defaultConfig = {
+    agency_name: "Nepex Solar",
+    footer_whatsapp: "(19) 99450-5799",
+    footer_email: "Contato@nepexsolar.com.br"
+  };
+  let config = { ...defaultConfig };
+
+  async function initializeSDKs() {
+    if (window.dataSdk) await window.dataSdk.init(dataHandler);
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: (c) => { config = c; updateUI(); },
+        mapToCapabilities: () => ({ recolorables:[], borderables:[], fontEditable:undefined, fontSizeable:undefined }),
+        mapToEditPanelValues: () => new Map(Object.entries(config))
+      });
+    }
+  }
+
+  function updateUI() {
+    const s = (id, val) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+    s('agency-name',     config.agency_name     || defaultConfig.agency_name);
+    s('footer-whatsapp', config.footer_whatsapp || defaultConfig.footer_whatsapp);
+    s('footer-email',    config.footer_email    || defaultConfig.footer_email);
+  }
+
+  /* ── Modal ── */
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (id === 'form-modal') { formStep = 0; formAnswers = {}; renderForm(); }
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  window.addEventListener('click', e => { if (e.target.classList.contains('modal')) closeModal(e.target.id); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.modal.active').forEach(m => closeModal(m.id)); });
+
+  /* ── Form: 5 perguntas para SDR ── */
+  const steps = [
+    { id:'identity',   type:'inputs', num:1,
+      title:'Como você se chama e qual é o seu WhatsApp?',
+      hint:'Nosso time vai entrar em contato assim que você finalizar.',
+      fields:[
+        { id:'f-name',  type:'text', label:'Seu nome',         placeholder:'Como prefere ser chamado?' },
+        { id:'f-phone', type:'tel',  label:'WhatsApp com DDD', placeholder:'(XX) 9XXXX-XXXX' }
+      ]
+    },
+    { id:'company', type:'inputs', num:2,
+      title:'Qual é o nome da sua empresa e em qual estado vocês atuam?',
+      hint:'Isso nos ajuda a mapear o mercado regional antes de entrar em contato.',
+      fields:[
+        { id:'f-company', type:'text', label:'Nome da empresa', placeholder:'Nome da sua integradora' },
+        { id:'f-state',   type:'text', label:'Estado (UF)',     placeholder:'Ex: SP, CE, MG...' }
+      ]
+    },
+    { id:'revenue', type:'choice', num:3,
+      title:'Qual é o faturamento médio mensal da empresa hoje?',
+      hint:'Nos ajuda a entender se o momento é certo para trabalharmos juntos.',
+      options:[
+        { val:'Até R$50k/mês',       icon:'🌱', sub:'Ainda em crescimento' },
+        { val:'R$50k a R$150k/mês',  icon:'📈', sub:'Crescimento ativo' },
+        { val:'R$150k a R$500k/mês', icon:'🚀', sub:'Operação estruturada' },
+        { val:'Acima de R$500k/mês', icon:'⚡', sub:'Alta escala' }
+      ]
+    },
+    { id:'projects', type:'choice', num:4,
+      title:'Quantos projetos solares fecham por mês em média?',
+      hint:'Queremos entender o volume atual da sua operação.',
+      options:[
+        { val:'1 a 3 projetos',      icon:'🔆', sub:'Ticket alto, volume focado' },
+        { val:'4 a 10 projetos',     icon:'📊', sub:'Operação em crescimento' },
+        { val:'11 a 30 projetos',    icon:'⚡', sub:'Volume consistente' },
+        { val:'Mais de 30 projetos', icon:'🏭', sub:'Grande escala' }
+      ]
+    },
+    { id:'challenge', type:'choice', num:5,
+      title:'Qual é o seu maior desafio para crescer as vendas agora?',
+      hint:'Escolha o que mais se aproxima da sua realidade.',
+      options:[
+        { val:'Poucos leads chegando',    icon:'📉', sub:'Falta volume de oportunidades' },
+        { val:'Leads sem qualidade',      icon:'🎯', sub:'Chegam mas não convertem' },
+        { val:'Pipeline desorganizado',   icon:'🗂️', sub:'Processo comercial travado' },
+        { val:'Dependência de indicação', icon:'👥', sub:'Sem previsibilidade de demanda' }
+      ]
+    }
+  ];
+
+  let formStep = 0;
+  let formAnswers = {};
+
+  function renderForm() {
+    const total   = steps.length;
+    const isDone  = formStep === 'success';
+    const stepObj = !isDone ? steps[formStep] : null;
+    const progress = isDone ? 100 : Math.round((formStep / total) * 100);
+
+    const backBtn      = document.getElementById('form-back-btn');
+    const stepLabelEl  = document.getElementById('form-step-label');
+    const progressFill = document.getElementById('form-progress-fill');
+
+    if (backBtn)     backBtn.style.visibility = (formStep > 0 && !isDone) ? 'visible' : 'hidden';
+    if (stepLabelEl) stepLabelEl.textContent  = isDone ? 'Concluído' : (String(stepObj.num).padStart(2,'0') + ' / 05');
+    if (progressFill) {
+      progressFill.style.width      = progress + '%';
+      progressFill.style.background = isDone
+        ? 'var(--accent-green)'
+        : 'linear-gradient(90deg, #F5B400, #FFD234)';
+    }
+
+    const body = document.getElementById('form-body');
+    if (!body) return;
+    body.innerHTML = isDone
+      ? renderSuccess()
+      : stepObj.type === 'inputs'
+        ? renderInputStep(stepObj)
+        : renderChoiceStep(stepObj);
+    body.scrollTop = 0;
+    lucide.createIcons();
+
+    // auto-focus first input
+    const first = body.querySelector('input');
+    if (first) setTimeout(() => first.focus(), 80);
+  }
+
+  /* ── Input step (texto livre) ── */
+  function renderInputStep(step) {
+    const saved = formAnswers[step.id] || {};
+    const fieldsHTML = step.fields.map(f => `
+      <div style="margin-bottom:16px;">
+        <label style="display:block;margin-bottom:7px;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);">${f.label}</label>
+        <input type="${f.type}" id="${f.id}" placeholder="${f.placeholder}" value="${saved[f.id]||''}"
+          style="width:100%;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.1);border-radius:12px;color:#fff;font-family:'Poppins',sans-serif;font-size:15px;padding:14px 18px;outline:none;transition:border-color .2s,box-shadow .2s;box-sizing:border-box;"
+          onfocus="this.style.borderColor='rgba(245,180,0,0.6)';this.style.boxShadow='0 0 0 3px rgba(245,180,0,0.08)'"
+          onblur="this.style.borderColor='rgba(255,255,255,0.1)';this.style.boxShadow='none'"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();formNav('next')}">
+      </div>`).join('');
+
+    return `
+      <div style="padding:8px 0 28px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,180,0,0.7);margin-bottom:14px;">Pergunta ${step.num} de 5</div>
+        <div style="font-size:1.25rem;font-weight:700;font-family:'Sora',sans-serif;color:#fff;line-height:1.4;margin-bottom:${step.hint?'10px':'24px'}">${step.title}</div>
+        ${step.hint ? `<div style="font-size:13px;color:rgba(255,255,255,0.38);margin-bottom:24px;line-height:1.6;">${step.hint}</div>` : ''}
+        ${fieldsHTML}
+        <button onclick="formNav('next')"
+          style="margin-top:8px;width:100%;background:#F5B400;color:#000;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;border:none;border-radius:12px;padding:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s;"
+          onmouseover="this.style.opacity='.88'" onmouseout="this.style.opacity='1'">
+          ${formStep === steps.length - 1 ? 'Enviar e aguardar contato' : 'Continuar'}
+          <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+        </button>
+        <p style="font-size:11px;color:rgba(255,255,255,0.15);text-align:center;margin-top:14px;">Seus dados são confidenciais e nunca serão compartilhados.</p>
+      </div>`;
+  }
+
+  /* ── Choice step (múltipla escolha) ── */
+  function renderChoiceStep(step) {
+    const saved = formAnswers[step.id] || '';
+    const optsHTML = step.options.map(opt => {
+      const isSel = saved === opt.val;
+      return `
+        <div class="sdr-opt${isSel?' sdr-sel':''}" onclick="pickOption(this,'${step.id}','${opt.val.replace(/'/g,"\\'")}')"
+          style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:rgba(255,255,255,${isSel?'0.07':'0.03'});border:1.5px solid rgba(${isSel?'245,180,0,0.5':'255,255,255,0.08'});border-radius:12px;cursor:pointer;transition:all .18s;margin-bottom:10px;">
+          <span style="font-size:1.4rem;line-height:1;flex-shrink:0;">${opt.icon}</span>
+          <div style="flex:1;">
+            <div style="font-size:14px;font-weight:600;color:${isSel?'#F5B400':'#e6e6e6'};line-height:1.3;">${opt.val}</div>
+            <div style="font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:2px;">${opt.sub}</div>
+          </div>
+          <div style="width:18px;height:18px;border-radius:50%;border:2px solid ${isSel?'#F5B400':'rgba(255,255,255,0.2)'};background:${isSel?'#F5B400':'transparent'};flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s;">
+            ${isSel ? '<div style="width:7px;height:7px;border-radius:50%;background:#000;"></div>' : ''}
+          </div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div style="padding:8px 0 28px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,180,0,0.7);margin-bottom:14px;">Pergunta ${step.num} de 5</div>
+        <div style="font-size:1.25rem;font-weight:700;font-family:'Sora',sans-serif;color:#fff;line-height:1.4;margin-bottom:${step.hint?'10px':'24px'}">${step.title}</div>
+        ${step.hint ? `<div style="font-size:13px;color:rgba(255,255,255,0.38);margin-bottom:20px;line-height:1.6;">${step.hint}</div>` : ''}
+        ${optsHTML}
+      </div>`;
+  }
+
+  function pickOption(el, stepId, val) {
+    // visual feedback
+    document.querySelectorAll('#form-body .sdr-opt').forEach(o => {
+      o.style.background   = 'rgba(255,255,255,0.03)';
+      o.style.borderColor  = 'rgba(255,255,255,0.08)';
+      o.querySelector('div>div:last-child') && (o.querySelector('div>div:last-child').style.borderColor='rgba(255,255,255,0.2)');
+    });
+    el.style.background  = 'rgba(255,255,255,0.07)';
+    el.style.borderColor = 'rgba(245,180,0,0.5)';
+    formAnswers[stepId]  = val;
+    setTimeout(() => formNav('next'), 300);
+  }
+
+  /* ── Success ── */
+  function renderSuccess() {
+    const name = formAnswers['identity'] ? formAnswers['identity']['f-name'] || '' : '';
+    return `
+      <div style="text-align:center;padding:12px 0 8px;">
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,0.12);border:2px solid rgba(34,197,94,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <i data-lucide="phone-call" style="width:28px;height:28px;color:#22c55e;"></i>
+        </div>
+        <h2 style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:10px;">
+          ${name ? name.split(' ')[0] + ', seu cadastro foi recebido!' : 'Cadastro recebido!'}
+        </h2>
+        <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.75;margin-bottom:24px;max-width:340px;margin-left:auto;margin-right:auto;">
+          Nosso SDR já foi notificado e vai te ligar no WhatsApp
+          <strong style="color:rgba(255,255,255,0.8);">em instantes</strong>
+          para uma conversa rápida de qualificação.
+        </p>
+        <div style="background:rgba(245,180,0,0.06);border:1px solid rgba(245,180,0,0.15);border-radius:14px;padding:18px 20px;margin-bottom:24px;text-align:left;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(245,180,0,0.65);margin-bottom:10px;">O que acontece agora</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">
+              <span style="color:#F5B400;font-weight:700;flex-shrink:0;">1.</span> Nosso SDR recebe suas respostas instantaneamente
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">
+              <span style="color:#F5B400;font-weight:700;flex-shrink:0;">2.</span> Ele te liga para uma conversa rápida de 10 minutos
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;">
+              <span style="color:#F5B400;font-weight:700;flex-shrink:0;">3.</span> Se houver fit, agendamos uma call estratégica com nosso especialista
+            </div>
+          </div>
+        </div>
+        <button onclick="closeModal('form-modal')"
+          style="width:100%;background:transparent;border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-family:'Poppins',sans-serif;font-size:13px;border-radius:10px;padding:12px;cursor:pointer;transition:all .2s;"
+          onmouseover="this.style.borderColor='rgba(255,255,255,0.25)';this.style.color='rgba(255,255,255,0.7)'"
+          onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='rgba(255,255,255,0.4)'">
+          Fechar e continuar navegando
+        </button>
+      </div>`;
+  }
+
+  /* ── Navegação ── */
+  function formNav(direction) {
+    if (direction === 'next') {
+      const step = steps[formStep];
+
+      if (step.type === 'inputs') {
+        const vals = {};
+        let valid = true;
+        step.fields.forEach(f => {
+          const el = document.getElementById(f.id);
+          const v  = el ? el.value.trim() : '';
+          if (!v) {
+            if (el) { el.style.borderColor = 'rgba(255,107,107,0.6)'; el.focus(); }
+            valid = false;
+          } else {
+            vals[f.id] = v;
+          }
+        });
+        if (!valid) return;
+        formAnswers[step.id] = vals;
+      }
+
+      if (formStep >= steps.length - 1) { submitForm(); return; }
+      formStep++;
+
+    } else if (direction === 'back') {
+      if (formStep > 0) formStep--;
+    }
+    renderForm();
+  }
+
+  /* ── Envio ── */
+  async function submitForm() {
+    if (currentRecordCount >= 999) { alert('Limite atingido'); return; }
+    const body = document.getElementById('form-body');
+    body.innerHTML = `<div style="text-align:center;padding:80px 20px;">
+      <div style="width:40px;height:40px;border:3px solid rgba(245,180,0,0.2);border-top-color:#F5B400;border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px;"></div>
+      <p style="color:rgba(255,255,255,0.35);font-size:14px;font-family:Poppins,sans-serif;">Enviando seus dados...</p>
+    </div>`;
+
+    const id  = formAnswers['identity']  || {};
+    const co  = formAnswers['company']   || {};
+    const data = {
+      name:      id['f-name']    || '',
+      phone:     id['f-phone']   || '',
+      company:   co['f-company'] || '',
+      state:     co['f-state']   || '',
+      revenue:   formAnswers['revenue']   || '',
+      projects:  formAnswers['projects']  || '',
+      challenge: formAnswers['challenge'] || '',
+      timestamp: new Date().toISOString()
+    };
+
+    // ── Envio por email via Web3Forms ──
+    let ok = false;
+    try {
+      const emailBody =
+        `🔆 NOVO LEAD - NEPEX\n\n` +
+        `👤 Nome:        ${data.name}\n` +
+        `📱 WhatsApp:    ${data.phone}\n` +
+        `🏢 Empresa:     ${data.company}\n` +
+        `📍 Estado:      ${data.state}\n` +
+        `💰 Faturamento: ${data.revenue}\n` +
+        `📊 Projetos/mês: ${data.projects}\n` +
+        `⚠️ Desafio:     ${data.challenge}\n\n` +
+        `🕐 Recebido em: ${new Date().toLocaleString('pt-BR')}`;
+
+      // Notificação WhatsApp via Make + Z-API (fire-and-forget)
+      fetch('https://hook.us2.make.com/8i6b7by55ie4m806l9dlmg9duunfdpjf', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome:         data.name,
+          whatsapp:     data.phone,
+          empresa:      data.company,
+          estado:       data.state,
+          faturamento:  data.revenue,
+          projetos_mes: data.projects,
+          desafio:      data.challenge
+        })
+      }).catch(() => {});
+
+      const res = await fetch('https://formspree.io/f/mbdeagzp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Novo Lead NEPEX - ${data.name} (${data.state})`,
+          nome:     data.name,
+          whatsapp: data.phone,
+          empresa:  data.company,
+          estado:   data.state,
+          faturamento: data.revenue,
+          projetos_mes: data.projects,
+          desafio:  data.challenge,
+          mensagem: emailBody
+        })
+      });
+      const json = await res.json();
+      ok = json.ok === true;
+    } catch(e) {
+      ok = false;
+    }
+
+    // Também salva no dataSdk se disponível
+    if (window.dataSdk) { window.dataSdk.create(data); }
+
+    if (ok) { window.location.href = '/obrigado.html'; }
+    else {
+      body.innerHTML = `<div style="text-align:center;padding:40px 20px;">
+        <p style="color:rgba(255,107,107,0.8);margin-bottom:16px;font-family:Poppins,sans-serif;font-size:14px;">Erro ao enviar. Tente novamente.</p>
+        <button onclick="formNav('back')" style="background:none;border:1px solid rgba(255,255,255,0.2);color:#fff;padding:10px 20px;border-radius:8px;cursor:pointer;font-family:Poppins,sans-serif;">Voltar</button>
+      </div>`;
+    }
+  }
+
+  /* ── Scroll progress ── */
+  const progressEl = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+    progressEl.style.width = pct + '%';
+  }, { passive: true });
+
+  /* ── Header scroll ── */
+  const headerEl = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    headerEl.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── Active nav ── */
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = ['para-quem','solucoes','metodo','faq'].map(id => document.getElementById(id)).filter(Boolean);
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) current = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }, { passive: true });
+
+  /* ── Scroll reveal ── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── FAQ ── */
+  function toggleFaq(btn) {
+    const item   = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const inner  = item.querySelector('.faq-answer-inner');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-answer').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = inner.scrollHeight + 'px';
+    }
+  }
+
+  /* ── Init ── */
+  initializeSDKs();
+  updateUI();
+  lucide.createIcons();
+</script>
+</body>
+</html>
