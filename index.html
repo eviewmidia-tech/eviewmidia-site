@@ -104,12 +104,19 @@
     }
 
     h1.hero-main {
-      font-size: 64px;
-      line-height: 1.08;
-      margin-bottom: 24px;
+      font-size: 72px;
+      line-height: 1.06;
+      margin-bottom: 28px;
       font-weight: 900;
-      max-width: 640px;
-      letter-spacing: -0.03em;
+      max-width: 660px;
+      letter-spacing: -0.04em;
+      /* headline branco — dourado só no .highlight */
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: #F5F5F5;
+      background-clip: unset;
+      text-shadow: none;
+      color: #F5F5F5;
     }
 
     h2 {
@@ -135,13 +142,10 @@
 
     .label-section {
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: #666;
       text-transform: uppercase;
       margin-bottom: 24px;
       display: flex;
@@ -319,11 +323,33 @@
     }
 
     nav.navbar.scrolled {
-      background: rgba(3, 3, 3, 0.78);
+      background: rgba(3, 3, 3, 0.82);
       backdrop-filter: blur(28px) saturate(200%);
       -webkit-backdrop-filter: blur(28px) saturate(200%);
       border-bottom: 1px solid rgba(255, 200, 0, 0.11);
       box-shadow: 0 1px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .navbar-cta {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      background: transparent;
+      color: #FFD700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .navbar-cta:hover {
+      background: #FFD700;
+      color: #080808;
+      border-color: #FFD700;
     }
 
     .navbar-logo {
@@ -360,11 +386,14 @@
     /* ============ HERO SECTION ============ */
     .hero {
       height: 100%;
-      min-height: 820px;
+      min-height: 900px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #020202;
+      background:
+        radial-gradient(ellipse 55% 65% at 72% 50%, rgba(255, 140, 0, 0.055) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 45% at 18% 40%, rgba(255, 215, 0, 0.03) 0%, transparent 60%),
+        #020202;
       position: relative;
       overflow: hidden;
       margin-top: 80px;
@@ -564,18 +593,24 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       opacity: 0;
-      background: rgba(255,140,0,0.08);
-      border: 1px solid rgba(255,140,0,0.28);
-      padding: 7px 16px;
-      border-radius: 100px;
+      background: transparent;
+      border: none;
+      border-left: 2px solid #FFD700;
+      padding: 4px 0 4px 14px;
+      border-radius: 0;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      color: #FF9D40;
+      letter-spacing: 0.18em;
+      color: #888;
+      text-transform: uppercase;
       animation: fadeIn 0.5s ease 0.1s forwards;
       width: fit-content;
+    }
+
+    .hero-label .dot-pulse {
+      display: none;
     }
 
     .hero h1 {
@@ -585,10 +620,11 @@
     }
 
     .hero-subheadline {
-      font-size: 18px;
-      color: #CCCCCC;
-      line-height: 1.75;
-      margin-bottom: 32px;
+      font-size: 17px;
+      color: #888;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 520px;
       animation: fadeIn 0.6s ease 0.8s forwards;
       opacity: 0;
     }
@@ -2593,6 +2629,7 @@
 
     /* ============ RESPONSIVIDADE ============ */
     @media (max-width: 1024px) {
+      .navbar-cta { display: none; }
       .hero { flex-direction: column; gap: 40px; min-height: auto; padding: 40px 0; }
       .hero-left, .hero-right { padding: 40px; max-width: 100%; }
       h1 { font-size: 56px; }
@@ -2794,6 +2831,7 @@
     <li><a href="#resultados">Resultados</a></li>
     <li><a href="#contato">Contato</a></li>
    </ul>
+   <button class="navbar-cta" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior:'smooth'})">Solicitar diagnóstico</button>
   </nav>
 
   <!-- ============ HERO ============ -->
