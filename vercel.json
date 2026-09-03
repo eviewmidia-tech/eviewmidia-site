@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/nexttruck",
+      "destination": "https://nextruck.com.br",
+      "permanent": true
+    },
+    {
+      "source": "/nexttruck/:path*",
+      "destination": "https://nextruck.com.br/:path*",
+      "permanent": true
+    }
+  ]
+}
