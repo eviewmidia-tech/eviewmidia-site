@@ -3,8 +3,8 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eview Mídia - Assessoria de Marketing e Crescimento</title>
-  <meta name="description" content="Assessoria de marketing e crescimento: estratégia, comunicação, produção audiovisual própria e geração de demanda. Nascemos no interior de São Paulo; na Performance, atuamos em todo o Brasil.">
+  <title>Eview Mídia - Assessoria e Performance de Marketing</title>
+  <meta name="description" content="Eview Mídia: duas soluções de marketing. Eview Assessoria para empresas do Circuito das Águas e Região de Campinas. Eview Performance para aquisição de clientes em todo o Brasil.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <!-- Google tag (gtag.js) -->
@@ -2893,6 +2893,103 @@
       .cta-glow { box-shadow: 0 0 28px rgba(255, 215, 0, 0.5); }
     }
 
+    /* ============ HERO: 2 SOLUÇÕES ============ */
+    .hero { height: auto !important; min-height: 100vh; padding-top: 40px; padding-bottom: 40px; }
+    h1.hero-main { font-size: clamp(44px, 5.2vw, 68px) !important; line-height: 1.05; max-width: 820px; margin-left: auto; margin-right: auto; }
+    section[id] { scroll-margin-top: 90px; }
+    .hero-solutions { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; width: 100%; max-width: 860px; margin: 8px auto 32px; text-align: left; opacity: 0; animation: fadeIn 0.6s ease 0.9s forwards; }
+    .hs-card {
+      display: flex; flex-direction: column; gap: 8px; padding: 22px 24px; border-radius: 12px; text-decoration: none;
+      background: rgba(10, 10, 10, 0.72); border: 1px solid rgba(255, 215, 0, 0.22);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .hs-card:hover { transform: translateY(-3px); border-color: #FFD700; background: rgba(20, 16, 4, 0.85); }
+    .hs-tag { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 215, 0, 0.12); color: #FFD700; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+    .hs-tag i { width: 12px; height: 12px; }
+    .hs-num { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; color: #777; text-transform: uppercase; }
+    .hs-name { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 800; color: #FFF; line-height: 1.2; }
+    .hs-name b { color: #FFD700; font-weight: 800; }
+    .hs-desc { font-size: 14px; color: #B5B5B5; line-height: 1.55; }
+    .hs-region { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #EDEDED; padding-top: 10px; border-top: 1px solid rgba(255, 255, 255, 0.08); margin-top: 2px; }
+    .hs-region i { width: 15px; height: 15px; color: #FFD700; flex-shrink: 0; }
+    .hs-link { font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: #FFD700; letter-spacing: 0.04em; }
+
+    /* ============ COMPARATIVO DAS 2 SOLUÇÕES ============ */
+    .compare { padding: 110px 0; background: #080808; }
+    .compare-head { text-align: center; max-width: 780px; margin: 0 auto 56px; }
+    .compare-head .label-section { justify-content: center; }
+    .compare-head h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; color: #F5F5F5; margin-bottom: 16px; }
+    .compare-head h2 span { color: #FFD700; }
+    .compare-head p { font-size: 16px; color: #999; margin: 0; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1120px; margin: 0 auto; }
+    .compare-col { display: flex; flex-direction: column; background: #0E0E0E; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 36px 32px 32px; }
+    .compare-col--assessoria { border-color: rgba(255, 215, 0, 0.4); box-shadow: 0 0 50px rgba(255, 215, 0, 0.06); }
+    .compare-top { padding-bottom: 24px; margin-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+    .compare-top .hs-tag { margin-bottom: 14px; }
+    .compare-top h3 { font-size: 28px; font-weight: 800; color: #FFF; margin: 0 0 8px; }
+    .compare-top h3 b { color: #FFD700; }
+    .compare-top p { font-size: 15px; color: #A8A8A8; margin: 0; }
+    .compare-list { list-style: none; padding: 0; margin: 0 0 28px; flex: 1; }
+    .compare-list li { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 14px; color: #D6D6D6; line-height: 1.55; }
+    .compare-list li:last-child { border-bottom: none; }
+    .cl-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #777; padding-top: 3px; }
+    .cl-strong { color: #FFD700; font-weight: 700; }
+    .compare-col .btn.cta-glow { align-self: stretch; justify-content: space-between; }
+
+    /* ============ AUTOMAÇÕES (PERFORMANCE) ============ */
+    .automations { margin-top: 80px; padding-top: 48px; border-top: 1px solid rgba(255, 215, 0, 0.15); }
+    .automations-head { max-width: 720px; margin-bottom: 32px; }
+    .automations-head h3 { font-size: clamp(22px, 2.4vw, 30px); color: #FFF; margin-bottom: 10px; line-height: 1.25; }
+    .automations-head h3 span { color: #FFD700; }
+    .automations-head p { font-size: 15px; color: #999; margin: 0; }
+    .automations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .auto-card { background: #0F0F0F; border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 10px; padding: 24px 22px; transition: border-color 0.2s ease, transform 0.2s ease; }
+    .auto-card:hover { border-color: rgba(255, 215, 0, 0.4); transform: translateY(-3px); }
+    .auto-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; background: rgba(255, 215, 0, 0.1); margin-bottom: 16px; }
+    .auto-icon i { width: 20px; height: 20px; color: #FFD700; }
+    .auto-card h4 { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 700; color: #FFF; margin: 0 0 8px; line-height: 1.3; }
+    .auto-card p { font-size: 13.5px; color: #999; line-height: 1.6; margin: 0; }
+
+    /* ============ PORTFÓLIO ============ */
+    .portfolio { padding: 110px 0; background: linear-gradient(180deg, #0A0A0A 0%, #080808 100%); }
+    .portfolio-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: end; margin-bottom: 40px; }
+    .portfolio-head h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; color: #F5F5F5; margin: 0; }
+    .portfolio-head h2 span { color: #FFD700; }
+    .portfolio-head p { font-size: 15px; color: #999; margin: 0; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 12px; }
+    .pf-item { position: relative; overflow: hidden; border-radius: 10px; background: #111; margin: 0; }
+    .pf-item img, .pf-item video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+    .pf-item:hover img, .pf-item:hover video { transform: scale(1.05); }
+    .pf-item--feature { grid-column: span 2; grid-row: span 2; background: #111 url("hero-bg.jpg") center / cover no-repeat; }
+    .pf-item figcaption {
+      position: absolute; left: 0; right: 0; bottom: 0; padding: 28px 14px 12px;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.85));
+      font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 700; color: #FFF; letter-spacing: 0.02em;
+    }
+    .pf-item figcaption small { display: block; font-family: 'Inter', sans-serif; font-weight: 400; font-size: 11px; color: #FFD700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+    .portfolio-note { margin-top: 20px; font-size: 13px; color: #666; text-align: center; }
+
+    @media (max-width: 1024px) {
+      .automations-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-head { grid-template-columns: 1fr; gap: 16px; }
+      .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .hero { min-height: auto; padding-top: 16px; padding-bottom: 0; }
+      h1.hero-main { font-size: 36px !important; line-height: 1.1; }
+      .hero-solutions { grid-template-columns: 1fr; gap: 12px; margin: 4px 0 24px; padding: 0 4px; }
+      .hs-card { padding: 18px; }
+      .hs-name { font-size: 20px; }
+      .compare { padding: 72px 0; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-col { padding: 28px 20px 24px; }
+      .compare-list li { grid-template-columns: 1fr; gap: 4px; padding: 14px 0; }
+      .automations { margin-top: 56px; padding-top: 36px; }
+      .automations-grid { grid-template-columns: 1fr; }
+      .portfolio { padding: 72px 0; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; gap: 8px; }
+    }
+
     /* ============ RESPONSIVIDADE ============ */
     @media (max-width: 1024px) {
       .navbar-cta { display: none; }
@@ -3262,11 +3359,11 @@
   <nav class="navbar">
    <div class="navbar-logo"><img src="logo.png?v=2" alt="Eview Mídia" style="height: 24px; width: auto;"></div>
    <ul>
-    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#solucoes">Soluções</a></li>
     <li><a href="#assessoria">Assessoria</a></li>
     <li><a href="#performance">Performance</a></li>
+    <li><a href="#portfolio">Portfólio</a></li>
     <li><a href="#metodo">Método</a></li>
-    <li><a href="#resultados">Resultados</a></li>
     <li><a href="#contato">Contato</a></li>
    </ul>
    <button class="navbar-cta cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
@@ -3282,23 +3379,39 @@
    <div class="hero-center">
 
     <div class="hero-label">
-     EVIEW MÍDIA · INTERIOR DE SÃO PAULO
+     EVIEW MÍDIA · 2 SOLUÇÕES DE MARKETING
     </div>
 
     <h1 class="hero-main">
-     Assessoria de marketing<br>e <span class="highlight">crescimento.</span>
+     Duas formas de fazer sua empresa <span class="highlight">crescer.</span>
     </h1>
 
     <p class="hero-subheadline">
-     Estratégia, comunicação, produção audiovisual própria e geração de demanda em um só time, que acompanha a sua empresa de perto.
+     Escolha o modelo certo para o momento da sua empresa: uma assessoria completa e presencial no interior de São Paulo, ou performance e aquisição de clientes para todo o Brasil.
     </p>
+
+    <div class="hero-solutions">
+     <a class="hs-card" href="#assessoria">
+      <span class="hs-tag"><i data-lucide="map-pin"></i> Interior de SP</span>
+      <span class="hs-num">Solução 01</span>
+      <span class="hs-name">Eview <b>Assessoria</b></span>
+      <span class="hs-desc">Marketing completo com um time próximo: estratégia, redes sociais, foto e vídeo com equipe própria e tráfego.</span>
+      <span class="hs-region"><i data-lucide="map-pin"></i> Atendimento presencial no Circuito das Águas e Região de Campinas</span>
+      <span class="hs-link">Conhecer a Assessoria →</span>
+     </a>
+     <a class="hs-card" href="#performance">
+      <span class="hs-tag"><i data-lucide="globe"></i> Brasil todo</span>
+      <span class="hs-num">Solução 02</span>
+      <span class="hs-name">Eview <b>Performance</b></span>
+      <span class="hs-desc">Aquisição de clientes em escala: Meta Ads, Google Ads, landing pages e automações comerciais.</span>
+      <span class="hs-region"><i data-lucide="globe"></i> Atendimento remoto em todo o Brasil</span>
+      <span class="hs-link">Conhecer a Performance →</span>
+     </a>
+    </div>
 
     <div class="hero-actions">
      <button class="btn btn-primary cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
-     <button class="btn-ghost" onclick="document.getElementById('assessoria').scrollIntoView({behavior:'smooth'})">Conhecer a Assessoria <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
     </div>
-
-    <p class="hero-alt">Precisa escalar a aquisição de clientes em todo o Brasil? <a href="#performance">Conheça a Eview Performance →</a></p>
 
     <div class="hero-stats scroll-reveal">
      <div class="hero-stat">
@@ -3333,66 +3446,59 @@
    </div>
   </section>
 
-  <!-- ============ POSICIONAMENTO ============ -->
-  <section class="positioning" id="sobre">
+  <!-- ============ SOLUÇÕES (COMPARATIVO) ============ -->
+  <section class="compare" id="solucoes">
    <div class="container">
-    <div class="positioning-left">
-     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> QUEM SOMOS</div>
-     <div class="h2-line-wrapper">
-      <div class="vertical-line scroll-reveal"></div>
-      <h2 class="scroll-reveal">Nascemos no interior de São Paulo e crescemos <span class="highlight">ao lado das empresas daqui.</span></h2>
+    <div class="compare-head scroll-reveal">
+     <div class="label-section"><span class="dot-pulse"></span> NOSSAS 2 SOLUÇÕES</div>
+     <h2>Dois modelos de trabalho. <span>Qual é o da sua empresa?</span></h2>
+     <p>A Eview trabalha de duas formas diferentes. Veja lado a lado e escolha o caminho, ou peça um diagnóstico e a gente indica.</p>
+    </div>
+    <div class="compare-grid">
+     <div class="compare-col compare-col--assessoria scroll-reveal">
+      <div class="compare-top">
+       <span class="hs-tag"><i data-lucide="map-pin"></i> Interior de SP</span>
+       <h3>Eview <b>Assessoria</b></h3>
+       <p>O marketing da sua empresa inteiro nas mãos de um time próximo.</p>
+      </div>
+      <ul class="compare-list">
+       <li><span class="cl-label">Onde</span><span><span class="cl-strong">Somente Circuito das Águas e Região de Campinas</span>, com atendimento presencial</span></li>
+       <li><span class="cl-label">Para quem</span><span>Empresas locais que querem terceirizar o marketing completo, com acompanhamento de perto</span></li>
+       <li><span class="cl-label">O que entrega</span><span>Estratégia, redes sociais, conteúdo, foto e vídeo com equipe própria, branding e tráfego pago</span></li>
+       <li><span class="cl-label">Como</span><span>Reuniões e captações presenciais, planejamento mensal e time dedicado</span></li>
+       <li><span class="cl-label">Foco</span><span>Marca forte, presença consistente e demanda na região</span></li>
+      </ul>
+      <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Assessoria')"><span class="cta-text"><span class="cta-main">Quero a Assessoria</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      </div>
-     <p class="positioning-highlight scroll-reveal">O que define quem atendemos é a qualidade da empresa, não o segmento.</p>
-     <p class="positioning-text scroll-reveal">A Eview nasceu em Holambra para levar às empresas do interior o mesmo nível de estratégia, comunicação e produção que as grandes marcas têm. Hoje acompanhamos academias, restaurantes, varejo, serviços, indústria e agronegócio, e levamos essa experiência para operações de performance em todo o Brasil.</p>
-     <div class="pillars">
-      <div class="pillar scroll-reveal">
-       <div class="pillar-title">Proximidade Real</div>
-       <div class="pillar-desc">Você fala com quem pensa e com quem executa. Reuniões, visitas e acompanhamento de perto</div>
+     <div class="compare-col compare-col--performance scroll-reveal">
+      <div class="compare-top">
+       <span class="hs-tag"><i data-lucide="globe"></i> Brasil todo</span>
+       <h3>Eview <b>Performance</b></h3>
+       <p>Um motor de aquisição de clientes, medido por oportunidade e venda.</p>
       </div>
-      <div class="pillar scroll-reveal">
-       <div class="pillar-title">Produção Própria</div>
-       <div class="pillar-desc">Equipe e equipamentos de produtora para foto e vídeo, sem terceirizar a imagem da sua marca</div>
-      </div>
-      <div class="pillar scroll-reveal">
-       <div class="pillar-title">Estratégia Antes da Execução</div>
-       <div class="pillar-desc">Cada ação parte de um diagnóstico e de uma direção clara, medida por resultado de negócio</div>
-      </div>
+      <ul class="compare-list">
+       <li><span class="cl-label">Onde</span><span><span class="cl-strong">Todo o Brasil</span>, com atendimento 100% remoto</span></li>
+       <li><span class="cl-label">Para quem</span><span>Empresas com estrutura comercial que precisam de mais clientes, com previsibilidade</span></li>
+       <li><span class="cl-label">O que entrega</span><span>Meta Ads, Google Ads, landing pages, automações comerciais e organização do CRM</span></li>
+       <li><span class="cl-label">Como</span><span>Gestão por dados, reuniões online e acompanhamento de indicadores</span></li>
+       <li><span class="cl-label">Foco</span><span>Leads qualificados, custo por oportunidade e vendas</span></li>
+      </ul>
+      <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Performance')"><span class="cta-text"><span class="cta-main">Quero a Performance</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      </div>
     </div>
-    <div class="positioning-right scroll-reveal">
-     <div class="diamond diamond-large"></div>
-     <div class="diamond diamond-small"></div>
-     <div class="diamond-text">ESTRATÉGIA</div>
-    </div>
-   </div>
-  </section>
-
-  <!-- ============ GALERIA EQUIPE ============ -->
-  <section class="team-gallery">
-   <div class="team-gallery-strip">
-    <div class="tg-item"><img src="equipe/foto1.jpg" alt="Equipe Eview em captação" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto2.jpg" alt="Time Eview Mídia" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto3.jpg" alt="Planejamento estratégico" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto4.jpg" alt="Captação de vídeo" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto5.jpg" alt="Equipe Eview em evento" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto6.jpg" alt="Equipe Eview em evento" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto7.jpg" alt="Planejamento Eview Mídia" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto8.jpg" alt="Equipe Eview Mídia" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto9.jpg" alt="Equipe Eview em captação externa" loading="lazy" decoding="async"></div>
-    <div class="tg-item"><img src="equipe/foto10.jpg" alt="Equipe Eview Mídia" loading="lazy" decoding="async"></div>
    </div>
   </section>
 
   <!-- ============ EVIEW ASSESSORIA ============ -->
   <section class="solution solution--assessoria" id="assessoria">
    <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO PRINCIPAL</div>
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO 01 · INTERIOR DE SP</div>
     <div class="solution-grid">
      <div class="solution-copy scroll-reveal">
       <div class="solution-brand">Eview Assessoria</div>
       <h2>Um time de marketing próximo, <span>dentro do crescimento da sua empresa.</span></h2>
       <p class="solution-text">A Assessoria é para empresas que querem mais do que postagens ou anúncios soltos. Assumimos o marketing de forma integrada: definimos a direção, construímos a comunicação, produzimos o conteúdo e geramos demanda, acompanhando cada etapa de perto.</p>
-      <p class="solution-note">Nascemos no interior de São Paulo. Na Assessoria, proximidade faz parte do método.</p>
+      <p class="solution-note"><strong style="color:#FFD700;">Atendimento exclusivo para empresas do Circuito das Águas e Região de Campinas.</strong> Na Assessoria, proximidade faz parte do método: estamos presentes nas reuniões e nas captações.</p>
       <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Assessoria')"><span class="cta-text"><span class="cta-main">Quero a Assessoria</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      </div>
      <div class="solution-formula scroll-reveal">
@@ -3420,7 +3526,7 @@
        <span class="solution-chip"><i data-lucide="users"></i> Proximidade</span>
        <span class="solution-chip"><i data-lucide="calendar-check"></i> Acompanhamento</span>
        <span class="solution-chip"><i data-lucide="video"></i> Produção própria</span>
-       <span class="solution-chip"><i data-lucide="map-pin"></i> Interior de São Paulo</span>
+       <span class="solution-chip"><i data-lucide="map-pin"></i> Circuito das Águas e Região de Campinas</span>
       </div>
      </div>
     </div>
@@ -3446,7 +3552,7 @@
   <!-- ============ EVIEW PERFORMANCE ============ -->
   <section class="solution solution--performance" id="performance">
    <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO ESPECIALIZADA</div>
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO 02 · BRASIL TODO</div>
     <div class="solution-grid">
      <div class="solution-formula scroll-reveal">
       <div class="formula-label">Como a Performance funciona</div>
@@ -3470,6 +3576,7 @@
        <span class="solution-chip"><i data-lucide="check"></i> Google Ads</span>
        <span class="solution-chip"><i data-lucide="check"></i> Landing Pages</span>
        <span class="solution-chip"><i data-lucide="check"></i> Geração de demanda</span>
+       <span class="solution-chip"><i data-lucide="check"></i> Automações comerciais</span>
        <span class="solution-chip"><i data-lucide="globe"></i> Todo o Brasil</span>
       </div>
      </div>
@@ -3477,9 +3584,97 @@
       <div class="solution-brand">Eview Performance</div>
       <h2>Aquisição de clientes <span>com escala, em todo o Brasil.</span></h2>
       <p class="solution-text">Para empresas que já têm estrutura comercial e precisam de um motor de aquisição previsível. Um time especializado em mídia paga e conversão, com foco em volume, custo por oportunidade e retorno sobre o investimento.</p>
-      <p class="solution-note">Na Assessoria, proximidade faz parte do método. Na Performance, nossa atuação é nacional.</p>
+      <p class="solution-note"><strong style="color:#FFD700;">Atendemos empresas de todo o Brasil</strong>, com operação 100% remota. Da mídia ao comercial, cuidamos de tudo o que transforma clique em venda.</p>
       <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Performance')"><span class="cta-text"><span class="cta-main">Quero escalar com Performance</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      </div>
+    </div>
+
+    <div class="automations scroll-reveal">
+     <div class="automations-head">
+      <h3>Automações que já desenvolvemos para <span>eficiência comercial.</span></h3>
+      <p>Mais leads só viram vendas quando o comercial consegue atender rápido e com cadência. Por isso a Performance vai além da mídia.</p>
+     </div>
+     <div class="automations-grid">
+      <div class="auto-card">
+       <div class="auto-icon"><i data-lucide="message-circle"></i></div>
+       <h4>Cadência automática no WhatsApp</h4>
+       <p>O lead recebe o primeiro contato e os próximos toques automaticamente, sem depender da memória do vendedor.</p>
+      </div>
+      <div class="auto-card">
+       <div class="auto-icon"><i data-lucide="git-merge"></i></div>
+       <h4>CRM integrado ao WhatsApp</h4>
+       <p>Cada conversa fica registrada e o lead avança no funil do CRM sem trabalho manual.</p>
+      </div>
+      <div class="auto-card">
+       <div class="auto-icon"><i data-lucide="bar-chart-3"></i></div>
+       <h4>Diagnóstico do funil com dados</h4>
+       <p>Medimos ciclo de venda, leads parados e motivos de perda para mostrar onde a venda está escapando.</p>
+      </div>
+      <div class="auto-card">
+       <div class="auto-icon"><i data-lucide="users"></i></div>
+       <h4>Distribuição por vendedor</h4>
+       <p>Cada lead é atendido pelo responsável certo, no número certo, sem conversas cruzadas.</p>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ PORTFÓLIO ============ -->
+  <section class="portfolio" id="portfolio">
+   <div class="container">
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> PORTFÓLIO · CAPTAÇÃO E ENTREGA</div>
+    <div class="portfolio-head scroll-reveal">
+     <h2>Produção própria, <span>do set à entrega.</span></h2>
+     <p>Bastidores reais do nosso time em captações de foto e vídeo, coberturas de eventos e planejamento. Equipe e equipamentos próprios, sem terceirizar a imagem da sua marca.</p>
+    </div>
+    <div class="portfolio-grid">
+     <figure class="pf-item pf-item--feature scroll-reveal">
+      <video autoplay muted loop playsinline preload="auto" poster="hero-bg.jpg" disablepictureinpicture><source src="hero-bg.mp4" type="video/mp4"></video>
+      <figcaption><small>Audiovisual</small>Vídeo institucional Eview</figcaption>
+     </figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto1.jpg" alt="Captação: Gravação em laboratório" loading="lazy" decoding="async"><figcaption><small>Captação</small>Gravação em laboratório</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto4.jpg" alt="Captação: Produção em academia" loading="lazy" decoding="async"><figcaption><small>Captação</small>Produção em academia</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto9.jpg" alt="Captação externa: Gravação em campo" loading="lazy" decoding="async"><figcaption><small>Captação externa</small>Gravação em campo</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto5.jpg" alt="Cobertura: Evento corporativo" loading="lazy" decoding="async"><figcaption><small>Cobertura</small>Evento corporativo</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto6.jpg" alt="Bastidores: Time em evento" loading="lazy" decoding="async"><figcaption><small>Bastidores</small>Time em evento</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto3.jpg" alt="Conteúdo: Gravação de depoimento" loading="lazy" decoding="async"><figcaption><small>Conteúdo</small>Gravação de depoimento</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto7.jpg" alt="Planejamento: Roteiro e estratégia" loading="lazy" decoding="async"><figcaption><small>Planejamento</small>Roteiro e estratégia</figcaption></figure>
+     <figure class="pf-item scroll-reveal"><img src="equipe/foto2.jpg" alt="Estúdio: Produção interna" loading="lazy" decoding="async"><figcaption><small>Estúdio</small>Produção interna</figcaption></figure>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ POSICIONAMENTO ============ -->
+  <section class="positioning" id="sobre">
+   <div class="container">
+    <div class="positioning-left">
+     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> QUEM SOMOS</div>
+     <div class="h2-line-wrapper">
+      <div class="vertical-line scroll-reveal"></div>
+      <h2 class="scroll-reveal">Nascemos no interior de São Paulo e crescemos <span class="highlight">ao lado das empresas daqui.</span></h2>
+     </div>
+     <p class="positioning-highlight scroll-reveal">O que define quem atendemos é a qualidade da empresa, não o segmento.</p>
+     <p class="positioning-text scroll-reveal">A Eview nasceu em Holambra, na Região de Campinas, para levar às empresas do interior o mesmo nível de estratégia, comunicação e produção que as grandes marcas têm. Hoje trabalhamos com duas soluções: a <strong style="color:#FFD700;">Assessoria</strong>, presencial, para empresas do Circuito das Águas e Região de Campinas, e a <strong style="color:#FFD700;">Performance</strong>, que leva aquisição de clientes e automações comerciais para empresas de todo o Brasil.</p>
+     <div class="pillars">
+      <div class="pillar scroll-reveal">
+       <div class="pillar-title">Proximidade Real</div>
+       <div class="pillar-desc">Você fala com quem pensa e com quem executa. Reuniões, visitas e acompanhamento de perto</div>
+      </div>
+      <div class="pillar scroll-reveal">
+       <div class="pillar-title">Produção Própria</div>
+       <div class="pillar-desc">Equipe e equipamentos de produtora para foto e vídeo, sem terceirizar a imagem da sua marca</div>
+      </div>
+      <div class="pillar scroll-reveal">
+       <div class="pillar-title">Estratégia Antes da Execução</div>
+       <div class="pillar-desc">Cada ação parte de um diagnóstico e de uma direção clara, medida por resultado de negócio</div>
+      </div>
+     </div>
+    </div>
+    <div class="positioning-right scroll-reveal">
+     <div class="diamond diamond-large"></div>
+     <div class="diamond diamond-small"></div>
+     <div class="diamond-text">ESTRATÉGIA</div>
     </div>
    </div>
   </section>
@@ -3861,50 +4056,13 @@
    </div>
   </section>
 
-  <!-- ============ POR QUE ESCOLHER A EVIEW ============ -->
-  <section class="comparison">
-   <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> POR QUE ESCOLHER A EVIEW</div>
-    <div class="comparison-table scroll-reveal">
-     <div class="comparison-col comparison-col-left">
-      <div class="comparison-item" style="border: none; padding: 0; min-height: 80px; display: flex; align-items: center;">
-       <strong style="font-family: 'Montserrat', sans-serif;">Agências Tradicionais</strong>
-      </div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Foco em execução</span></div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Atendimento distante</span></div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Métricas de vaidade</span></div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Propostas padrão</span></div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Sem consultoria</span></div>
-      <div class="comparison-item"><i data-lucide="x"></i> <span>Terceiriza produção</span></div>
-     </div>
-     <div class="comparison-col comparison-col-center">
-      <div class="comparison-col-center-label">VS</div>
-     </div>
-     <div class="comparison-col comparison-col-right">
-      <div class="comparison-item" style="border: none; padding: 0; min-height: 80px; display: flex; align-items: center;">
-       <strong style="font-family: 'Montserrat', sans-serif; color: #FFD700;">Eview Mídia</strong>
-      </div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>Estratégia em primeiro lugar</span></div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>Parceria estratégica</span></div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>Resultados mensuráveis</span></div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>100% personalizado</span></div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>Consultoria inclusa</span></div>
-      <div class="comparison-item"><i data-lucide="check"></i> <span>Produção própria</span></div>
-     </div>
-    </div>
-    <div style="text-align: center;">
-     <button class="btn btn-primary cta-glow scroll-reveal" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
-    </div>
-   </div>
-  </section>
-
   <!-- ============ CTA FINAL ============ -->
   <section class="cta-final" id="contato">
    <div class="container">
     <div class="cta-final-box scroll-reveal">
      <div class="label-section" style="justify-content:center;"><span class="dot-pulse"></span> PRÓXIMO PASSO</div>
      <h2>Vamos conversar sobre o <span>crescimento da sua empresa?</span></h2>
-     <p>Responda 6 perguntas rápidas. Nossa equipe analisa o momento da sua empresa e entra em contato em até 24 horas para indicar o melhor caminho: Assessoria ou Performance.</p>
+     <p>Responda 6 perguntas rápidas. Nossa equipe analisa o momento da sua empresa e entra em contato em até 24 horas para indicar o melhor caminho: Assessoria (Circuito das Águas e Região de Campinas) ou Performance (todo o Brasil).</p>
      <button class="btn btn-primary cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      <div class="cta-final-proof">
       <span><i data-lucide="check-circle"></i> Gratuito e sem compromisso</span>
@@ -3921,7 +4079,7 @@
     <div class="footer-grid">
      <div class="footer-col">
       <h4>EVIEW MÍDIA</h4>
-      <p>Assessoria de marketing e crescimento. Nascemos no interior de São Paulo e, na Performance, atuamos em todo o Brasil.</p>
+      <p>Eview Assessoria para empresas do Circuito das Águas e Região de Campinas. Eview Performance para aquisição de clientes em todo o Brasil.</p>
       <div class="footer-socials">
        <a href="https://www.instagram.com/eviewmidia/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i></a>
        <a href="https://wa.me/5519992318335" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i></a>
@@ -3931,6 +4089,8 @@
      <div class="footer-col">
       <h4>Navegação</h4>
       <ul>
+       <li><a href="#solucoes">Soluções</a></li>
+       <li><a href="#portfolio">Portfólio</a></li>
        <li><a href="#sobre">Sobre</a></li>
        <li><a href="#assessoria">Assessoria</a></li>
        <li><a href="#performance">Performance</a></li>
@@ -4033,6 +4193,14 @@
     const heroVideo = document.querySelector('.hero-video video');
     if (heroVideo) heroVideo.addEventListener('playing', () => heroVideo.parentElement.classList.add('is-playing'), { once: true });
 
+    // Vídeo do portfólio: toca só quando está visível
+    const pfVideo = document.querySelector('.pf-item video');
+    if (pfVideo && 'IntersectionObserver' in window) {
+      new IntersectionObserver(entries => entries.forEach(en => {
+        if (en.isIntersecting && pfVideo.paused) pfVideo.play().catch(() => {});
+      }), { threshold: 0.1 }).observe(pfVideo);
+    }
+
     // Lucide Icons
     lucide.createIcons();
 
@@ -4101,8 +4269,8 @@
         title: 'O que a sua empresa procura hoje?',
         hint: 'Se ainda não tiver certeza, a gente te ajuda a decidir.',
         options: [
-          { val: 'Assessoria', icon: '🧭', sub: 'Estratégia, comunicação, audiovisual e demanda com um time próximo' },
-          { val: 'Performance', icon: '🚀', sub: 'Aquisição de clientes com mídia paga e conversão, em escala' },
+          { val: 'Assessoria', icon: '🧭', sub: 'Marketing completo e presencial · Circuito das Águas e Região de Campinas' },
+          { val: 'Performance', icon: '🚀', sub: 'Aquisição de clientes e automações comerciais · Todo o Brasil' },
           { val: 'Ainda não sei', icon: '💬', sub: 'Quero entender o melhor caminho para o meu momento' }
         ] },
       { id: 'segmento', type: 'choice', grid: true,
