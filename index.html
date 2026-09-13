@@ -3,7 +3,8 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eview Mídia - Assessoria Estratégica de Marketing Digital</title>
+  <title>Eview Mídia - Assessoria de Marketing e Crescimento</title>
+  <meta name="description" content="Assessoria de marketing e crescimento: estratégia, comunicação, produção audiovisual própria e geração de demanda. Nascemos no interior de São Paulo; na Performance, atuamos em todo o Brasil.">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <!-- Google tag (gtag.js) -->
@@ -416,6 +417,23 @@
 
     /* Sem linha horizontal no hero */
     .hero::after { display: none; }
+
+    /* Vídeo de fundo — opacidade baixa, sem áudio, só ambientação */
+    .hero-video { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .hero-video::before { content: ''; position: absolute; inset: 0; background: url("hero-bg.jpg") center / cover no-repeat; opacity: 0.24; filter: grayscale(15%); }
+    .hero-video video { position: relative; }
+    .hero-video.is-playing::before { opacity: 0; }
+    .hero-video video { width: 100%; height: 100%; object-fit: cover; opacity: 0.24; filter: grayscale(15%); }
+    .hero-video::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 45%, rgba(2, 2, 2, 0.3) 0%, rgba(2, 2, 2, 0.6) 100%),
+        linear-gradient(180deg, rgba(2, 2, 2, 0.6) 0%, transparent 25%, transparent 75%, #020202 100%);
+    }
+    .hero-center { z-index: 2; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video video { display: none; }
+    }
 
     /* aurora orbs removidos — fundo em radial-gradient no .hero não tem custo de repaint */
 
@@ -1375,6 +1393,20 @@
       gap: 4px;
       text-align: center;
     }
+
+    .authority-statement {
+      grid-column: 1 / -1;
+      margin: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(22px, 3.6vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #F5F5F5;
+    }
+    .authority-term { white-space: nowrap; }
+    .authority-plus { color: #FFD700; text-shadow: 0 0 40px rgba(255, 215, 0, 0.3); padding: 0 0.3em; }
 
     /* ============ POSICIONAMENTO ============ */
     .positioning {
@@ -2627,6 +2659,240 @@
       border-bottom: 3px solid transparent;
     }
 
+    /* ============ SOLUÇÕES: ASSESSORIA + PERFORMANCE ============ */
+    .hero-alt {
+      margin: -32px 0 44px;
+      font-size: 14px;
+      color: #777;
+      opacity: 0;
+      animation: fadeIn 0.6s ease 1.1s forwards;
+    }
+    .hero-alt a { color: #FFD700; text-decoration: none; border-bottom: 1px solid rgba(255, 215, 0, 0.3); }
+    .hero-alt a:hover { border-bottom-color: #FFD700; }
+
+    .solution { padding: 120px 0; }
+    .solution--assessoria { background: linear-gradient(180deg, #080808 0%, #0F0A00 100%); }
+    .solution--performance { background: #0A0A0A; border-top: 1px solid rgba(255, 215, 0, 0.08); }
+    .solution-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center; }
+    .solution--performance .solution-grid { grid-template-columns: 1fr 1.05fr; }
+    .solution-brand {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 13px;
+      letter-spacing: 0.2em; color: #FFD700; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .solution-brand::before { content: ''; width: 28px; height: 2px; background: linear-gradient(90deg, #FFD700, #FF8C00); }
+    .solution h2 { font-size: clamp(28px, 3.4vw, 44px); line-height: 1.2; color: #F5F5F5; margin-bottom: 24px; }
+    .solution h2 span { color: #FFD700; }
+    .solution-text { font-size: 16px; color: #A0A0A0; line-height: 1.8; margin-bottom: 20px; max-width: 580px; }
+    .solution-note {
+      font-size: 15px; color: #E0E0E0; border-left: 2px solid #FFD700;
+      padding: 4px 0 4px 14px; margin-bottom: 36px; max-width: 580px;
+    }
+    .solution-formula { background: #0F0F0F; border: 1px solid rgba(255, 215, 0, 0.14); border-radius: 6px; padding: 40px; }
+    .solution--assessoria .solution-formula { border-color: rgba(255, 215, 0, 0.45); box-shadow: 0 0 40px rgba(255, 215, 0, 0.08); }
+    .formula-label {
+      font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 11px;
+      letter-spacing: 0.22em; color: #666; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .formula-equation { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 19px; color: #FFF; line-height: 1.5; margin-bottom: 28px; }
+    .formula-equation b { color: #FFD700; font-weight: 800; padding: 0 4px; }
+    .formula-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .solution--performance .formula-grid { grid-template-columns: repeat(3, 1fr); }
+    .formula-item { background: #0A0A0A; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 4px; padding: 20px; }
+    .formula-item-name {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; color: #FFF;
+    }
+    .formula-item-name i { width: 18px; height: 18px; color: #FFD700; flex-shrink: 0; }
+    .formula-item p { font-size: 13px; color: #888; line-height: 1.6; margin: 0; }
+    .solution-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .solution-chip {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px;
+      border: 1px solid rgba(255, 215, 0, 0.25); border-radius: 999px;
+      font-size: 13px; font-weight: 500; color: #D8D8D8;
+    }
+    .solution-chip i { width: 14px; height: 14px; color: #FFD700; }
+    .capabilities {
+      margin-top: 80px; padding-top: 48px; border-top: 1px solid rgba(255, 215, 0, 0.15);
+      display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: start;
+    }
+    .capabilities h3 { font-size: 20px; color: #FFF; margin-bottom: 12px; }
+    .capabilities p { font-size: 14px; color: #888; margin: 0; }
+    .capabilities-list { display: flex; flex-wrap: wrap; gap: 12px; }
+    .capability {
+      display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px;
+      background: #0F0F0F; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 4px;
+      font-size: 14px; color: #CCC;
+    }
+    .capability i { width: 16px; height: 16px; color: #FFD700; }
+    .btn-outline-gold { background: transparent; color: #FFD700; border: 1px solid rgba(255, 215, 0, 0.5); }
+    .btn-outline-gold:hover { background: rgba(255, 215, 0, 0.08); border-color: #FFD700; }
+    .segments-intro { margin-bottom: 56px; max-width: 760px; }
+    .segments-intro h2 { font-size: clamp(26px, 3vw, 38px); line-height: 1.25; color: #F5F5F5; margin-bottom: 16px; }
+    .segments-intro h2 span { color: #FFD700; }
+    .segments-intro p { font-size: 15px; color: #A0A0A0; margin: 0; }
+
+    @media (max-width: 1024px) {
+      .solution-grid, .solution--performance .solution-grid { grid-template-columns: 1fr; gap: 48px; }
+      .solution--performance .solution-copy { order: -1; }
+      .capabilities { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .solution { padding: 72px 0; }
+      .solution-formula { padding: 24px 20px; }
+      .formula-grid, .solution--performance .formula-grid { grid-template-columns: 1fr; }
+      .formula-equation { font-size: 16px; }
+      .capabilities { margin-top: 48px; padding-top: 32px; }
+      .hero-alt { margin: -8px 0 32px; padding: 0 8px; }
+    }
+
+    /* ============ CTA FINAL ============ */
+    .cta-final { padding: 120px 0; background: linear-gradient(180deg, #080808 0%, #0F0A00 100%); }
+    .cta-final-box {
+      max-width: 820px; margin: 0 auto; text-align: center;
+      border: 1px solid rgba(255, 215, 0, 0.25); border-radius: 8px;
+      padding: 64px 48px; background: #0C0C0C; box-shadow: 0 0 60px rgba(255, 215, 0, 0.06);
+    }
+    .cta-final-box h2 { font-size: clamp(28px, 3.6vw, 44px); line-height: 1.2; color: #F5F5F5; margin-bottom: 18px; }
+    .cta-final-box h2 span { color: #FFD700; }
+    .cta-final-box > p { font-size: 16px; color: #999; max-width: 600px; margin: 0 auto 36px; }
+    .cta-final-proof { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; margin-top: 28px; }
+    .cta-final-proof span { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #888; }
+    .cta-final-proof i { width: 16px; height: 16px; color: #FFD700; }
+
+    /* ============ MODAL DIAGNÓSTICO ============ */
+    .diag-modal {
+      position: fixed; inset: 0; z-index: 3000;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      padding: 16px; animation: diagFade 0.25s ease;
+    }
+    .diag-modal[hidden] { display: none !important; }
+    @keyframes diagFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes diagUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes diagSpin { to { transform: rotate(360deg); } }
+    .diag-content {
+      width: 100%; max-width: 540px; max-height: 92vh; display: flex; flex-direction: column;
+      background: #101010; border: 1px solid rgba(255, 215, 0, 0.14); border-radius: 18px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8); animation: diagUp 0.3s ease; overflow: hidden;
+    }
+    .diag-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px 14px; }
+    .diag-back, .diag-close {
+      background: none; border: none; padding: 6px 8px; border-radius: 6px;
+      font-family: 'Inter', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: 0;
+      color: rgba(255, 255, 255, 0.4); cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .diag-close { font-size: 18px; line-height: 1; }
+    .diag-back:hover, .diag-close:hover { color: #FFF; transform: none; }
+    .diag-back i { width: 15px; height: 15px; }
+    .diag-step-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.3); }
+    .diag-progress { height: 2px; background: rgba(255, 255, 255, 0.06); }
+    .diag-progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, #FFD700, #FF8C00); transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .diag-body { overflow-y: auto; padding: 28px 28px 24px; }
+    .diag-eyebrow { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 215, 0, 0.75); margin-bottom: 14px; }
+    .diag-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 21px; line-height: 1.35; color: #FFF; margin-bottom: 8px; }
+    .diag-hint { font-size: 13px; color: rgba(255, 255, 255, 0.4); line-height: 1.6; margin-bottom: 22px; }
+    .diag-field { margin-bottom: 16px; }
+    .diag-field label { display: block; margin-bottom: 7px; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255, 255, 255, 0.4); }
+    .diag-field input {
+      width: 100%; box-sizing: border-box; padding: 14px 16px; border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04); border: 1.5px solid rgba(255, 255, 255, 0.1);
+      color: #FFF; font-family: 'Inter', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .diag-field input::placeholder { color: rgba(255, 255, 255, 0.25); }
+    .diag-field input:focus { border-color: rgba(255, 215, 0, 0.6); box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.08); }
+    .diag-field input.err { border-color: rgba(255, 107, 107, 0.7); }
+    .diag-error { font-size: 12px; color: #FF8A8A; margin-top: 6px; }
+    .diag-options { display: flex; flex-direction: column; gap: 10px; }
+    .diag-options.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .diag-opt {
+      display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+      padding: 14px 16px; border-radius: 12px; cursor: pointer;
+      background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(255, 255, 255, 0.08);
+      font-family: 'Inter', sans-serif; font-weight: 400; letter-spacing: 0; color: #E6E6E6; transition: all 0.18s ease;
+    }
+    .diag-opt:hover { background: rgba(255, 215, 0, 0.05); border-color: rgba(255, 215, 0, 0.3); transform: translateY(-1px); }
+    .diag-opt.sel { background: rgba(255, 215, 0, 0.09); border-color: #FFD700; }
+    .diag-opt-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+    .diag-opt-text { flex: 1; min-width: 0; }
+    .diag-opt-val { display: block; font-size: 14px; font-weight: 600; line-height: 1.3; }
+    .diag-opt.sel .diag-opt-val { color: #FFD700; }
+    .diag-opt-sub { display: block; font-size: 12px; color: rgba(255, 255, 255, 0.4); margin-top: 2px; }
+    .diag-radio { width: 18px; height: 18px; flex-shrink: 0; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; }
+    .diag-opt.sel .diag-radio { border-color: #FFD700; background: #FFD700; }
+    .diag-opt.sel .diag-radio::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #000; }
+    .diag-options.grid .diag-opt { padding: 12px 14px; gap: 10px; }
+    .diag-options.grid .diag-opt-val { font-size: 13px; font-weight: 500; }
+    .diag-next {
+      width: 100%; justify-content: center; margin-top: 8px; padding: 15px; border-radius: 12px;
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%); color: #080808; font-size: 14px;
+    }
+    .diag-next i { width: 16px; height: 16px; }
+    .diag-privacy { font-size: 11px; color: rgba(255, 255, 255, 0.22); text-align: center; margin: 14px 0 0; }
+    .diag-loading { text-align: center; padding: 72px 20px; }
+    .diag-loading div { width: 40px; height: 40px; margin: 0 auto 20px; border-radius: 50%; border: 3px solid rgba(255, 215, 0, 0.2); border-top-color: #FFD700; animation: diagSpin 0.8s linear infinite; }
+    .diag-loading p { color: rgba(255, 255, 255, 0.4); font-size: 14px; margin: 0; }
+
+    @media (max-width: 768px) {
+      .cta-final { padding: 72px 0; }
+      .cta-final-box { padding: 40px 20px; }
+      .diag-modal { padding: 0; align-items: stretch; }
+      .diag-content { max-width: 100%; max-height: none; height: 100%; height: 100dvh; border-radius: 0; border: none; }
+      .diag-body { flex: 1; }
+      .diag-body { padding: 22px 18px 24px; }
+      .diag-title { font-size: 19px; }
+      .diag-options.grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============ CTAs QUE ABREM O DIAGNÓSTICO (brilho + "Aperte aqui") ============ */
+    .btn.cta-glow, .navbar-cta.cta-glow {
+      position: relative; overflow: hidden; isolation: isolate;
+      display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+      text-align: left; animation: ctaPulse 2.4s ease-in-out infinite;
+    }
+    .btn.cta-glow { padding: 16px 30px; background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%) !important; color: #080808 !important; border: none !important; }
+    .btn.cta-glow:hover { filter: brightness(1.08); transform: translateY(-2px) scale(1.02); }
+    .hero-actions .btn.cta-glow { padding: 16px 32px; }
+    .cta-glow::after {
+      content: ''; position: absolute; top: 0; left: -70%; width: 45%; height: 100%; z-index: 1;
+      background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.55) 50%, transparent 100%);
+      transform: skewX(-20deg); animation: ctaShine 3.2s ease-in-out infinite; pointer-events: none;
+    }
+    .cta-text { display: flex; flex-direction: column; line-height: 1.15; position: relative; z-index: 2; }
+    .cta-main { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.01em; }
+    .cta-sub { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.72; margin-top: 4px; }
+    .cta-arrow { width: 20px; height: 20px; flex-shrink: 0; position: relative; z-index: 2; animation: ctaArrow 1.2s ease-in-out infinite; }
+
+    .navbar-cta.cta-glow {
+      background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%) !important;
+      color: #080808 !important; border-color: transparent !important;
+      padding: 8px 18px; gap: 12px; text-transform: none; letter-spacing: 0;
+    }
+    .navbar-cta.cta-glow:hover { filter: brightness(1.08); }
+    .navbar-cta .cta-main { font-size: 12px; }
+    .navbar-cta .cta-sub { font-size: 8px; margin-top: 2px; }
+    .navbar-cta .cta-arrow { width: 15px; height: 15px; }
+
+    .segment-cta.cta-glow-card { animation: ctaPulse 2.4s ease-in-out infinite; }
+    .cta-card-sub { font-family: 'Montserrat', sans-serif; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; color: #1a0800; }
+    .footer-cta { color: #FFD700 !important; font-weight: 600; }
+
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 0 16px rgba(255, 215, 0, 0.35), 0 0 0 0 rgba(255, 215, 0, 0.45); }
+      50%      { box-shadow: 0 0 38px rgba(255, 215, 0, 0.7), 0 0 0 9px rgba(255, 215, 0, 0); }
+    }
+    @keyframes ctaShine { 0% { left: -70%; } 55%, 100% { left: 130%; } }
+    @keyframes ctaArrow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+
+    @media (max-width: 768px) {
+      .btn.cta-glow { width: 100%; max-width: 360px; padding: 16px 22px; justify-content: space-between; }
+      .cta-main { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cta-glow, .cta-glow-card, .cta-glow::after, .cta-arrow { animation: none; }
+      .cta-glow { box-shadow: 0 0 28px rgba(255, 215, 0, 0.5); }
+    }
+
     /* ============ RESPONSIVIDADE ============ */
     @media (max-width: 1024px) {
       .navbar-cta { display: none; }
@@ -2985,6 +3251,8 @@
       .result-metric { font-size: 48px; }
       .form-section-left h2 { font-size: 28px; }
       .hero-center { padding: 40px 20px; }
+      h1.hero-main { font-size: 38px !important; line-height: 1.12; }
+      .hero-alt a { white-space: nowrap; }
     }
   </style>
  </head>
@@ -2995,34 +3263,42 @@
    <div class="navbar-logo"><img src="logo.png?v=2" alt="Eview Mídia" style="height: 24px; width: auto;"></div>
    <ul>
     <li><a href="#sobre">Sobre</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#processo">Processo</a></li>
+    <li><a href="#assessoria">Assessoria</a></li>
+    <li><a href="#performance">Performance</a></li>
+    <li><a href="#metodo">Método</a></li>
     <li><a href="#resultados">Resultados</a></li>
     <li><a href="#contato">Contato</a></li>
    </ul>
-   <button class="navbar-cta" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior:'smooth'})">Solicitar diagnóstico</button>
+   <button class="navbar-cta cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
   </nav>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+   <div class="hero-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="auto" poster="hero-bg.jpg" disablepictureinpicture disableremoteplayback>
+     <source src="hero-bg.mp4" type="video/mp4">
+    </video>
+   </div>
    <div class="hero-center">
 
     <div class="hero-label">
-     ASSESSORIA DE MARKETING · EMPRESAS
+     EVIEW MÍDIA · INTERIOR DE SÃO PAULO
     </div>
 
     <h1 class="hero-main">
-     Geramos demanda qualificada<br>para <span class="highlight">empresas.</span>
+     Assessoria de marketing<br>e <span class="highlight">crescimento.</span>
     </h1>
 
     <p class="hero-subheadline">
-     Cuidamos do marketing da sua empresa do início ao fim: estratégia, produção de conteúdo profissional e mídia paga em um único time dedicado.
+     Estratégia, comunicação, produção audiovisual própria e geração de demanda em um só time, que acompanha a sua empresa de perto.
     </p>
 
     <div class="hero-actions">
-     <button class="btn btn-primary" onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})">Solicitar diagnóstico gratuito</button>
-     <button class="btn-ghost" onclick="document.querySelector('.process').scrollIntoView({behavior:'smooth'})">Ver como trabalhamos <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+     <button class="btn btn-primary cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
+     <button class="btn-ghost" onclick="document.getElementById('assessoria').scrollIntoView({behavior:'smooth'})">Conhecer a Assessoria <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
     </div>
+
+    <p class="hero-alt">Precisa escalar a aquisição de clientes em todo o Brasil? <a href="#performance">Conheça a Eview Performance →</a></p>
 
     <div class="hero-stats scroll-reveal">
      <div class="hero-stat">
@@ -3053,21 +3329,7 @@
   <!-- ============ AUTORIDADE ============ -->
   <section class="authority">
    <div class="container">
-    <div class="authority-item scroll-reveal">
-     <div class="authority-label">
-      <span class="authority-number" data-target="50">0</span><span style="color: #FFD700; font-weight: 800;">+</span> Clientes em assessoria estratégica
-     </div>
-    </div>
-    <div class="authority-item scroll-reveal">
-     <div class="authority-label">
-      <span class="authority-number" data-target="3">0</span><span style="color: #FFD700; font-weight: 800;">+</span> Anos de experiência consolidada
-     </div>
-    </div>
-    <div class="authority-item scroll-reveal">
-     <div class="authority-label">
-      <span class="authority-number" data-target="100">0</span><span style="color: #FFD700; font-weight: 800;">%</span> dedicação aos seus resultados
-     </div>
-    </div>
+    <p class="authority-statement scroll-reveal"><span class="authority-term">Marketing de vendas</span> <span class="authority-plus">+</span> <span class="authority-term">Inteligência de mercado</span></p>
    </div>
   </section>
 
@@ -3075,25 +3337,25 @@
   <section class="positioning" id="sobre">
    <div class="container">
     <div class="positioning-left">
-     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSA FILOSOFIA</div>
+     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> QUEM SOMOS</div>
      <div class="h2-line-wrapper">
       <div class="vertical-line scroll-reveal"></div>
-      <h2 class="scroll-reveal">Marketing que respeita a realidade do <span class="highlight">seu mercado.</span></h2>
+      <h2 class="scroll-reveal">Nascemos no interior de São Paulo e crescemos <span class="highlight">ao lado das empresas daqui.</span></h2>
      </div>
-     <p class="positioning-highlight scroll-reveal">Empresas têm dinâmicas únicas. Estratégia genérica não funciona aqui.</p>
-     <p class="positioning-text scroll-reveal">A Eview nasceu para cuidar do marketing de empresas com o mesmo nível de estratégia que grandes marcas têm acesso. Entendemos seu negócio, seu público e o mercado onde você compete.</p>
+     <p class="positioning-highlight scroll-reveal">O que define quem atendemos é a qualidade da empresa, não o segmento.</p>
+     <p class="positioning-text scroll-reveal">A Eview nasceu em Holambra para levar às empresas do interior o mesmo nível de estratégia, comunicação e produção que as grandes marcas têm. Hoje acompanhamos academias, restaurantes, varejo, serviços, indústria e agronegócio, e levamos essa experiência para operações de performance em todo o Brasil.</p>
      <div class="pillars">
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Conhecimento do Seu Mercado</div>
-       <div class="pillar-desc">Analisamos concorrência, ICP e oportunidades reais de geração de demanda para o seu negócio</div>
+       <div class="pillar-title">Proximidade Real</div>
+       <div class="pillar-desc">Você fala com quem pensa e com quem executa. Reuniões, visitas e acompanhamento de perto</div>
       </div>
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Estratégia de Geração de Demanda</div>
-       <div class="pillar-desc">Plano focado no seu ciclo de vendas, com canais e mensagens certas para o seu público-alvo</div>
+       <div class="pillar-title">Produção Própria</div>
+       <div class="pillar-desc">Equipe e equipamentos de produtora para foto e vídeo, sem terceirizar a imagem da sua marca</div>
       </div>
       <div class="pillar scroll-reveal">
-       <div class="pillar-title">Crescimento Mensurável</div>
-       <div class="pillar-desc">Métricas reais de negócio: leads qualificados, novos clientes e autoridade de mercado</div>
+       <div class="pillar-title">Estratégia Antes da Execução</div>
+       <div class="pillar-desc">Cada ação parte de um diagnóstico e de uma direção clara, medida por resultado de negócio</div>
       </div>
      </div>
     </div>
@@ -3101,67 +3363,6 @@
      <div class="diamond diamond-large"></div>
      <div class="diamond diamond-small"></div>
      <div class="diamond-text">ESTRATÉGIA</div>
-    </div>
-   </div>
-  </section>
-
-  <!-- metodo-eview removido: conteúdo consolidado na seção Processo -->
-  <section class="metodo-eview" style="display:none;">
-   <div class="container">
-    <div class="label-section scroll-reveal" style="justify-content:center;"><span class="dot-pulse"></span> MÉTODO EVIEW</div>
-    <h2 class="scroll-reveal" style="text-align:center; font-size:clamp(28px,4vw,42px); margin-bottom:16px; color:#fff;">Uma metodologia criada para <span style="background:linear-gradient(135deg,#FFD700,#FF8C00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">empresas B2B.</span></h2>
-    <p class="scroll-reveal" style="text-align:center; color:#666; font-size:16px; max-width:580px; margin:0 auto 72px; line-height:1.75;">Não aplicamos fórmulas genéricas. Cada etapa do nosso método é pensada para empresas B2B que querem crescer com consistência e gerar demanda qualificada.</p>
-
-    <div class="metodo-grid">
-
-     <div class="metodo-step scroll-reveal">
-      <div class="metodo-num">01</div>
-      <div class="metodo-icon-wrap">
-       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      </div>
-      <h3 class="metodo-title">Diagnóstico de Mercado</h3>
-      <p class="metodo-desc">Mapeamos o mercado B2B, analisamos a concorrência e identificamos as oportunidades reais de geração de demanda para o seu negócio.</p>
-     </div>
-
-     <div class="metodo-connector scroll-reveal">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
-     </div>
-
-     <div class="metodo-step scroll-reveal">
-      <div class="metodo-num">02</div>
-      <div class="metodo-icon-wrap">
-       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-      </div>
-      <h3 class="metodo-title">Estratégia Personalizada</h3>
-      <p class="metodo-desc">Construímos um plano de ação focado no seu ciclo de vendas: posicionamento claro, canais certos e metas realistas para o seu negócio B2B.</p>
-     </div>
-
-     <div class="metodo-connector scroll-reveal">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
-     </div>
-
-     <div class="metodo-step scroll-reveal">
-      <div class="metodo-num">03</div>
-      <div class="metodo-icon-wrap">
-       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="m8 21 4-4 4 4"/></svg>
-      </div>
-      <h3 class="metodo-title">Presença Consolidada</h3>
-      <p class="metodo-desc">Conteúdo profissional, produção própria e campanhas pagas direcionadas exatamente para o seu público-alvo e tomadores de decisão.</p>
-     </div>
-
-     <div class="metodo-connector scroll-reveal">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,215,0,0.3)" stroke-width="1.5" stroke-linecap="round"><path d="M5 12h14M14 7l5 5-5 5"/></svg>
-     </div>
-
-     <div class="metodo-step scroll-reveal">
-      <div class="metodo-num">04</div>
-      <div class="metodo-icon-wrap">
-       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      </div>
-      <h3 class="metodo-title">Autoridade de Mercado</h3>
-      <p class="metodo-desc">Acompanhamento contínuo para consolidar sua marca como referência no mercado B2B e expandir sua geração de demanda com base em dados reais.</p>
-     </div>
-
     </div>
    </div>
   </section>
@@ -3182,74 +3383,103 @@
    </div>
   </section>
 
-  <!-- ============ SERVIÇOS ============ -->
-  <section class="services" id="servicos">
+  <!-- ============ EVIEW ASSESSORIA ============ -->
+  <section class="solution solution--assessoria" id="assessoria">
    <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> O QUE ENTREGAMOS</div>
-    <div class="services-intro scroll-reveal">
-     <h2 style="font-size:32px; line-height:1.3;">Uma <span style="color:#FFD700;">assessoria.</span> Múltiplas <span style="color:#FFD700;">frentes de atuação.</span></h2>
-     <p>Não trabalhamos com pacotes fixos. Coletamos os dados da sua empresa, entendemos o seu momento e apresentamos uma proposta com as frentes que realmente fazem sentido para o seu negócio.</p>
-    </div>
-    <div class="services-grid">
-     <div class="service-card scroll-reveal" style="border-color: rgba(255,215,0,0.5); box-shadow: 0 0 24px rgba(255,215,0,0.1);">
-      <div class="service-badge" style="background: linear-gradient(135deg,#FFD700,#FF8C00); color:#080808;">✦ Entrega Principal</div>
-      <div class="service-number">01</div>
-      <i data-lucide="compass" class="service-icon"></i>
-      <h3 class="service-title" style="color:#FFD700;">Assessoria Estratégica</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Diagnóstico de mercado, plano de acao baseado em tempo inicial, posicionamento e mapa de canais. <strong style="color:#FFD700;">Tudo começa aqui.</strong></p>
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO PRINCIPAL</div>
+    <div class="solution-grid">
+     <div class="solution-copy scroll-reveal">
+      <div class="solution-brand">Eview Assessoria</div>
+      <h2>Um time de marketing próximo, <span>dentro do crescimento da sua empresa.</span></h2>
+      <p class="solution-text">A Assessoria é para empresas que querem mais do que postagens ou anúncios soltos. Assumimos o marketing de forma integrada: definimos a direção, construímos a comunicação, produzimos o conteúdo e geramos demanda, acompanhando cada etapa de perto.</p>
+      <p class="solution-note">Nascemos no interior de São Paulo. Na Assessoria, proximidade faz parte do método.</p>
+      <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Assessoria')"><span class="cta-text"><span class="cta-main">Quero a Assessoria</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
      </div>
-     <div class="service-card scroll-reveal">
-      <div class="service-badge">Pode fazer parte da sua assessoria</div>
-      <div class="service-number">02</div>
-      <i data-lucide="share-2" class="service-icon"></i>
-      <h3 class="service-title">Gestão de Redes Sociais</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Calendário editorial, produção de conteúdo, copywriting e análise</p>
-     </div>
-     <div class="service-card scroll-reveal">
-      <div class="service-badge">Pode fazer parte da sua assessoria</div>
-      <div class="service-number">03</div>
-      <i data-lucide="trending-up" class="service-icon"></i>
-      <h3 class="service-title">Tráfego Pago e Performance</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Google Ads, Meta Ads, gestão de orçamento e relatórios</p>
-     </div>
-     <div class="service-card scroll-reveal">
-      <div class="service-badge">Pode fazer parte da sua assessoria</div>
-      <div class="service-number">04</div>
-      <i data-lucide="palette" class="service-icon"></i>
-      <h3 class="service-title">Identidade Visual e Branding</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Logo, manual de marca, materiais e tom de voz</p>
-     </div>
-     <div class="service-card scroll-reveal">
-      <div class="service-badge">Pode fazer parte da sua assessoria</div>
-      <div class="service-number">05</div>
-      <i data-lucide="camera" class="service-icon"></i>
-      <h3 class="service-title">Produção de Conteúdo</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Fotos profissionais, reels, stories e conteúdo de autoridade</p>
-     </div>
-     <div class="service-card scroll-reveal">
-      <div class="service-badge">Pode fazer parte da sua assessoria</div>
-      <div class="service-number">06</div>
-      <i data-lucide="lightbulb" class="service-icon"></i>
-      <h3 class="service-title">Consultoria e Imersão</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Análise de cenário, gaps, plano priorizado e mentoria</p>
-     </div>
-     <div class="service-card featured scroll-reveal">
-      <div class="service-badge">Diferencial Exclusivo</div>
-      <div class="service-number">07</div>
-      <i data-lucide="camera-video" class="service-icon"></i>
-      <h3 class="service-title">Produção Audiovisual Própria</h3>
-      <div class="service-line"></div>
-      <p class="service-desc">Diferente da maioria das agências, a Eview possui equipamentos profissionais de produtora. Vídeos, reels e conteúdo audiovisual produzidos com qualidade de alto nível, sem terceirizar.</p>
+     <div class="solution-formula scroll-reveal">
+      <div class="formula-label">Como a Assessoria funciona</div>
+      <div class="formula-equation">Estratégia <b>+</b> Comunicação <b>+</b> Audiovisual <b>+</b> Demanda</div>
+      <div class="formula-grid">
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="compass"></i> Estratégia</div>
+        <p>Diagnóstico, posicionamento e um plano claro de prioridades.</p>
+       </div>
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="message-square"></i> Comunicação</div>
+        <p>Mensagem, marca e presença consistente nos canais certos.</p>
+       </div>
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="clapperboard"></i> Audiovisual</div>
+        <p>Foto e vídeo com equipe e equipamentos próprios de produtora.</p>
+       </div>
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="target"></i> Demanda</div>
+        <p>Mídia paga e ações que levam clientes até a sua empresa.</p>
+       </div>
+      </div>
+      <div class="solution-chips">
+       <span class="solution-chip"><i data-lucide="users"></i> Proximidade</span>
+       <span class="solution-chip"><i data-lucide="calendar-check"></i> Acompanhamento</span>
+       <span class="solution-chip"><i data-lucide="video"></i> Produção própria</span>
+       <span class="solution-chip"><i data-lucide="map-pin"></i> Interior de São Paulo</span>
+      </div>
      </div>
     </div>
-    <div class="services-footer">
-     <p>Coletamos os dados da sua empresa, entendemos o seu momento e marcamos uma reunião para apresentar uma proposta personalizada com as frentes que realmente fazem sentido para o seu negócio.</p>
+
+    <div class="capabilities scroll-reveal">
+     <div>
+      <h3>O que pode fazer parte da sua assessoria</h3>
+      <p>Não vendemos pacotes de serviços. Montamos a assessoria com as frentes que o momento da sua empresa pede.</p>
+     </div>
+     <div class="capabilities-list">
+      <span class="capability"><i data-lucide="map"></i> Planejamento estratégico</span>
+      <span class="capability"><i data-lucide="palette"></i> Posicionamento e branding</span>
+      <span class="capability"><i data-lucide="share-2"></i> Gestão de redes sociais</span>
+      <span class="capability"><i data-lucide="pen-tool"></i> Produção de conteúdo</span>
+      <span class="capability"><i data-lucide="camera"></i> Foto e vídeo com equipe própria</span>
+      <span class="capability"><i data-lucide="trending-up"></i> Tráfego pago</span>
+      <span class="capability"><i data-lucide="lightbulb"></i> Consultoria e imersão</span>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ EVIEW PERFORMANCE ============ -->
+  <section class="solution solution--performance" id="performance">
+   <div class="container">
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SOLUÇÃO ESPECIALIZADA</div>
+    <div class="solution-grid">
+     <div class="solution-formula scroll-reveal">
+      <div class="formula-label">Como a Performance funciona</div>
+      <div class="formula-equation">Aquisição <b>+</b> Mídia <b>+</b> Conversão</div>
+      <div class="formula-grid">
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="crosshair"></i> Aquisição</div>
+        <p>Estratégia de geração de demanda com metas por oportunidade.</p>
+       </div>
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="megaphone"></i> Mídia</div>
+        <p>Campanhas em Meta Ads e Google Ads geridas por especialistas.</p>
+       </div>
+       <div class="formula-item">
+        <div class="formula-item-name"><i data-lucide="mouse-pointer-click"></i> Conversão</div>
+        <p>Landing pages e jornadas que transformam clique em contato.</p>
+       </div>
+      </div>
+      <div class="solution-chips">
+       <span class="solution-chip"><i data-lucide="check"></i> Meta Ads</span>
+       <span class="solution-chip"><i data-lucide="check"></i> Google Ads</span>
+       <span class="solution-chip"><i data-lucide="check"></i> Landing Pages</span>
+       <span class="solution-chip"><i data-lucide="check"></i> Geração de demanda</span>
+       <span class="solution-chip"><i data-lucide="globe"></i> Todo o Brasil</span>
+      </div>
+     </div>
+     <div class="solution-copy scroll-reveal">
+      <div class="solution-brand">Eview Performance</div>
+      <h2>Aquisição de clientes <span>com escala, em todo o Brasil.</span></h2>
+      <p class="solution-text">Para empresas que já têm estrutura comercial e precisam de um motor de aquisição previsível. Um time especializado em mídia paga e conversão, com foco em volume, custo por oportunidade e retorno sobre o investimento.</p>
+      <p class="solution-note">Na Assessoria, proximidade faz parte do método. Na Performance, nossa atuação é nacional.</p>
+      <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Performance')"><span class="cta-text"><span class="cta-main">Quero escalar com Performance</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
+     </div>
     </div>
    </div>
   </section>
@@ -3257,52 +3487,56 @@
   <!-- ============ SEGMENTOS ============ -->
   <section class="segments">
    <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> SEGMENTOS QUE ATENDEMOS</div>
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> QUEM ATENDEMOS</div>
+    <div class="segments-intro scroll-reveal">
+     <h2>O filtro é a qualidade da empresa, <span>não o segmento.</span></h2>
+     <p>Atendemos empresas estruturadas, com produto ou serviço sólido e vontade real de crescer, sejam elas B2B ou B2C.</p>
+    </div>
     <div class="segments-grid">
      <div class="segment-card scroll-reveal">
       <div class="segment-number">01</div>
-      <i data-lucide="cpu" class="segment-icon"></i>
-      <div class="segment-name">Tecnologia e SaaS</div>
+      <i data-lucide="heart-pulse" class="segment-icon"></i>
+      <div class="segment-name">Saúde e Bem-estar</div>
      </div>
      <div class="segment-card scroll-reveal">
       <div class="segment-number">02</div>
-      <i data-lucide="truck" class="segment-icon"></i>
-      <div class="segment-name">Logística e Transporte</div>
+      <i data-lucide="dumbbell" class="segment-icon"></i>
+      <div class="segment-name">Academias e Fitness</div>
      </div>
      <div class="segment-card scroll-reveal">
       <div class="segment-number">03</div>
-      <i data-lucide="leaf" class="segment-icon"></i>
-      <div class="segment-name">Agronegócio</div>
+      <i data-lucide="bed-double" class="segment-icon"></i>
+      <div class="segment-name">Hotelaria e Turismo</div>
      </div>
      <div class="segment-card scroll-reveal">
       <div class="segment-number">04</div>
-      <i data-lucide="building-2" class="segment-icon"></i>
-      <div class="segment-name">Indústria e Manufatura</div>
+      <i data-lucide="shopping-bag" class="segment-icon"></i>
+      <div class="segment-name">Varejo Estruturado</div>
      </div>
      <div class="segment-card scroll-reveal">
       <div class="segment-number">05</div>
+      <i data-lucide="building-2" class="segment-icon"></i>
+      <div class="segment-name">Imobiliário e Construção</div>
+     </div>
+     <div class="segment-card scroll-reveal">
+      <div class="segment-number">06</div>
+      <i data-lucide="utensils" class="segment-icon"></i>
+      <div class="segment-name">Gastronomia</div>
+     </div>
+     <div class="segment-card scroll-reveal">
+      <div class="segment-number">07</div>
       <i data-lucide="briefcase" class="segment-icon"></i>
       <div class="segment-name">Serviços Profissionais</div>
      </div>
      <div class="segment-card scroll-reveal">
-      <div class="segment-number">06</div>
-      <i data-lucide="bar-chart-2" class="segment-icon"></i>
-      <div class="segment-name">Consultorias e Assessorias</div>
-     </div>
-     <div class="segment-card scroll-reveal">
-      <div class="segment-number">07</div>
-      <i data-lucide="settings" class="segment-icon"></i>
-      <div class="segment-name">Fornecedores Corporativos</div>
-     </div>
-     <div class="segment-card scroll-reveal">
       <div class="segment-number">08</div>
-      <i data-lucide="layers" class="segment-icon"></i>
-      <div class="segment-name">Distribuidoras e Atacado</div>
+      <i data-lucide="factory" class="segment-icon"></i>
+      <div class="segment-name">Indústria e Agronegócio</div>
      </div>
-     <div class="segment-cta scroll-reveal" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior: 'smooth'})">
+     <div class="segment-cta cta-glow-card scroll-reveal" onclick="openDiagnostico()">
       <div>
-       <h3>Sua empresa também pode ser atendida</h3>
-       <p>Fale com nossa equipe</p>
+       <h3>Seu segmento não está aqui?</h3>
+       <p>Fale com nossa equipe · <strong class="cta-card-sub">Aperte aqui</strong></p>
       </div>
       <i data-lucide="arrow-right"></i>
      </div>
@@ -3310,58 +3544,28 @@
    </div>
   </section>
 
-  <!-- ============ RESULTADOS ============ -->
-  <section class="results-section" id="resultados">
-   <div class="container">
-    <div class="label-section scroll-reveal" style="justify-content:center;"><span class="dot-pulse"></span> RESULTADOS REAIS</div>
-    <h2 class="scroll-reveal" style="text-align:center; font-size:clamp(28px,4vw,42px); color:#F5F5F5;">Números que nossos <span style="color:#C49A3C;">clientes conquistaram.</span></h2>
-    <p class="scroll-reveal" style="text-align:center; color:#555; font-size:15px; max-width:520px; margin:12px auto 0; line-height:1.75;">Assessoria estratégica aplicada. Resultados mensuráveis entregues.</p>
-    <div class="results-grid">
-     <div class="result-card scroll-reveal">
-      <div class="result-tag">Tecnologia</div>
-      <div class="result-metric">+127%</div>
-      <div class="result-context">Leads qualificados</div>
-      <div class="result-desc">Empresa de software que triplicou a geração de leads em 90 dias combinando conteúdo estratégico e mídia paga.</div>
-     </div>
-     <div class="result-card scroll-reveal">
-      <div class="result-tag">Logística e Transporte</div>
-      <div class="result-metric">3x</div>
-      <div class="result-context">Contatos comerciais</div>
-      <div class="result-desc">Operadora logística que multiplicou por três os contatos comerciais após posicionamento de marca e gestão de tráfego.</div>
-     </div>
-     <div class="result-card scroll-reveal">
-      <div class="result-tag">Distribuidora</div>
-      <div class="result-metric">-58%</div>
-      <div class="result-context">Custo por lead</div>
-      <div class="result-desc">Distribuidora industrial que reduziu o custo por lead em mais da metade com otimização de campanhas e produção própria de conteúdo.</div>
-     </div>
-    </div>
-   </div>
-  </section>
-
-  <!-- ============ PROCESSO ============ -->
-  <section class="process" id="processo">
+  <!-- ============ MÉTODO EVIEW ============ -->
+  <section class="process" id="metodo">
    <div class="container">
 
     <div class="process-header">
-     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSO PROCESSO</div>
-     <h2 class="process-headline scroll-reveal">Como transformamos<br><span>estratégia em resultado.</span></h2>
-     <p class="process-sub scroll-reveal">Quatro etapas conectadas. Cada ação tem um porquê.</p>
+     <div class="label-section scroll-reveal"><span class="dot-pulse"></span> MÉTODO EVIEW</div>
+     <h2 class="process-headline scroll-reveal">Da direção à demanda.<br><span>Um método, seis etapas.</span></h2>
+     <p class="process-sub scroll-reveal">Diagnóstico → Direção → Confiança → Demanda → Conversão → Otimização. Na Assessoria, conduzimos todas as etapas. Na Performance, o foco está em Demanda, Conversão e Otimização.</p>
     </div>
 
     <div class="process-timeline">
 
-     <!-- 01 — esquerda -->
      <div class="pt-row pt-row--left scroll-reveal">
       <div class="pt-card" data-num="01">
        <div class="pt-card-label">Etapa 01</div>
-       <h3 class="pt-card-title">Diagnóstico do Negócio</h3>
-       <p class="pt-card-desc">Mergulhamos no cenário atual antes de qualquer ação. Analisamos posicionamento, presença digital, concorrência e oportunidades reais de crescimento.</p>
+       <h3 class="pt-card-title">Diagnóstico</h3>
+       <p class="pt-card-desc">Entendemos o negócio, o mercado, a concorrência e o momento da empresa antes de qualquer ação.</p>
        <div class="pt-card-pills">
-        <span class="pt-pill">Auditoria digital</span>
-        <span class="pt-pill">Análise de mercado</span>
-        <span class="pt-pill">Mapeamento de oportunidades</span>
-        <span class="pt-pill">Alinhamento de metas</span>
+        <span class="pt-pill">Análise do negócio</span>
+        <span class="pt-pill">Concorrência</span>
+        <span class="pt-pill">Presença digital</span>
+        <span class="pt-pill">Metas</span>
        </div>
       </div>
       <div class="pt-center">
@@ -3372,7 +3576,6 @@
       <div class="pt-empty"></div>
      </div>
 
-     <!-- 02 — direita -->
      <div class="pt-row pt-row--right scroll-reveal">
       <div class="pt-empty"></div>
       <div class="pt-center">
@@ -3382,39 +3585,77 @@
       </div>
       <div class="pt-card" data-num="02">
        <div class="pt-card-label">Etapa 02</div>
-       <h3 class="pt-card-title">Planejamento Estratégico</h3>
-       <p class="pt-card-desc">Com o diagnóstico em mãos, definimos posicionamento, canais prioritários, linhas de comunicação e metas claras. Estratégia que orienta cada detalhe da execução.</p>
+       <h3 class="pt-card-title">Direção</h3>
+       <p class="pt-card-desc">Definimos posicionamento, mensagem e prioridades: o que comunicar, para quem e por quais canais.</p>
        <div class="pt-card-pills">
-        <span class="pt-pill">Posicionamento de marca</span>
-        <span class="pt-pill">Definição de canais</span>
-        <span class="pt-pill">Plano de conteúdo</span>
-        <span class="pt-pill">Calendário e metas</span>
+        <span class="pt-pill">Posicionamento</span>
+        <span class="pt-pill">Mensagem</span>
+        <span class="pt-pill">Canais prioritários</span>
+        <span class="pt-pill">Plano de ação</span>
        </div>
       </div>
      </div>
 
-     <!-- 03 — esquerda -->
      <div class="pt-row pt-row--left scroll-reveal">
       <div class="pt-card" data-num="03">
        <div class="pt-card-label">Etapa 03</div>
-       <h3 class="pt-card-title">Produção e Execução</h3>
-       <p class="pt-card-desc">Produzimos conteúdos, captamos fotos e vídeos, criamos campanhas e gerenciamos os canais com padrão de qualidade elevado. Time completo, execução consistente.</p>
+       <h3 class="pt-card-title">Confiança</h3>
+       <p class="pt-card-desc">Construímos a percepção de valor da marca com comunicação consistente e produção audiovisual própria.</p>
        <div class="pt-card-pills">
         <span class="pt-pill">Conteúdo estratégico</span>
-        <span class="pt-pill">Captação foto &amp; vídeo</span>
-        <span class="pt-pill">Gestão de redes sociais</span>
-        <span class="pt-pill">Campanhas pagas</span>
+        <span class="pt-pill">Foto e vídeo</span>
+        <span class="pt-pill">Redes sociais</span>
+        <span class="pt-pill">Identidade de marca</span>
        </div>
       </div>
       <div class="pt-center">
        <div class="pt-icon-ring">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
        </div>
       </div>
       <div class="pt-empty"></div>
      </div>
 
-     <!-- 04 — direita -->
+     <div class="pt-row pt-row--right scroll-reveal">
+      <div class="pt-empty"></div>
+      <div class="pt-center">
+       <div class="pt-icon-ring">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+       </div>
+      </div>
+      <div class="pt-card" data-num="04">
+       <div class="pt-card-label">Etapa 04</div>
+       <h3 class="pt-card-title">Demanda</h3>
+       <p class="pt-card-desc">Levamos a empresa até as pessoas certas com mídia paga e ações de geração de demanda.</p>
+       <div class="pt-card-pills">
+        <span class="pt-pill">Meta Ads</span>
+        <span class="pt-pill">Google Ads</span>
+        <span class="pt-pill">Campanhas</span>
+        <span class="pt-pill">Público qualificado</span>
+       </div>
+      </div>
+     </div>
+
+     <div class="pt-row pt-row--left scroll-reveal">
+      <div class="pt-card" data-num="05">
+       <div class="pt-card-label">Etapa 05</div>
+       <h3 class="pt-card-title">Conversão</h3>
+       <p class="pt-card-desc">Transformamos atenção em contato comercial, com páginas, ofertas e uma jornada de atendimento alinhada.</p>
+       <div class="pt-card-pills">
+        <span class="pt-pill">Landing pages</span>
+        <span class="pt-pill">Oferta</span>
+        <span class="pt-pill">Jornada de contato</span>
+        <span class="pt-pill">Integração com o comercial</span>
+       </div>
+      </div>
+      <div class="pt-center">
+       <div class="pt-icon-ring">
+        <svg viewBox="0 0 24 24"><path d="m9 9 5 12 1.8-5.2L21 14Z"/><path d="M7.2 2.2 8 5.1"/><path d="m5.1 8-2.9-.8"/><path d="M14 4.1 12 6"/><path d="m6 12-1.9 2"/></svg>
+       </div>
+      </div>
+      <div class="pt-empty"></div>
+     </div>
+
      <div class="pt-row pt-row--right scroll-reveal">
       <div class="pt-empty"></div>
       <div class="pt-center">
@@ -3422,38 +3663,20 @@
         <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
        </div>
       </div>
-      <div class="pt-card" data-num="04">
-       <div class="pt-card-label">Etapa 04</div>
-       <h3 class="pt-card-title">Acompanhamento e Evolução</h3>
-       <p class="pt-card-desc">Monitoramos resultados, ajustamos estratégias e mantemos reuniões periódicas. O trabalho não para, ele evolui a cada ciclo, sempre mais afinado com o seu negócio.</p>
+      <div class="pt-card" data-num="06">
+       <div class="pt-card-label">Etapa 06</div>
+       <h3 class="pt-card-title">Otimização</h3>
+       <p class="pt-card-desc">Acompanhamos os resultados, fazemos reuniões periódicas e ajustamos a rota a cada ciclo.</p>
        <div class="pt-card-pills">
-        <span class="pt-pill">Monitoramento de resultados</span>
-        <span class="pt-pill">Análise de campanhas</span>
+        <span class="pt-pill">Indicadores</span>
         <span class="pt-pill">Reuniões periódicas</span>
+        <span class="pt-pill">Testes</span>
         <span class="pt-pill">Ajustes contínuos</span>
        </div>
       </div>
      </div>
 
     </div>
-   </div>
-  </section>
-
-  <!-- ============ DIFERENCIAL ============ -->
-  <section class="differencial">
-   <div class="differencial-deco"></div>
-   <div class="container">
-    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSO DIFERENCIAL</div>
-    <h2 class="scroll-reveal">Você não contrata uma agência. Você contrata um <span>time de especialistas.</span></h2>
-    <p class="scroll-reveal">Na Eview, você tem acesso a um time completo: estrategistas, gestores de tráfego, produtores de conteúdo, designers e videomakers. Tudo com a proximidade de quem conhece o seu negócio de verdade.</p>
-    <div class="differencial-points scroll-reveal">
-     <div class="diff-point"><i data-lucide="users"></i> <span>Time dedicado ao seu negócio, não um atendente genérico</span></div>
-     <div class="diff-point"><i data-lucide="heart"></i> <span>Proximidade real: você fala diretamente com quem executa</span></div>
-     <div class="diff-point"><i data-lucide="camera"></i> <span>Conteúdo audiovisual profissional produzido pela própria equipe</span></div>
-     <div class="diff-point"><i data-lucide="trending-up"></i> <span>Estratégia antes de qualquer execução, sem achismo</span></div>
-     <div class="diff-point"><i data-lucide="bar-chart-2"></i> <span>Resultados mensuráveis e transparentes todo mês</span></div>
-    </div>
-    <button class="btn btn-primary scroll-reveal" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior: 'smooth'})">Quero um time assim</button>
    </div>
   </section>
 
@@ -3591,6 +3814,53 @@
    </div>
   </section>
 
+  <!-- ============ RESULTADOS ============ -->
+  <section class="results-section" id="resultados">
+   <div class="container">
+    <div class="label-section scroll-reveal" style="justify-content:center;"><span class="dot-pulse"></span> RESULTADOS REAIS</div>
+    <h2 class="scroll-reveal" style="text-align:center; font-size:clamp(28px,4vw,42px); color:#F5F5F5;">Números que nossos <span style="color:#C49A3C;">clientes conquistaram.</span></h2>
+    <p class="scroll-reveal" style="text-align:center; color:#555; font-size:15px; max-width:520px; margin:12px auto 0; line-height:1.75;">Assessoria estratégica aplicada. Resultados mensuráveis entregues.</p>
+    <div class="results-grid">
+     <div class="result-card scroll-reveal">
+      <div class="result-tag">Tecnologia</div>
+      <div class="result-metric">+127%</div>
+      <div class="result-context">Leads qualificados</div>
+      <div class="result-desc">Empresa de software que triplicou a geração de leads em 90 dias combinando conteúdo estratégico e mídia paga.</div>
+     </div>
+     <div class="result-card scroll-reveal">
+      <div class="result-tag">Logística e Transporte</div>
+      <div class="result-metric">3x</div>
+      <div class="result-context">Contatos comerciais</div>
+      <div class="result-desc">Operadora logística que multiplicou por três os contatos comerciais após posicionamento de marca e gestão de tráfego.</div>
+     </div>
+     <div class="result-card scroll-reveal">
+      <div class="result-tag">Distribuidora</div>
+      <div class="result-metric">-58%</div>
+      <div class="result-context">Custo por lead</div>
+      <div class="result-desc">Distribuidora industrial que reduziu o custo por lead em mais da metade com otimização de campanhas e produção própria de conteúdo.</div>
+     </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- ============ DIFERENCIAL ============ -->
+  <section class="differencial">
+   <div class="differencial-deco"></div>
+   <div class="container">
+    <div class="label-section scroll-reveal"><span class="dot-pulse"></span> NOSSO DIFERENCIAL</div>
+    <h2 class="scroll-reveal">Você não contrata uma agência. Você contrata um <span>time de especialistas.</span></h2>
+    <p class="scroll-reveal">Na Eview, você tem acesso a um time completo: estrategistas, gestores de tráfego, produtores de conteúdo, designers e videomakers. Tudo com a proximidade de quem conhece o seu negócio de verdade.</p>
+    <div class="differencial-points scroll-reveal">
+     <div class="diff-point"><i data-lucide="users"></i> <span>Time dedicado ao seu negócio, não um atendente genérico</span></div>
+     <div class="diff-point"><i data-lucide="heart"></i> <span>Proximidade real: você fala diretamente com quem executa</span></div>
+     <div class="diff-point"><i data-lucide="camera"></i> <span>Conteúdo audiovisual profissional produzido pela própria equipe</span></div>
+     <div class="diff-point"><i data-lucide="trending-up"></i> <span>Estratégia antes de qualquer execução, sem achismo</span></div>
+     <div class="diff-point"><i data-lucide="bar-chart-2"></i> <span>Resultados mensuráveis e transparentes todo mês</span></div>
+    </div>
+    <button class="btn btn-primary cta-glow scroll-reveal" onclick="openDiagnostico('Assessoria')"><span class="cta-text"><span class="cta-main">Quero um time assim</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
+   </div>
+  </section>
+
   <!-- ============ POR QUE ESCOLHER A EVIEW ============ -->
   <section class="comparison">
    <div class="container">
@@ -3623,152 +3893,24 @@
      </div>
     </div>
     <div style="text-align: center;">
-     <button class="btn btn-primary scroll-reveal" onclick="document.querySelector('.form-card-premium').scrollIntoView({behavior: 'smooth'})">Solicitar diagnóstico gratuito</button>
+     <button class="btn btn-primary cta-glow scroll-reveal" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
     </div>
    </div>
   </section>
 
-  <!-- ============ FORMULÁRIO DEDICADO ============ -->
-  <section class="form-section" id="contato">
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-final" id="contato">
    <div class="container">
-    <div class="form-section-wrap">
-
-     <div class="form-section-left">
-      <div class="label-section scroll-reveal"><span class="dot-pulse"></span> PRÓXIMO PASSO</div>
-      <h2 class="scroll-reveal">Pronto para escalar<br><span>sua geração de demanda?</span></h2>
-      <p class="scroll-reveal">Preencha o formulário. Nossa equipe analisa o seu negócio e entra em contato em até 24 horas com um diagnóstico personalizado e sem compromisso.</p>
-      <div class="form-proof-list scroll-reveal">
-       <div class="proof-item"><i data-lucide="check-circle"></i> <span>Diagnóstico gratuito, sem compromisso</span></div>
-       <div class="proof-item"><i data-lucide="check-circle"></i> <span>Time dedicado exclusivamente ao seu negócio</span></div>
-       <div class="proof-item"><i data-lucide="check-circle"></i> <span>Produção de conteúdo com equipe própria</span></div>
-       <div class="proof-item"><i data-lucide="check-circle"></i> <span>Resposta em até 24 horas úteis</span></div>
-      </div>
+    <div class="cta-final-box scroll-reveal">
+     <div class="label-section" style="justify-content:center;"><span class="dot-pulse"></span> PRÓXIMO PASSO</div>
+     <h2>Vamos conversar sobre o <span>crescimento da sua empresa?</span></h2>
+     <p>Responda 6 perguntas rápidas. Nossa equipe analisa o momento da sua empresa e entra em contato em até 24 horas para indicar o melhor caminho: Assessoria ou Performance.</p>
+     <button class="btn btn-primary cta-glow" onclick="openDiagnostico()"><span class="cta-text"><span class="cta-main">Solicitar diagnóstico gratuito</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
+     <div class="cta-final-proof">
+      <span><i data-lucide="check-circle"></i> Gratuito e sem compromisso</span>
+      <span><i data-lucide="clock"></i> Menos de 1 minuto</span>
+      <span><i data-lucide="message-circle"></i> Resposta em até 24h</span>
      </div>
-
-     <div class="form-section-right scroll-reveal">
-      <div class="form-card-premium">
-       <div class="form-header">
-        <div class="form-topbar">
-         <div class="form-activity">
-          <span class="activity-dot"></span>
-          <span id="activityText">3 empresas solicitaram hoje</span>
-         </div>
-         <div class="form-vagas">
-          ⚡ Resposta em até 24h
-         </div>
-        </div>
-        <div class="form-body-header">
-         <h3 class="form-headline">Solicite uma <span>análise gratuita</span> para o seu negócio</h3>
-         <p class="form-sub">Preencha em menos de 1 minuto. Nosso time entra em contato com um diagnóstico personalizado.</p>
-         <div class="form-trust">
-          <span class="trust-item">
-           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-           100% Gratuito
-          </span>
-          <span class="trust-item">
-           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-           Sem compromisso
-          </span>
-          <span class="trust-item">
-           <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-           Dados protegidos
-          </span>
-         </div>
-        </div>
-       </div>
-       <form onsubmit="handleFormSubmit(event)" class="form-premium">
-        <div class="form-row-2col">
-         <div class="form-group-premium">
-          <label for="nome" class="label-premium">Nome completo <span class="required">*</span></label>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome" class="input-premium" required autocomplete="name">
-          <div class="input-focus-line"></div>
-         </div>
-         <div class="form-group-premium">
-          <label for="empresa" class="label-premium">Nome da empresa <span class="required">*</span></label>
-          <input type="text" id="empresa" name="empresa" placeholder="Seu negócio" class="input-premium" required autocomplete="organization">
-          <div class="input-focus-line"></div>
-         </div>
-        </div>
-        <div class="form-row-2col">
-         <div class="form-group-premium">
-          <label for="whatsapp" class="label-premium">WhatsApp <span class="required">*</span></label>
-          <input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000" class="input-premium" required autocomplete="tel">
-          <div class="input-focus-line"></div>
-         </div>
-         <div class="form-group-premium">
-          <label for="cidade" class="label-premium">Cidade <span class="required">*</span></label>
-          <input type="text" id="cidade" name="cidade" placeholder="Ex: Campinas, SP" class="input-premium" required autocomplete="address-level2">
-          <div class="input-focus-line"></div>
-         </div>
-        </div>
-        <div class="form-row-2col">
-         <div class="form-group-premium">
-          <label for="segmento" class="label-premium">Segmento <span class="required">*</span></label>
-          <select id="segmento" name="segmento" class="input-premium" required>
-           <option value="" disabled selected>Selecione...</option>
-           <option value="Tecnologia / SaaS">Tecnologia / SaaS</option>
-           <option value="Logística / Transporte">Logística / Transporte</option>
-           <option value="Agronegócio">Agronegócio</option>
-           <option value="Indústria / Manufatura">Indústria / Manufatura</option>
-           <option value="Serviços Profissionais">Serviços Profissionais</option>
-           <option value="Consultoria / Assessoria">Consultoria / Assessoria</option>
-           <option value="Fornecedor Corporativo">Fornecedor Corporativo</option>
-           <option value="Distribuidora / Atacado">Distribuidora / Atacado</option>
-           <option value="Outro">Outro</option>
-          </select>
-          <div class="input-focus-line"></div>
-         </div>
-         <div class="form-group-premium">
-          <label for="faturamento" class="label-premium">Faturamento mensal <span class="required">*</span></label>
-          <select id="faturamento" name="faturamento" class="input-premium" required>
-           <option value="" disabled selected>Selecione...</option>
-           <option value="Até R$ 30k">Até R$ 30k</option>
-           <option value="R$ 30k – R$ 80k">R$ 30k – R$ 80k</option>
-           <option value="R$ 80k – R$ 200k">R$ 80k – R$ 200k</option>
-           <option value="R$ 200k – R$ 500k">R$ 200k – R$ 500k</option>
-           <option value="Acima de R$ 500k">Acima de R$ 500k</option>
-          </select>
-          <div class="input-focus-line"></div>
-         </div>
-        </div>
-        <div class="form-group-premium">
-         <label for="desafio" class="label-premium">Seu maior desafio hoje <span class="required">*</span></label>
-         <select id="desafio" name="desafio" class="input-premium" required>
-          <option value="" disabled selected>Selecione o que mais te desafia...</option>
-          <option value="Gerar leads qualificados">Gerar leads qualificados</option>
-          <option value="Aumentar a autoridade da minha marca no mercado">Aumentar a autoridade da minha marca no mercado</option>
-          <option value="Não tenho consistência nas redes sociais">Não tenho consistência nas redes sociais</option>
-          <option value="Preciso de uma estratégia de marketing clara">Preciso de uma estratégia de marketing clara</option>
-          <option value="Quero me tornar referência no meu segmento">Quero me tornar referência no meu segmento</option>
-          <option value="Não sei como mensurar meus resultados">Não sei como mensurar meus resultados</option>
-         </select>
-         <div class="input-focus-line"></div>
-        </div>
-        <div class="privacy-notice">
-         <i data-lucide="lock" style="width: 16px; height: 16px;"></i>
-         <span>Seus dados são 100% confidenciais e nunca serão compartilhados</span>
-        </div>
-        <button type="submit" class="btn-submit-premium" style="width:100%; margin-top:4px;">
-         <span>Solicitar análise gratuita</span>
-         <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
-        </button>
-       </form>
-       <div class="form-success-premium">
-        <div class="success-animation">
-         <div class="checkmark-circle"></div>
-         <i data-lucide="check-circle"></i>
-        </div>
-        <h4>Perfeito! Recebemos seus dados</h4>
-        <p>Nossa equipe está analisando seu potencial estratégico agora mesmo.</p>
-        <div class="success-timeline">
-         <div class="timeline-item"><span class="timeline-check">✓</span><span>Dados recebidos</span></div>
-         <div class="timeline-item"><span class="timeline-check">⏳</span><span>Análise em progresso</span></div>
-         <div class="timeline-item"><span class="timeline-check">📞</span><span>Contato em até 24h</span></div>
-        </div>
-       </div>
-      </div>
-     </div>
-
     </div>
    </div>
   </section>
@@ -3779,7 +3921,7 @@
     <div class="footer-grid">
      <div class="footer-col">
       <h4>EVIEW MÍDIA</h4>
-      <p>Assessoria de marketing para empresas. Estratégia, conteúdo e geração de demanda com resultado real.</p>
+      <p>Assessoria de marketing e crescimento. Nascemos no interior de São Paulo e, na Performance, atuamos em todo o Brasil.</p>
       <div class="footer-socials">
        <a href="https://www.instagram.com/eviewmidia/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i></a>
        <a href="https://wa.me/5519992318335" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i></a>
@@ -3790,21 +3932,20 @@
       <h4>Navegação</h4>
       <ul>
        <li><a href="#sobre">Sobre</a></li>
-       <li><a href="#servicos">Serviços</a></li>
-       <li><a href="#processo">Processo</a></li>
+       <li><a href="#assessoria">Assessoria</a></li>
+       <li><a href="#performance">Performance</a></li>
+       <li><a href="#metodo">Método</a></li>
        <li><a href="#resultados">Resultados</a></li>
        <li><a href="#contato">Contato</a></li>
       </ul>
      </div>
      <div class="footer-col">
-      <h4>Serviços</h4>
+      <h4>Soluções</h4>
       <ul>
-       <li><a href="#">Assessoria Estratégica</a></li>
-       <li><a href="#">Gestão de Redes Sociais</a></li>
-       <li><a href="#">Tráfego Pago</a></li>
-       <li><a href="#">Identidade Visual</a></li>
-       <li><a href="#">Produção de Conteúdo</a></li>
-       <li><a href="#">Consultoria</a></li>
+       <li><a href="#assessoria">Eview Assessoria</a></li>
+       <li><a href="#performance">Eview Performance</a></li>
+       <li><a href="#metodo">Método Eview</a></li>
+       <li><a href="#contato" class="footer-cta" onclick="event.preventDefault(); openDiagnostico()">Diagnóstico gratuito · Aperte aqui</a></li>
       </ul>
      </div>
      <div class="footer-col">
@@ -3823,6 +3964,19 @@
     </div>
    </div>
   </footer>
+
+  <!-- ============ MODAL DIAGNÓSTICO (multi-etapas) ============ -->
+  <div id="diag-modal" class="diag-modal" role="dialog" aria-modal="true" aria-labelledby="diag-title" hidden>
+   <div class="diag-content">
+    <div class="diag-header">
+     <button type="button" class="diag-back" id="diag-back" onclick="diagNav('back')"><i data-lucide="arrow-left"></i> Voltar</button>
+     <span class="diag-step-label" id="diag-step-label"></span>
+     <button type="button" class="diag-close" onclick="closeDiagnostico()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="diag-progress"><div class="diag-progress-fill" id="diag-progress-fill"></div></div>
+    <div class="diag-body" id="diag-body"></div>
+   </div>
+  </div>
 
   <script>
     // Scroll Reveal Observer
@@ -3875,6 +4029,10 @@
 
     document.querySelectorAll('[data-target]').forEach(el => countUpObserver.observe(el));
 
+    // Vídeo de fundo: esconde a imagem reserva quando o vídeo começa a tocar
+    const heroVideo = document.querySelector('.hero-video video');
+    if (heroVideo) heroVideo.addEventListener('playing', () => heroVideo.parentElement.classList.add('is-playing'), { once: true });
+
     // Lucide Icons
     lucide.createIcons();
 
@@ -3921,28 +4079,191 @@
 
     initCarousel();
 
-    // ============ FORM ============
+    // ============ DIAGNÓSTICO (modal multi-etapas) ============
     const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyyaBvjOkWxsrjmJ2fN3l8lm8nl_4kbLujIV80dKWk3IfURTShL5cQSEB0HGcBX1T8S/exec';
 
-    async function handleFormSubmit(e) {
-      e.preventDefault();
+    const diagSteps = [
+      { id: 'identidade', type: 'inputs',
+        title: 'Como você se chama e qual é o seu WhatsApp?',
+        hint: 'Nosso time entra em contato assim que você finalizar.',
+        fields: [
+          { id: 'nome', type: 'text', label: 'Seu nome', placeholder: 'Como prefere ser chamado?', autocomplete: 'name' },
+          { id: 'whatsapp', type: 'tel', label: 'WhatsApp com DDD', placeholder: '(00) 00000-0000', autocomplete: 'tel' }
+        ] },
+      { id: 'empresa', type: 'inputs',
+        title: 'Qual é o nome da sua empresa e em qual cidade vocês estão?',
+        hint: 'Assim já chegamos na conversa conhecendo o seu mercado.',
+        fields: [
+          { id: 'empresa', type: 'text', label: 'Nome da empresa', placeholder: 'Nome do seu negócio', autocomplete: 'organization' },
+          { id: 'cidade', type: 'text', label: 'Cidade', placeholder: 'Ex: Holambra, SP', autocomplete: 'address-level2' }
+        ] },
+      { id: 'solucao', type: 'choice',
+        title: 'O que a sua empresa procura hoje?',
+        hint: 'Se ainda não tiver certeza, a gente te ajuda a decidir.',
+        options: [
+          { val: 'Assessoria', icon: '🧭', sub: 'Estratégia, comunicação, audiovisual e demanda com um time próximo' },
+          { val: 'Performance', icon: '🚀', sub: 'Aquisição de clientes com mídia paga e conversão, em escala' },
+          { val: 'Ainda não sei', icon: '💬', sub: 'Quero entender o melhor caminho para o meu momento' }
+        ] },
+      { id: 'segmento', type: 'choice', grid: true,
+        title: 'Qual é o segmento da sua empresa?',
+        options: ['Saúde / Bem-estar', 'Academia / Fitness', 'Hotelaria / Turismo', 'Varejo', 'Imobiliário / Construção', 'Gastronomia',
+                  'Serviços Profissionais', 'Indústria / Agronegócio', 'Tecnologia / SaaS', 'Distribuidora / Atacado', 'Outro'].map(v => ({ val: v })) },
+      { id: 'faturamento', type: 'choice',
+        title: 'Qual é o faturamento médio mensal da empresa?',
+        hint: 'Nos ajuda a indicar a solução certa para o seu momento.',
+        options: [
+          { val: 'Até R$ 30k', icon: '🌱', sub: 'Começando a estruturar' },
+          { val: 'R$ 30k – R$ 80k', icon: '📈', sub: 'Crescimento ativo' },
+          { val: 'R$ 80k – R$ 200k', icon: '🏗️', sub: 'Operação estruturada' },
+          { val: 'R$ 200k – R$ 500k', icon: '🚀', sub: 'Pronta para escalar' },
+          { val: 'Acima de R$ 500k', icon: '⚡', sub: 'Alta escala' }
+        ] },
+      { id: 'desafio', type: 'choice',
+        title: 'Qual é o seu maior desafio hoje?',
+        hint: 'Escolha o que mais se aproxima da sua realidade.',
+        options: [
+          { val: 'Gerar leads qualificados', icon: '🎯' },
+          { val: 'Escalar a aquisição de clientes com mídia paga', icon: '📊' },
+          { val: 'Aumentar a autoridade da minha marca no mercado', icon: '🏆' },
+          { val: 'Não tenho consistência nas redes sociais', icon: '📱' },
+          { val: 'Preciso de uma estratégia de marketing clara', icon: '🧭' },
+          { val: 'Não sei como mensurar meus resultados', icon: '📉' }
+        ] }
+    ];
+
+    let diagStep = 0;
+    let diagAnswers = {};
+    const diagModal = document.getElementById('diag-modal');
+    const escHtml = v => String(v).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+    function openDiagnostico(solucao) {
+      diagStep = 0;
+      diagAnswers = solucao ? { solucao } : {};
+      diagModal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      renderDiag();
+    }
+
+    function closeDiagnostico() {
+      diagModal.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    diagModal.addEventListener('click', e => { if (e.target === diagModal) closeDiagnostico(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !diagModal.hidden) closeDiagnostico(); });
+
+    function renderDiag() {
+      const total = diagSteps.length;
+      const step = diagSteps[diagStep];
+      document.getElementById('diag-back').style.visibility = diagStep > 0 ? 'visible' : 'hidden';
+      document.getElementById('diag-step-label').textContent = String(diagStep + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+      document.getElementById('diag-progress-fill').style.width = Math.round((diagStep / total) * 100) + '%';
+
+      const head = `
+        <div class="diag-eyebrow">Pergunta ${diagStep + 1} de ${total}</div>
+        <div class="diag-title" id="diag-title">${step.title}</div>
+        ${step.hint ? `<div class="diag-hint">${step.hint}</div>` : '<div style="height:14px"></div>'}`;
+
+      let content;
+      if (step.type === 'inputs') {
+        const saved = diagAnswers[step.id] || {};
+        content = step.fields.map(f => `
+          <div class="diag-field">
+            <label for="diag-${f.id}">${f.label}</label>
+            <input type="${f.type}" id="diag-${f.id}" placeholder="${f.placeholder}" autocomplete="${f.autocomplete}"
+              value="${escHtml(saved[f.id] || '')}" ${f.type === 'tel' ? 'inputmode="tel" maxlength="16"' : ''}>
+          </div>`).join('') + `
+          <button type="button" class="btn diag-next" onclick="diagNav('next')">Continuar <i data-lucide="arrow-right"></i></button>
+          <p class="diag-privacy">Seus dados são confidenciais e nunca serão compartilhados.</p>`;
+      } else {
+        const saved = diagAnswers[step.id] || '';
+        content = `<div class="diag-options${step.grid ? ' grid' : ''}">` + step.options.map((o, i) => `
+          <button type="button" class="diag-opt${saved === o.val ? ' sel' : ''}" onclick="pickDiag(${i})">
+            ${o.icon ? `<span class="diag-opt-icon">${o.icon}</span>` : ''}
+            <span class="diag-opt-text"><span class="diag-opt-val">${o.val}</span>${o.sub ? `<span class="diag-opt-sub">${o.sub}</span>` : ''}</span>
+            <span class="diag-radio"></span>
+          </button>`).join('') + '</div>';
+      }
+
+      const body = document.getElementById('diag-body');
+      body.innerHTML = head + content;
+      body.scrollTop = 0;
+      lucide.createIcons();
+
+      body.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); diagNav('next'); } });
+        inp.addEventListener('input', () => { inp.classList.remove('err'); const m = inp.parentElement.querySelector('.diag-error'); if (m) m.remove(); });
+        if (inp.type === 'tel') inp.addEventListener('input', () => { inp.value = maskPhone(inp.value); });
+      });
+      const first = body.querySelector('input');
+      if (first) setTimeout(() => first.focus(), 80);
+    }
+
+    function maskPhone(v) {
+      const d = v.replace(/\D/g, '').slice(0, 11);
+      if (d.length <= 2) return d ? '(' + d : '';
+      if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+      if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+      return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+    }
+
+    function fieldError(inp, msg) {
+      inp.classList.add('err');
+      if (!inp.parentElement.querySelector('.diag-error')) inp.insertAdjacentHTML('afterend', `<div class="diag-error">${msg}</div>`);
+    }
+
+    function pickDiag(i) {
+      const step = diagSteps[diagStep];
+      diagAnswers[step.id] = step.options[i].val;
+      document.querySelectorAll('#diag-body .diag-opt').forEach((el, idx) => el.classList.toggle('sel', idx === i));
+      setTimeout(() => diagNav('next'), 280);
+    }
+
+    function diagNav(direction) {
+      if (direction === 'back') {
+        if (diagStep > 0) { diagStep--; renderDiag(); }
+        return;
+      }
+      const step = diagSteps[diagStep];
+      if (step.type === 'inputs') {
+        const vals = {};
+        let firstInvalid = null;
+        step.fields.forEach(f => {
+          const inp = document.getElementById('diag-' + f.id);
+          const v = inp.value.trim();
+          let msg = '';
+          if (!v) msg = 'Preencha este campo.';
+          else if (f.type === 'tel' && v.replace(/\D/g, '').length < 10) msg = 'Informe o WhatsApp com DDD.';
+          if (msg) { fieldError(inp, msg); firstInvalid = firstInvalid || inp; } else vals[f.id] = v;
+        });
+        if (firstInvalid) { firstInvalid.focus(); return; }
+        diagAnswers[step.id] = vals;
+      } else if (!diagAnswers[step.id]) {
+        return;
+      }
+      if (diagStep >= diagSteps.length - 1) { submitDiag(); return; }
+      diagStep++;
+      renderDiag();
+    }
+
+    async function submitDiag() {
+      document.getElementById('diag-back').style.visibility = 'hidden';
+      document.getElementById('diag-progress-fill').style.width = '100%';
+      document.getElementById('diag-body').innerHTML = '<div class="diag-loading"><div></div><p>Enviando suas respostas...</p></div>';
+      const id = diagAnswers.identidade || {};
+      const emp = diagAnswers.empresa || {};
       const formData = {
-        nome:        document.getElementById('nome').value,
-        empresa:     document.getElementById('empresa').value,
-        whatsapp:    document.getElementById('whatsapp').value,
-        cidade:      document.getElementById('cidade').value,
-        segmento:    document.getElementById('segmento').value,
-        faturamento: document.getElementById('faturamento').value,
-        desafio:     document.getElementById('desafio').value,
+        nome:        id.nome || '',
+        empresa:     emp.empresa || '',
+        whatsapp:    id.whatsapp || '',
+        cidade:      emp.cidade || '',
+        segmento:    diagAnswers.segmento || '',
+        faturamento: diagAnswers.faturamento || '',
+        desafio:     diagAnswers.desafio || '',
+        solucao:     diagAnswers.solucao || '',
         data_envio:  new Date().toISOString()
       };
-      // Feedback visual no botão
-      const btn = e.target.querySelector('.btn-submit-premium');
-      if (btn) {
-        btn.querySelector('span').textContent = 'Enviando...';
-        btn.disabled = true;
-        btn.style.opacity = '0.7';
-      }
       try {
         await fetch(SHEETS_URL, {
           method: 'POST',
@@ -3963,26 +4284,6 @@
       navbar.classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    // Atividade social proof — rotaciona mensagens
-    const activities = [
-      '3 empresas solicitaram hoje',
-      'Ricardo, gestor comercial, solicitou ha 18 min',
-      'Ana, diretora de marketing, solicitou ha 34 min',
-      '5 análises enviadas esta semana',
-      'Empresa de tecnologia solicitou ha 52 min',
-    ];
-    let actIdx = 0;
-    const actEl = document.getElementById('activityText');
-    if (actEl) {
-      setInterval(() => {
-        actIdx = (actIdx + 1) % activities.length;
-        actEl.style.opacity = '0';
-        setTimeout(() => {
-          actEl.textContent = activities[actIdx];
-          actEl.style.opacity = '1';
-        }, 300);
-      }, 5000);
-    }
   </script>
  </body>
 </html>
