@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desentupidora Matosão</title>
+<meta name="description" content="Desentupidora Matosão: soluções de limpeza industrial e saneamento para empresas. Sucção a vácuo, coleta e transporte de lodo e resíduos, caçamba roll on / roll off e contratos preventivos. Atendimento 24 h em todo o Brasil.">
+<meta property="og:title" content="Desentupidora Matosão · Soluções de limpeza industrial">
+<meta property="og:image" content="/matosaodesentupidora/media/frame-aten-31.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --ink:#0C1030;
+    --navy:#161C52;
+    --blue:#2B37B5;
+    --blue-lt:#7B87FF;
+    --sky:#3FA9E0;        /* azul-claro da fachada */
+    --steel:#EEF0F6;
+    --paper:#FFFFFF;
+    --line:#D5D9E8;
+    --muted:#565D7A;
+    --hazard:#F5B400;
+    --display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+    --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --wrap:1200px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--steel);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:3px solid var(--hazard);outline-offset:3px}
+  .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:24px}
+  h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;font-weight:800}
+  h2 i,h1 i{color:var(--blue);font-style:italic}
+  .eyebrow{display:block;font:500 12px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+  section[id]{scroll-margin-top:84px}
+
+  /* ---------- faixa superior ---------- */
+  .plantao{background:var(--ink);color:#BFC4E6;font:500 12.5px/1 var(--mono);letter-spacing:.04em}
+  .plantao .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+  .live{display:inline-flex;align-items:center;gap:8px;color:#fff}
+  .live::before{content:"";width:8px;height:8px;border-radius:50%;background:#38D37A;animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 #38D37A88}70%,100%{box-shadow:0 0 0 8px #38D37A00}}
+  .plantao nav{display:flex;gap:20px}
+  .plantao a{text-decoration:none;color:#fff}
+  @media (max-width:640px){.plantao nav a:first-child{display:none}}
+
+  /* ---------- header ---------- */
+  header.top{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:12px}
+  .logo{display:flex;flex-direction:column;text-decoration:none;line-height:.85}
+  .logo small{font:700 12px/1 var(--display);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .logo b{font:italic 800 32px/.9 var(--display);text-transform:uppercase;color:var(--blue)}
+  .logo em{font:500 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-top:5px}
+  nav.menu{display:flex;gap:28px;font:600 15px/1 var(--body)}
+  nav.menu a{text-decoration:none;color:var(--ink);padding-block:8px;border-bottom:2px solid transparent}
+  nav.menu a:hover{border-color:var(--blue)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 17px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;text-decoration:none;padding:15px 24px;border:0;cursor:pointer;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);transition:background .15s,transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:var(--navy)}
+  .btn-hazard{background:var(--hazard);color:var(--ink)}
+  .btn-line{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #ffffff55;clip-path:none}
+  .btn-line:hover{box-shadow:inset 0 0 0 2px #fff}
+  @media (max-width:960px){nav.menu{display:none}}
+  @media (max-width:480px){header.top .btn{padding:13px 16px;font-size:15px}.logo b{font-size:27px}.logo em{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,#ffffff07 0 1px,transparent 1px 96px)}
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:stretch;padding-block:76px 0}
+  .hero-copy{padding-bottom:88px;align-self:center}
+  .hero .eyebrow{color:var(--hazard);margin-bottom:22px}
+  .hero h1{font-size:clamp(48px,6.8vw,94px);letter-spacing:-.005em}
+  .hero h1 i{color:var(--blue-lt)}
+  .hero .lede{max-width:54ch;margin:26px 0 34px;font-size:19px;color:#D0D4F0}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-media{position:relative;min-height:520px;clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)}
+  .hero-media video,.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#0C1030cc)}
+  .hero-media figcaption{position:absolute;left:22%;right:20px;bottom:22px;z-index:1;font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#fff}
+  .hero-media figcaption b{display:block;font:700 22px/1 var(--display);letter-spacing:.02em;margin-top:4px}
+  @media (max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;gap:0;padding-block:56px 0}
+    .hero-copy{padding-bottom:48px}
+    .hero-media{min-height:360px;margin-inline:-24px;clip-path:polygon(0 12%,100% 0,100% 100%,0 100%)}
+    .hero-media figcaption{left:24px}
+  }
+
+  /* ---------- credenciais ---------- */
+  .cred{background:var(--paper);border-bottom:1px solid var(--line)}
+  .cred ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr)}
+  .cred li{padding:26px 24px;border-left:1px solid var(--line)}
+  .cred li:first-child{border-left:0;padding-left:0}
+  .cred b{display:block;font:italic 800 34px/1 var(--display);text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+  .cred span{font-size:14.5px;color:var(--muted);line-height:1.4;display:block}
+  @media (max-width:820px){.cred ul{grid-template-columns:1fr 1fr}.cred li{padding:20px 16px}.cred li:nth-child(odd){border-left:0;padding-left:0}.cred li:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+  /* ---------- seções base ---------- */
+  .bloco{padding-block:104px}
+  .head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:52px}
+  .head h2{font-size:clamp(40px,5.2vw,68px);margin-top:14px}
+  .head p{margin:0;color:var(--muted);max-width:52ch}
+  @media (max-width:820px){.head{grid-template-columns:1fr;gap:16px}.bloco{padding-block:76px}}
+
+  /* ---------- a empresa ---------- */
+  .empresa .grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+  .collage{position:relative;display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .collage figure{margin:0;overflow:hidden;background:var(--line)}
+  .collage img{width:100%;height:100%;object-fit:cover}
+  .collage .a{grid-row:1 / span 2;aspect-ratio:3/4.4}
+  .collage .b{aspect-ratio:1/1}
+  .collage .c{aspect-ratio:1/1}
+  .collage .stamp{position:absolute;left:-14px;bottom:28px;background:var(--hazard);color:var(--ink);padding:14px 18px;font:800 20px/1 var(--display);text-transform:uppercase;letter-spacing:.02em;box-shadow:8px 8px 0 var(--ink)}
+  .collage .stamp small{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.12em;margin-bottom:6px}
+  .empresa h2{font-size:clamp(40px,5vw,64px);margin:14px 0 22px}
+  .empresa p{color:var(--muted);max-width:56ch;margin:0 0 16px}
+  .pilares{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--ink)}
+  .pilares li{padding:18px 18px 18px 0;border-bottom:1px solid var(--line)}
+  .pilares li:nth-child(odd){border-right:1px solid var(--line)}
+  .pilares li:nth-child(even){padding-left:18px}
+  .pilares b{display:block;font:700 22px/1.1 var(--display);text-transform:uppercase}
+  .pilares span{font-size:15px;color:var(--muted)}
+  @media (max-width:900px){.empresa .grid{grid-template-columns:1fr;gap:48px}.collage .stamp{left:12px}}
+
+  /* ---------- soluções ---------- */
+  .solucoes{background:var(--paper);border-block:1px solid var(--line)}
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sol{display:flex;flex-direction:column;border:1px solid var(--line);background:var(--steel)}
+  .sol figure{margin:0;aspect-ratio:16/10;overflow:hidden;background:var(--navy)}
+  .sol figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .sol:hover figure img{transform:scale(1.04)}
+  .sol .body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .sol .tag{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+  .sol h3{font-size:28px}
+  .sol p{margin:0;color:var(--muted);font-size:15.5px}
+  .sol ul{margin:auto 0 0;padding:14px 0 0;list-style:none;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:6px}
+  .sol ul li{font:500 12px/1 var(--mono);padding:7px 9px;background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+  .sol.txt{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .sol.txt p{color:#C9CDEA}
+  .sol.txt .tag{color:var(--hazard)}
+  .sol.txt ul{border-color:#ffffff22}
+  .sol.txt ul li{background:transparent;border-color:#ffffff33;color:#fff}
+  .residencial{margin-top:28px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 22px;border:1px dashed var(--line);color:var(--muted);font-size:15.5px}
+  .residencial a{font-weight:600;color:var(--blue)}
+  @media (max-width:980px){.sol-grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:620px){.sol-grid{grid-template-columns:1fr}}
+
+  /* ---------- operação (processo) ---------- */
+  .passos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:p;border-top:4px solid var(--blue)}
+  .passos li{counter-increment:p;padding:24px 24px 0 0;position:relative}
+  .passos li+li{padding-left:24px;border-left:1px solid var(--line)}
+  .passos li::before{content:"Etapa " counter(p);font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+  .passos h3{font-size:28px;margin:12px 0 8px}
+  .passos p{margin:0;color:var(--muted);font-size:15.5px}
+  @media (max-width:900px){.passos{grid-template-columns:1fr 1fr}.passos li:nth-child(3){border-left:0;padding-left:0}.passos li{padding-bottom:28px}}
+  @media (max-width:520px){.passos{grid-template-columns:1fr}.passos li+li{border-left:0;padding-left:0;border-top:1px solid var(--line)}}
+
+  .quote{margin-top:64px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;padding:34px 36px;background:var(--navy);color:#fff}
+  .quote blockquote{margin:0;font:italic 700 clamp(26px,3.2vw,40px)/1.05 var(--display);text-transform:uppercase}
+  .quote blockquote i{color:var(--hazard)}
+  .quote .bar{width:10px;align-self:stretch;background:repeating-linear-gradient(-45deg,var(--hazard) 0 10px,var(--ink) 10px 20px)}
+
+  /* ---------- frota ---------- */
+  .frota{background:var(--ink);color:#fff;padding-block:112px}
+  .frota .head p{color:#AEB3D6}
+  .frota .eyebrow{color:var(--hazard)}
+  .frota .head h2 i{color:var(--blue-lt)}
+  .frota-fotos{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:14px;margin-bottom:56px}
+  .frota-fotos figure{margin:0;position:relative;overflow:hidden;aspect-ratio:4/5;background:var(--navy)}
+  .frota-fotos figure:nth-child(2){aspect-ratio:auto}
+  .frota-fotos img{width:100%;height:100%;object-fit:cover}
+  .frota-fotos figcaption{position:absolute;left:0;bottom:0;right:0;padding:40px 16px 14px;background:linear-gradient(transparent,#0C1030e6);font:500 11.5px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+  @media (max-width:760px){.frota-fotos{grid-template-columns:1fr 1fr}.frota-fotos figure:nth-child(2){grid-column:1 / -1;grid-row:1;aspect-ratio:4/3}}
+  .table-scroll{overflow-x:auto}
+  table.equip{width:100%;border-collapse:collapse;min-width:680px}
+  .equip th{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8C92C2;text-align:left;padding:0 16px 14px 0;border-bottom:2px solid #fff}
+  .equip td{padding:22px 16px 22px 0;border-bottom:1px solid #ffffff22;vertical-align:top}
+  .equip td:first-child{font:700 26px/1 var(--display);text-transform:uppercase;width:30%}
+  .equip td.mono{font:500 14px/1.5 var(--mono);color:var(--hazard);white-space:nowrap}
+  .equip td:last-child{color:#C4C8E6;font-size:15px}
+
+  /* ---------- setores ---------- */
+  .setores{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
+  .setor{padding:26px 24px 26px 0;border-bottom:1px solid var(--line)}
+  .setor:nth-child(3n+2),.setor:nth-child(3n){padding-left:24px;border-left:1px solid var(--line)}
+  .setor h3{font-size:25px;margin-bottom:6px}
+  .setor p{margin:0;color:var(--muted);font-size:15px}
+  @media (max-width:860px){.setores{grid-template-columns:1fr 1fr}.setor:nth-child(n){padding-left:0;border-left:0}.setor:nth-child(even){padding-left:20px;border-left:1px solid var(--line)}}
+  @media (max-width:520px){.setores{grid-template-columns:1fr}.setor:nth-child(even){padding-left:0;border-left:0}}
+
+  /* ---------- proposta ---------- */
+  .proposta{background:var(--blue);color:#fff;position:relative;overflow:hidden}
+  .proposta::after{content:"24H";position:absolute;right:-30px;top:-70px;font:italic 800 clamp(200px,28vw,380px)/1 var(--display);color:#ffffff0d;pointer-events:none}
+  .proposta .wrap{position:relative;z-index:1;display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;padding-block:100px}
+  .proposta .eyebrow{color:var(--hazard)}
+  .proposta h2{font-size:clamp(42px,5.4vw,74px);margin:14px 0 20px}
+  .proposta h2 i{color:#fff}
+  .proposta p{color:#DDE0FF;max-width:46ch;margin:0 0 28px}
+  .canais{display:grid;gap:10px}
+  .canal{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 20px;background:var(--navy);text-decoration:none;color:#fff;transition:background .15s}
+  .canal:hover{background:var(--ink)}
+  .canal small{display:block;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#9CA3E0;margin-bottom:7px}
+  .canal b{font:700 26px/1 var(--display);letter-spacing:.02em;font-variant-numeric:tabular-nums}
+  .canal .arrow{font:700 26px/1 var(--display);color:var(--hazard)}
+  form.form{background:var(--paper);color:var(--ink);padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:16px 18px;box-shadow:16px 16px 0 var(--ink);align-content:start}
+  .form .full{grid-column:1 / -1}
+  .form h3{font-size:30px}
+  .form .note{margin:-8px 0 4px;color:var(--muted);font-size:14.5px}
+  .form label{display:flex;flex-direction:column;gap:6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .form input,.form select,.form textarea{font:400 16px/1.4 var(--body);color:var(--ink);background:var(--steel);border:1px solid var(--line);border-bottom:2px solid var(--ink);padding:12px 12px;border-radius:0;width:100%}
+  .form input:focus,.form select:focus,.form textarea:focus{outline:none;border-bottom-color:var(--blue);background:#fff}
+  .form textarea{min-height:96px;resize:vertical}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;border:0;margin:0;padding:0}
+  .chips legend{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;padding:0}
+  .chips input{position:absolute;opacity:0;width:1px;height:1px}
+  .chips label{flex-direction:row;font:600 15px/1 var(--body);letter-spacing:0;text-transform:none;color:var(--ink);padding:11px 14px;border:1px solid var(--line);background:var(--steel);cursor:pointer}
+  .chips input:checked+label{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chips input:focus-visible+label{outline:3px solid var(--hazard);outline-offset:2px}
+  .form button{justify-self:start}
+  @media (max-width:900px){.proposta .wrap{grid-template-columns:1fr;gap:48px;padding-block:76px}form.form{box-shadow:10px 10px 0 var(--ink)}}
+  @media (max-width:560px){form.form{grid-template-columns:1fr;padding:24px}}
+
+  /* ---------- vagas / rodapé ---------- */
+  .vagas{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding-block:56px}
+  .vagas h3{font-size:36px;margin:10px 0 4px}
+  .vagas p{margin:0;color:var(--muted)}
+  @media (max-width:640px){.vagas{grid-template-columns:1fr}}
+  footer{background:var(--ink);color:#9CA1C8;font-size:14.5px}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-block:56px 28px}
+  footer h4{margin:0 0 14px;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+  footer a{color:#DDE0FF;text-decoration:none}
+  footer a:hover{color:#fff;text-decoration:underline}
+  footer .logo b{color:#fff}
+  footer .logo small,footer .logo em{color:#8C92C2}
+  footer .about{max-width:40ch;margin:16px 0 0}
+  .legal{border-top:1px solid #ffffff1a;padding-block:18px;font:500 12px/1.4 var(--mono);color:#7A80AE}
+  @media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+  .zap{position:fixed;right:18px;bottom:18px;z-index:30;display:flex;align-items:center;gap:10px;background:#1FAF55;color:#fff;text-decoration:none;font:700 16px/1 var(--display);text-transform:uppercase;letter-spacing:.05em;padding:14px 18px;border-radius:40px;box-shadow:0 8px 24px #0C103055}
+  .zap svg{width:22px;height:22px}
+  @media (max-width:520px){.zap span{display:none}.zap{padding:14px}}
+</style>
+</head>
+<body>
+
+<div class="plantao">
+  <div class="wrap">
+    <span class="live">Plantão operacional 24 h · atendimento em todo o Brasil</span>
+    <nav aria-label="Contato rápido">
+      <a href="mailto:desentupidoramatosao@gmail.com">desentupidoramatosao@gmail.com</a>
+      <a href="tel:08005919248">0800 591 9248</a>
+    </nav>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Desentupidora Matosão, início">
+      <small>Desentupidora</small>
+      <b>Matosão</b>
+      <em>Soluções de limpeza industrial</em>
+    </a>
+    <nav class="menu" aria-label="Principal">
+      <a href="#empresa">A empresa</a>
+      <a href="#solucoes">Soluções</a>
+      <a href="#operacao">Operação</a>
+      <a href="#frota">Frota</a>
+      <a href="#setores">Setores</a>
+    </nav>
+    <a class="btn btn-blue" href="#proposta">Solicitar proposta</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Limpeza industrial · Saneamento · Gestão de resíduos</span>
+        <h1>Estrutura para operações que <i>não podem parar.</i></h1>
+        <p class="lede">A Desentupidora Matosão atende indústrias, empresas e condomínios com frota própria, equipe treinada e planejamento em cada etapa: da sucção de efluentes à coleta e transporte de lodo e resíduos.</p>
+        <div class="cta-row">
+          <a class="btn btn-hazard" href="#proposta">Solicitar proposta técnica</a>
+          <a class="btn btn-line" href="tel:08005919248">0800 591 9248</a>
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="/matosaodesentupidora/media/frame-aten-23_5.jpg" alt="Vista aérea da sede da Desentupidora Matosão com caminhões no pátio">
+        <video id="heroVideo" muted playsinline preload="metadata" poster="/matosaodesentupidora/media/frame-aten-23_5.jpg" aria-hidden="true">
+          <source src="/matosaodesentupidora/media/reel-atendimento.mp4#t=19,35" type="video/mp4">
+        </video>
+        <figcaption>Sede e pátio operacional<b>Interior de São Paulo</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="cred">
+    <div class="wrap">
+      <ul>
+        <li><b>Maior frota</b><span>do interior paulista no segmento</span></li>
+        <li><b>24 h</b><span>Plantão operacional todos os dias do ano</span></li>
+        <li><b>15 m³</b><span>Tanque de sucção por viagem no auto vácuo</span></li>
+        <li><b>Brasil</b><span>Mobilização para operações em todo o país</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="bloco empresa" id="empresa">
+    <div class="wrap grid">
+      <div class="collage">
+        <figure class="a"><img src="/matosaodesentupidora/media/frame-aten-31.jpg" alt="Sede da Matosão vista de cima, com galpão e caminhões auto vácuo no pátio" loading="lazy"></figure>
+        <figure class="b"><img src="/matosaodesentupidora/media/frame-aten-8_5.jpg" alt="Colaborador da Matosão no setor administrativo" loading="lazy"></figure>
+        <figure class="c"><img src="/matosaodesentupidora/media/frame-aten-26.jpg" alt="Caminhão auto vácuo com lança de sucção em operação" loading="lazy"></figure>
+        <div class="stamp"><small>Equipe própria</small>Da central ao campo</div>
+      </div>
+      <div>
+        <span class="eyebrow">A empresa</span>
+        <h2>Resolver com responsabilidade exige <i>estrutura</i></h2>
+        <p>A Desentupidora Matosão é referência em saneamento e limpeza industrial, com sede própria, pátio operacional e a maior frota do segmento no interior paulista.</p>
+        <p>Um serviço profissional não começa quando a equipe chega ao local. Começa no primeiro contato: entendemos a necessidade, reunimos as informações da operação e direcionamos o atendimento com o equipamento certo.</p>
+        <ul class="pilares">
+          <li><b>Equipe interna</b><span>Central e campo com profissionais próprios e treinados.</span></li>
+          <li><b>Organização</b><span>Cada chamado com registro, prazo e responsável.</span></li>
+          <li><b>Direcionamento</b><span>Equipamento e equipe definidos antes da saída.</span></li>
+          <li><b>Estrutura</b><span>Frota pesada e sede preparadas para demandas maiores.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco solucoes" id="solucoes">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Soluções para empresas</span>
+          <h2>Serviços dimensionados para a <i>sua operação</i></h2>
+        </div>
+        <p>Atendimentos pontuais, emergenciais ou contratos recorrentes. Cada solução começa pela avaliação do volume, do acesso e do tipo de material.</p>
+      </div>
+
+      <div class="sol-grid">
+        <article class="sol">
+          <figure><img src="/matosaodesentupidora/media/frame-aten-26.jpg" alt="Lança de sucção do caminhão auto vácuo" loading="lazy" style="object-position:50% 35%"></figure>
+          <div class="body">
+            <span class="tag">Sucção a vácuo</span>
+            <h3>Efluentes e lodo líquido</h3>
+            <p>Sucção e transporte de efluentes, lodo e resíduos líquidos com caminhão auto vácuo de 15 m³.</p>
+            <ul><li>Tanques</li><li>Poços</li><li>Estações</li></ul>
+          </div>
+        </article>
+        <article class="sol">
+          <figure><img src="/matosaodesentupidora/media/post-empresa-residuos.jpg" alt="Caminhão roll on / roll off com caçamba azul Matosão" loading="lazy" style="object-position:50% 88%"></figure>
+          <div class="body">
+            <span class="tag">Gestão de resíduos</span>
+            <h3>Coleta e transporte de resíduos</h3>
+            <p>Retirada de lodo e resíduos com caçamba roll on / roll off, planejada conforme volume, local e tipo de material.</p>
+            <ul><li>Roll on / roll off</li><li>Lodo</li><li>Resíduos sólidos</li></ul>
+          </div>
+        </article>
+        <article class="sol">
+          <figure><img src="/matosaodesentupidora/media/frame-aten-12_5.jpg" alt="Equipe técnica planejando atendimento" loading="lazy" style="object-position:50% 45%"></figure>
+          <div class="body">
+            <span class="tag">Limpeza industrial</span>
+            <h3>Limpeza em confinamento</h3>
+            <p>Equipe qualificada para limpezas em ambientes confinados, tanques, reservatórios e tubulações industriais.</p>
+            <ul><li>Reservatórios</li><li>Tubulações</li><li>Galerias</li></ul>
+          </div>
+        </article>
+        <article class="sol txt">
+          <div class="body">
+            <span class="tag">Contratos preventivos</span>
+            <h3>Caixas de gordura, separadoras e fossas</h3>
+            <p>Programação periódica de limpeza para evitar paradas, transbordamentos e custos emergenciais. Prevenção sai mais barato que emergência.</p>
+            <ul><li>Cronograma fixo</li><li>Relatório do serviço</li></ul>
+          </div>
+        </article>
+        <article class="sol txt">
+          <div class="body">
+            <span class="tag">Redes e tubulações</span>
+            <h3>Desobstrução de redes</h3>
+            <p>Desentupimento de redes coletoras, ramais e tubulações de plantas industriais, galpões e condomínios.</p>
+            <ul><li>Redes de esgoto</li><li>Ramais</li><li>Drenagem</li></ul>
+          </div>
+        </article>
+        <article class="sol txt">
+          <div class="body">
+            <span class="tag">Locações</span>
+            <h3>Equipamentos e banheiros químicos</h3>
+            <p>Locação para obras, paradas de manutenção, eventos e frentes de trabalho, com manutenção programada.</p>
+            <ul><li>Obras</li><li>Paradas</li><li>Eventos</li></ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="residencial">
+        <span>Também atendemos residências com desentupimento e limpeza de fossa, 24 horas.</span>
+        <a href="https://wa.me/5519974135865?text=Ol%C3%A1%2C%20preciso%20de%20atendimento%20residencial" target="_blank" rel="noopener">Atendimento residencial pelo WhatsApp →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" id="operacao">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Como conduzimos uma operação</span>
+          <h2>Retirar resíduos exige planejamento, <i>não improviso</i></h2>
+        </div>
+        <p>O transporte de resíduos não é uma simples retirada. Dependendo do volume, do local e do material, é preciso entender o acesso, definir o equipamento e executar com responsabilidade.</p>
+      </div>
+      <ol class="passos">
+        <li><h3>Levantamento</h3><p>Entendemos a necessidade, o tipo de material, o volume estimado e as condições do local.</p></li>
+        <li><h3>Planejamento</h3><p>Definimos equipe, equipamento, acesso ao ponto e janela de execução para não travar a sua rotina.</p></li>
+        <li><h3>Execução</h3><p>Equipe própria executa com segurança, organização e o mínimo de impacto na operação.</p></li>
+        <li><h3>Destinação</h3><p>Transporte do material retirado e descarte correto, com responsabilidade ambiental.</p></li>
+      </ol>
+      <div class="quote">
+        <span class="bar" aria-hidden="true"></span>
+        <blockquote>Todo bom atendimento começa <i>antes de o caminhão sair.</i></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="frota" id="frota">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Frota própria</span>
+          <h2>Mais estrutura para <i>demandas maiores</i></h2>
+        </div>
+        <p>A Matosão segue investindo em equipamento para oferecer soluções cada vez mais completas, com capacidade para operações contínuas e grandes volumes.</p>
+      </div>
+      <div class="frota-fotos">
+        <figure><img src="/matosaodesentupidora/media/frame-aten-26.jpg" alt="Caminhão auto vácuo azul com lança de sucção" loading="lazy"><figcaption>Auto vácuo · 15 m³</figcaption></figure>
+        <figure><img src="/matosaodesentupidora/media/frame-aten-34_5.jpg" alt="Pátio da Matosão com caminhões auto vácuo e tanque" loading="lazy" style="object-position:50% 40%"><figcaption>Pátio operacional e frota estacionada</figcaption></figure>
+        <figure><img src="/matosaodesentupidora/media/frame-roll-3.jpg" alt="Caçambas roll on / roll off Matosão no pátio" loading="lazy" style="object-position:80% 50%"><figcaption>Caçambas roll on / roll off</figcaption></figure>
+      </div>
+      <div class="table-scroll">
+        <table class="equip">
+          <thead><tr><th>Equipamento</th><th>Capacidade</th><th>Aplicação</th></tr></thead>
+          <tbody>
+            <tr><td>Caminhão auto vácuo</td><td class="mono">15 m³</td><td>Sucção de efluentes, lodo, caixas de gordura, separadoras e fossas.</td></tr>
+            <tr><td>Caçamba roll on / roll off</td><td class="mono">Troca rápida</td><td>Retirada de lodo e resíduos com carga e descarga ágeis em múltiplos pontos.</td></tr>
+            <tr><td>Equipamento de desobstrução</td><td class="mono">Redes e ramais</td><td>Desentupimento de tubulações industriais, comerciais e condominiais.</td></tr>
+            <tr><td>Banheiros químicos</td><td class="mono">Locação</td><td>Obras, paradas de manutenção e eventos, com manutenção programada.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" id="setores">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="eyebrow">Setores atendidos</span>
+          <h2>Presentes onde a operação <i>precisa de suporte</i></h2>
+        </div>
+        <p>Da planta industrial ao condomínio, adaptamos equipe e equipamento à rotina e às exigências de cada ambiente.</p>
+      </div>
+      <div class="setores">
+        <div class="setor"><h3>Indústrias</h3><p>Efluentes, lodo, tanques e limpeza em confinamento.</p></div>
+        <div class="setor"><h3>Alimentação</h3><p>Caixas de gordura e separadoras em cronograma preventivo.</p></div>
+        <div class="setor"><h3>Logística e galpões</h3><p>Redes de drenagem, esgoto e retirada de resíduos.</p></div>
+        <div class="setor"><h3>Construção civil</h3><p>Banheiros químicos, caçambas e limpeza de obra.</p></div>
+        <div class="setor"><h3>Condomínios e comércio</h3><p>Desobstrução de redes, fossas e manutenção periódica.</p></div>
+        <div class="setor"><h3>Propriedades rurais</h3><p>Limpeza de fossas, sumidouros e transporte de resíduos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proposta" id="proposta">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Atendimento corporativo</span>
+        <h2>Conte o que sua operação <i>precisa</i></h2>
+        <p>Envie os dados da demanda e nossa equipe retorna com a solução, o equipamento indicado e o prazo de mobilização.</p>
+        <div class="canais">
+          <a class="canal" href="tel:08005919248"><div><small>Ligação gratuita · 24 h</small><b>0800 591 9248</b></div><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="canal" href="https://wa.me/5519974135865" target="_blank" rel="noopener"><div><small>WhatsApp comercial</small><b>(19) 97413-5865</b></div><span class="arrow" aria-hidden="true">→</span></a>
+          <a class="canal" href="https://www.instagram.com/desentupidora_matosao/" target="_blank" rel="noopener"><div><small>Instagram</small><b>@desentupidora_matosao</b></div><span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+
+      <form class="form" id="formProposta" novalidate>
+        <h3 class="full">Solicitar proposta</h3>
+        <p class="note full">Ao enviar, abrimos o WhatsApp comercial com a sua solicitação preenchida.</p>
+        <label>Empresa<input id="f-empresa" name="empresa" required autocomplete="organization"></label>
+        <label>CNPJ (opcional)<input id="f-cnpj" name="cnpj" inputmode="numeric"></label>
+        <label>Seu nome<input id="f-nome" name="nome" required autocomplete="name"></label>
+        <label>Telefone / WhatsApp<input id="f-tel" name="tel" required inputmode="tel" autocomplete="tel"></label>
+        <label class="full">Cidade / UF da operação<input id="f-cidade" name="cidade" required></label>
+        <label class="full">Serviço
+          <select id="f-servico" name="servico">
+            <option>Sucção de efluentes e lodo (auto vácuo)</option>
+            <option>Coleta e transporte de resíduos (roll on / roll off)</option>
+            <option>Limpeza industrial em confinamento</option>
+            <option>Caixas de gordura, separadoras e fossas</option>
+            <option>Desobstrução de redes e tubulações</option>
+            <option>Locação de equipamentos / banheiros químicos</option>
+            <option>Outro</option>
+          </select>
+        </label>
+        <fieldset class="chips full">
+          <legend>Tipo de demanda</legend>
+          <input type="radio" name="tipo" id="t-pontual" value="Pontual" checked><label for="t-pontual">Pontual</label>
+          <input type="radio" name="tipo" id="t-contrato" value="Contrato recorrente"><label for="t-contrato">Contrato recorrente</label>
+          <input type="radio" name="tipo" id="t-emerg" value="Emergência"><label for="t-emerg">Emergência</label>
+        </fieldset>
+        <label class="full">Descreva a demanda<textarea id="f-desc" name="desc" placeholder="Ex.: caixa separadora de 8 m³ com limpeza mensal, acesso por portaria de caminhões."></textarea></label>
+        <button class="btn btn-blue full" type="submit">Enviar solicitação</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="wrap vagas">
+    <div>
+      <span class="eyebrow">Trabalhe conosco</span>
+      <h3>Estamos contratando</h3>
+      <p>Quer fazer parte do time? Envie seu currículo para <a href="mailto:desentupidoramatosao@gmail.com">desentupidoramatosao@gmail.com</a>.</p>
+    </div>
+    <a class="btn btn-blue" href="mailto:desentupidoramatosao@gmail.com?subject=Curr%C3%ADculo">Enviar currículo</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="#inicio"><small>Desentupidora</small><b>Matosão</b><em>Soluções de limpeza industrial</em></a>
+      <p class="about">Saneamento, limpeza industrial e gestão de resíduos para empresas, com plantão 24 horas e atendimento em todo o Brasil.</p>
+    </div>
+    <div>
+      <h4>Soluções</h4>
+      <ul>
+        <li><a href="#solucoes">Sucção a vácuo</a></li>
+        <li><a href="#solucoes">Coleta de resíduos</a></li>
+        <li><a href="#solucoes">Limpeza industrial</a></li>
+        <li><a href="#solucoes">Contratos preventivos</a></li>
+        <li><a href="#solucoes">Locações</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="tel:08005919248">0800 591 9248</a></li>
+        <li><a href="https://wa.me/5519974135865">(19) 97413-5865</a></li>
+        <li><a href="mailto:desentupidoramatosao@gmail.com">desentupidoramatosao@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/desentupidora_matosao/">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap legal">© 2026 Desentupidora Matosão · Soluções de limpeza industrial</div>
+</footer>
+
+<a class="zap" href="https://wa.me/5519974135865?text=Ol%C3%A1%2C%20vim%20pelo%20site" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 3.9A10.9 10.9 0 0 0 3 17.2L2 22l4.9-1.3A10.9 10.9 0 0 0 20 3.9ZM12 20a9 9 0 0 1-4.6-1.3l-.3-.2-2.9.8.8-2.8-.2-.3A9 9 0 1 1 12 20Zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1.1-.3.2-.6.1a7.4 7.4 0 0 1-3.6-3.2c-.3-.5.3-.4.8-1.4a.5.5 0 0 0 0-.5l-.9-2c-.2-.6-.5-.5-.6-.5h-.5a1 1 0 0 0-.8.4 3.1 3.1 0 0 0-1 2.3 5.5 5.5 0 0 0 1.1 2.9 12.4 12.4 0 0 0 4.8 4.2c1.8.8 2.5.8 3.4.7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.2-.3-.2-.6-.4Z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script>
+  // Vídeo aéreo da sede em loop (trecho 19s–35s do reel); com movimento reduzido fica só a foto.
+  (function(){
+    var v=document.getElementById('heroVideo');
+    if(!v||window.matchMedia('(prefers-reduced-motion: reduce)').matches){if(v)v.remove();return;}
+    var A=19,B=35;
+    v.addEventListener('loadedmetadata',function(){v.currentTime=A;v.play().catch(function(){});});
+    v.addEventListener('timeupdate',function(){if(v.currentTime>=B||v.currentTime<A-0.5)v.currentTime=A;});
+    v.load();
+  })();
+
+  // Formulário: monta a mensagem e abre o WhatsApp comercial.
+  document.getElementById('formProposta').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, req=['f-empresa','f-nome','f-tel','f-cidade'], ok=true;
+    req.forEach(function(id){var el=document.getElementById(id);var bad=!el.value.trim();el.setAttribute('aria-invalid',bad);el.style.borderBottomColor=bad?'#C62828':'';if(bad&&ok){el.focus();ok=false;}});
+    if(!ok)return;
+    var g=function(id){return document.getElementById(id).value.trim();};
+    var tipo=f.querySelector('input[name=tipo]:checked').value;
+    var msg='*Solicitação de proposta pelo site*\n'+
+      'Empresa: '+g('f-empresa')+(g('f-cnpj')?' (CNPJ '+g('f-cnpj')+')':'')+'\n'+
+      'Contato: '+g('f-nome')+' · '+g('f-tel')+'\n'+
+      'Local: '+g('f-cidade')+'\n'+
+      'Serviço: '+g('f-servico')+'\n'+
+      'Tipo: '+tipo+(g('f-desc')?'\nDetalhes: '+g('f-desc'):'');
+    window.open('https://wa.me/5519974135865?text='+encodeURIComponent(msg),'_blank','noopener');
+  });
+</script>
+</body>
+</html>
