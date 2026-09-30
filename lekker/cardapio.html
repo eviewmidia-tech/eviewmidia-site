@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cardápio completo da Lekker Confeitaria Artesanal em Holambra SP. Salgados, bolos, tortas, doces e bebidas.">
+  <meta name="keywords" content="cardapio lekker, confeitaria holambra, bolo holambra, kroketten, torta artesanal">
+  <meta property="og:title" content="Cardápio — Lekker Confeitaria Artesanal">
+  <meta property="og:description" content="Conheça nosso cardápio: salgados, bolos, doces e bebidas artesanais.">
+  <meta property="og:image" content="assets/fotos/og-image.jpg">
+  <meta property="og:type" content="website">
+  <title>Cardápio — Lekker Confeitaria Artesanal</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* =============================================
+       RESET & VARIÁVEIS
+    ============================================= */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cor-primaria: #8B1A1A;
+      --cor-primaria-escura: #6B1010;
+      --cor-preta: #1A1A1A;
+      --cor-cinza-claro: #F7F5F2;
+      --cor-cinza-medio: #E8E4DF;
+      --cor-branca: #FFFFFF;
+      --cor-texto-suave: #666666;
+      --fonte-titulo: 'Playfair Display', Georgia, serif;
+      --fonte-corpo: 'Inter', 'Helvetica Neue', sans-serif;
+      --transicao: all 0.3s ease;
+      --sombra-card: 0 4px 20px rgba(0,0,0,0.08);
+      --r: 4px;
+      --r-card: 8px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--fonte-corpo); color: var(--cor-preta); background: var(--cor-branca); line-height: 1.6; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       UTILITÁRIOS
+    ============================================= */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 60px; }
+
+    .kicker { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cor-primaria); display: block; margin-bottom: 12px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 30px;
+      font-family: var(--fonte-corpo); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1.5px solid transparent; border-radius: var(--r);
+      cursor: pointer; transition: var(--transicao);
+    }
+    .btn-primario { background: var(--cor-primaria); color: var(--cor-branca); border-color: var(--cor-primaria); }
+    .btn-primario:hover { background: var(--cor-primaria-escura); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,26,26,0.35); }
+    .btn-pill { border-radius: 100px; }
+    .btn-whatsapp { background: #25D366; color: var(--cor-branca); border-color: #25D366; }
+    .btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,0.35); }
+
+    .img-placeholder {
+      background: var(--cor-cinza-medio);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--cor-texto-suave); font-size: 0.75rem; text-align: center; padding: 20px; gap: 8px;
+    }
+    .img-placeholder i { font-size: 1.8rem; opacity: 0.35; }
+
+    .animate-on-scroll { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+
+    /* =============================================
+       NAVBAR — SPLIT CENTER (igual ao index)
+    ============================================= */
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: all 0.45s ease; }
+
+    .nav-accent { height: 2px; background: var(--cor-primaria); transition: all 0.4s ease; }
+    header.scrolled .nav-accent { opacity: 0; height: 0; }
+
+    .nav-body {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 0 52px;
+      height: 76px;
+      background: rgba(139,26,26,0.96);
+      backdrop-filter: blur(12px);
+      transition: all 0.45s ease;
+    }
+
+    header.scrolled .nav-body {
+      height: 64px;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      box-shadow: 0 2px 28px rgba(0,0,0,0.06);
+    }
+
+    .nav-esquerda { display: flex; align-items: center; gap: 36px; }
+    .nav-logo { display: flex; align-items: center; justify-content: center; }
+    .nav-logo img { height: 48px; width: auto; }
+    .logo-texto { font-family: var(--fonte-titulo); font-size: 1.45rem; font-weight: 700; letter-spacing: 0.04em; transition: color 0.4s ease; }
+    .logo-texto--branco { color: var(--cor-branca); }
+    .logo-texto--cor { color: var(--cor-primaria); display: none; }
+    header.scrolled .logo-texto--branco { display: none; }
+    header.scrolled .logo-texto--cor    { display: block; }
+
+    .nav-direita { display: flex; align-items: center; justify-content: flex-end; gap: 32px; }
+
+    .nav-link {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase;
+      color: rgba(255,255,255,0.88); transition: var(--transicao);
+      position: relative; padding-bottom: 2px;
+    }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1.5px; background: var(--cor-branca); transition: width 0.3s ease; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.ativo::after { width: 100%; }
+    header.scrolled .nav-link { color: var(--cor-preta); }
+    header.scrolled .nav-link::after { background: var(--cor-primaria); }
+    header.scrolled .nav-link:hover { color: var(--cor-primaria); }
+    header.scrolled .nav-link.ativo { color: var(--cor-primaria); }
+
+    .nav-cta {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--cor-branca); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 100px; padding: 8px 20px; transition: var(--transicao); display: flex; align-items: center; gap: 7px;
+    }
+    .nav-cta:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.7); }
+    header.scrolled .nav-cta { color: var(--cor-branca); background: var(--cor-primaria); border-color: var(--cor-primaria); }
+    header.scrolled .nav-cta:hover { background: var(--cor-primaria-escura); }
+
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cor-branca); transition: var(--transicao); }
+    header.scrolled .nav-hamburger span { background: var(--cor-preta); }
+    .nav-hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); background: var(--cor-branca) !important; }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); background: var(--cor-branca) !important; }
+
+    .mobile-drawer {
+      position: fixed; top: 0; right: -100%; width: min(85%, 340px); height: 100vh;
+      background: var(--cor-preta); z-index: 1000; display: flex; flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .mobile-drawer.open { right: 0; }
+
+    .drawer-header { padding: 28px 32px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between; }
+    .drawer-logo { font-family: var(--fonte-titulo); font-size: 1.3rem; font-weight: 700; color: var(--cor-branca); }
+    .drawer-fechar { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 1.2rem; cursor: pointer; padding: 4px; }
+    .drawer-fechar:hover { color: var(--cor-branca); }
+    .drawer-links { padding: 16px 0; flex: 1; }
+    .drawer-link { display: flex; align-items: center; gap: 14px; padding: 15px 32px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.75); transition: var(--transicao); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .drawer-link i { color: var(--cor-primaria); width: 16px; }
+    .drawer-link:hover { background: rgba(255,255,255,0.04); color: var(--cor-branca); padding-left: 40px; }
+    .drawer-cta-wrap { padding: 24px 32px 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .drawer-cta { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 15px; background: #25D366; color: var(--cor-branca); border-radius: var(--r); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+    .drawer-cta:hover { background: #1da851; }
+    .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 999; backdrop-filter: blur(2px); }
+    .mobile-overlay.open { display: block; }
+
+    /* =============================================
+       HERO DO CARDÁPIO
+    ============================================= */
+    .cardapio-hero {
+      padding-top: 78px;
+      min-height: 28vh;
+      background: var(--cor-preta);
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cardapio-hero-inner {
+      position: relative; z-index: 2;
+      padding: 52px 0 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .cardapio-hero h1 {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(2rem, 4.5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--cor-branca);
+      line-height: 1.1;
+    }
+
+    .cardapio-hero-sub {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 12px;
+    }
+
+    .cardapio-hero-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      max-width: 340px;
+      line-height: 1.65;
+      text-align: right;
+    }
+
+    /* Grade decorativa de fundo */
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(139,26,26,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139,26,26,0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* =============================================
+       TABS NAV STICKY
+    ============================================= */
+    .abas-nav {
+      position: sticky;
+      top: 64px;
+      z-index: 100;
+      background: var(--cor-branca);
+      border-bottom: 1px solid var(--cor-cinza-medio);
+    }
+
+    .abas-nav-inner {
+      display: flex;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .aba-btn {
+      flex: 1;
+      padding: 18px 16px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-family: var(--fonte-corpo);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cor-texto-suave);
+      cursor: pointer;
+      transition: var(--transicao);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-bottom: -1px;
+    }
+    .aba-btn:hover { color: var(--cor-primaria); }
+    .aba-btn.ativa { color: var(--cor-primaria); border-bottom-color: var(--cor-primaria); }
+
+    /* =============================================
+       CAROUSEL ROTATIVO — DESTAQUES
+       Duas fileiras de produtos deslizando em sentidos opostos
+    ============================================= */
+    .carousel-section {
+      background: #111;
+      padding: 64px 0;
+      overflow: hidden;
+    }
+
+    .carousel-header {
+      text-align: center;
+      padding: 0 60px;
+      margin-bottom: 40px;
+    }
+
+    .carousel-header h2 {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--cor-branca);
+      margin-bottom: 6px;
+    }
+
+    .carousel-header p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* Fileira de produtos com marquee */
+    .marquee-wrap { overflow: hidden; margin-bottom: 14px; }
+    .marquee-wrap:last-child { margin-bottom: 0; }
+
+    .marquee-track {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+    }
+
+    .marquee-track--ltr { animation: marquee-ltr 28s linear infinite; }
+    .marquee-track--rtl { animation: marquee-rtl 22s linear infinite; }
+
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+    @keyframes marquee-ltr {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marquee-rtl {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Card do marquee */
+    .marquee-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 100px;
+      padding: 12px 22px 12px 12px;
+      white-space: nowrap;
+      cursor: default;
+      transition: background 0.25s ease, border-color 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .marquee-card:hover {
+      background: rgba(139,26,26,0.25);
+      border-color: rgba(139,26,26,0.5);
+    }
+
+    .marquee-card-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .marquee-card:hover .marquee-card-icon {
+      background: var(--cor-primaria);
+      color: var(--cor-branca);
+    }
+
+    .marquee-card-nome {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .marquee-card-badge {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(139,26,26,0.5);
+      color: rgba(255,255,255,0.8);
+      border-radius: 100px;
+      padding: 3px 9px;
+      margin-left: 4px;
+    }
+
+    /* =============================================
+       SPOTLIGHT — RECOMENDAÇÃO ROTATIVA
+    ============================================= */
+    .recomendacao-section {
+      background: var(--cor-cinza-claro);
+      padding: 80px 0;
+    }
+
+    .rec-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .rec-header h2 {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--cor-preta);
+    }
+
+    /* Wrapper do spotlight */
+    .spotlight-wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Cada slide */
+    .spotlight-slide {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 16px 56px rgba(0,0,0,0.12);
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .spotlight-slide.ativo {
+      opacity: 1;
+      transform: scale(1);
+      position: relative;
+      pointer-events: auto;
+    }
+
+    .spotlight-foto {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .spotlight-foto img,
+    .spotlight-foto .img-placeholder {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    /* Badge de recomendação */
+    .rec-badge {
+      position: absolute;
+      top: 18px; left: 18px;
+      background: var(--cor-primaria);
+      color: var(--cor-branca);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .spotlight-info {
+      background: var(--cor-branca);
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .spotlight-categoria {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cor-primaria);
+      margin-bottom: 14px;
+    }
+
+    .spotlight-nome {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: var(--cor-preta);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .spotlight-desc {
+      font-size: 0.92rem;
+      color: var(--cor-texto-suave);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .spotlight-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    .spotlight-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--cor-cinza-claro);
+      color: var(--cor-texto-suave);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    /* Controles do spotlight */
+    .spotlight-controles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .spotlight-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .spotlight-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cor-cinza-medio);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .spotlight-dot.ativo {
+      width: 24px;
+      border-radius: 3px;
+      background: var(--cor-primaria);
+    }
+
+    .spotlight-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--cor-cinza-medio);
+      background: none;
+      color: var(--cor-texto-suave);
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transicao);
+    }
+    .spotlight-btn:hover { border-color: var(--cor-primaria); color: var(--cor-primaria); }
+
+    /* =============================================
+       CORPO DO CARDÁPIO — MENU SECTIONS
+    ============================================= */
+    .cardapio-body { padding: 80px 0 40px; }
+
+    .secao-cardapio {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--cor-cinza-medio);
+    }
+    .secao-cardapio:last-of-type { border-bottom: none; }
+
+    .secao-cabecalho { margin-bottom: 36px; }
+    .secao-cabecalho h2 {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      color: var(--cor-preta);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .secao-cabecalho h2 i { color: var(--cor-primaria); font-size: 1.1rem; }
+    .secao-cabecalho p { font-size: 0.86rem; color: var(--cor-texto-suave); margin-top: 5px; }
+
+    /* Grid de itens — 2 colunas */
+    .itens-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--cor-cinza-medio);
+      border-radius: var(--r-card);
+      overflow: hidden;
+    }
+
+    .item-cardapio {
+      background: var(--cor-branca);
+      padding: 20px 26px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: background 0.2s ease;
+    }
+    .item-cardapio:hover { background: var(--cor-cinza-claro); }
+
+    /* Item com foto */
+    .item-foto {
+      width: 100px; height: 74px;
+      border-radius: var(--r);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .item-foto img, .item-foto .img-placeholder { width: 100%; height: 100%; object-fit: cover; }
+
+    .item-info { flex: 1; }
+    .item-nome { font-size: 0.95rem; font-weight: 600; color: var(--cor-preta); margin-bottom: 4px; }
+    .item-descricao { font-size: 0.8rem; color: var(--cor-texto-suave); line-height: 1.5; }
+
+    /* Grid de bebidas */
+    .bebidas-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+    .bebida-card {
+      background: var(--cor-cinza-claro);
+      border-radius: var(--r-card);
+      padding: 22px 24px;
+      display: flex; gap: 16px; align-items: center;
+      transition: var(--transicao);
+    }
+    .bebida-card:hover { background: var(--cor-cinza-medio); transform: translateY(-2px); }
+
+    .bebida-icone {
+      width: 42px; height: 42px;
+      background: var(--cor-primaria);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cor-branca); font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .bebida-info { flex: 1; }
+    .bebida-nome { font-size: 0.92rem; font-weight: 600; color: var(--cor-preta); margin-bottom: 2px; }
+    .bebida-descricao { font-size: 0.78rem; color: var(--cor-texto-suave); line-height: 1.4; }
+
+    /* =============================================
+       BLOCO DE ENCOMENDAS (cardápio)
+    ============================================= */
+    .encomendas-bloco {
+      background: var(--cor-preta);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 40px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .encomendas-bloco::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(107,16,16,0.6) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .enc-bloco-left {
+      padding: 56px 48px;
+      position: relative; z-index: 1;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .enc-bloco-left h2 {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      color: var(--cor-branca);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+
+    .enc-bloco-left p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .enc-adicional {
+      display: flex; align-items: center; gap: 9px;
+      margin-top: 18px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--r);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .enc-adicional i { color: rgba(255,255,255,0.35); }
+
+    .enc-bloco-right {
+      padding: 56px 48px;
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+      position: relative; z-index: 1;
+    }
+
+    .enc-steps-mini { width: 100%; margin-bottom: 32px; }
+
+    .enc-step-mini {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .enc-step-mini:last-child { border-bottom: none; }
+
+    .enc-step-mini-num {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      width: 22px; flex-shrink: 0; padding-top: 2px;
+    }
+
+    .enc-step-mini-texto strong {
+      display: block;
+      font-size: 0.82rem; font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 2px;
+    }
+
+    .enc-step-mini-texto span {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .enc-aviso-mini {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+    }
+    .enc-aviso-mini i { color: rgba(255,255,255,0.3); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer { position: relative; background: var(--cor-preta); padding: 80px 60px 40px; overflow: hidden; text-align: center; }
+    .footer-bg { position: absolute; inset: 0; z-index: 0; }
+    .footer-bg img { width: 100%; height: 100%; object-fit: cover; opacity: 0.18; }
+    .footer-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.78); z-index: 1; }
+    .footer-conteudo { position: relative; z-index: 2; color: var(--cor-branca); }
+    .footer-logo { height: 60px; width: auto; margin: 0 auto 18px; }
+    .footer-logo-placeholder { font-family: var(--fonte-titulo); font-size: 1.7rem; font-weight: 700; color: var(--cor-branca); margin-bottom: 18px; }
+    .footer-tagline { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 5px; }
+    .footer-slogan { font-family: var(--fonte-titulo); font-style: italic; font-size: 1.05rem; color: rgba(255,255,255,0.8); margin-bottom: 30px; }
+    .footer-divider { width: 50px; height: 1px; background: rgba(255,255,255,0.15); margin: 0 auto 26px; }
+    .footer-info { font-size: 0.84rem; color: rgba(255,255,255,0.55); line-height: 1.8; margin-bottom: 6px; }
+    .footer-sociais { display: flex; justify-content: center; gap: 12px; margin: 28px 0; }
+    .footer-social-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.7); font-size: 0.9rem; transition: var(--transicao); }
+    .footer-social-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5); color: var(--cor-branca); transform: translateY(-3px); }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 22px; }
+    .footer-links a { font-size: 0.74rem; color: rgba(255,255,255,0.4); transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-copyright { font-size: 0.74rem; color: rgba(255,255,255,0.35); line-height: 1.6; }
+    .footer-copyright a { color: rgba(255,255,255,0.55); }
+    .footer-copyright a:hover { color: var(--cor-branca); }
+
+    /* WhatsApp float */
+    .whatsapp-float { position: fixed; bottom: 24px; left: 24px; z-index: 999; display: flex; align-items: center; overflow: hidden; max-width: 56px; height: 56px; background: #25D366; color: var(--cor-branca); border-radius: 28px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: max-width 0.4s ease; }
+    .whatsapp-float:hover { max-width: 280px; }
+    .whatsapp-float i { font-size: 1.45rem; flex-shrink: 0; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+    .whatsapp-float span { font-size: 0.8rem; font-weight: 600; white-space: nowrap; padding-right: 18px; opacity: 0; transition: opacity 0.3s ease 0.1s; }
+    .whatsapp-float:hover span { opacity: 1; }
+
+    /* =============================================
+       RESPONSIVIDADE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .container { padding: 0 40px; }
+      .nav-body { padding: 0 40px; }
+      .abas-nav-inner { padding: 0 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-body { padding: 0 20px; height: 62px; grid-template-columns: auto 1fr auto; }
+      .nav-esquerda, .nav-direita { display: none; }
+      .nav-logo { justify-content: flex-start; }
+      .nav-hamburger { display: flex; justify-content: flex-end; }
+      header.scrolled .nav-body { height: 58px; }
+
+      .cardapio-hero-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .cardapio-hero-desc { text-align: left; }
+
+      .abas-nav-inner { padding: 0; overflow-x: auto; justify-content: flex-start; }
+      .aba-btn { padding: 16px 14px; font-size: 0.65rem; white-space: nowrap; }
+
+      .spotlight-slide { grid-template-columns: 1fr; }
+      .spotlight-foto { aspect-ratio: 16/9; }
+
+      .itens-grid { grid-template-columns: 1fr; }
+      .bebidas-grid { grid-template-columns: 1fr; }
+
+      .encomendas-bloco { grid-template-columns: 1fr; }
+      .enc-bloco-left { padding: 44px 28px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .enc-bloco-right { padding: 44px 28px; }
+
+      footer { padding: 60px 20px 32px; }
+      .carousel-header { padding: 0 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVBAR
+  ============================================= -->
+  <header id="header">
+    <div class="nav-accent"></div>
+    <div class="nav-body">
+      <nav class="nav-esquerda">
+        <a href="index.html#sobre"     class="nav-link">Nossa História</a>
+        <a href="index.html#espaco"    class="nav-link">Nosso Espaço</a>
+        <a href="index.html#destaques" class="nav-link">Produtos</a>
+      </nav>
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo/logo-branco.png" alt="Lekker"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="logo-texto logo-texto--branco" style="display:none;">Lekker</span>
+        <img src="assets/logo/logo-cor.png" alt="Lekker" style="display:none;"
+             onerror="this.style.display='none';">
+        <span class="logo-texto logo-texto--cor">Lekker</span>
+      </a>
+      <nav class="nav-direita">
+        <a href="cardapio.html" class="nav-link ativo">Cardápio</a>
+        <a href="index.html#localizacao" class="nav-link">Contato</a>
+        <a href="index.html#encomendas" class="nav-cta">
+          <i class="fas fa-shopping-bag"></i> Encomendar
+        </a>
+      </nav>
+      <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <span class="drawer-logo">Lekker</span>
+      <button class="drawer-fechar" id="drawerFechar"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="drawer-links">
+      <a href="index.html#sobre"     class="drawer-link"><i class="fas fa-book-open"></i> Nossa História</a>
+      <a href="index.html#espaco"    class="drawer-link"><i class="fas fa-store"></i> Nosso Espaço</a>
+      <a href="cardapio.html"        class="drawer-link"><i class="fas fa-utensils"></i> Cardápio</a>
+      <a href="index.html#localizacao" class="drawer-link"><i class="fas fa-map-marker-alt"></i> Localização</a>
+    </div>
+    <div class="drawer-cta-wrap">
+      <a href="https://wa.me/5519993305204" target="_blank" rel="noopener" class="drawer-cta">
+        <i class="fab fa-whatsapp"></i> Encomendar pelo WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+  <!-- =============================================
+       HERO DO CARDÁPIO
+  ============================================= -->
+  <div class="cardapio-hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container" style="width:100%">
+      <div class="cardapio-hero-inner">
+        <div>
+          <p class="cardapio-hero-sub">Lekker Confeitaria · Holambra</p>
+          <h1>Cardápio</h1>
+        </div>
+        <p class="cardapio-hero-desc">Bolos, tortas, doces artesanais, salgados e cafés especiais — sempre fresquinhos.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =============================================
+       TABS NAV
+  ============================================= -->
+  <nav class="abas-nav" id="abasNav">
+    <div class="abas-nav-inner">
+      <button class="aba-btn ativa" data-alvo="salgados">
+        <i class="fas fa-bread-slice"></i> Salgados
+      </button>
+      <button class="aba-btn" data-alvo="bolos-doces">
+        <i class="fas fa-birthday-cake"></i> Bolos e Doces
+      </button>
+      <button class="aba-btn" data-alvo="bebidas">
+        <i class="fas fa-mug-hot"></i> Bebidas
+      </button>
+      <button class="aba-btn" data-alvo="encomendas-cardapio">
+        <i class="fas fa-shopping-bag"></i> Encomendas
+      </button>
+    </div>
+  </nav>
+
+
+  <!-- =============================================
+       RECOMENDAÇÃO ROTATIVA (Spotlight)
+  ============================================= -->
+  <section class="recomendacao-section">
+    <div class="container">
+      <div class="rec-header animate-on-scroll">
+        <span class="kicker" style="text-align:center;display:block;">Escolhas da Marcela</span>
+        <h2>Recomendações da Casa</h2>
+      </div>
+
+      <div class="spotlight-wrapper animate-on-scroll">
+
+        <!-- Slide 1 — Bolo Wilma -->
+        <div class="spotlight-slide ativo" id="rec-0">
+          <div class="spotlight-foto">
+            <img src="assets/fotos/bolo-wilma.jpg" alt="Bolo Wilma"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="img-placeholder" style="display:none;min-height:320px;">
+              <i class="fas fa-birthday-cake"></i><span>bolo-wilma.jpg</span>
+            </div>
+            <div class="rec-badge"><i class="fas fa-star"></i> Recomendação</div>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-categoria">Bolos e Doces</span>
+            <h3 class="spotlight-nome">Bolo Wilma</h3>
+            <p class="spotlight-desc">Pão de ló branco com creme de baunilha e chantilly, feito com carinho pela Wilma — a receita que começou tudo.</p>
+            <div class="spotlight-tags">
+              <span class="spotlight-tag">Artesanal</span>
+              <span class="spotlight-tag">Baunilha</span>
+              <span class="spotlight-tag">Chantilly</span>
+            </div>
+            <a href="https://wa.me/5519993305204" target="_blank" rel="noopener" class="btn btn-primario btn-pill" style="align-self:flex-start;">
+              <i class="fab fa-whatsapp"></i> Encomendar
+            </a>
+          </div>
+        </div>
+
+        <!-- Slide 2 — Torta de Maçã -->
+        <div class="spotlight-slide" id="rec-1">
+          <div class="spotlight-foto">
+            <img src="assets/fotos/torta-maca.jpg" alt="Torta de Maçã"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="img-placeholder" style="display:none;min-height:320px;">
+              <i class="fas fa-apple-alt"></i><span>torta-maca.jpg</span>
+            </div>
+            <div class="rec-badge"><i class="fas fa-star"></i> Recomendação</div>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-categoria">Bolos e Doces</span>
+            <h3 class="spotlight-nome">Torta de Maçã</h3>
+            <p class="spotlight-desc">Receita tradicional holandesa com maçã caramelizada, uva passa e canela. Uma herança da Holanda que a Marcela trouxe para Holambra.</p>
+            <div class="spotlight-tags">
+              <span class="spotlight-tag">Holandesa</span>
+              <span class="spotlight-tag">Maçã</span>
+              <span class="spotlight-tag">Canela</span>
+            </div>
+            <a href="https://wa.me/5519993305204" target="_blank" rel="noopener" class="btn btn-primario btn-pill" style="align-self:flex-start;">
+              <i class="fab fa-whatsapp"></i> Encomendar
+            </a>
+          </div>
+        </div>
+
+        <!-- Slide 3 — Kroketten -->
+        <div class="spotlight-slide" id="rec-2">
+          <div class="spotlight-foto">
+            <img src="assets/fotos/kroketten.jpg" alt="Kroketten"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="img-placeholder" style="display:none;min-height:320px;">
+              <i class="fas fa-drumstick-bite"></i><span>kroketten.jpg</span>
+            </div>
+            <div class="rec-badge"><i class="fas fa-star"></i> Recomendação</div>
+          </div>
+          <div class="spotlight-info">
+            <span class="spotlight-categoria">Salgados</span>
+            <h3 class="spotlight-nome">Kroketten</h3>
+            <p class="spotlight-desc">Bolinho cremoso de frango com especiarias, empanado e frito na hora. O salgado mais holandês da Lekker — 8 unidades por porção.</p>
+            <div class="spotlight-tags">
+              <span class="spotlight-tag">Holandês</span>
+              <span class="spotlight-tag">Crocante</span>
+              <span class="spotlight-tag">Frango</span>
+            </div>
+            <a href="https://wa.me/5519993305204" target="_blank" rel="noopener" class="btn btn-primario btn-pill" style="align-self:flex-start;">
+              <i class="fab fa-whatsapp"></i> Encomendar
+            </a>
+          </div>
+        </div>
+
+        <!-- Controles -->
+        <div class="spotlight-controles">
+          <button class="spotlight-btn" id="recAnterior" aria-label="Anterior">
+            <i class="fas fa-arrow-left"></i>
+          </button>
+          <div class="spotlight-dots">
+            <span class="spotlight-dot ativo" data-idx="0"></span>
+            <span class="spotlight-dot" data-idx="1"></span>
+            <span class="spotlight-dot" data-idx="2"></span>
+          </div>
+          <button class="spotlight-btn" id="recProximo" aria-label="Próximo">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       CAROUSEL MARQUEE — PRODUTOS PASSANDO
+  ============================================= -->
+  <section class="carousel-section">
+    <div class="carousel-header">
+      <span class="kicker" style="color:rgba(255,255,255,0.35);text-align:center;display:block;">Tudo que temos</span>
+      <h2>Nossas Criações</h2>
+      <p>Passe o mouse para pausar · Clique em qualquer item para encomendar</p>
+    </div>
+
+    <!-- Fileira 1 — esquerda para direita -->
+    <div class="marquee-wrap">
+      <div class="marquee-track marquee-track--ltr">
+        <!-- Itens originais -->
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo Wilma</span>
+          <span class="marquee-card-badge">Destaque</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-apple-alt"></i></div>
+          <span class="marquee-card-nome">Torta de Maçã</span>
+          <span class="marquee-card-badge">Holandesa</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-cookie"></i></div>
+          <span class="marquee-card-nome">Pão de Mel</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo de Laranja</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-drumstick-bite"></i></div>
+          <span class="marquee-card-nome">Kroketten</span>
+          <span class="marquee-card-badge">Holandês</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-coffee"></i></div>
+          <span class="marquee-card-nome">Café Espresso Illy</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-bread-slice"></i></div>
+          <span class="marquee-card-nome">Pão na Chapa</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-mug-hot"></i></div>
+          <span class="marquee-card-nome">Café Coado Orfeu</span>
+        </a>
+        <!-- Duplicata para loop infinito -->
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo Wilma</span>
+          <span class="marquee-card-badge">Destaque</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-apple-alt"></i></div>
+          <span class="marquee-card-nome">Torta de Maçã</span>
+          <span class="marquee-card-badge">Holandesa</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-cookie"></i></div>
+          <span class="marquee-card-nome">Pão de Mel</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo de Laranja</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-drumstick-bite"></i></div>
+          <span class="marquee-card-nome">Kroketten</span>
+          <span class="marquee-card-badge">Holandês</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-coffee"></i></div>
+          <span class="marquee-card-nome">Café Espresso Illy</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-bread-slice"></i></div>
+          <span class="marquee-card-nome">Pão na Chapa</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-mug-hot"></i></div>
+          <span class="marquee-card-nome">Café Coado Orfeu</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Fileira 2 — direita para esquerda -->
+    <div class="marquee-wrap">
+      <div class="marquee-track marquee-track--rtl">
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-egg"></i></div>
+          <span class="marquee-card-nome">Omelete na Manteiga</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-lemon"></i></div>
+          <span class="marquee-card-nome">Suco Natural</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-bread-slice"></i></div>
+          <span class="marquee-card-nome">Pão Italiano c/ Avocado</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-tint"></i></div>
+          <span class="marquee-card-nome">Água Mineral</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-leaf"></i></div>
+          <span class="marquee-card-nome">Opções Zero Lactose</span>
+          <span class="marquee-card-badge">Especial</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo Personalizado</span>
+          <span class="marquee-card-badge">Encomenda</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-cookie"></i></div>
+          <span class="marquee-card-nome">Bolo com Frutas</span>
+          <span class="marquee-card-badge">Novidade</span>
+        </a>
+        <!-- Duplicata -->
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-egg"></i></div>
+          <span class="marquee-card-nome">Omelete na Manteiga</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-lemon"></i></div>
+          <span class="marquee-card-nome">Suco Natural</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-bread-slice"></i></div>
+          <span class="marquee-card-nome">Pão Italiano c/ Avocado</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-tint"></i></div>
+          <span class="marquee-card-nome">Água Mineral</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-leaf"></i></div>
+          <span class="marquee-card-nome">Opções Zero Lactose</span>
+          <span class="marquee-card-badge">Especial</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-birthday-cake"></i></div>
+          <span class="marquee-card-nome">Bolo Personalizado</span>
+          <span class="marquee-card-badge">Encomenda</span>
+        </a>
+        <a href="https://wa.me/5519993305204" class="marquee-card" target="_blank">
+          <div class="marquee-card-icon"><i class="fas fa-cookie"></i></div>
+          <span class="marquee-card-nome">Bolo com Frutas</span>
+          <span class="marquee-card-badge">Novidade</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       MENU COMPLETO
+  ============================================= -->
+  <main class="cardapio-body">
+    <div class="container">
+
+      <!-- SALGADOS -->
+      <section class="secao-cardapio animate-on-scroll" id="salgados">
+        <div class="secao-cabecalho">
+          <span class="kicker">Para começar bem</span>
+          <h2><i class="fas fa-bread-slice"></i> Salgados</h2>
+          <p>Opções saborosas para qualquer hora do dia</p>
+        </div>
+
+        <div class="itens-grid">
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <div class="img-placeholder" style="min-height:74px;">
+                <i class="fas fa-bread-slice"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Pão na Chapa</div>
+              <div class="item-descricao">O clássico pão e manteiga quentinho, dourado na chapa</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <img src="assets/fotos/kroketten.jpg" alt="Kroketten"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="img-placeholder" style="display:none;min-height:74px;">
+                <i class="fas fa-drumstick-bite"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Kroketten</div>
+              <div class="item-descricao">Bolinho cremoso de frango com especiarias — receita holandesa (8 uni.)</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <div class="img-placeholder" style="min-height:74px;">
+                <i class="fas fa-egg"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Omelete na Manteiga</div>
+              <div class="item-descricao">Cremoso, com 3 ovos, feito na manteiga</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <div class="img-placeholder" style="min-height:74px;">
+                <i class="fas fa-bread-slice"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Pão Italiano com Avocado</div>
+              <div class="item-descricao">2 fatias com abacate, sal, azeite, cebola roxa e tomate</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      <!-- BOLOS E DOCES -->
+      <section class="secao-cardapio animate-on-scroll" id="bolos-doces">
+        <div class="secao-cabecalho">
+          <span class="kicker">O coração da Lekker</span>
+          <h2><i class="fas fa-birthday-cake"></i> Bolos e Doces</h2>
+          <p>Receitas artesanais, algumas com herança holandesa</p>
+        </div>
+
+        <div class="itens-grid">
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <img src="assets/fotos/bolo-wilma.jpg" alt="Bolo Wilma"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="img-placeholder" style="display:none;min-height:74px;">
+                <i class="fas fa-birthday-cake"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Bolo Wilma</div>
+              <div class="item-descricao">Pão de ló branco, creme de baunilha e chantilly — feito pela Wilma</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <img src="assets/fotos/torta-maca.jpg" alt="Torta de Maçã"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="img-placeholder" style="display:none;min-height:74px;">
+                <i class="fas fa-apple-alt"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Torta de Maçã</div>
+              <div class="item-descricao">Tradicional holandesa: maçã, uva passa e canela</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <img src="assets/fotos/bolo-laranja.jpg" alt="Bolo de Laranja"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="img-placeholder" style="display:none;min-height:74px;">
+                <i class="fas fa-birthday-cake"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Bolo de Laranja</div>
+              <div class="item-descricao">Macio e úmido, com calda de laranja</div>
+            </div>
+          </div>
+
+          <div class="item-cardapio">
+            <div class="item-foto">
+              <img src="assets/fotos/pao-de-mel.jpg" alt="Pão de Mel"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="img-placeholder" style="display:none;min-height:74px;">
+                <i class="fas fa-cookie"></i>
+              </div>
+            </div>
+            <div class="item-info">
+              <div class="item-nome">Pão de Mel</div>
+              <div class="item-descricao">Recheado e molhadinho, um dos astros da casa</div>
+            </div>
+          </div>
+
+        </div>
+        <p style="font-size:0.8rem;color:var(--cor-texto-suave);margin-top:14px;font-style:italic;">
+          * Em qualquer bolo você pode adicionar frutas. Consulte opções zero lactose.
+        </p>
+      </section>
+
+
+      <!-- BEBIDAS -->
+      <section class="secao-cardapio animate-on-scroll" id="bebidas">
+        <div class="secao-cabecalho">
+          <span class="kicker">Para acompanhar</span>
+          <h2><i class="fas fa-mug-hot"></i> Bebidas</h2>
+          <p>Cafés especiais Illy e Orfeu, sucos naturais e mais</p>
+        </div>
+
+        <div class="bebidas-grid">
+          <div class="bebida-card">
+            <div class="bebida-icone"><i class="fas fa-coffee"></i></div>
+            <div class="bebida-info">
+              <div class="bebida-nome">Café Espresso</div>
+              <div class="bebida-descricao">Café Illy 100% Arábica, torra média, suave e encorpado</div>
+            </div>
+          </div>
+          <div class="bebida-card">
+            <div class="bebida-icone"><i class="fas fa-mug-hot"></i></div>
+            <div class="bebida-info">
+              <div class="bebida-nome">Café Coado</div>
+              <div class="bebida-descricao">Café Orfeu coado na hora</div>
+            </div>
+          </div>
+          <div class="bebida-card">
+            <div class="bebida-icone"><i class="fas fa-lemon"></i></div>
+            <div class="bebida-info">
+              <div class="bebida-nome">Suco Natural</div>
+              <div class="bebida-descricao">Laranja, Limão, Morango, Abacaxi, Abacaxi c/ Hortelã, Melancia</div>
+            </div>
+          </div>
+          <div class="bebida-card">
+            <div class="bebida-icone"><i class="fas fa-tint"></i></div>
+            <div class="bebida-info">
+              <div class="bebida-nome">Água Mineral</div>
+              <div class="bebida-descricao">500ml, com ou sem gás</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ENCOMENDAS -->
+      <div id="encomendas-cardapio" class="encomendas-bloco animate-on-scroll">
+
+        <div class="enc-bloco-left">
+          <span class="kicker" style="color:rgba(255,255,255,0.4);">Pedido especial</span>
+          <h2>Encomende<br>seu bolo</h2>
+          <p>Bolos personalizados para qualquer ocasião. Você escolhe o sabor, o recheio e o tamanho. Adicionais de frutas disponíveis.</p>
+          <p>Consulte disponibilidade de opções zero lactose.</p>
+          <div class="enc-adicional">
+            <i class="fas fa-tag"></i>
+            Opções zero lactose disponíveis mediante consulta
+          </div>
+        </div>
+
+        <div class="enc-bloco-right">
+          <div class="enc-steps-mini">
+
+            <div class="enc-step-mini">
+              <span class="enc-step-mini-num">01</span>
+              <div class="enc-step-mini-texto">
+                <strong>Escolha seu bolo</strong>
+                <span>Veja o cardápio e defina sabor, tamanho e adicionais</span>
+              </div>
+            </div>
+
+            <div class="enc-step-mini">
+              <span class="enc-step-mini-num">02</span>
+              <div class="enc-step-mini-texto">
+                <strong>Entre em contato</strong>
+                <span>Fale pelo WhatsApp com pelo menos 2 dias de antecedência</span>
+              </div>
+            </div>
+
+            <div class="enc-step-mini">
+              <span class="enc-step-mini-num">03</span>
+              <div class="enc-step-mini-texto">
+                <strong>Confirme e retire</strong>
+                <span>Após confirmação, retire no balcão em Holambra</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="enc-aviso-mini">
+            <i class="fas fa-clock"></i>
+            Mínimo 2 dias de antecedência para encomendas
+          </div>
+
+          <a href="https://wa.me/5519993305204" target="_blank" rel="noopener" class="btn btn-whatsapp btn-pill">
+            <i class="fab fa-whatsapp"></i> Encomendar pelo WhatsApp
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bg">
+      <img src="assets/fotos/footer-vitrine.jpg" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="footer-overlay"></div>
+    <div class="footer-conteudo">
+      <img src="assets/logo/logo-branco.png" alt="Lekker" class="footer-logo"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <div class="footer-logo-placeholder" style="display:none;">Lekker</div>
+      <p class="footer-tagline">Produtos artesanais, feitos com amor e muita qualidade.</p>
+      <p class="footer-slogan">Lekker é Delicioso! ♡</p>
+      <div class="footer-divider"></div>
+      <p class="footer-info">R. Dória Vasconcelos, 255 — Centro, Holambra, SP</p>
+      <p class="footer-info">Terça a Domingo · 08:00 às 18:00 · (19) 99330-5204</p>
+      <div class="footer-sociais">
+        <a href="https://www.facebook.com/Lekkerconfeitaria"   target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/lekkerconfeitaria/" target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/5519993305204"                   target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://waze.com/ul/h6gyx321nr"                target="_blank" rel="noopener" class="footer-social-btn"><i class="fab fa-waze"></i></a>
+      </div>
+      <div class="footer-links">
+        <a href="#">Termos de Uso</a>
+        <a href="#">Política de Privacidade</a>
+      </div>
+      <p class="footer-copyright">
+        &copy; 2026 Lekker Confeitaria Artesanal. Todos os Direitos Reservados.<br>
+        Desenvolvido por <a href="https://eviewmidia.com.br" target="_blank" rel="noopener">Eview Mídia</a>
+      </p>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5519993305204" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span>Fale com a gente pelo WhatsApp!</span>
+  </a>
+
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // Navbar scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Menu mobile
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('mobileDrawer');
+    const overlay   = document.getElementById('mobileOverlay');
+    const fechar    = document.getElementById('drawerFechar');
+
+    const abrirDrawer = () => { hamburger.classList.add('open'); drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+    const fecharDrawer = () => { hamburger.classList.remove('open'); drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; };
+
+    hamburger.addEventListener('click', () => drawer.classList.contains('open') ? fecharDrawer() : abrirDrawer());
+    fechar.addEventListener('click', fecharDrawer);
+    overlay.addEventListener('click', fecharDrawer);
+
+    // Abas + scroll
+    const abaBtns = document.querySelectorAll('.aba-btn');
+    abaBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        abaBtns.forEach(b => b.classList.remove('ativa'));
+        btn.classList.add('ativa');
+        const alvo = document.getElementById(btn.dataset.alvo);
+        if (alvo) window.scrollTo({ top: alvo.getBoundingClientRect().top + window.scrollY - 130, behavior: 'smooth' });
+      });
+    });
+
+    // Highlight de abas ao scroll
+    const secoes = ['salgados','bolos-doces','bebidas','encomendas-cardapio'];
+    const abaMap = { 'salgados': 0, 'bolos-doces': 1, 'bebidas': 2, 'encomendas-cardapio': 3 };
+    const secObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = abaMap[e.target.id];
+          if (idx !== undefined) { abaBtns.forEach(b => b.classList.remove('ativa')); abaBtns[idx]?.classList.add('ativa'); }
+        }
+      });
+    }, { threshold: 0.35 });
+    secoes.forEach(id => { const el = document.getElementById(id); if (el) secObs.observe(el); });
+
+    // Spotlight — recomendação rotativa
+    const slides = document.querySelectorAll('.spotlight-slide');
+    const dots   = document.querySelectorAll('.spotlight-dot');
+    let recAtual = 0;
+    let recTimer;
+
+    function irParaSlide(idx) {
+      slides[recAtual].classList.remove('ativo');
+      dots[recAtual].classList.remove('ativo');
+      recAtual = (idx + slides.length) % slides.length;
+      slides[recAtual].classList.add('ativo');
+      dots[recAtual].classList.add('ativo');
+    }
+
+    function iniciarTimer() {
+      recTimer = setInterval(() => irParaSlide(recAtual + 1), 5000);
+    }
+
+    function resetarTimer() {
+      clearInterval(recTimer);
+      iniciarTimer();
+    }
+
+    document.getElementById('recProximo').addEventListener('click', () => { irParaSlide(recAtual + 1); resetarTimer(); });
+    document.getElementById('recAnterior').addEventListener('click', () => { irParaSlide(recAtual - 1); resetarTimer(); });
+    dots.forEach(dot => dot.addEventListener('click', () => { irParaSlide(parseInt(dot.dataset.idx)); resetarTimer(); }));
+
+    // Pausa no hover do spotlight
+    const spotlightWrapper = document.querySelector('.spotlight-wrapper');
+    spotlightWrapper.addEventListener('mouseenter', () => clearInterval(recTimer));
+    spotlightWrapper.addEventListener('mouseleave', iniciarTimer);
+
+    iniciarTimer();
+
+    // Intersection Observer — animações
+    const animObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(el => animObs.observe(el));
+
+    // Stagger nas bebidas
+    document.querySelectorAll('.bebida-card').forEach((c, i) => c.style.transitionDelay = `${i * 0.07}s`);
+  </script>
+
+</body>
+</html>
