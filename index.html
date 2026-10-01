@@ -2705,10 +2705,11 @@
     }
     .formula-item-name i { width: 18px; height: 18px; color: #FFD700; flex-shrink: 0; }
     .formula-item p { font-size: 13px; color: #888; line-height: 1.6; margin: 0; }
-    .solution-segment { display: flex; align-items: center; gap: 9px; margin: 20px 0 0; font-size: 14px; color: #999; }
-    .solution-segment i { width: 17px; height: 17px; color: #FFD700; flex-shrink: 0; }
-    .solution-segment a { color: #FFD700; text-decoration: none; font-weight: 600; border-bottom: 1px solid rgba(255,215,0,0.35); }
-    .solution-segment a:hover { border-bottom-color: #FFD700; }
+    .solution-segments { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 22px 0 0; }
+    .ss-label { font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #777; width: 100%; }
+    .ss-link { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(255,215,0,0.3); color: #FFD700; text-decoration: none; font-size: 13.5px; font-weight: 600; transition: background 0.2s ease, border-color 0.2s ease; }
+    .ss-link:hover { background: rgba(255,215,0,0.08); border-color: #FFD700; }
+    .ss-link i { width: 16px; height: 16px; flex-shrink: 0; }
 
     .solution-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
     .solution-chip {
@@ -3591,7 +3592,11 @@
       <p class="solution-text">Para empresas que já têm estrutura comercial e precisam de um motor de aquisição previsível. Um time especializado em mídia paga e conversão, com foco em volume, custo por oportunidade e retorno sobre o investimento.</p>
       <p class="solution-note"><strong style="color:#FFD700;">Atendemos empresas de todo o Brasil</strong>, com operação 100% remota. Da mídia ao comercial, cuidamos de tudo o que transforma clique em venda.</p>
       <button class="btn btn-primary cta-glow" onclick="openDiagnostico('Performance')"><span class="cta-text"><span class="cta-main">Quero escalar com Performance</span><span class="cta-sub">Aperte aqui</span></span><i data-lucide="arrow-right" class="cta-arrow"></i></button>
-      <p class="solution-segment"><i data-lucide="car"></i> Tem loja de carros? <a href="/lojadecarros">Veja a solução para revendas de veículos →</a></p>
+      <div class="solution-segments">
+       <span class="ss-label">Soluções por segmento</span>
+       <a class="ss-link" href="/lojadecarros"><i data-lucide="car"></i> Lojas de carros</a>
+       <a class="ss-link" href="/climatizacao"><i data-lucide="wind"></i> Empresas de climatização</a>
+      </div>
      </div>
     </div>
 
@@ -4112,6 +4117,7 @@
        <li><a href="#performance">Eview Performance</a></li>
        <li><a href="#metodo">Método Eview</a></li>
        <li><a href="/lojadecarros">Performance para lojas de carros</a></li>
+       <li><a href="/climatizacao">Performance para climatização</a></li>
        <li><a href="#contato" class="footer-cta" onclick="event.preventDefault(); openDiagnostico()">Diagnóstico gratuito · Aperte aqui</a></li>
       </ul>
      </div>

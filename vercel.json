@@ -9,6 +9,16 @@
       "source": "/nexttruck/:path*",
       "destination": "https://nextruck.com.br/:path*",
       "permanent": true
+    },
+    {
+      "source": "/climatização",
+      "destination": "/climatizacao",
+      "permanent": false
+    },
+    {
+      "source": "/climatiza%C3%A7%C3%A3o",
+      "destination": "/climatizacao",
+      "permanent": false
     }
   ]
 }
