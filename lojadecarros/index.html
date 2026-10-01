@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eview Performance para Lojas de Carros — Leads qualificados com informação</title>
+<meta name="description" content="Sistema de captação e geração de demanda para lojas de carros: leads qualificados, com informação completa, entregues ao vendedor certo em minutos.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --gold: #FFD700; --amber: #FF8C00; --bg: #050505; --panel: #0C0C0C;
+    --line: rgba(255,255,255,0.08); --line-gold: rgba(255,215,0,0.25);
+    --txt: #EDEDED; --muted: #8A8A8A;
+  }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--txt); font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; margin: 0; line-height: 1.15; }
+  p { margin: 0; line-height: 1.7; }
+  a { color: inherit; }
+  .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold); animation: blink 1.6s ease-in-out infinite; }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+  /* ---------- NAV ---------- */
+  nav { position: sticky; top: 0; z-index: 50; background: rgba(5,5,5,0.82); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  nav img { height: 20px; width: auto; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; border-radius: 10px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 800; text-decoration: none; transition: filter .2s ease, transform .2s ease; }
+  .btn-gold { background: linear-gradient(135deg, var(--gold), var(--amber)); color: #080808; padding: 12px 20px; font-size: 13px; }
+  .btn-gold:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .btn-lg { padding: 16px 28px; font-size: 15px; }
+  .btn-ghost { border: 1px solid var(--line-gold); color: var(--gold); background: transparent; padding: 15px 24px; font-size: 14px; }
+  .btn-ghost:hover { background: rgba(255,215,0,0.07); }
+  .btn-sub { display: block; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 9.5px; letter-spacing: 0.16em; opacity: .75; margin-top: 3px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position: relative; padding: 76px 0 64px; border-bottom: 1px solid var(--line); overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 56px 56px; opacity: .5; mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 20%, transparent 75%); }
+  .hero::after { content: ''; position: absolute; top: -220px; left: 50%; transform: translateX(-50%); width: 900px; height: 520px; background: radial-gradient(ellipse at center, rgba(255,140,0,0.16), transparent 68%); pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero h1 { font-size: clamp(32px, 5.2vw, 56px); font-weight: 800; letter-spacing: -0.02em; margin: 20px 0 18px; max-width: 16ch; }
+  .hero h1 span { background: linear-gradient(135deg, var(--gold), var(--amber)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .hero p.lead { font-size: 17px; color: var(--muted); max-width: 56ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: #C9C9C9; border: 1px solid var(--line); background: rgba(255,255,255,0.02); border-radius: 999px; padding: 7px 13px; }
+  .tag b { color: var(--gold); font-weight: 500; }
+
+  /* ---------- BLOCOS ---------- */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  .sec-title { font-size: clamp(23px, 3vw, 32px); font-weight: 800; margin: 14px 0 10px; }
+  .sec-title span { color: var(--gold); }
+  .sec-sub { color: var(--muted); font-size: 15px; max-width: 62ch; }
+
+  .pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 32px; }
+  .pain { border: 1px solid var(--line); border-left: 2px solid rgba(255,77,77,0.55); border-radius: 10px; padding: 20px; background: var(--panel); }
+  .pain h4 { font-size: 15px; margin-bottom: 8px; }
+  .pain p { font-size: 13.5px; color: var(--muted); }
+
+
+
+  /* ---------- FLUXOGRAMA ANIMADO ---------- */
+  .pipeline { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr 44px 1fr; align-items: stretch; gap: 0; margin-top: 38px; }
+  .node { position: relative; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px 18px; overflow: hidden; }
+  .node::after { content: ''; position: absolute; inset: 0; border-radius: 12px; border: 1px solid transparent; animation: nodeOn 8s linear infinite; }
+  .node:nth-child(1)::after { animation-delay: 0s; } .node:nth-child(3)::after { animation-delay: 2s; }
+  .node:nth-child(5)::after { animation-delay: 4s; } .node:nth-child(7)::after { animation-delay: 6s; }
+  @keyframes nodeOn { 0%, 18% { border-color: var(--gold); box-shadow: 0 0 26px rgba(255,215,0,.14) inset; } 30%, 100% { border-color: transparent; box-shadow: none; } }
+  .node-n { position: absolute; top: 12px; right: 14px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(255,215,0,.45); }
+  .node-ic { width: 36px; height: 36px; border-radius: 9px; background: rgba(255,215,0,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 13px; }
+  .node-ic svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .node h4 { font-size: 15.5px; margin-bottom: 7px; }
+  .node p { font-size: 13px; color: var(--muted); }
+  .conn { position: relative; align-self: center; height: 2px; background: linear-gradient(90deg, rgba(255,215,0,.05), rgba(255,215,0,.3), rgba(255,215,0,.05)); }
+  .conn::after { content: ''; position: absolute; right: -1px; top: -3px; width: 0; height: 0; border-left: 7px solid rgba(255,215,0,.45); border-top: 4px solid transparent; border-bottom: 4px solid transparent; }
+  .conn i { position: absolute; top: -3px; left: 0; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: runX 8s linear infinite; }
+  .conn:nth-of-type(1) i { animation-delay: .6s; } .conn:nth-of-type(2) i { animation-delay: 2.6s; } .conn:nth-of-type(3) i { animation-delay: 4.6s; }
+  @keyframes runX { 0% { left: 0; opacity: 0; } 8% { opacity: 1; } 22% { left: calc(100% - 8px); opacity: 1; } 26%, 100% { left: calc(100% - 8px); opacity: 0; } }
+  @keyframes runY { 0% { top: 0; opacity: 0; } 8% { opacity: 1; } 22% { top: calc(100% - 8px); opacity: 1; } 26%, 100% { top: calc(100% - 8px); opacity: 0; } }
+
+  .lead-points { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+  .lead-points li { display: flex; gap: 11px; font-size: 14.5px; color: #D5D5D5; align-items: flex-start; }
+  .lead-points svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 2.4; flex-shrink: 0; margin-top: 3px; }
+
+  /* ---------- FEED DE LEADS ---------- */
+  .feed-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: start; margin-top: 34px; }
+  .feed { position: relative; min-height: 318px; }
+  .card-lead { position: absolute; inset: 0; background: linear-gradient(180deg, #101010, #0A0A0A); border: 1px solid var(--line-gold); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,.6); opacity: 0; transform: translateY(14px) scale(.985); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+  .card-lead.on { opacity: 1; transform: none; pointer-events: auto; }
+  .card-head { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; border-bottom: 1px solid var(--line); background: rgba(255,215,0,.05); }
+  .card-head > span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; }
+  .badge-live { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #4ADE80; }
+  .badge-live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: blink 1.4s infinite; }
+  .card-rows { padding: 4px 18px 12px; }
+  .row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,.07); font-size: 13.5px; }
+  .row:last-child { border-bottom: none; }
+  .row b { font-family: 'JetBrains Mono', monospace; font-weight: 500; color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .row span { color: #FFF; font-weight: 500; text-align: right; }
+  .card-foot { padding: 12px 18px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); background: rgba(255,255,255,.02); }
+  .card-foot b { color: var(--gold); font-weight: 600; }
+  .feed-dots { display: flex; gap: 6px; justify-content: center; margin-top: 14px; }
+  .feed-dots i { width: 22px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.14); transition: background .3s ease; }
+  .feed-dots i.on { background: var(--gold); }
+
+  /* ---------- ROTEAMENTO ---------- */
+  .routing { margin-top: 42px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); padding: 26px 24px; }
+  .routing h4 { font-size: 15px; margin-bottom: 4px; }
+  .routing p.rsub { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .routing svg { width: 100%; height: auto; display: block; }
+  .rt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #9A9A9A; letter-spacing: .06em; }
+  .rt-box { fill: #111; stroke: rgba(255,255,255,.12); }
+  .rt-box-gold { fill: rgba(255,215,0,.07); stroke: rgba(255,215,0,.45); }
+  .rt-path { stroke: rgba(255,215,0,.28); stroke-width: 1.5; fill: none; }
+  .rt-dot { fill: var(--gold); }
+  .rt-hint { display: none; }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final { text-align: center; }
+  .cta-final .sec-title { margin-bottom: 14px; }
+  .cta-final .sec-sub { margin: 0 auto 26px; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .cta-points { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: center; margin-top: 26px; font-size: 13.5px; color: var(--muted); }
+  .cta-points span { display: inline-flex; align-items: center; gap: 8px; }
+  .cta-points svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2.4; }
+
+  /* ---------- (antigo) FICHA ---------- */
+
+  /* ---------- EFICIÊNCIA ---------- */
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 32px; }
+  .mini { background: var(--panel); border: 1px solid var(--line); border-radius: 11px; padding: 22px 20px; transition: border-color .2s ease, transform .2s ease; }
+  .mini:hover { border-color: var(--line-gold); transform: translateY(-3px); }
+  .mini h4 { font-size: 15px; margin-bottom: 8px; color: #FFF; }
+  .mini p { font-size: 13.5px; color: var(--muted); }
+  .mini .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: .1em; display: block; margin-bottom: 10px; }
+
+  /* ---------- FORM ---------- */
+
+  footer { padding: 30px 0 40px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; font-size: 12.5px; color: #5E5E5E; }
+  footer a { color: var(--gold); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .pains, .grid4 { grid-template-columns: repeat(2, 1fr); }
+    .feed-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .routing { padding: 22px 0 18px; }
+    .routing h4, .routing p.rsub { padding: 0 20px; }
+    .rt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 4px 20px 6px; }
+    .rt-scroll svg { min-width: 620px; }
+    .rt-hint { display: block; padding: 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .1em; color: #5E5E5E; }
+    .pipeline { grid-template-columns: 1fr; }
+    .conn { height: 34px; width: 2px; justify-self: center; background: linear-gradient(180deg, rgba(255,215,0,.05), rgba(255,215,0,.3), rgba(255,215,0,.05)); }
+    .conn::after { right: -3px; top: auto; bottom: -1px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 7px solid rgba(255,215,0,.45); border-bottom: none; }
+    .conn i { left: -3px; animation-name: runY; }
+  }
+  @media (max-width: 560px) {
+    section { padding: 48px 0; }
+    .hero { padding: 52px 0 48px; }
+    .pains, .grid4 { grid-template-columns: 1fr; }
+    .hero-actions .btn { width: 100%; }
+    nav { position: static; }
+    nav .wrap { height: 56px; gap: 10px; }
+    nav img { height: 15px; }
+    nav .btn-gold { padding: 10px 14px; font-size: 11.5px; white-space: nowrap; }
+    nav .btn-sub { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="https://eviewmidia.com.br"><img src="../logo.png" alt="Eview Mídia"></a>
+    <a href="#contato" class="btn btn-gold">Falar com especialista<span class="btn-sub">APERTE AQUI</span></a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Eview Performance · Lojas de carros</span>
+    <h1>Leads de carro que chegam <span>prontos para o vendedor atender.</span></h1>
+    <p class="lead">Um sistema de captação e geração de demanda feito para loja de veículos: o anúncio atrai, o lead é qualificado automaticamente e chega ao vendedor com modelo de interesse, forma de pagamento e origem. Sem planilha, sem lead solto no WhatsApp.</p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn btn-gold btn-lg">Quero esse sistema na minha loja<span class="btn-sub">APERTE AQUI</span></a>
+      <a href="#sistema" class="btn btn-ghost">Ver como funciona</a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag"><b>+</b> Meta Ads e Google Ads</span>
+      <span class="tag"><b>+</b> Qualificação automática</span>
+      <span class="tag"><b>+</b> Distribuição por vendedor</span>
+      <span class="tag"><b>+</b> CRM e WhatsApp integrados</span>
+      <span class="tag"><b>+</b> Atendimento em todo o Brasil</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">O que trava a venda hoje</span>
+    <h2 class="sec-title">Não falta lead. Falta <span>informação e velocidade.</span></h2>
+    <p class="sec-sub">A maioria das lojas perde venda antes da conversa começar. Sempre pelos mesmos três motivos.</p>
+    <div class="pains">
+      <div class="pain">
+        <h4>Lead sem contexto</h4>
+        <p>Chega só nome e telefone. O vendedor não sabe qual carro a pessoa viu, nem se tem entrada ou troca.</p>
+      </div>
+      <div class="pain">
+        <h4>Demora no primeiro contato</h4>
+        <p>O lead pesquisa várias lojas no mesmo dia. Quem responde depois disputa com quem já respondeu.</p>
+      </div>
+      <div class="pain">
+        <h4>Nada é medido</h4>
+        <p>Sem saber qual anúncio e qual modelo gera venda, o investimento vira aposta todo mês.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistema">
+  <div class="wrap">
+    <span class="eyebrow">O sistema</span>
+    <h2 class="sec-title">Da campanha ao vendedor, <span>em uma esteira só.</span></h2>
+    <p class="sec-sub">Quatro etapas conectadas, rodando sem depender de alguém lembrar de fazer.</p>
+    <div class="pipeline">
+      <div class="node">
+        <span class="node-n">01</span>
+        <div class="node-ic"><svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <h4>Captação</h4>
+        <p>Campanhas por modelo, faixa de preço e região atraem o comprador certo.</p>
+      </div>
+      <div class="conn"><i></i></div>
+      <div class="node">
+        <span class="node-n">02</span>
+        <div class="node-ic"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <h4>Qualificação</h4>
+        <p>O lead responde modelo, pagamento, troca e urgência antes de chegar ao time.</p>
+      </div>
+      <div class="conn"><i></i></div>
+      <div class="node">
+        <span class="node-n">03</span>
+        <div class="node-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+        <h4>Distribuição</h4>
+        <p>Cai no WhatsApp do vendedor certo com a ficha completa e contato automático.</p>
+      </div>
+      <div class="conn"><i></i></div>
+      <div class="node">
+        <span class="node-n">04</span>
+        <div class="node-ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-5"/></svg></div>
+        <h4>Acompanhamento</h4>
+        <p>CRM registra quem atendeu, em quanto tempo, qual anúncio trouxe e o que virou venda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Eficiência comercial</span>
+    <h2 class="sec-title">O vendedor abre a conversa <span>já sabendo com quem fala.</span></h2>
+    <div class="feed-wrap">
+      <div>
+        <p class="sec-sub">Em vez de "oi, tudo bem?", o time começa pelo carro certo. Isso encurta o atendimento, melhora a abordagem e aumenta a chance de a visita acontecer.</p>
+        <ul class="lead-points">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Ficha do lead completa, direto no WhatsApp do vendedor</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Primeiro contato automático em minutos, mesmo fora do horário</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Cadência de follow-up para o lead não esfriar no terceiro dia</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Histórico no CRM, sem depender da memória de ninguém</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="feed" id="feed">
+        <div class="card-lead on">
+          <div class="card-head"><span>Ficha do lead</span><span class="badge-live">recebido agora</span></div>
+          <div class="card-rows">
+            <div class="row"><b>Modelo</b><span>SUV compacto 2021/2022</span></div>
+            <div class="row"><b>Faixa</b><span>R$ 90k – R$ 120k</span></div>
+            <div class="row"><b>Pagamento</b><span>Financiamento + entrada</span></div>
+            <div class="row"><b>Troca</b><span>Sim, hatch 2017</span></div>
+            <div class="row"><b>Cidade</b><span>A 18 km da loja</span></div>
+            <div class="row"><b>Origem</b><span>Meta Ads · anúncio SUV</span></div>
+            <div class="row"><b>Distribuído para</b><span>Vendedor 01</span></div>
+          </div>
+          <div class="card-foot">Exemplo de ficha &mdash; os campos são definidos <b>junto com a sua loja</b></div>
+        </div>
+        <div class="card-lead">
+          <div class="card-head"><span>Ficha do lead</span><span class="badge-live">recebido agora</span></div>
+          <div class="card-rows">
+            <div class="row"><b>Modelo</b><span>Sedã 2019/2020</span></div>
+            <div class="row"><b>Faixa</b><span>R$ 60k – R$ 80k</span></div>
+            <div class="row"><b>Pagamento</b><span>À vista</span></div>
+            <div class="row"><b>Troca</b><span>Não</span></div>
+            <div class="row"><b>Cidade</b><span>A 6 km da loja</span></div>
+            <div class="row"><b>Origem</b><span>Google Ads · busca modelo</span></div>
+            <div class="row"><b>Distribuído para</b><span>Vendedor 02</span></div>
+          </div>
+          <div class="card-foot">Exemplo de ficha &mdash; os campos são definidos <b>junto com a sua loja</b></div>
+        </div>
+        <div class="card-lead">
+          <div class="card-head"><span>Ficha do lead</span><span class="badge-live">recebido agora</span></div>
+          <div class="card-rows">
+            <div class="row"><b>Modelo</b><span>Picape diesel 4x4</span></div>
+            <div class="row"><b>Faixa</b><span>Acima de R$ 180k</span></div>
+            <div class="row"><b>Pagamento</b><span>Financiamento</span></div>
+            <div class="row"><b>Troca</b><span>Sim, SUV 2019</span></div>
+            <div class="row"><b>Cidade</b><span>A 42 km da loja</span></div>
+            <div class="row"><b>Origem</b><span>Meta Ads · anúncio picape</span></div>
+            <div class="row"><b>Distribuído para</b><span>Vendedor 03</span></div>
+          </div>
+          <div class="card-foot">Exemplo de ficha &mdash; os campos são definidos <b>junto com a sua loja</b></div>
+        </div>
+        </div>
+        <div class="feed-dots" id="feedDots"><i class="on"></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div class="routing">
+      <h4>Roteamento automático</h4>
+      <p class="rsub">O lead entra uma vez e segue sozinho até o vendedor e o CRM.</p>
+      <div class="rt-scroll">
+      <svg viewBox="0 0 900 190" role="img" aria-label="Fluxo: anúncio gera lead, que é qualificado e distribuído entre os vendedores e registrado no CRM">
+        <path class="rt-path" id="p1" d="M150 95 H 330"/>
+        <path class="rt-path" id="p2" d="M470 95 H 560 Q 600 95 600 60 H 690"/>
+        <path class="rt-path" id="p3" d="M470 95 H 690"/>
+        <path class="rt-path" id="p4" d="M470 95 H 560 Q 600 95 600 130 H 690"/>
+        <path class="rt-path" d="M830 60 Q 870 60 870 95 Q 870 130 830 130"/>
+        <rect class="rt-box" x="30" y="70" width="120" height="50" rx="10"/>
+        <text class="rt-label" x="90" y="92" text-anchor="middle">ANÚNCIO</text>
+        <text class="rt-label" x="90" y="108" text-anchor="middle">META / GOOGLE</text>
+        <rect class="rt-box-gold" x="330" y="62" width="140" height="66" rx="12"/>
+        <text class="rt-label" x="400" y="88" text-anchor="middle" style="fill:#FFD700">QUALIFICAÇÃO</text>
+        <text class="rt-label" x="400" y="106" text-anchor="middle">MODELO · PAGAMENTO</text>
+        <rect class="rt-box" x="690" y="38" width="140" height="44" rx="10"/>
+        <text class="rt-label" x="760" y="65" text-anchor="middle">VENDEDOR 01</text>
+        <rect class="rt-box" x="690" y="73" width="140" height="44" rx="10"/>
+        <text class="rt-label" x="760" y="100" text-anchor="middle">VENDEDOR 02</text>
+        <rect class="rt-box" x="690" y="108" width="140" height="44" rx="10"/>
+        <text class="rt-label" x="760" y="135" text-anchor="middle">VENDEDOR 03</text>
+        <text class="rt-label" x="868" y="172" text-anchor="middle">CRM</text>
+        <circle class="rt-dot" r="5"><animateMotion dur="3.4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#p1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="3.4s" repeatCount="indefinite"/></circle>
+        <circle class="rt-dot" r="5"><animateMotion dur="3.4s" begin="1.1s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="3.4s" begin="1.1s" repeatCount="indefinite"/></circle>
+        <circle class="rt-dot" r="5"><animateMotion dur="3.4s" begin="2.2s" repeatCount="indefinite"><mpath href="#p3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="3.4s" begin="2.2s" repeatCount="indefinite"/></circle>
+        <circle class="rt-dot" r="5"><animateMotion dur="3.4s" begin="3.3s" repeatCount="indefinite"><mpath href="#p4"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" dur="3.4s" begin="3.3s" repeatCount="indefinite"/></circle>
+      </svg>
+      </div>
+      <span class="rt-hint">arraste para o lado para ver o fluxo completo</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">O que a loja ganha</span>
+    <h2 class="sec-title">Mais eficiência, <span>sem aumentar o time.</span></h2>
+    <div class="grid4">
+      <div class="mini"><span class="k">01 / VELOCIDADE</span><h4>Resposta imediata</h4><p>O lead recebe retorno no momento em que demonstra interesse, não horas depois.</p></div>
+      <div class="mini"><span class="k">02 / FOCO</span><h4>Atendimento certeiro</h4><p>O vendedor dedica tempo a quem tem perfil e condição de comprar agora.</p></div>
+      <div class="mini"><span class="k">03 / CONTROLE</span><h4>Nada se perde</h4><p>Todo lead tem dono, etapa e próximo passo registrados no CRM.</p></div>
+      <div class="mini"><span class="k">04 / CLAREZA</span><h4>Investimento medido</h4><p>Relatórios por anúncio e por modelo mostram o que traz visita e venda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap cta-final">
+    <span class="eyebrow">Próximo passo</span>
+    <h2 class="sec-title">Vamos montar isso <span>na sua loja.</span></h2>
+    <p class="sec-sub">Chame nossa equipe no WhatsApp. A gente olha a sua operação e mostra como ficaria esse fluxo na sua revenda, sem compromisso.</p>
+    <div class="cta-actions">
+      <a href="https://wa.me/5519992318335?text=Quero%20saber%20sobre%20o%20sistema%20de%20leads%20para%20loja%20de%20carros" target="_blank" rel="noopener" class="btn btn-gold btn-lg">Falar no WhatsApp agora<span class="btn-sub">APERTE AQUI</span></a>
+      <a href="https://eviewmidia.com.br/#performance" class="btn btn-ghost">Conhecer a Eview Performance</a>
+    </div>
+    <div class="cta-points">
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico gratuito, sem compromisso</span>
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Atendimento remoto em todo o Brasil</span>
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resposta em até 24 horas úteis</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Eview Mídia · Performance para lojas de carros · Atendimento em todo o Brasil</span>
+    <span><a href="https://eviewmidia.com.br">eviewmidia.com.br</a></span>
+  </div>
+</footer>
+
+<script>
+  // Feed de leads: alterna as fichas de exemplo
+  (function () {
+    const cards = [...document.querySelectorAll('#feed .card-lead')];
+    const dots = [...document.querySelectorAll('#feedDots i')];
+    if (cards.length < 2) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let i = 0;
+    setInterval(() => {
+      cards[i].classList.remove('on'); dots[i].classList.remove('on');
+      i = (i + 1) % cards.length;
+      cards[i].classList.add('on'); dots[i].classList.add('on');
+    }, 3800);
+  })();
+</script>
+</body>
+</html>
