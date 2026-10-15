@@ -6,7 +6,7 @@ Filme publicitário vertical para campanhas de geração de cotações B2B no Me
 
 | Arquivo | O que é |
 |---|---|
-| `ajfaria-meta-ads-35s.mp4` | Filme final 1080×1920, 30 fps, H.264 + AAC, narração oficial mixada (−14 LUFS, −1 dBTP) |
+| `ajfaria-meta-ads-35s.mp4` | Filme final 1080×1920, 30 fps, 35,0 s, H.264 High (~6,7 Mb/s) + AAC 256 kb/s, narração oficial mixada (−14 LUFS integrado) |
 | `ajfaria-meta-ads-35s.srt` | Legendas pt-BR sincronizadas com a narração (subir no Gerenciador de Anúncios) |
 | `ajfaria-trilha-e-efeitos-sem-locucao.m4a` | Trilha + sound design sem a voz (para versões / regravação) |
 | `ajfaria-meta-ads-capa.jpg` | Quadro do CTA para capa/miniatura |

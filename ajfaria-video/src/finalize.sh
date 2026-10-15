@@ -15,4 +15,4 @@ ffmpeg -hide_banner -y -i out/video_raw.mp4 -i out/audio/mix.wav \
 # trilha + efeitos sem a narração (para regravação/versões)
 ffmpeg -hide_banner -y -i out/audio/mix_sem_locucao.wav -af "loudnorm=I=-16:TP=-1:LRA=9" -c:a aac -b:a 256k -ar 48000 "$OUT/ajfaria-trilha-e-efeitos-sem-locucao.m4a"
 # capa (quadro do CTA)
-ffmpeg -hide_banner -y -ss 33.5 -i "$OUT/ajfaria-meta-ads-35s.mp4" -frames:v 1 "$OUT/ajfaria-meta-ads-capa.jpg"
+ffmpeg -hide_banner -y -ss 33.5 -i "$OUT/ajfaria-meta-ads-35s.mp4" -frames:v 1 -update 1 -q:v 2 "$OUT/ajfaria-meta-ads-capa.jpg"
