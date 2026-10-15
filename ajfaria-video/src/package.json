@@ -1,0 +1,19 @@
+{
+  "name": "ajfaria-video",
+  "version": "1.0.0",
+  "description": "Filme Meta Ads AJ Faria Transportadora — composição e render",
+  "scripts": {
+    "stills": "node render.mjs stills",
+    "video": "node render.mjs video"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.56.1",
+    "sharp": "^0.35.5",
+    "three": "^0.160.0"
+  },
+  "private": true,
+  "type": "module"
+}
