@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eview Performance para Empresas de Climatização — Leads qualificados com informação</title>
 <meta name="description" content="Sistema de captação e geração de demanda para empresas de climatização: leads de instalação, manutenção e PMOC qualificados, entregues ao time certo em minutos.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="../favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +65,20 @@
   .pain p { font-size: 13.5px; color: var(--muted); }
 
 
+
+
+  /* ---------- STATUS PÓS-CADASTRO ---------- */
+  .steps-now { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; max-width: 760px; }
+  .sn { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-left: 2px solid rgba(255,215,0,.4); border-radius: 10px; padding: 14px 16px; }
+  .sn b { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; color: var(--gold); margin-bottom: 6px; }
+  .sn span { font-size: 13.5px; color: #CFCFCF; line-height: 1.5; }
+  .sn.done { border-left-color: #4ADE80; }
+  .sn.done b { color: #4ADE80; }
+  .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
+  .about-card { background: var(--panel); border: 1px solid var(--line); border-radius: 11px; padding: 22px 20px; }
+  .about-card h4 { font-size: 15px; margin-bottom: 8px; }
+  .about-card p { font-size: 13.5px; color: var(--muted); }
+  @media (max-width: 900px) { .steps-now, .about-grid { grid-template-columns: 1fr; } }
 
   /* ---------- FLUXOGRAMA ANIMADO ---------- */
   .pipeline { display: grid; grid-template-columns: 1fr 44px 1fr 44px 1fr 44px 1fr; align-items: stretch; gap: 0; margin-top: 38px; }
@@ -183,12 +198,18 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Eview Performance · Empresas de climatização</span>
-    <h1>Leads de climatização que chegam <span>prontos para o seu time orçar.</span></h1>
-    <p class="lead">Um sistema de captação e geração de demanda feito para empresas de climatização: o anúncio atrai, o lead é qualificado automaticamente e chega ao seu time já dizendo o serviço, o ambiente e a quantidade de equipamentos. Sem planilha, sem lead solto no WhatsApp.</p>
+    <span class="eyebrow">Cadastro recebido · Empresas de climatização</span>
+    <h1>Recebemos seu contato. <span>Agora veja o sistema que vamos montar na sua empresa.</span></h1>
+    <p class="lead">Seu cadastro chegou e já está com o nosso time. Enquanto preparamos o seu atendimento, conheça por dentro o sistema de captação e geração de demanda que montamos para empresas de climatização: como o lead é captado, como é qualificado e como chega pronto para quem vai atender.</p>
+    <div class="steps-now">
+      <div class="sn done"><b>01 · FEITO</b><span>Seu cadastro foi recebido pelo nosso time</span></div>
+      <div class="sn"><b>02 · AGORA</b><span>Analisamos o seu cenário e preparamos o diagnóstico</span></div>
+      <div class="sn"><b>03 · EM BREVE</b><span>Falamos com você em até 24 horas úteis</span></div>
+    </div>
+
     <div class="hero-actions">
-      <a href="#contato" class="btn btn-gold btn-lg">Quero esse sistema na minha empresa<span class="btn-sub">APERTE AQUI</span></a>
-      <a href="#sistema" class="btn btn-ghost">Ver como funciona</a>
+      <a href="#sistema" class="btn btn-gold btn-lg">Ver o sistema por dentro<span class="btn-sub">APERTE AQUI</span></a>
+      <a href="https://wa.me/5519992318335?text=Quero%20adiantar%20meu%20atendimento%20%E2%80%94%20climatiza%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-ghost">Adiantar no WhatsApp</a>
     </div>
     <div class="hero-tags">
       <span class="tag"><b>+</b> Meta Ads e Google Ads</span>
@@ -367,18 +388,27 @@
 </section>
 
 <section id="contato">
-  <div class="wrap cta-final">
-    <span class="eyebrow">Próximo passo</span>
-    <h2 class="sec-title">Vamos montar isso <span>na sua empresa.</span></h2>
-    <p class="sec-sub">Chame nossa equipe no WhatsApp. A gente olha a sua operação e mostra como ficaria esse fluxo na sua empresa de climatização, sem compromisso.</p>
-    <div class="cta-actions">
-      <a href="https://wa.me/5519992318335?text=Quero%20saber%20sobre%20o%20sistema%20de%20leads%20para%20empresa%20de%20climatiza%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-gold btn-lg">Falar no WhatsApp agora<span class="btn-sub">APERTE AQUI</span></a>
-      <a href="https://eviewmidia.com.br/#performance" class="btn btn-ghost">Conhecer a Eview Performance</a>
+  <div class="wrap">
+    <span class="eyebrow">Quem vai cuidar disso</span>
+    <h2 class="sec-title">A Eview por trás <span>do sistema.</span></h2>
+    <p class="sec-sub">Somos uma assessoria de marketing e crescimento. Na Performance, montamos operações de aquisição de clientes para empresas de todo o Brasil, com mídia paga, conversão e automações comerciais.</p>
+    <div class="about-grid">
+      <div class="about-card">
+        <h4>Time completo</h4>
+        <p>Estrategistas, gestores de tráfego, designers e videomakers trabalhando na mesma operação.</p>
+      </div>
+      <div class="about-card">
+        <h4>Produção própria</h4>
+        <p>Equipe e equipamentos de produtora para foto e vídeo, sem terceirizar a imagem da sua marca.</p>
+      </div>
+      <div class="about-card">
+        <h4>Atuação nacional</h4>
+        <p>A Performance atende empresas em todo o Brasil, com acompanhamento por indicadores.</p>
+      </div>
     </div>
-    <div class="cta-points">
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico gratuito, sem compromisso</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Atendimento remoto em todo o Brasil</span>
-      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Resposta em até 24 horas úteis</span>
+    <div class="cta-actions" style="justify-content:flex-start;margin-top:30px;">
+      <a href="https://wa.me/5519992318335?text=Quero%20adiantar%20meu%20atendimento%20%E2%80%94%20climatiza%C3%A7%C3%A3o" target="_blank" rel="noopener" class="btn btn-gold btn-lg">Adiantar meu atendimento<span class="btn-sub">WHATSAPP</span></a>
+      <a href="https://eviewmidia.com.br" class="btn btn-ghost">Conhecer a Eview</a>
     </div>
   </div>
 </section>
