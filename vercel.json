@@ -20,5 +20,15 @@
       "destination": "/climatizacao",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/cotaze",
+      "destination": "https://cotaze-site.vercel.app/cotaze"
+    },
+    {
+      "source": "/cotaze/:path*",
+      "destination": "https://cotaze-site.vercel.app/cotaze/:path*"
+    }
   ]
 }
